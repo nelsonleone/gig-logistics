@@ -1,27 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;700&family=Rubik:wght@400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+@keyframes slideIn {
+    from {
+        top: -20vh;
+    }
+    to {
+        top: 5rem;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@keyframes slideOut {
+    from {
+        top: 5rem;
+    }
+    to {
+        top: -20vh;
+    }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+.primary_nav{
+    @apply bg-slate-50 w-3/4 h-[90vh] fixed left-0 top-20 p-[1.6rem] overflow-y-auto shadow-gray-500 shadow-xl;
+}
+
+.show_nav{
+    animation: slideIn .3s forwards;
+}
+
+
+.hide_nav{
+    animation: slideOut 2s forwards;
 }

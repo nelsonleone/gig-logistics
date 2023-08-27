@@ -8,7 +8,7 @@ import {deskTool} from 'sanity/desk'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {apiVersion, dataset, projectId} from './sanity/env'
-import {schema} from './sanity/schema'
+import {schema} from './sanity/schema/index'
 
 export default defineConfig({
   basePath: '/admin/tfsni4bd',

@@ -1,5 +1,5 @@
 export enum Breakpoints {
-    Large = 1000,
-    medium = 700,
+    Large = 1027,
+    medium = 768,
     small = 500
 }
