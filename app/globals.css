@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;700&family=Rubik:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.primary_nav{
+    @apply bg-slate-50 drop-shadow-2xl w-3/4 h-screen fixed left-0 -bottom-20 p-4;
+}
+/* 
+.show_nav{
+    @apply bottom-full;
+}
+
+.hide_nav{
+    @apply -bottom-full;
+} */
