@@ -22,7 +22,7 @@ export default function RootLayout({
         <link rel="icon" href="/images/favicon-32x32.png" />
       </head>
       <CustomAppStoreProvider>
-        <body className={inter.className}>
+        <body className={`${inter.className} scroll-smooth`}>
           <Header />
           {children}
         </body>

@@ -13,7 +13,7 @@ export default function MenuIcon(){
 
     return(
         !openNav &&
-        <IconButton onClick={() => dispatch(setOpenNav(!openNav))} aria-label='Toggle Menu' aria-controls='main-nav'  className='text-3xl text-black'>
+        <IconButton onClick={() => dispatch(setOpenNav(!openNav))} aria-label='Toggle Menu' aria-controls='main-nav'  className='text-3xl text-black rounded-full w-12 lg:hidden'>
             <HiOutlineMenuAlt1  />
         </IconButton>
     )

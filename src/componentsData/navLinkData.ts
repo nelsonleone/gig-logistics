@@ -27,6 +27,10 @@ const navLinkData : NavLinkData = [
             {
                 link: '/international-courier-services',
                 text: 'Overseas Shipping'
+            },
+            {
+                link: '/wallet-added-services',
+                text: 'Wallet And Added Services'
             }
         ]
     },

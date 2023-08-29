@@ -6,25 +6,25 @@
 
 @keyframes slideIn {
     from {
-        top: -20vh;
+        left: -20vh;
     }
     to {
-        top: 5rem;
+        left: 0;
     }
 }
 
 @keyframes slideOut {
     from {
-        top: 5rem;
+        left: 0;
     }
     to {
-        top: -20vh;
+        left: -20vh;
     }
 }
 
 
 .primary_nav{
-    @apply bg-slate-50 w-3/4 h-[90vh] fixed left-0 top-20 p-[1.6rem] overflow-y-auto shadow-gray-500 shadow-xl;
+    @apply bg-slate-50 w-3/4 h-[90vh] fixed z-40 left-0 top-20 p-[1.6rem] pt-8 overflow-y-auto shadow-gray-500 shadow-xl lg:static lg:p-0 lg:top-0 lg:bg-transparent lg:shadow-none lg:w-auto lg:h-auto lg:left-0 lg:overflow-visible;
 }
 
 .show_nav{
@@ -33,5 +33,10 @@
 
 
 .hide_nav{
-    animation: slideOut 2s forwards;
+    animation: slideOut .4s forwards;
+}
+
+
+.red-button{
+    @apply bg-red-600 text-slate-50 transition-opacity duration-300 px-5 py-3 rounded text-sm font-normal hover:opacity-75;
 }
