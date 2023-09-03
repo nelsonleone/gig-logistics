@@ -3,7 +3,7 @@
 import { useAppDispatch, useAppSelector } from '@/redux/customHooks';
 import { setOpenNav } from '@/redux/slices/openNavSlice';
 import {IconButton } from '@mui/material';
-import { HiOutlineMenuAlt1 } from 'react-icons/hi';
+import { BiMenu } from 'react-icons/bi';
 
 export default function MenuIcon(){
 
@@ -13,8 +13,8 @@ export default function MenuIcon(){
 
     return(
         !openNav &&
-        <IconButton onClick={() => dispatch(setOpenNav(!openNav))} aria-label='Toggle Menu' aria-controls='main-nav'  className='text-3xl text-black rounded-full w-12 lg:hidden'>
-            <HiOutlineMenuAlt1  />
+        <IconButton onClick={() => dispatch(setOpenNav(!openNav))} aria-label='Toggle Menu' aria-controls='primary-nav' aria-expanded={openNav ? "true" : "false"} className='text-3xl text-black rounded-full w-12 lg:hidden'>
+            <BiMenu  />
         </IconButton>
     )
 }

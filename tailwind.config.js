@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'roboto-slab': ['Roboto Slab, sans serif'],
-        'Inter': ['Inter, sans-serif']
+        'roboto-slab': ['Roboto Slab, serif'],
+        'inter': ['Inter, sans-serif']
       }
     },
   },

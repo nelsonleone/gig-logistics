@@ -44,18 +44,21 @@ export default function MainNav(){
 
 
     return(
-        <nav className="flex justify-between align-middle lg:basis-[75%]" id="main-nav">
+        <nav className="flex justify-between items-center xl:basis-[80%]" id="main-nav">
             {
                 showPrimaryNav &&
                 <ClickAwayListener  
                     mouseEvent="onMouseDown"
                     touchEvent="onTouchEnd"
                     onClickAway={handleClickAway}>
-                    <ul className={showPrimaryNav ? "primary_nav show_nav" : "primary_nav hide_nav"}>
+                    <ul 
+                       id="primary-nav" 
+                       className={showPrimaryNav ? "primary_nav show_nav" : "primary_nav hide_nav"}
+                       >
                         <IconButton 
                            aria-label="close" 
                            onClick={() => dispatch(setOpenNav(false))}
-                           className="absolute top-0 right-4 lg:hidden"
+                           className="absolute top-1 right-4 lg:hidden border border-red-800 hover:border-solid focus:border-solid"
                            >
                             <AiOutlineClose />
                         </IconButton>
@@ -67,6 +70,7 @@ export default function MainNav(){
                                         className={`my-6 text-[.95rem] relative font-medium lg:inline-block me-12 first-of-type:me-20 ${index === 0 ? "group/dropdownContainer" : ""}`}
                                         aria-haspopup={index === 0 ? "true" : "false"}
                                         aria-expanded={index === 0? "true" : "false"}
+                                        aria-controls="dropdown"
                                     >
                                         <Link 
                                             href={linkData.link} 
@@ -79,7 +83,7 @@ export default function MainNav(){
 
                                         {
                                             index === 0 &&
-                                            <FaAngleDown aria-hidden="true" className={`absolute top-0 right-0 transition-all duration-300 ease-linear ${showDropdownMenu && window.innerWidth < Breakpoints.Large ? "rotate-180 text-red-600" : "rotate-0 text-gray-800"} lg:top-1/2 lg:bottom-1/2 lg:m-auto -right-[2.25rem] group-hover/dropdownContainer:rotate-180 group-hover/dropdownContainer:text-red-600`} />
+                                            <FaAngleDown aria-hidden="true" className={`absolute top-0 right-0 transition-all duration-300 ease-linear ${showDropdownMenu && window.innerWidth < Breakpoints.Large ? "rotate-180 text-red-600" : "rotate-0 text-gray-800"} lg:top-1/2 lg:bottom-1/2 lg:m-auto lg:-right-[2.4rem] ${window.innerWidth >= Breakpoints.Large ? "group-hover/dropdownContainer:rotate-180" : ""} group-hover/dropdownContainer:text-red-600`} />
                                         }
 
                                         {
@@ -96,7 +100,7 @@ export default function MainNav(){
                         }
 
                         <li 
-                          className="red-button lg:hidden"
+                          className="red-button-bright lg:hidden w-[10em] p-3 font-bold"
                           >
                             <Link href="#track">Track & Find</Link>
                         </li>
@@ -105,13 +109,18 @@ export default function MainNav(){
             }
 
             <ul 
-              className={`absolute align-middle self-center ${showPrimaryNav ? 'right-4' : 'right-16'} lg:static right-0`}>
-                <li className="hidden">
-                    <Button LinkComponent='a' href="#track">Track & Find</Button>
+              className={`absolute items-center self-center ${showPrimaryNav ? 'right-4' : 'right-16'} lg:static lg:right-0 lg:flex justify-between gap-4`}>
+                <li 
+                 className="hidden lg:block">
+                    <Link
+                       href="#track"
+                       className="red-button-bright font-inter transition-opacity font-bold hover:opacity-80 focus:outline-dotted focus:outline-slate-400 text-white py-3 h-[3em] px-4 hover:bg-red-700" 
+                     >Track & Find
+                    </Link>
                 </li>
                 <li>
                     <Link 
-                       className="red-button"
+                       className="red-button-bright transition-opacity h-[3em] py-3 px-6 font-bold hover:opacity-80 focus:outline-dotted focus:outline-slate-400"
                        href="/signin"
                         >
                        Sign In
