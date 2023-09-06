@@ -12,10 +12,10 @@ export default function GiggoAppAdBanner(){
                 </p>
                 <div className="flex justify-between items-center  gap-4 my-6 md:w-1/2 md:items-center lg:items-start lg:w-[60%]">
                     <Link href="" className="transition duration-200 ease-in-out hover:scale-105">
-                        <Image src="/images/app-store.svg" alt="App Store" width={200} height={100} />
+                        <Image className="w-auto" src="/images/app-store.svg" alt="App Store" width={200} height={100} />
                     </Link>
                     <Link href="" className="transition duration-200 ease-in-out hover:scale-105">
-                        <Image src="/images/google-play.svg" alt="Google Play" width={200} height={100} />
+                        <Image className="w-auto"  src="/images/google-play.svg" alt="Google Play" width={200} height={100} />
                     </Link>
                 </div>
             </div>

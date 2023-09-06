@@ -1,5 +1,6 @@
 import CompanyGoals from "@/components/CompanyGoals";
 import GiggoAppAdBanner from "@/components/GiggoAppAdBanner";
+import TrackerArea from "@/components/TrackerArea";
 import FeaturedEventBanner from "@/components/assets/FeaturedEventBanner";
 import CustomSkeleton from "@/components/assets/Loaders";
 import ServicesHighlight from "@/components/assets/ServicesHighlight";
@@ -8,7 +9,7 @@ import { Suspense } from "react";
 export default function Home() {
 
   return (
-    <main className="overflow-hidden bg-gray-100 pt-[100vh]">
+    <main className="page overflow-hidden px-0 pt-[100vh]">
       <Suspense fallback={<CustomSkeleton width={600} height={40} variant="rectangular" />}>
         <FeaturedEventBanner />
       </Suspense>
@@ -29,6 +30,7 @@ export default function Home() {
 
         <ServicesHighlight />
         <GiggoAppAdBanner />
+        <TrackerArea />
         <CompanyGoals />
       </div>
     </main>

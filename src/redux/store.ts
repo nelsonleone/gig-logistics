@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import openNavReducer from "./slices/openNavSlice";
+import alertReducer from "./slices/alertSlice";
 
 const reduxStore = configureStore({
     reducer: {
-        openNav: openNavReducer
+        openNav: openNavReducer,
+        alert: alertReducer
     }
 })
 

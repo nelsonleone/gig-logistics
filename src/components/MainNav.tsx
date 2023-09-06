@@ -12,10 +12,12 @@ import { useAppDispatch, useAppSelector } from "@/redux/customHooks";
 import { setOpenNav } from "@/redux/slices/openNavSlice";
 import DropDownLinks from "./DropdownLinks";
 import { AiOutlineClose } from 'react-icons/ai'
+import { usePathname } from "next/navigation";
 
 export default function MainNav(){
 
     const { openNav } = useAppSelector(store => store.openNav)
+    const pathName = usePathname()
     const [showPrimaryNav,setShowPrimaryNav] = useState(openNav)
     const dispatch = useAppDispatch()
     const [showDropdownMenu,setShowDropdownMenu] = useState(openNav)
@@ -27,6 +29,23 @@ export default function MainNav(){
 
     const handleResize = () => {
         window.innerWidth >= Breakpoints.Large ? dispatch(setOpenNav(true)) : dispatch(setOpenNav(false))
+    }
+
+    const handleScrollIntoView = () => {
+        const trackArea = document.getElementById('#track')
+
+        if(trackArea){
+            const yOffset = -100;
+            const y = trackArea.getBoundingClientRect().top +  window.scrollY + yOffset ;
+            window.scrollTo({ top: y, behavior: 'smooth' })
+        }
+    }
+
+    const handleTrackButtonClick = () => {
+        handleScrollIntoView()
+        if(window.innerWidth < Breakpoints.Large){
+            dispatch(setOpenNav(false))
+        }
     }
 
     useEffect(() => {
@@ -41,6 +60,12 @@ export default function MainNav(){
         setShowPrimaryNav(openNav)
         setShowDropdownMenu(window.innerWidth >= Breakpoints.Large)
     },[openNav])
+
+    useEffect(() => {
+        if(window.innerWidth < Breakpoints.Large){
+            dispatch(setOpenNav(false))
+        }
+    },[pathName])
 
 
     return(
@@ -100,9 +125,9 @@ export default function MainNav(){
                         }
 
                         <li 
-                          className="red-button-bright lg:hidden w-[10em] p-3 font-bold"
+                          onClick={handleTrackButtonClick}
                           >
-                            <Link href="#track">Track & Find</Link>
+                            <button className="red-button-bright lg:hidden w-[10em] p-3 font-bold">Track & Find</button>
                         </li>
                     </ul>
                 </ClickAwayListener>
@@ -112,15 +137,15 @@ export default function MainNav(){
               className={`absolute items-center self-center ${showPrimaryNav ? 'right-4' : 'right-16'} lg:static lg:right-0 lg:flex justify-between gap-4`}>
                 <li 
                  className="hidden lg:block">
-                    <Link
-                       href="#track"
-                       className="red-button-bright font-inter transition-opacity font-bold hover:opacity-80 focus:outline-dotted focus:outline-slate-400 text-white py-3 h-[3em] px-4 hover:bg-red-700" 
+                    <button
+                       onClick={handleScrollIntoView}
+                       className="red-button-bright font-inter transition-opacity font-bold hover:opacity-80  focus:outline-2 focus:outline-dotted focus:outline-red-950 text-white py-3 h-[2.7em] px-4 hover:bg-red-700" 
                      >Track & Find
-                    </Link>
+                    </button>
                 </li>
                 <li>
                     <Link 
-                       className="red-button-bright transition-opacity h-[3em] py-3 px-6 font-bold hover:opacity-80 focus:outline-dotted focus:outline-slate-400"
+                       className="red-button-bright transition-opacity h-[em] py-3 px-6  font-bold hover:opacity-80 focus:outline-dotted focus:outline-slate-400"
                        href="/signin"
                         >
                        Sign In
