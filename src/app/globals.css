@@ -23,12 +23,13 @@
 }
 
 @layer components{
-    .page{
-        @apply pt-24 px-4;
+
+    .page {
+        @apply min-h-screen;
     }
     
     .primary_nav{
-        @apply bg-slate-50 w-3/4 h-[90vh] fixed z-40 left-0 top-20 p-[1.6rem] pt-10  overflow-y-auto shadow-gray-500 shadow-xl md:w-[40%] lg:static lg:p-0 lg:top-0 lg:bg-transparent lg:shadow-none lg:w-auto lg:h-auto lg:left-0 lg:overflow-visible;
+        @apply bg-slate-50 w-3/4 h-[90vh] fixed z-40 left-0 top-20 p-[1.6rem] pt-10 pb-7  overflow-y-auto shadow-gray-500 shadow-xl md:w-[40%] lg:static lg:p-0 lg:top-0 lg:bg-transparent lg:shadow-none lg:w-auto lg:h-auto lg:left-0 lg:overflow-visible;
     }
     
     .show_nav{

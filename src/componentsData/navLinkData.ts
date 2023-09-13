@@ -43,7 +43,7 @@ const navLinkData : NavLinkData = [
         text: 'Blog'
     },
     {
-        link: '/faqs',
+        link: '/faq',
         text: 'FAQs'
     },
     {

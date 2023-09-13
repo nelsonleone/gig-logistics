@@ -1,7 +1,7 @@
 import { TbTruckDelivery } from 'react-icons/tb'
-import { Rule } from 'sanity'
+import { Rule, defineField } from 'sanity'
 
-export default {
+const deliveryServicesHighlight = defineField({
     name: 'deliveryServicesHighlight',
     title: 'Delivery Services Highlight',
     type: 'document',
@@ -45,4 +45,6 @@ export default {
             validation: (rule:Rule) => rule.required()
         }
     ]
-}
+})
+
+export default deliveryServicesHighlight;

@@ -35,7 +35,7 @@ export default function MainNav(){
         const trackArea = document.getElementById('#track')
 
         if(trackArea){
-            const yOffset = -100;
+            const yOffset = -120;
             const y = trackArea.getBoundingClientRect().top +  window.scrollY + yOffset ;
             window.scrollTo({ top: y, behavior: 'smooth' })
         }
@@ -83,7 +83,7 @@ export default function MainNav(){
                         <IconButton 
                            aria-label="close" 
                            onClick={() => dispatch(setOpenNav(false))}
-                           className="absolute top-1 right-4 lg:hidden border border-red-800 hover:border-solid focus:border-solid"
+                           className="absolute top-1 right-4 lg:hidden border-b border-red-800 transition ease-in-out duration-200 hover:border-solid focus:border-solid"
                            >
                             <AiOutlineClose />
                         </IconButton>
@@ -97,18 +97,26 @@ export default function MainNav(){
                                         aria-expanded={index === 0? "true" : "false"}
                                         aria-controls="dropdown"
                                     >
-                                        <Link 
-                                            href={linkData.link} 
-                                            onClick={() => index === 0 && window.innerWidth < Breakpoints.Large ? setShowDropdownMenu(prevState => prevState = !prevState) : {}}
-
-                                            className={`${showDropdownMenu && linkData.dropDown && window.innerWidth < Breakpoints.Large ? "text-red-600" : "text-gray-800"} w-full inline-block transition duration-200 ease-linear hover:text-red-600`}
-                                         >
-                                         {linkData.text}
-                                        </Link>
+                                        {
+                                            !linkData.dropDown ?
+                                            <Link 
+                                                href={linkData.link} 
+                                                className={`${pathName === linkData.link ? "text-red-600" : "text-gray-800"} w-full inline-block transition duration-200 ease-linear hover:text-red-600`}
+                                              >
+                                             {linkData.text}
+                                            </Link>
+                                            :
+                                            <button   
+                                              className={`${showDropdownMenu && window.innerWidth < Breakpoints.Large ? "text-red-600" : "text-gray-800"} w-full text-left inline-block transition duration-200 ease-linear hover:text-red-600`}                                             
+                                              onClick={() => window.innerWidth < Breakpoints.Large ? setShowDropdownMenu(prevState => prevState = !prevState) : {}}
+                                              >
+                                                {linkData.text}
+                                            </button>
+                                        }
 
                                         {
                                             index === 0 &&
-                                            <FaAngleDown aria-hidden="true" className={`absolute top-0 right-0 transition-all duration-300 ease-linear ${showDropdownMenu && window.innerWidth < Breakpoints.Large ? "rotate-180 text-red-600" : "rotate-0 text-gray-800"} lg:top-1/2 lg:bottom-1/2 lg:m-auto lg:-right-[2.4rem] ${window.innerWidth >= Breakpoints.Large ? "group-hover/dropdownContainer:rotate-180" : ""} group-hover/dropdownContainer:text-red-600`} />
+                                            <FaAngleDown aria-hidden="true" className={`absolute top-1 -right-6 transition-all duration-300 ease-linear ${showDropdownMenu && window.innerWidth < Breakpoints.Large ? "rotate-180 text-red-600" : "rotate-0 text-gray-800"} lg:top-1/2 lg:bottom-1/2 lg:m-auto lg:-right-[2.4rem] ${window.innerWidth >= Breakpoints.Large ? "group-hover/dropdownContainer:rotate-180" : ""} group-hover/dropdownContainer:text-red-600`} />
                                         }
 
                                         {
@@ -124,28 +132,38 @@ export default function MainNav(){
                             })
                         }
 
-                        <li 
-                          onClick={handleTrackButtonClick}
-                          >
-                            <button className="red-button-bright lg:hidden w-[10em] p-3 font-bold">Track & Find</button>
-                        </li>
+                        {
+                           pathName === "/" ?
+                           <li 
+                            onClick={handleTrackButtonClick}
+                            >
+                                <button className="red-button-bright lg:hidden w-[10em] p-3 font-medium">Track & Find</button>
+                            </li>
+                            :
+                            null
+                        }
                     </ul>
                 </ClickAwayListener>
             }
 
             <ul 
               className={`absolute items-center self-center ${showPrimaryNav ? 'right-4' : 'right-16'} lg:static lg:right-0 lg:flex justify-between gap-4`}>
-                <li 
-                 className="hidden lg:block">
-                    <button
-                       onClick={handleScrollIntoView}
-                       className="red-button-bright font-inter transition-opacity font-bold hover:opacity-80  focus:outline-2 focus:outline-dotted focus:outline-red-950 text-white py-3 h-[2.7em] px-4 hover:bg-red-700" 
-                     >Track & Find
-                    </button>
-                </li>
+                {
+                    pathName === "/" ?
+                    <li 
+                        className="hidden lg:block">
+                        <button
+                            onClick={handleScrollIntoView}
+                            className="red-button-bright font-inter transition-opacity font-medium hover:opacity-80  focus:outline-2 focus:outline-dotted focus:outline-red-950 text-white py-3 h-[2.7em] px-4 hover:bg-red-700" 
+                            >Track & Find
+                        </button>
+                    </li>
+                    :
+                    null
+                }
                 <li>
                     <Link 
-                       className="red-button-bright transition-opacity h-[em] py-3 px-6  font-bold hover:opacity-80 focus:outline-dotted focus:outline-slate-400"
+                       className="red-button-bright transition-opacity h-[em] py-3 px-6  font-medium hover:opacity-80 focus:outline-dotted focus:outline-slate-400"
                        href="/signin"
                         >
                        Sign In

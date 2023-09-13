@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <main className="page overflow-hidden px-0 pt-[100vh]">
-      <Suspense fallback={<CustomSkeleton width={600} height={40} variant="rectangular" />}>
+      <Suspense fallback={<CustomSkeleton width={1200} height={400} variant="rectangular" />}>
         <FeaturedEventBanner />
       </Suspense>
       <div 

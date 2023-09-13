@@ -21,7 +21,7 @@ export default function DropDownLinks({ dropDown, setShowDropdownMenu, showDropd
     return(
         <ul 
             id="dropdown"
-            className={`${showDropdownMenu ? "block" : "hidden"} w-full bg-slate-100 mt-1 lg:absolute lg:top-4 lg:left-0 lg:w-[15em] lg:bg-gray-50 lg:drop-shadow-xl lg:rounded-md lg:group-hover/dropdownContainer:flex lg:justify-center lg:px-4 lg:flex-col lg:hidden`}
+            className={`${showDropdownMenu ? "block" : "hidden"} w-[12em] bg-slate-100 mt-1 lg:absolute lg:top-4 lg:left-0 lg:w-[15em] lg:bg-gray-50 lg:drop-shadow-xl lg:rounded-md lg:group-hover/dropdownContainer:flex lg:justify-center lg:px-4 lg:flex-col lg:hidden`}
             >
             {
                 dropDown.map(dropDownData => (

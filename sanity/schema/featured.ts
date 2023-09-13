@@ -1,7 +1,7 @@
 import { MdEventAvailable } from 'react-icons/md'
-import { Rule } from 'sanity'
+import { Rule, defineField } from 'sanity'
 
-export default {
+const featured = defineField({
     name: 'featured',
     title: 'Featured',
     type: 'document',
@@ -36,4 +36,7 @@ export default {
             validation: (Rule:Rule) => Rule.required().error("Enquire for event page link")
         }
     ]
-}
+})
+
+
+export default featured;

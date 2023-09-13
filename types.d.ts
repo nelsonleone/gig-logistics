@@ -1,3 +1,4 @@
+import { PortableTextBlock } from "@portabletext/types"
 
 export type FeaturedEventData = {
     bannerIcon: IBannerIcon,
@@ -45,4 +46,29 @@ interface IOFL {
 export type OfficeLocationData = {
     countryName: string,
     locations: IOFL[]
+}
+
+export type OfficeLocationDataObj = {
+    nigeriaOfficeLocationData:OfficeLocationData,
+    ghanaOfficeLocationData:OfficeLocationData,
+    unitedKingdomOfficeLocationData:OfficeLocationData,
+    unitedStatesOfficeLocationData:OfficeLocationData,
+    chinaOfficeLocationData: OfficeLocationData
+}
+
+
+
+
+
+// Faq Content Data Type
+export type FaqData = {
+    _id: string,
+    faqSection: {
+        faqSectionTitle: string,
+        faqsArray: {
+            question: string,
+            _key: string,
+            answer: PortableTextBlock[]
+        }[]
+    }
 }[]
