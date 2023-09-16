@@ -1,4 +1,4 @@
-import { PortableTextBlock } from "@portabletext/types"
+import { PortableTextBlock, TypedObject } from "@portabletext/types"
 
 export type FeaturedEventData = {
     bannerIcon: IBannerIcon,
@@ -72,3 +72,36 @@ export type FaqData = {
         }[]
     }
 }[]
+
+
+
+
+// About-Us Page Content
+interface AboutUsContent {
+    heading: string;
+    text: string;
+}
+  
+interface AboutUsServiceHighlightCard {
+    textContent: string;
+    heading: string;
+    _key: string;
+    _type: string;
+}
+  
+export type AboutUsPageContentData = {
+    introText: string;
+    aboutUsContent2: AboutUsContent;
+    aboutUsContent3: AboutUsContent;
+    aboutUsServiceHighlightCards: AboutUsServiceHighlightCard[];
+    introHeading: string;
+    aboutUsRepImg: {
+        alt: string;
+        asset: {
+        _ref: string;
+        _type: string;
+        };
+        _type: string;
+    };
+    mainContent: TypedObject[]
+}

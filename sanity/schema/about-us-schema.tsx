@@ -25,7 +25,7 @@ const aboutUsContentSchema =  defineField({
             name: "aboutUsRepImg",
             title: "Rep Image",
             type: "image",
-            validation: rule => rule.required().min(10).error("Text is too short"),
+            validation: rule => rule.required(),
             options: {
                 hotspot: true
             },

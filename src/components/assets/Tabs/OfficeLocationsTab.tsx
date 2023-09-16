@@ -46,11 +46,11 @@ export default function OfficeLocationTabs(){
                 }
             </div>
 
-            <div className="bg-gray-100 lg:w-1/2 lg:mx-auto p-3 drop-shadow-md">
+            <div className="bg-gray-100 lg:w-1/2 lg:mx-auto py-3 my-3 drop-shadow-md text-[#111827]">
                 {
                     Object.values(officeLocationDataObj)[activeTab].locations.map((val) => (
-                        <div className='px-4 my-8' role="tabpanel" id={`panel-${activeTab}`}  aria-labelledby={`tab-${activeTab}`}>
-                            <h5 className='cursor-pointer font-medium text-base flex items-center  w-full justify-between border-b pb-3' onClick={() => handleDropdownAddressDisplay(val.state_capital)}>{val.state_capital} 
+                        <div className='px-4 my-12' role="tabpanel" id={`panel-${activeTab}`}  aria-labelledby={`tab-${activeTab}`}>
+                            <h5 className='cursor-pointer font-medium text-base flex items-center  w-full justify-between border-b border-gray-300 pb-3' onClick={() => handleDropdownAddressDisplay(val.state_capital)}>{val.state_capital} 
                             <VscTriangleDown aria-hidden="true" className={`transition-all duration-200 ease-linear ${activeDropDown === val.state_capital ? "rotate-180" : ""}`} />
                             </h5>
                             {

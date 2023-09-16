@@ -56,9 +56,9 @@ export default function OurOffices(){
                 </div>
             </section>
 
-            <section className="pt-6 px-8 text-[#111827] lg:py-12">
+            <section className="pt-6 px-8 text-[#374151] lg:py-12">
                 <div className="flex items-center justify-center gap-2">
-                    <h2 className="text-2xl font-semibold capitalize">Office Locations</h2>
+                    <h2 className="text-xl font-semibold capitalize underline">Office Locations</h2>
                     <FaLocationArrow aria-hidden="true" />
                 </div>
                 <OfficeLocationTabs />
