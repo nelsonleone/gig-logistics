@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import CustomSkeleton from "./Loaders";
 import formatLink from "@/helperFns/formatLink";
 import Link from "next/link";
+import { roboto_slab } from "@/app/fonts";
 
 export default async function ServicesHighlight(){
 
@@ -11,12 +12,12 @@ export default async function ServicesHighlight(){
 
     return (
         <section className="mt-[9em] mb-[6.5em] px-3">
-            <h2 className="font-roboto-slab text-[1.8rem] text-black text-center font-bold">Seamless Delivery Services</h2>
+            <h2 className={`${roboto_slab.className} text-[1.8rem] text-black text-center font-bold`}>Seamless Delivery Services</h2>
 
             <div className="flex justify-center items-center gap-4 flex-col mt-5 md:flex-wrap md:flex-row md:justify-between lg:flex-nowrap lg:flex-row lg:mt-10 lg:justify-between">
                 {
                     servicesHighlightData.map(val => (
-                        <Suspense key={val._id} fallback={<CustomSkeleton width={600} height={500} variant="rectangular" />}>
+                        <Suspense key={val._id} fallback={<CustomSkeleton className="w-full h-[18em] md:w-[48%] lg:w-full" variant="rectangular" />}>
                             <Link href={formatLink(val.slug)} className="focus:outline focus:outline-black block w-full md:w-[48%] lg:w-full">
                                 <div 
                                    className="relative drop-shadow-sm bg-white  flex gap-4 justify-center items-center text-center flex-col text-[#4b5563] m-auto border-[1.5px] px-6  border-gray-200 transition-all duration-200 ease-linear

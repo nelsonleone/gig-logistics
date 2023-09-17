@@ -6,7 +6,7 @@ export default async function getAboutUsPageContent(){
     const aboutPageData : AboutUsPageContentData[] = await sanityClient.fetch(
         groq`
           *[_type == 'aboutUsContent']
-        `
+        `,
     )
 
     return aboutPageData[0];

@@ -1,5 +1,6 @@
 import getFaqData from "@/helperFns/getFaqData"
 import FaqAccordion from "@/components/FaqAccordion"
+import { roboto_slab } from "../fonts"
 
 export default async function FaqPage(){
 
@@ -8,7 +9,7 @@ export default async function FaqPage(){
     return(
         <div className="min-h-screen pt-20">
             <div className="p-8 bg-[url('/images/offices_bg.svg')] ">
-                <h1 className="font-bold text-[2.2rem]  my-8 text-[#374151] font-roboto-slab">Frequently Asked Questions</h1>
+                <h1 className={`${roboto_slab.className} font-bold text-[2.2rem]  my-8 text-[#374151]`}>Frequently Asked Questions</h1>
             </div>
 
             <div>

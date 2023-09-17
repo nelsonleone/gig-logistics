@@ -88,6 +88,10 @@ interface AboutUsServiceHighlightCard {
     _key: string;
     _type: string;
 }
+
+interface ITypedObject extends TypedObject {
+    children: []
+}
   
 export type AboutUsPageContentData = {
     introText: string;
@@ -103,5 +107,5 @@ export type AboutUsPageContentData = {
         };
         _type: string;
     };
-    mainContent: TypedObject[]
+    mainContent: ITypedObject[]
 }

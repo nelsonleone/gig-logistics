@@ -1,5 +1,3 @@
-import { Skeleton } from "@mui/material";
-
 export default function Loading(){
     return(
         <div className="h-screen py-8 flex justify-center items-center gap-1">

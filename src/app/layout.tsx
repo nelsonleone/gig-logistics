@@ -2,10 +2,8 @@ import CustomAppStoreProvider from '@/components/assets/CustomAppStoreProvider'
 import Header from '../components/Header'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import Footer from '@/components/Footer'
-
-const inter = Inter({ subsets: ['latin'], weight: ["400","500","600","700"] })
+import { inter } from './fonts'
 
 export const metadata: Metadata = {
   title: `GIGL | Africa's Leading Logistics Company | Express Delivery`,

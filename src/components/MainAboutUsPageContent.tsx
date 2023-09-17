@@ -14,7 +14,7 @@ export default function MainAboutUsPageContent({ className,aboutPageContentData 
     const customPTComponent = {
         block: {
             p: ({ children }:any) => (
-                <p>{children}</p>
+                <p className="underline mt-6 block">{children}......</p>
             )
         }
     }
@@ -22,12 +22,13 @@ export default function MainAboutUsPageContent({ className,aboutPageContentData 
     return(
         <div className={className}>
             <Suspense fallback={<CustomSkeleton className="" variant="rectangular" />}>
-                <div>
+                <div className='flex items-center justify-center'>
                     <Image
                         src={urlForImage(aboutPageContentData?.aboutUsRepImg).url()} 
                         alt={aboutPageContentData?.aboutUsRepImg.alt} 
-                        width={800} 
-                        height={800}
+                        quality={100}
+                        width={650}
+                        height={650}
                     />
                 </div>
             </Suspense>
