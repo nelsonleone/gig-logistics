@@ -103,7 +103,8 @@ const aboutUsContentSchema =  defineField({
                             name: "textContent",
                             type: "text",
                             title: "TextContent",
-                            validation: rule => rule.required().min(20).error("Too short for a text content")
+                            validation: rule => rule.required().min(20).error("Too short for a text content"),
+                            description: "Make it a short description, emphasising on the title"
                         },
                     ]
                 }

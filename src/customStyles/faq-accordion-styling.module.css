@@ -1,0 +1,19 @@
+/* Styles For Faq Accordion PortableText Elements */
+
+
+.faq-accordion-panel > * p{
+    margin-block: 1em;
+}
+
+.faq-accordion-panel li{
+    list-style-type: disc;
+}
+
+.faq-accordion-panel a{
+    text-decoration: underline !important;
+    color: hsl(0, 89%, 41%);
+}
+
+.Accordion-Control *{
+    font-weight: 600 !important;
+}

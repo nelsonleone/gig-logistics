@@ -5,7 +5,7 @@ import CustomTooltip from "./assets/CustomizedMUI/CustomTooltip"
 
 export default function Footer(){
     return(
-        <footer className="bg-[#19191b] bg-[url('/images/footer-bg.2af3a12d.svg')] bg-no-repeat px-3 py-7 bg-blend-hard-light lg:flex lg:flex-row lg:justify-center lg:items-baseline lg:gap-28 lg:py-10">
+        <footer className="bg-[#19191b] bg-[url('/images/footer-bg.2af3a12d.svg')] bg-no-repeat px-4 py-7 bg-blend-hard-light lg:px-[1.5em] lg:flex lg:flex-row lg:justify-center lg:items-baseline lg:gap-28 lg:py-10">
             <p className="text-lg text-white font-bold lg:text-lg">© 2023 GIG Logistics</p>
             <nav className="flex flex-col gap-4 mt-3 text-white lg:flex-row lg:gap-28 lg:justify-between">
                 <ul>

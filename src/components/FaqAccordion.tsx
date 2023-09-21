@@ -1,12 +1,13 @@
 'use client'
 
 import { Accordion } from "@mantine/core";
-import { FaqData } from "../../types";
 import { PortableText } from '@portabletext/react'
 import Link from "next/link";
 import { PortableTextComponents } from "@portabletext/react";
 import { urlForImage } from "../../sanity/lib/image";
 import { PortableTextBlock } from "@portabletext/types";
+import { inter } from "@/app/fonts";
+import styles from '../customStyles/faq-accordion-styling.module.css'
 
 
 interface IProps {
@@ -45,12 +46,12 @@ export default function FaqAccordion(props:IProps){
 
 
     return(
-        <Accordion variant="contained" radius="md">
+        <Accordion variant="contained" radius="md" transitionDuration={400}>
             {
                 props.val.faqSection.faqsArray.map(faq => (
                     <Accordion.Item key={faq._key} value={faq.question}>
-                        <Accordion.Control>{faq.question}</Accordion.Control>
-                        <Accordion.Panel>
+                        <Accordion.Control className={`${inter.className} ${styles["Accordion-Control"]} text-[#111827]`}>{faq.question}</Accordion.Control>
+                        <Accordion.Panel className={`${inter.className}  ${styles["faq-accordion-panel"]} text-[.9rem]`}>
                             <PortableText value={faq.answer} components={portableTextComponent} />
                         </Accordion.Panel>
                     </Accordion.Item>

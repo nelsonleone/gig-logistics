@@ -11,7 +11,7 @@ export default function Header(){
 
     return(
        !pathName.match(`/admin/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}`) ?
-        <header className="bg-slate-50 w-full p-3 h-20 fixed top-0 z-50 flex justify-between items-center lg:px-[3.5%] lg:py-12 drop-shadow-md">
+        <header className="bg-slate-50 w-full p-4 h-20 fixed top-0 z-50 flex justify-between items-center lg:px-[1.5em] lg:py-12 drop-shadow-md">
             <Logo />
             <MainNav />
             <MenuIcon />

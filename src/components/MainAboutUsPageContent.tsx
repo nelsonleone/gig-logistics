@@ -10,31 +10,26 @@ interface IProps {
     aboutPageContentData: AboutUsPageContentData
 }
 
+
 export default function MainAboutUsPageContent({ className,aboutPageContentData }:IProps){
-    const customPTComponent = {
-        block: {
-            p: ({ children }:any) => (
-                <p className="underline mt-6 block">{children}......</p>
-            )
-        }
-    }
 
     return(
         <div className={className}>
-            <Suspense fallback={<CustomSkeleton className="" variant="rectangular" />}>
-                <div className='flex items-center justify-center'>
+            <Suspense fallback={<CustomSkeleton className="w-full lg:w-1/2 h-[20em] lg:h-4/5" variant="rectangular" />}>
+                <div className='md:w-[40em] md:mx-auto lg:w-1/2 '>
                     <Image
                         src={urlForImage(aboutPageContentData?.aboutUsRepImg).url()} 
                         alt={aboutPageContentData?.aboutUsRepImg.alt} 
                         quality={100}
-                        width={650}
-                        height={650}
+                        width={750}
+                        height={750}
+                        className=''
                     />
                 </div>
             </Suspense>
-            <Suspense fallback={<CustomSkeleton className="" variant="rectangular" />}>
-                <div>
-                    <PortableText value={aboutPageContentData?.mainContent} components={customPTComponent} />
+            <Suspense fallback={<CustomSkeleton className="w-full lg-1/2 h-[30em] lg:h-[90%]" variant="rectangular" />}>
+                <div className="aboutMainContentTextContainer lg:w-1/2">
+                    <PortableText value={aboutPageContentData?.mainContent} />
                 </div>
             </Suspense>
         </div>

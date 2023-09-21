@@ -6,13 +6,14 @@ import { ClickAwayListener } from "@mui/base"
 import { Breakpoints } from "@/enums";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Button, IconButton } from '@mui/material'
+import { IconButton } from '@mui/material'
 import { FaAngleDown } from 'react-icons/fa';
 import { useAppDispatch, useAppSelector } from "@/redux/customHooks";
 import { setOpenNav } from "@/redux/slices/openNavSlice";
 import DropDownLinks from "./DropdownLinks";
 import { AiOutlineClose } from 'react-icons/ai'
 import { usePathname } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function MainNav(){
 
@@ -70,13 +71,15 @@ export default function MainNav(){
 
     return(
         <nav className="flex justify-between items-center xl:basis-[80%]" id="main-nav">
+            <AnimatePresence>
             {
                 showPrimaryNav &&
                 <ClickAwayListener  
                     mouseEvent="onMouseDown"
                     touchEvent="onTouchEnd"
                     onClickAway={handleClickAway}>
-                    <ul 
+                    <motion.ul
+                       exit={{ x: -400, transition: { duration: .4, ease: "linear" } }}
                        id="primary-nav" 
                        className={showPrimaryNav ? "primary_nav show_nav" : "primary_nav hide_nav"}
                        >
@@ -92,7 +95,7 @@ export default function MainNav(){
                                 return (
                                     <li 
                                         key={nanoid()} 
-                                        className={`my-6 text-[.95rem] relative font-medium lg:inline-block me-12 first-of-type:me-20 ${index === 0 ? "group/dropdownContainer" : ""}`}
+                                        className={`my-6 text-[.95rem] relative font-medium lg:inline-block me-12 first-of-type:me-20 ${index === 0 ? "group/dropdownContainer" : ""} hover:text-red-600`}
                                         aria-haspopup={index === 0 ? "true" : "false"}
                                         aria-expanded={index === 0? "true" : "false"}
                                         aria-controls="dropdown"
@@ -101,7 +104,7 @@ export default function MainNav(){
                                             !linkData.dropDown ?
                                             <Link 
                                                 href={linkData.link} 
-                                                className={`${pathName === linkData.link ? "text-red-600" : "text-gray-800"} w-full inline-block transition duration-200 ease-linear hover:text-red-600`}
+                                                className={`${pathName === linkData.link ? "text-red-600" : "text-gray-800"} w-full inline-block transition duration-200 pointer-events-auto ease-linear hover:text-red-600`}
                                               >
                                              {linkData.text}
                                             </Link>
@@ -142,9 +145,10 @@ export default function MainNav(){
                             :
                             null
                         }
-                    </ul>
+                    </motion.ul>
                 </ClickAwayListener>
             }
+            </AnimatePresence>
 
             <ul 
               className={`absolute items-center self-center ${showPrimaryNav ? 'right-4' : 'right-16'} lg:static lg:right-0 lg:flex justify-between gap-4`}>

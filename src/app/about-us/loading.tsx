@@ -6,12 +6,12 @@ export default function Loading(){
             <Skeleton
                 variant="rectangular"
                 animation="pulse"
-                className="w-full h-[20em] lg:w-[60%] lg:h-[80%]"
+                className="w-full h-[20em] lg:w-[35%] lg:h-[75%]"
             />
             <Skeleton
                 variant="rectangular"
                 animation="pulse"
-                className="w-full h-[20em] lg:w-[35%] lg:h-[80%]"
+                className="w-full h-[30em] lg:w-[60%] lg:h-[85%]"
             />
         </div>
     )

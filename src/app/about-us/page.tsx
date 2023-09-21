@@ -1,18 +1,45 @@
-import { Skeleton } from "@mui/material";
+import MainAboutUsPageContent from "@/components/MainAboutUsPageContent"
+import CustomSkeleton from "@/components/assets/Loaders"
+import getAboutUsPageContent from "@/helperFns/getAboutUsPageContent"
+import { Suspense } from 'react'
+import Loading from "./loading"
+import { roboto_slab } from '../fonts'
+import AboutPageCards from "@/components/AboutPageCards"
 
-export default function Loading(){
+export default async function About(){
+
+    const aboutPageContentData = await getAboutUsPageContent()
+
+    const dmArr = []
+    dmArr.push(aboutPageContentData?.aboutUsContent2,aboutPageContentData?.aboutUsContent3)
+
     return(
-        <div className="h-screen pt-28 pb-4 px-8 flex flex-col justify-between items-center gap-8 lg:flex-row overflow-hidden">
-            <Skeleton
-                variant="rectangular"
-                animation="pulse"
-                className="w-full h-[20em] lg:w-[60%] lg:h-[80%]"
+        aboutPageContentData ?
+        <main className="min-h-screen pt-24 text-[#374151] px-4 lg:px-[1.5em]">
+            <Suspense fallback={<CustomSkeleton variant="rectangular" className="w-full h-24 lg:w-1/2 lg:mx-auto" />}>
+                <h1 className={`${roboto_slab.className} text-center mt-8 mb-4 font-bold text-3xl  capitalize`}>{aboutPageContentData?.introHeading}</h1>
+                <p className="text-center font-base">{aboutPageContentData?.introText}</p>
+            </Suspense>
+
+            <MainAboutUsPageContent
+               aboutPageContentData={aboutPageContentData} 
+               className="flex flex-col gap-8 mt-8 lg:mt-20 lg:flex-row lg:justify-between lg:items-start lg:gap-16" 
             />
-            <Skeleton
-                variant="rectangular"
-                animation="pulse"
-                className="w-full h-[20em] lg:w-[35%] lg:h-[80%]"
-            />
-        </div>
+
+            <section className="lg:flex gap-8 justify-between items-center md:my-10">
+                {
+                    dmArr.map((val,index) => (
+                        <div key={`${val}_${index}`} className="text-center my-10 lg:w-1/2">
+                            <h2 className={`${roboto_slab.className} text-2xl md:text-3xl font-bold mb-2 capitalize`}>{val.heading}</h2>
+                            <p className="font-medium text-lg md:w-4/5 md:mx-auto">{val.text}</p>
+                        </div>
+                    ))
+                }
+            </section>
+
+            <AboutPageCards aboutUsServiceHighlightCards={aboutPageContentData.aboutUsServiceHighlightCards} />
+        </main>
+        :
+        <Loading />
     )
 }

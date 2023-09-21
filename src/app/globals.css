@@ -12,21 +12,13 @@
     }
 }
 
-@keyframes slideOut {
-    from {
-        left: 0;
-    }
-    to {
-        left: -20vh;
-    }
-}
-
 @layer components{
 
     .page {
         @apply min-h-screen;
     }
-    
+
+
     .primary_nav{
         @apply bg-slate-50 w-3/4 h-[90vh] fixed z-40 left-0 top-20 p-[1.6rem] pt-10 pb-7  overflow-y-auto shadow-gray-500 shadow-xl md:w-[40%] lg:static lg:p-0 lg:top-0 lg:bg-transparent lg:shadow-none lg:w-auto lg:h-auto lg:left-0 lg:overflow-visible;
     }
@@ -37,7 +29,7 @@
     
     
     .hide_nav{
-        animation: slideOut .4s forwards;
+        display: none;
     }
     
     
@@ -55,5 +47,10 @@
     
     .footer-li-with-svg{
         @apply text-2xl first:text-[1.5rem] my-0 first:hover:text-red-500;
+    }
+
+
+    .aboutMainContentTextContainer p{
+        @apply mb-5 leading-[1.6rem];
     }
 }

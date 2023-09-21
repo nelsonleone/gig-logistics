@@ -6,5 +6,5 @@ export const sanityClient = createClient({
   apiVersion,
   dataset,
   projectId,
-  useCdn: false
+  useCdn
 })

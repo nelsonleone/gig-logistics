@@ -28,7 +28,7 @@ export default function OfficeLocationTabs(){
                       const { countryName } =  Object.values(officeLocationDataObj)[index]
                       return(
                         <button 
-                           className={`${roboto_slab.className} flex justify-between items-center font-medium  place-self-center first:place-self-start last-of-type:place-self-start md:last-of-type:place-self-center md:first:place-self-center  relative text-lg lg:text-xl ${activeTab === index ? "after:content-[''] after:w-full after:h-[3px] after:absolute after:block after:bg-red-500 after:-bottom-1 after:left-0 after:right-0 after:m-auto after:rounded-sm lg:after:-bottom-[.65rem]" : ''}`}
+                           className={`${roboto_slab.className} flex justify-between items-center font-medium  place-self-center  last-of-type:place-self-start md:last-of-type:place-self-center md:first:place-self-center  relative text-lg lg:text-xl ${activeTab === index ? "after:content-[''] after:w-full after:h-[3px] after:absolute after:block after:bg-red-500 after:-bottom-1 after:left-0 after:right-0 after:m-auto after:rounded-sm lg:after:-bottom-[.65rem]" : ''}`}
                            role="tab" 
                            key={`${index}-${val}`}
                            aria-selected={index === activeTab ? "true" : "false"} 
@@ -49,8 +49,8 @@ export default function OfficeLocationTabs(){
 
             <div className="bg-gray-100 lg:w-1/2 lg:mx-auto py-3 my-3 drop-shadow-md text-[#111827]">
                 {
-                    Object.values(officeLocationDataObj)[activeTab].locations.map((val) => (
-                        <div className='px-4 my-12' role="tabpanel" id={`panel-${activeTab}`}  aria-labelledby={`tab-${activeTab}`}>
+                    Object.values(officeLocationDataObj)[activeTab].locations.map((val,index) => (
+                        <div key={`${index}-${val}`} className='px-4 my-12' role="tabpanel" id={`panel-${activeTab}`}  aria-labelledby={`tab-${activeTab}`}>
                             <h5 className='cursor-pointer font-medium text-base flex items-center  w-full justify-between border-b border-gray-300 pb-3' onClick={() => handleDropdownAddressDisplay(val.state_capital)}>{val.state_capital} 
                             <VscTriangleDown aria-hidden="true" className={`transition-all duration-200 ease-linear ${activeDropDown === val.state_capital ? "rotate-180" : ""}`} />
                             </h5>
