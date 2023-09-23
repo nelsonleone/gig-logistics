@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from 'framer-motion'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Breakpoints } from "@/enums";
 
 
 const bannerContentAnimationVariant = {
@@ -32,13 +33,25 @@ const bannerContentAnimationVariant2 = {...bannerContentAnimationVariant,
 export default function GiggoAppAdBanner(){
 
     const [hasCompletedAnimation,setHasCompletedAnimation] = useState(false)
+    const [inMobileViewport,setInMobileViewport] = useState<boolean|null>(null)
+
+    const handleSetInMobile = () => {
+        window.innerWidth>= Breakpoints.Large ? setInMobileViewport(false) : setInMobileViewport(true)
+    }
+
+    useEffect(() => {
+        handleSetInMobile()
+        window.addEventListener('resize',handleSetInMobile)
+
+        return () => window.removeEventListener('resize',handleSetInMobile)
+    },[])
 
     return(
         <div 
           className="overflow-hidden bg-black w-full text-white rounded-lg px-4 pt-16 pb-20 flex flex-col gap-4 justify-center   md:items-center md:gap-8 lg:gap-4 lg:flex-row lg:px-9 lg:py-20 lg:justify-between"
           >
             <motion.div
-              variants={!hasCompletedAnimation ? bannerContentAnimationVariant2 : undefined}
+              variants={!hasCompletedAnimation && !inMobileViewport ? bannerContentAnimationVariant2 : undefined}
               initial="initial"
               whileInView="animate"
               onAnimationComplete={() => setHasCompletedAnimation(true)}
@@ -57,7 +70,7 @@ export default function GiggoAppAdBanner(){
             </motion.div>
 
             <motion.div
-              variants={!hasCompletedAnimation ? bannerContentAnimationVariant : undefined}
+              variants={!hasCompletedAnimation && !inMobileViewport ? bannerContentAnimationVariant : undefined}
               initial="initial"
               whileInView="animate"
               onAnimationComplete={() => setHasCompletedAnimation(true)}

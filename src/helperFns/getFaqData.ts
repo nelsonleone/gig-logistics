@@ -5,7 +5,7 @@ import { FaqData } from "../../types";
 export default async function getFaqData(){
     const faqData : FaqData = await sanityClient.fetch(
         groq`
-         *[_type == 'faq'] | order(_createdAt desc)
+         *[_type == 'faq'] | order(_createdAt asc)
         `
     )
 

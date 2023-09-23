@@ -50,7 +50,7 @@ export default function FaqAccordion(props:IProps){
             {
                 props.val.faqSection.faqsArray.map(faq => (
                     <Accordion.Item key={faq._key} value={faq.question}>
-                        <Accordion.Control className={`${inter.className} ${styles["Accordion-Control"]} text-[#111827]`}>{faq.question}</Accordion.Control>
+                        <Accordion.Control className={`${inter.className} ${styles["Accordion-Control"]} text-[#111827] text-lg`}>{faq.question}</Accordion.Control>
                         <Accordion.Panel className={`${inter.className}  ${styles["faq-accordion-panel"]} text-[.9rem]`}>
                             <PortableText value={faq.answer} components={portableTextComponent} />
                         </Accordion.Panel>

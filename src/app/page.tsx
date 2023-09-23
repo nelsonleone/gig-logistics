@@ -17,7 +17,7 @@ export default function Home() {
       <div 
         className="absolute w-screen h-screen overflow-hidden brightness-[25%] top-16 bg-slate-900"
         >
-        <video className="w-full absolute h-screen top-0 bottom-0 left-0 right-0 m-auto object-cover" src="/videos/intro-bg-video.mp4" loop autoPlay muted />
+        <video className="w-full absolute h-screen top-0 bottom-0 left-0 right-0 m-auto object-cover" src="/videos/intro-bg-video.mp4" autoPlay loop muted controls={false} />
       </div>
 
       <div className="relative w-[91%] lg:w-[91%] m-auto">
