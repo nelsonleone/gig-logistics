@@ -14,8 +14,12 @@
 
 @layer components{
 
+    .AT_only{
+        @apply w-0 text-[1px] opacity-0 -top-[100000px] -left-[100000px] absolute;
+    }
+
     .page {
-        @apply min-h-screen;
+        @apply min-h-screen mt-24;
     }
 
 

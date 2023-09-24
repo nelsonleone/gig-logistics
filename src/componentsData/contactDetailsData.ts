@@ -1,3 +1,5 @@
+import { ContactCenterArray } from "../../types"
+
 // Nigeria
 const GIGL_NIGERIA_PHONE="+2348139851120"
 
@@ -15,7 +17,7 @@ const GIGL_UK_PHONE="+447466844567"
 
 // USA
 const GIGL_USA_EMAIL="giglusa@giglogistics.com"
-const GiGL_USA_PHONE="+832-998-9925"
+const GIGL_USA_PHONE="+832-998-9925"
 
 // China
 const GIGL_CHINA_EMAIL="china@giglogistics.com"
@@ -23,7 +25,7 @@ const GIGL_CHINA_WHATSAPP="+2349139346234"
 
 
 
-const contactCenterArray = [
+const contactCenterArray : ContactCenterArray = [
     {
         location: "Nigeria",
         heading: "Nigeria:",
@@ -37,8 +39,8 @@ const contactCenterArray = [
         id: "gh-ccn",
         heading: "Ghana:",
         contactDetails: {
-            email: GIGL_UK_EMAIL,
-            phone: GIGL_NIGERIA_PHONE,
+            email: GIGL_GHANA_EMAIL,
+            phone: GIGL_GHANA_PHONE,
             whatsapp: GIGL_GHANA_WHATSAPP
         }
     },
@@ -48,7 +50,7 @@ const contactCenterArray = [
         heading: "UK:",
         contactDetails: {
             email: GIGL_UK_EMAIL,
-            phone: GIGL_NIGERIA_PHONE
+            phone: GIGL_UK_PHONE
         }
     },
     {
@@ -56,8 +58,8 @@ const contactCenterArray = [
         id: "us-ccn",
         heading: "Houston (US):",
         contactDetails: {
-            email: GIGL_UK_EMAIL,
-            phone: GIGL_NIGERIA_PHONE
+            email: GIGL_USA_EMAIL,
+            phone: GIGL_USA_PHONE
         }
     },
     {

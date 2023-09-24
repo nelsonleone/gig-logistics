@@ -5,6 +5,11 @@ import { Suspense } from 'react'
 import Loading from "./loading"
 import { roboto_slab } from '../fonts'
 import AboutPageCards from "@/components/AboutPageCards"
+import { Metadata } from "next"
+
+export const metadata : Metadata = {
+    title: "Who Are We | GIG Logistics"
+}
 
 export default async function About(){
 
@@ -15,9 +20,9 @@ export default async function About(){
 
     return(
         aboutPageContentData ?
-        <main className="min-h-screen pt-24 text-[#374151] px-4 lg:px-[1.5em]">
+        <main className="page text-[#374151] px-4 lg:px-[1.5em]">
             <Suspense fallback={<CustomSkeleton variant="rectangular" className="w-full h-24 lg:w-1/2 lg:mx-auto" />}>
-                <h1 className={`${roboto_slab.className} text-center mt-8 mb-4 font-bold text-3xl  capitalize`}>{aboutPageContentData?.introHeading}</h1>
+                <h1 className={`${roboto_slab.className} text-center mb-4 mt-36 font-bold text-3xl  capitalize`}>{aboutPageContentData?.introHeading}</h1>
                 <p className="text-center font-base">{aboutPageContentData?.introText}</p>
             </Suspense>
 

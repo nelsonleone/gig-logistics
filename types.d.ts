@@ -109,3 +109,29 @@ export type AboutUsPageContentData = {
     };
     mainContent: ITypedObject[]
 }
+
+
+
+// Type For Contact Center
+interface ContactCenter {
+    location: string,
+    heading: string,
+    id: string,
+    contactDetails: {
+        phone?: string,
+        email?: string,
+        whatsapp?: string
+    }
+}
+
+export type ContactCenterArray = ContactCenter[]
+
+
+
+
+// Type For Domestic Logistics Dedicated Services Cards Content
+export type DLDedicatedServices = {
+    title: string,
+    text: string,
+    icon: React.ReactNode
+}[]

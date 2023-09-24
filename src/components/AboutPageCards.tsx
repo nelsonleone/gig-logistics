@@ -44,7 +44,7 @@ export default function AboutPageCards(props:IProps){
         breakpoints={[{ maxWidth: 'sm', slideSize: '100%', slideGap: rem(2) }, { maxWidth: "md", slideSize: '50%'}]}
         slideGap={rem(50)}
         align="start"
-        slidesToScroll={mobile ? 1 : 2}
+        slidesToScroll={mobile ? 1 : 3}
         className="mt-20 mx-auto"
         controlSize={30} 
         loop 
