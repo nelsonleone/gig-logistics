@@ -1,9 +1,9 @@
 'use client'
 
 import { usePathname } from "next/navigation";
-import Logo from "./assets/Logo";
-import MenuIcon from "./assets/MenuIcon";
-import MainNav from "./MainNav";
+import Logo from "../assets/Logo";
+import MenuIcon from "../assets/MenuIcon";
+import MainNav from "../MainNav";
 
 export default function Header(){
 

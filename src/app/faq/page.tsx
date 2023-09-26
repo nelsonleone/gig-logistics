@@ -19,7 +19,7 @@ export default async function FaqPage(){
 
             <div>
                 {
-                    faqData.map(val => {
+                    faqData?.map(val => {
                         return(
                             <div className="px-4 bg-gray-100 bg-blend-darken pt-8 text-[#111827] lg:px-6" key={val._id}>
                                 <h2 className="font-semibold my-5 text-2xl capitalize w-10/12 ps-2">{val.faqSection.faqSectionTitle}</h2>

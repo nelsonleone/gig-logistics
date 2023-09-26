@@ -1,8 +1,8 @@
 import CustomAppStoreProvider from '@/components/assets/CustomAppStoreProvider'
-import Header from '../components/Header'
+import Header from '../components/LayoutComponents/Header'
 import './globals.css'
 import type { Metadata } from 'next'
-import Footer from '@/components/Footer'
+import Footer from '@/components/LayoutComponents/Footer'
 import { inter } from './fonts'
 
 export const metadata: Metadata = {

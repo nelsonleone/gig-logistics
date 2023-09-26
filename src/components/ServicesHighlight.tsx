@@ -1,7 +1,7 @@
 import getHighlightedServicesData from "@/helperFns/getHighlightedServicesData";
 import Image from "next/image";
 import { Suspense } from 'react'
-import CustomSkeleton from "./Loaders";
+import CustomSkeleton from "./assets/Loaders";
 import formatLink from "@/helperFns/formatLink";
 import Link from "next/link";
 import { roboto_slab } from "@/app/fonts";

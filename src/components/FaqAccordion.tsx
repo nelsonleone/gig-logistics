@@ -46,6 +46,7 @@ export default function FaqAccordion(props:IProps){
 
 
     return(
+        props.val ?
         <Accordion variant="contained" radius="md" transitionDuration={400}>
             {
                 props.val.faqSection.faqsArray.map(faq => (
@@ -58,5 +59,7 @@ export default function FaqAccordion(props:IProps){
                 ))
             }
         </Accordion>
+        :
+        null
     )
 }

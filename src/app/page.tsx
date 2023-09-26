@@ -1,9 +1,9 @@
 import CompanyGoals from "@/components/CompanyGoals";
 import GiggoAppAdBanner from "@/components/GiggoAppAdBanner";
 import TrackerArea from "@/components/TrackerArea";
-import FeaturedEventBanner from "@/components/assets/FeaturedEventBanner";
+import FeaturedEventBanner from "@/components/FeaturedEventBanner";
 import CustomSkeleton from "@/components/assets/Loaders";
-import ServicesHighlight from "@/components/assets/ServicesHighlight";
+import ServicesHighlight from "@/components/ServicesHighlight";
 import { Suspense } from "react";
 import { roboto_slab } from "./fonts";
 

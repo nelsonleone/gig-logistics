@@ -1,9 +1,11 @@
 import { defineType } from "sanity";
+import { MdLocalShipping } from 'react-icons/md'
 
 const domesticLogisticsSchemaType = defineType({
     name: "domesticLogistics",
     title: "Domestic Logistics",
     type: "document",
+    icon: MdLocalShipping,
     fields: [
         {
             name: "repImage",
@@ -30,7 +32,7 @@ const domesticLogisticsSchemaType = defineType({
             type: "array",
             of: [{ type: "block" }],
             validation(rule) {
-                return rule.required().min(20).error("Content is too short")
+                return rule.required()
             },
         }
     ]

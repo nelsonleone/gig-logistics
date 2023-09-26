@@ -1,11 +1,11 @@
 import MainAboutUsPageContent from "@/components/MainAboutUsPageContent"
 import CustomSkeleton from "@/components/assets/Loaders"
-import getAboutUsPageContent from "@/helperFns/getAboutUsPageContent"
 import { Suspense } from 'react'
 import Loading from "./loading"
 import { roboto_slab } from '../fonts'
 import AboutPageCards from "@/components/AboutPageCards"
 import { Metadata } from "next"
+import getAboutUsPageContent from "@/helperFns/getAboutUsPageContent"
 
 export const metadata : Metadata = {
     title: "Who Are We | GIG Logistics"

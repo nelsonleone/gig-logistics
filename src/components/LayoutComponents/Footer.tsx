@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { FaInstagram } from "react-icons/fa"
 import { BsLinkedin, BsTwitter, BsFacebook } from "react-icons/bs"
-import CustomTooltip from "./assets/CustomizedMUI/CustomTooltip"
+import CustomTooltip from "../assets/CustomizedMUI/CustomTooltip"
 
 export default function Footer(){
     return(
