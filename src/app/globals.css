@@ -57,4 +57,9 @@
     .aboutMainContentTextContainer p{
         @apply mb-5 leading-[1.6rem];
     }
+
+
+    .dlContentBtn{
+        @apply py-[1.4rem] flex justify-center items-center font-medium w-28 h-10 text-sm rounded-sm text-center hover:shadow-xl transition duration-300 ease-linear;
+    }
 }

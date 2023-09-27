@@ -20,7 +20,7 @@ export default async function About(){
 
     return(
         aboutPageContentData ?
-        <main className="page text-[#374151] px-4 lg:px-[1.5em]">
+        <main className="page text-[#374151] px-4 lg:px-6">
             <Suspense fallback={<CustomSkeleton variant="rectangular" className="w-full h-24 lg:w-1/2 lg:mx-auto" />}>
                 <h1 className={`${roboto_slab.className} text-center mb-4 mt-36 font-bold text-3xl  capitalize`}>{aboutPageContentData?.introHeading}</h1>
                 <p className="text-center font-base">{aboutPageContentData?.introText}</p>

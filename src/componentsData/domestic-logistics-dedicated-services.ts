@@ -18,7 +18,7 @@ export const domesticLogisticsDedicatedServices : DLDedicatedServices = [
     },
     {
         title: "GIGGo Last-Mile Delivery",
-        text: "giggo-last-mile-delivery-icon.svg",
+        text: "Distance is no barrier. We will pick up items from your doorstep and make special arrangements to deliver exactly to the locations you request, no matter how far. Our experienced dispatch riders are also available for same-day deliveries",
         icon: "/icons/giggo-last-mile-delivery-icon.svg"
     },
     {

@@ -151,7 +151,7 @@ export default function MainNav(){
             </AnimatePresence>
 
             <ul 
-              className={`absolute items-center self-center ${showPrimaryNav ? 'right-4' : 'right-16'} lg:static lg:right-0 lg:flex justify-between gap-4`}>
+              className={`absolute items-center self-center ${showPrimaryNav ? 'right-4' : 'right-20'} lg:static lg:right-0 lg:flex justify-between gap-4`}>
                 {
                     pathName === "/" ?
                     <li 

@@ -2,7 +2,6 @@
 
 import { useAppDispatch, useAppSelector } from '@/redux/customHooks';
 import { setOpenNav } from '@/redux/slices/openNavSlice';
-import { AnimatePresence, motion } from 'framer-motion';
 import { BiMenu } from 'react-icons/bi';
 
 export default function MenuIcon(){
@@ -12,19 +11,16 @@ export default function MenuIcon(){
 
 
     return(
-        <AnimatePresence>
             !openNav &&
-            <motion.button 
-              exit={{ x: -300, transition: { duration: .3, ease: "easeInOut" } }}
+            <button 
               onClick={() => dispatch(setOpenNav(!openNav))} 
               aria-label='Toggle Menu' 
               aria-controls='primary-nav' 
               aria-expanded={openNav ? "true" : "false"} 
-              className='text-3xl text-black rounded-full w-12 transition-all duration-200 ease-linear flex justify-center items-center aspect-square lg:hidden hover:shadow-xl'
+              className='text-3xl text-black rounded-full w-12 transition-all duration-200 ease-linear flex justify-center items-center aspect-square lg:hidden hover:shadow-xl hover:bg-gray-100'
               >
                 <BiMenu  />
                 <span className='AT_only'>Toggle Nav Menu</span>
-            </motion.button>
-        </AnimatePresence>
+            </button>
     )
 }
