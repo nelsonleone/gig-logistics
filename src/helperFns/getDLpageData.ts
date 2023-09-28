@@ -5,7 +5,7 @@ import { DLpageSanityContent } from "../../types";
 export default async function getDLpageData(){
     const data : DLpageSanityContent[] = await sanityClient.fetch(
         groq`
-         *[_type == 'domesticLogistics']
+         *[_type == 'portfolioServices' && ]
         `
     )
     return data[0];
