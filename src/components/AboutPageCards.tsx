@@ -21,7 +21,7 @@ const carouselAnimationVariants = {
     opacity: 1,
 
     transition: {
-      duration: 1.1,
+      duration: .8,
       ease: "linear",
     }
   }

@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-interface IInitState {
+interface InitState {
     openNav: boolean
 }
 
-const initialState = {
+const initialState : InitState = {
     openNav: false
 }
 

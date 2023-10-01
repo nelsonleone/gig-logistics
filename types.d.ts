@@ -130,20 +130,23 @@ export type ContactCenterArray = ContactCenter[]
 
 
 // Type For Domestic Logistics Page Data
-export type DLDedicatedServices = {
+export type DedicatedServices = {
     title: string,
     text: string,
     icon: React.ReactNode
 }[]
 
 
-export type DLpageSanityContent = {
-    repImage: {
-        alt: string;
-        asset: {
-        _ref: string;
-        _type: string;
-        }
-    };
-    textContent: ITypedObject[]
+export type PT_SanityServiceData = {
+    service: {
+        repImage: {
+            alt: string;
+            asset: {
+            _ref: string;
+            _type: string;
+            }
+        };
+        textContent: ITypedObject[]
+    }
 }
+

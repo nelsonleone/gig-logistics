@@ -2,7 +2,7 @@ import { defineType } from "sanity";
 import { BsPersonWorkspace } from 'react-icons/bs'
 
 const domesticLogisticsSchemaType = defineType({
-    name: "portfolio",
+    name: "portfolioServices",
     title: "Portfolio Services",
     type: "document",
     icon: BsPersonWorkspace,

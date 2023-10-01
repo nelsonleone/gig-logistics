@@ -13,12 +13,12 @@ const navLinkData : NavLinkData = [
         text: 'Portfolio Services',
         dropDown: [
             {
-                link: '/corporate-courier-services',
-                text: 'Corporate Logistics'
-            },
-            {
                 link: '/domestic-courier-solutions',
                 text: 'Domestic Logistics'
+            },
+            {
+                link: '/corporate-courier-services',
+                text: 'Corporate Logistics'
             },
             {
                 link: '/ecommerce-logistics-services',

@@ -86,7 +86,7 @@ export default function MainNav(){
                         <IconButton 
                            aria-label="close" 
                            onClick={() => dispatch(setOpenNav(false))}
-                           className="absolute top-1 right-4 lg:hidden border-b border-red-800 transition ease-in-out duration-200 hover:border-solid focus:border-solid"
+                           className="absolute top-12 right-4 lg:hidden border-b border-red-800 transition ease-in-out duration-200 hover:border-solid focus:border-solid"
                            >
                             <AiOutlineClose />
                         </IconButton>
@@ -95,7 +95,7 @@ export default function MainNav(){
                                 return (
                                     <li 
                                         key={nanoid()} 
-                                        className={`my-6 text-[.95rem] relative font-medium lg:inline-block me-12 first-of-type:me-20 ${index === 0 ? "group/dropdownContainer" : ""} hover:text-red-600`}
+                                        className={`my-6 text-[.95rem] relative font-medium lg:inline-block me-12 w-[70%] first-of-type:me-20 ${index === 0 ? "group/dropdownContainer w-[90%]" : ""} lg:w-auto hover:text-red-600`}
                                         aria-haspopup={index === 0 ? "true" : "false"}
                                         aria-expanded={index === 0? "true" : "false"}
                                         aria-controls="dropdown"
@@ -119,7 +119,7 @@ export default function MainNav(){
 
                                         {
                                             index === 0 &&
-                                            <FaAngleDown aria-hidden="true" className={`absolute top-1 -right-6 transition-all duration-300 ease-linear ${showDropdownMenu && window.innerWidth < Breakpoints.Large ? "rotate-180 text-red-600" : "rotate-0 text-gray-800"} lg:top-1/2 lg:bottom-1/2 lg:m-auto lg:-right-[2.4rem] ${window.innerWidth >= Breakpoints.Large ? "group-hover/dropdownContainer:rotate-180" : ""} group-hover/dropdownContainer:text-red-600`} />
+                                            <FaAngleDown aria-hidden="true" className={`absolute top-1 right-2 transition-all duration-300 ease-linear ${showDropdownMenu && window.innerWidth < Breakpoints.Large ? "rotate-180 text-red-600" : "rotate-0 text-gray-800"} lg:top-1/2 lg:bottom-1/2 lg:m-auto lg:-right-[2.4rem] ${window.innerWidth >= Breakpoints.Large ? "group-hover/dropdownContainer:rotate-180" : ""} group-hover/dropdownContainer:text-red-600`} />
                                         }
 
                                         {
@@ -151,7 +151,7 @@ export default function MainNav(){
             </AnimatePresence>
 
             <ul 
-              className={`absolute items-center self-center ${showPrimaryNav ? 'right-4' : 'right-20'} lg:static lg:right-0 lg:flex justify-between gap-4`}>
+              className="relative items-center self-center lg:flex justify-between gap-4">
                 {
                     pathName === "/" ?
                     <li 
@@ -167,7 +167,7 @@ export default function MainNav(){
                 }
                 <li>
                     <Link 
-                       className="red-button-bright transition-opacity h-[em] py-3 px-6  font-medium hover:opacity-80 focus:outline-dotted focus:outline-slate-400"
+                       className="red-button-bright transition-opacity relative py-3 w-20 px-4 font-medium hover:opacity-80 focus:outline-dotted focus:outline-slate-400"
                        href="/signin"
                         >
                        Sign In
