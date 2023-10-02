@@ -10,7 +10,9 @@ export enum AlertSeverity {
 }
 
 export enum PT_ServiceName {
-    domesticLogistics = "domesticlogistics",
-    corporateLogistics = "corporatelogistics",
-    ecommerceLogistics = "ecommercelogistics"
+    domesticLogistics = "domesticLogistics",
+    corporateLogistics = "corporateLogistics",
+    ecommerceLogistics = "ecommerceLogistics",
+    overseasShipping = "overseasShipping",
+    walletAndAddedServices = "walletAndAddedServices"
 }

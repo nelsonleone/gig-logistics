@@ -1,12 +1,12 @@
 import { PortableTextBlock, TypedObject } from "@portabletext/types"
 
-export type FeaturedEventData = {
+type FeaturedEventData = {
     bannerIcon: IBannerIcon,
     eventPageLink: Slug,
     textContent: string,
 }
 
-export type HighlightedService = {
+type HighlightedService = {
     serviceImageIcon: string,
     serviceHighlightHeading: string,
     isNewService: boolean,
@@ -19,7 +19,7 @@ export type HighlightedService = {
 
 
 // This is Just a Demo For The Shipment Details, Correct Data Property Are Yet To Be Known
-export type CodeResult = {
+type CodeResult = {
     location: string,
     estimatedDeliveryDate: number,
     shipmentDetails: {
@@ -61,7 +61,7 @@ export type OfficeLocationDataObj = {
 
 
 // Faq Content Data Type
-export type FaqData = {
+type FaqData = {
     _id: string,
     faqSection: {
         faqSectionTitle: string,
@@ -93,7 +93,7 @@ interface ITypedObject extends TypedObject {
     children: []
 }
   
-export type AboutUsPageContentData = {
+type AboutUsPageContentData = {
     introText: string;
     aboutUsContent2: AboutUsContent;
     aboutUsContent3: AboutUsContent;
@@ -124,20 +124,20 @@ interface ContactCenter {
     }
 }
 
-export type ContactCenterArray = ContactCenter[]
+type ContactCenterArray = ContactCenter[]
 
 
 
 
 // Type For Domestic Logistics Page Data
-export type DedicatedServices = {
+type DedicatedServices = {
     title: string,
     text: string,
     icon: React.ReactNode
 }[]
 
 
-export type PT_SanityServiceData = {
+type PT_SanityServiceData = {
     service: {
         repImage: {
             alt: string;
@@ -148,5 +148,17 @@ export type PT_SanityServiceData = {
         };
         textContent: ITypedObject[]
     }
+}
+
+
+type OverseasShippingTradeOptDataType = {
+    tradeOptPreviewGuideLine: TypedObject[]
+}
+
+
+type AddedWalletServiceData = {
+    title: string,
+    text: string,
+    icon: React.FC
 }
 

@@ -1,6 +1,6 @@
 import groq from "groq";
 import { sanityClient } from "../../sanity/lib/client";
-import { PT_SanityServiceData } from "../../types";
+import { OverseasShippingTradeOptDataType, PT_SanityServiceData } from "../../types";
 import { PT_ServiceName } from "@/enums";
 
 export default async function getPTservicesData(serviceName:PT_ServiceName){
@@ -11,6 +11,20 @@ export default async function getPTservicesData(serviceName:PT_ServiceName){
         `,{
             serviceName
         }
+    )
+
+    console.log(data)
+
+    return data;
+}
+
+
+export async function getOverseasShippingTradeOptData(){
+    
+    const data : OverseasShippingTradeOptDataType[] = await sanityClient.fetch(
+        groq`
+         *[_type == 'overseasShoppingTradeOpt']
+        `
     )
 
     return data;

@@ -17,7 +17,7 @@ const domesticLogisticsSchemaType = defineType({
                     title: "Service Name",
                     type: "string",
                     validation(rule) {
-                        return rule.required().lowercase().error("String should be lowercase")
+                        return rule.required()
                     },
                 },
                 {

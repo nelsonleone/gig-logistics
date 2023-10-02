@@ -10,7 +10,7 @@ type NavLinkData = {
 const navLinkData : NavLinkData = [
     {
         link: '/',
-        text: 'Portfolio Services',
+        text: 'Service Portfolio',
         dropDown: [
             {
                 link: '/domestic-courier-solutions',

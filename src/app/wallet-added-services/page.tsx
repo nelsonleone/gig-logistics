@@ -1,31 +1,30 @@
+import AddedServices from "@/components/AddedServices"
 import PTServiceContent from "@/components/PTServiceContent"
-import PTdedicatedServicesCardsContainer from "@/components/PT_DedicatedServicesCardContainer"
 import BackBtn from "@/components/assets/BackBtn"
 import DuoSkeleton from "@/components/assets/Loaders/DuoSkeleton"
 import PortfolioSitesPageIntro from "@/components/assets/PortfolioSitesPageIntro"
 import { PT_ServiceName } from "@/enums"
 import getPTservicesData from "@/helperFns/getPTServicesData"
 import { Metadata } from "next"
-import { Suspense } from 'react'
+import { Suspense } from "react";
 
 export const metadata : Metadata = {
-    title: "E-Commerce Logistics | GIGL"
+    title: "Wallet And Added Services | GIGL"
 }
 
-export default async function EcommerceLogistics(){
+export default async function WalletNAddedServices(){
 
-    const ecommerceContentData = await getPTservicesData(PT_ServiceName.ecommerceLogistics)
+    const walletNAddedServicesSanityData = await getPTservicesData(PT_ServiceName.walletAndAddedServices)
 
     return(
         <div className="page px-6 relative pt-5 text-[#374151] lg:pt-8 xl:px-10">
             <BackBtn />
-            <PortfolioSitesPageIntro introHeading="ECOMMERCE LOGISTICS" introText="Empowering small businesses with innovative logistics support" />
+            <PortfolioSitesPageIntro introHeading="WALLET AND ADDED SERVICES" introText="Beyond Shipments to Crypto Banking and More" />
             <main className="my-20">
                 <Suspense fallback={<DuoSkeleton />}>
-                  <PTServiceContent serviceName={PT_ServiceName.domesticLogistics} contentData={ecommerceContentData} />
+                    <PTServiceContent serviceName={PT_ServiceName.domesticLogistics} contentData={walletNAddedServicesSanityData} />
                 </Suspense>
-
-                <PTdedicatedServicesCardsContainer serviceName={PT_ServiceName.ecommerceLogistics} />
+                <AddedServices />
             </main>
         </div>
     )

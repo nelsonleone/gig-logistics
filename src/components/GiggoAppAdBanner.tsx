@@ -1,60 +1,14 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react';
-import { Breakpoints } from "@/enums";
 
-
-const bannerContentAnimationVariant = {
-    initial: {
-        opacity: 0.5,
-        y: 150
-    },
-    animate: {
-        opacity: 1,
-        y: 0,
-
-        transition: {
-            duration: .4,
-            ease: "linear"
-        }
-    },
-    viewport: { margin: "100px", once: true },
-}
-
-const bannerContentAnimationVariant2 = {...bannerContentAnimationVariant,
-    initial: { x:-200, y: 0 },
-    animate: { x: 0 },
-    transition: { type: "twean", mass: 100 },
-}
 
 export default function GiggoAppAdBanner(){
-
-    const [inMobileViewport,setInMobileViewport] = useState<boolean|null>(null)
-
-    const handleSetInMobile = () => {
-        window.innerWidth>= Breakpoints.Large ? setInMobileViewport(false) : setInMobileViewport(true)
-    }
-
-    useEffect(() => {
-        handleSetInMobile()
-        window.addEventListener('resize',handleSetInMobile)
-
-        return () => window.removeEventListener('resize',handleSetInMobile)
-    },[])
 
     return(
         <div 
           className="overflow-hidden bg-black w-full text-white rounded-lg px-4 pt-16 pb-20 flex flex-col gap-4 justify-center   md:items-center md:gap-8 lg:gap-4 lg:flex-row lg:px-9 lg:py-20 lg:justify-between"
           >
-            <motion.div
-              variants={!inMobileViewport ? bannerContentAnimationVariant2 : undefined}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-             >
+            <div>
                 <p className="text-2xl font-bold my-2 lg:text-[2.25rem] lg:leading-10 lg:w-[60%]">
                 GIGGo, the app for local and international shipping
                 </p>
@@ -66,14 +20,9 @@ export default function GiggoAppAdBanner(){
                         <Image className="w-auto"  src="/images/google-play.svg" alt="Google Play" width={200} height={100} />
                     </Link>
                 </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={!inMobileViewport ? bannerContentAnimationVariant : undefined}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              >                
+            <div>                
                 <div className="md:w-[30em] lg:w-full">
                     <Image 
                         src="/images/app-image.png"  
@@ -83,7 +32,7 @@ export default function GiggoAppAdBanner(){
                         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJUAAACVCAYAAABRorhPAAAAAXNSR0IArs4c6QAAAqVJREFUeF7t0kENADAMA7GVP6hC26RhuKcDII+TZ3fvMQXCAgNVWNPVLwAVCHkBqPKkDqFiIC8AVZ7UIVQM5AWgypM6hIqBvABUeVKHUDGQF4AqT+oQKgbyAlDlSR1CxUBeAKo8qUOoGMgLQJUndQgVA3kBqPKkDqFiIC8AVZ7UIVQM5AWgypM6hIqBvABUeVKHUDGQF4AqT+oQKgbyAlDlSR1CxUBeAKo8qUOoGMgLQJUndQgVA3kBqPKkDqFiIC8AVZ7UIVQM5AWgypM6hIqBvABUeVKHUDGQF4AqT+oQKgbyAlDlSR1CxUBeAKo8qUOoGMgLQJUndQgVA3kBqPKkDqFiIC8AVZ7UIVQM5AWgypM6hIqBvABUeVKHUDGQF4AqT+oQKgbyAlDlSR1CxUBeAKo8qUOoGMgLQJUndQgVA3kBqPKkDqFiIC8AVZ7UIVQM5AWgypM6hIqBvABUeVKHUDGQF4AqT+oQKgbyAlDlSR1CxUBeAKo8qUOoGMgLQJUndQgVA3kBqPKkDqFiIC8AVZ7UIVQM5AWgypM6hIqBvABUeVKHUDGQF4AqT+oQKgbyAlDlSR1CxUBeAKo8qUOoGMgLQJUndQgVA3kBqPKkDqFiIC8AVZ7UIVQM5AWgypM6hIqBvABUeVKHUDGQF4AqT+oQKgbyAlDlSR1CxUBeAKo8qUOoGMgLQJUndQgVA3kBqPKkDqFiIC8AVZ7UIVQM5AWgypM6hIqBvABUeVKHUDGQF4AqT+oQKgbyAlDlSR1CxUBeAKo8qUOoGMgLQJUndQgVA3kBqPKkDqFiIC8AVZ7UIVQM5AWgypM6hIqBvABUeVKHUDGQF4AqT+oQKgbyAlDlSR1CxUBeAKo8qUOoGMgLQJUndQgVA3kBqPKkDqFiIC/wANDc4pHGN3TqAAAAAElFTkSuQmCC" 
                     />
                 </div>
-            </motion.div>
+            </div>
         </div>
     )
 }

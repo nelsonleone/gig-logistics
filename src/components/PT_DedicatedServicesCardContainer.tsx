@@ -1,13 +1,14 @@
 "use client"
 
 import { motion } from "framer-motion";
-import { DedicatedServices } from "../../types";
 import Image from "next/image";
 import { roboto_slab } from "@/app/fonts";
 import Link from "next/link";
+import { PT_ServiceName } from "@/enums";
+import renderServiceCardsData from "@/helperFns/renderServiceCardsData";
 
 interface IProps {
-    domesticLogisticsDedicatedServices: DedicatedServices
+    serviceName: PT_ServiceName
 }
 
 const dlCardAnimationObj = {
@@ -28,13 +29,13 @@ const dlCardAnimationObj = {
     }
 }
 
-export default function PTdedicatedServicesCardsContainer({ domesticLogisticsDedicatedServices }:IProps){
+export default function PTdedicatedServicesCardsContainer({ serviceName }:IProps){
     return(
         <section className="mt-24 lg:mt-28 md:mb-24">
         <h2 className={`${roboto_slab.className} text-center font-bold capitalize text-[1.7rem]`}>Our dedicated offerings to you?</h2>
         <div className="flex gap-7 flex-col justify-center mt-10 md:flex-row flex-wrap md:gap-16">
             {
-                domesticLogisticsDedicatedServices.sort((a,b) => a.title.localeCompare(b.title)).map((details,index) => {
+                renderServiceCardsData(serviceName).sort((a,b) => a.title.localeCompare(b.title)).map((details,index) => {
                     const linkText = "The GIGL Class Plan";
                     const startIndex = details.text.indexOf(linkText);
                     const afterLink = details.text.slice(startIndex + linkText.length)
