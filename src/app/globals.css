@@ -19,7 +19,7 @@
     }
 
     .page {
-        @apply min-h-screen mt-24;
+        @apply min-h-screen mt-24 px-6 xl:px-10;
     }
 
 

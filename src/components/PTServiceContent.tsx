@@ -14,7 +14,7 @@ export default async function PTServiceContent({ contentData, serviceName }: { c
 
     return(
         contentData ?
-        <div className="items-center flex flex-col justify-center lg:flex-row lg:justify-between gap-8">
+        <div className={`${serviceName === PT_ServiceName.walletAndAddedServices ? "items-end" : "items-center"} flex flex-col justify-center lg:flex-row lg:justify-between gap-8`}>
             <div className="w-full flex justify-center lg:justify-start lg:w-[52%]">
                 <Image 
                     src={contentData?.service?.repImage ? urlForImage(contentData.service.repImage).url() : ""} 
@@ -22,7 +22,7 @@ export default async function PTServiceContent({ contentData, serviceName }: { c
                     height={600}
                     alt={contentData?.service?.repImage?.alt || ""}
                     loading="lazy"
-                    className="rounded-sm"
+                    className={`${serviceName === PT_ServiceName.walletAndAddedServices ? "lg:w-[30em] lg:h-auto" : ""} rounded-sm`}
                     quality={95}
                 />
             </div>

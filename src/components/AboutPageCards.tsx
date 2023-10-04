@@ -38,7 +38,7 @@ export default function AboutPageCards(props:IProps){
   ))
 
   return (
-    <motion.div variants={carouselAnimationVariants} initial="init" whileInView="animate" viewport={{ margin: "50px"}}>
+    <motion.div variants={carouselAnimationVariants} initial="init" whileInView="animate" viewport={{ margin: "-20px"}}>
       <Carousel
         slideSize="33.33%"
         breakpoints={[{ maxWidth: 'sm', slideSize: '100%', slideGap: rem(2) }, { maxWidth: "md", slideSize: '50%'}]}

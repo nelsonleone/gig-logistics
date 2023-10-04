@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <main className="page overflow-hidden px-0 pt-[85vh]">
-      <Suspense fallback={<CustomSkeleton animation="wave" variant="rectangular" className="w-full h-24" />}>
+      <Suspense fallback={<CustomSkeleton variant="rectangular"  className="bg-gray-500 w-full h-16 absolute z-20 top-[10rem] lg:top-[6rem]" />}>
         <FeaturedEventBanner />
       </Suspense>
       <div 

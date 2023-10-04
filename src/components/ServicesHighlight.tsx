@@ -2,7 +2,6 @@ import getHighlightedServicesData from "@/helperFns/getHighlightedServicesData";
 import Image from "next/image";
 import { Suspense } from 'react'
 import CustomSkeleton from "./assets/Loaders";
-import formatLink from "@/helperFns/formatLink";
 import Link from "next/link";
 import { roboto_slab } from "@/app/fonts";
 
@@ -18,7 +17,7 @@ export default async function ServicesHighlight(){
                 {
                     servicesHighlightData.map(val => (
                         <Suspense key={val._id} fallback={<CustomSkeleton className="w-full h-[18em] md:w-[48%] lg:w-full" variant="rectangular" />}>
-                            <Link href={formatLink(val.slug)} className="focus:outline focus:outline-black block w-full md:w-[48%] lg:w-full">
+                            <Link href={val.slug} className="focus:outline focus:outline-black block w-full md:w-[48%] lg:w-full">
                                 <div 
                                    className="relative drop-shadow-sm bg-white  flex gap-4 justify-center items-center text-center flex-col text-[#4b5563] m-auto border-[1.5px] px-6  border-gray-200 transition-all duration-200 ease-linear
                                    hover:scale-105 hover:bg-black hover:text-white group/serviceCard overflow-hidden py-10  h-[18em] lg:text-left lg:justify-start lg:items-start

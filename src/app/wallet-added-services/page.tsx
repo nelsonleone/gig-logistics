@@ -22,7 +22,7 @@ export default async function WalletNAddedServices(){
             <PortfolioSitesPageIntro introHeading="WALLET AND ADDED SERVICES" introText="Beyond Shipments to Crypto Banking and More" />
             <main className="my-20">
                 <Suspense fallback={<DuoSkeleton />}>
-                    <PTServiceContent serviceName={PT_ServiceName.domesticLogistics} contentData={walletNAddedServicesSanityData} />
+                    <PTServiceContent serviceName={PT_ServiceName.walletAndAddedServices} contentData={walletNAddedServicesSanityData} />
                 </Suspense>
                 <AddedServices />
             </main>

@@ -13,8 +13,6 @@ export default async function getPTservicesData(serviceName:PT_ServiceName){
         }
     )
 
-    console.log(data)
-
     return data;
 }
 
