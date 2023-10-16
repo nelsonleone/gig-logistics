@@ -38,7 +38,7 @@
     
     
     .red-button-bright{
-        @apply bg-red-600 text-slate-50 duration-300 rounded  font-normal ;
+        @apply bg-red-600 text-slate-50 transition duration-300 ease-in-out rounded  font-normal ;
     }
     
     .red-button-dark{
@@ -61,5 +61,14 @@
 
     .pt-service-cta{
         @apply py-[1.4rem] flex justify-center items-center font-medium w-28 h-10 text-sm rounded-sm text-center hover:shadow-xl transition duration-300 ease-linear;
+    }
+
+
+    .ap_page_cp_box_link{
+        @apply mb-6 duration-300 transition-transform ease-in-out border border-gray-400 hover:border hover:border-red-600 hover:-translate-y-3 focus:-translate-y-3 focus:border focus:border-red-600 focus:outline focus:outline-none rounded-lg block w-auto h-auto;
+    }
+
+    .ap_page_cp_box{
+       @apply  px-4 py-8 text-center flex flex-col items-center justify-center md:w-60;
     }
 }

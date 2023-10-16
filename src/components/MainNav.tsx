@@ -167,7 +167,7 @@ export default function MainNav(){
                 }
                 <li>
                     <Link 
-                       className="red-button-bright transition-opacity relative py-3 w-20 px-4 font-medium hover:opacity-80 focus:outline-dotted focus:outline-slate-400"
+                       className="red-button-bright transition relative py-3 w-20 px-4 font-medium hover:border hover:border-red-600 hover:text-red-600 hover:bg-transparent focus:outline-none focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent"
                        href="/signin"
                         >
                        Sign In

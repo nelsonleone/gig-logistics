@@ -1,5 +1,13 @@
 import { PortableTextBlock, TypedObject } from "@portabletext/types"
 
+
+// //
+interface DataWithHTI {
+    title: string,
+    text: string,
+    icon?: React.FC
+}
+
 type FeaturedEventData = {
     bannerIcon: IBannerIcon,
     eventPageLink: Slug,
@@ -156,9 +164,4 @@ type OverseasShippingTradeOptDataType = {
 }
 
 
-type AddedWalletServiceData = {
-    title: string,
-    text: string,
-    icon: React.FC
-}
-
+interface AddedWalletServiceData extends DataWithHTI {};

@@ -19,7 +19,7 @@ const appPanelNavData : IAppPanelNavData[] = [
         }
     },
     {
-        link: "get-a-qoute",
+        link: "get-a-quote",
         text: "Get A Quick Quote",
         icon({ className, ariaLabel }){
             return <GiStabbedNote aria-label={ariaLabel} className={className} />

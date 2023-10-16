@@ -9,10 +9,13 @@ export default function AddedServices(){
                 <div className="lg:basis-[50%]">
                     {
                         addedWalletServicesData.map(val => {
-                            const Icon = val.icon;
+                            const Icon = val?.icon;
                             return(
                                 <div key={val.title} className="mb-16 flex gap-4 justify-between md:justify-center lg:justify-between">
-                                    <Icon />
+                                    {
+                                        Icon &&
+                                        <Icon />
+                                    }
                                     <div className="w-[83%] lg:w-[78%]">
                                         <h3 className="text-xl font-semibold capitalize mb-2">{val.title}</h3>
                                         <p>{val.text}</p>
