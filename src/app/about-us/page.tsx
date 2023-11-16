@@ -15,7 +15,9 @@ export default async function About(){
     const aboutPageContentData = await getAboutUsPageContent()
 
     const dmArr = []
-    dmArr.push(aboutPageContentData?.aboutUsContent2,aboutPageContentData?.aboutUsContent3)
+    if(aboutPageContentData){
+        dmArr.push(aboutPageContentData.aboutUsContent2,aboutPageContentData.aboutUsContent3)
+    }
 
     return(
         <main className="page text-[#374151] px-6 xl:px-10">

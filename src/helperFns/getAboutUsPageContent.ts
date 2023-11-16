@@ -3,11 +3,17 @@ import { sanityClient } from "../../sanity/lib/client";
 import { AboutUsPageContentData } from "../../types";
 
 export default async function getAboutUsPageContent(){
+  try{
     const aboutPageData : AboutUsPageContentData[] = await sanityClient.fetch(
-        groq`
-          *[_type == 'aboutUsContent']
-        `,
-    )
+      groq`
+        *[_type == 'aboutUsContent']
+      `,
+  )
 
     return aboutPageData[0];
+  }
+
+  catch(err){
+    return []
+  }
 }

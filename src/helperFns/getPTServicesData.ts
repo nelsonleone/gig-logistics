@@ -4,26 +4,36 @@ import { OverseasShippingTradeOptDataType, PT_SanityServiceData } from "../../ty
 import { PT_ServiceName } from "@/enums";
 
 export default async function getPTservicesData(serviceName:PT_ServiceName){
+    try{
+        const data : PT_SanityServiceData = await sanityClient.fetch(
+            groq`
+             *[_type == 'portfolioServices' && service.serviceName == $serviceName][0]
+            `,{
+                serviceName
+            }
+        )
+    
+        return data;
+    }
 
-    const data : PT_SanityServiceData = await sanityClient.fetch(
-        groq`
-         *[_type == 'portfolioServices' && service.serviceName == $serviceName][0]
-        `,{
-            serviceName
-        }
-    )
-
-    return data;
+    catch(err){
+        return null;
+    }
 }
 
 
 export async function getOverseasShippingTradeOptData(){
+    try{
+        const data : OverseasShippingTradeOptDataType[] = await sanityClient.fetch(
+            groq`
+             *[_type == 'overseasShoppingTradeOpt']
+            `
+        )
     
-    const data : OverseasShippingTradeOptDataType[] = await sanityClient.fetch(
-        groq`
-         *[_type == 'overseasShoppingTradeOpt']
-        `
-    )
+        return data;
+    }
 
-    return data;
+    catch(err){
+        return null;
+    }
 }

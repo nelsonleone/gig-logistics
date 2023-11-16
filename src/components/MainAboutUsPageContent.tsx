@@ -18,7 +18,7 @@ export default function MainAboutUsPageContent({ className,aboutPageContentData 
             <div className={className}>
                 <div className='md:w-[40em] md:mx-auto lg:w-1/2 '>
                     <Image
-                        src={urlForImage(aboutPageContentData?.aboutUsRepImg).url()} 
+                        src={urlForImage(aboutPageContentData?.aboutUsRepImg.asset).url()} 
                         alt={aboutPageContentData?.aboutUsRepImg.alt} 
                         quality={100}
                         width={750}

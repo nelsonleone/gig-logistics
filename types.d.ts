@@ -8,6 +8,18 @@ interface DataWithHTI {
     icon?: React.FC
 }
 
+
+
+// Sanity Image Object Data Type
+interface ISanityImageObjType {
+    alt: string;
+    asset: {
+    _ref: string;
+    _type: string;
+    };
+    _type: string;
+}
+
 type FeaturedEventData = {
     bannerIcon: IBannerIcon,
     eventPageLink: Slug,
@@ -107,14 +119,7 @@ type AboutUsPageContentData = {
     aboutUsContent3: AboutUsContent;
     aboutUsServiceHighlightCards: AboutUsServiceHighlightCard[];
     introHeading: string;
-    aboutUsRepImg: {
-        alt: string;
-        asset: {
-        _ref: string;
-        _type: string;
-        };
-        _type: string;
-    };
+    aboutUsRepImg: ISanityImageObjType;
     mainContent: ITypedObject[]
 }
 
@@ -147,13 +152,7 @@ type DedicatedServices = {
 
 type PT_SanityServiceData = {
     service: {
-        repImage: {
-            alt: string;
-            asset: {
-            _ref: string;
-            _type: string;
-            }
-        };
+        repImage: ISanityImageObjType;
         textContent: ITypedObject[]
     }
 }
@@ -165,3 +164,11 @@ type OverseasShippingTradeOptDataType = {
 
 
 interface AddedWalletServiceData extends DataWithHTI {};
+
+
+//
+type LocalOverseasShippingPromptMessageData = {
+    introText: TypedObject[],
+    introTextIllustrationImage: ISanityImageObjType,
+    whatYouNeedToKnow: TypedObject[]
+}

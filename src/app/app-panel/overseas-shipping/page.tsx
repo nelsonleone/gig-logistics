@@ -1,14 +1,16 @@
 import AppPanelMCContainer from "@/components/AppPanelPagesMCContainer";
+import OverseasShippingOptionsDiv from "@/components/OverseasShippingOptionsDiv";
 import BackBtn from "@/components/assets/BackBtn";
 import { overseasShippingOptionsData } from "@/componentsData/overseasShippingOptionsData";
 import { BiSolidPaperPlane } from "react-icons/bi";
+import { IconType } from "react-icons/lib";
 
 export default function AppPanelOverseasShipping(){
     return(
         <main>
             <h1 className="AT_only">Ship Your Good Overseas</h1>
-            <AppPanelMCContainer className="text-[#374151] relative md:pt-8 md:px-16">
-                <BackBtn className="lg:top-20" />
+            <AppPanelMCContainer className="text-[rgb(55,65,81)] relative md:pt-8 md:px-16 lg:px-28">
+                <BackBtn className="font-semibold lg:left-28" />
                 <h2 className="font-semibold text-2xl my-16 md:text-center md:mt-20">How would you like to ship</h2>
 
                 <div>
@@ -16,13 +18,7 @@ export default function AppPanelOverseasShipping(){
                         overseasShippingOptionsData.map(val => {
                             const Icon = val?.icon || BiSolidPaperPlane;
                             return(
-                                <div tabIndex={0} key={val.title} className="cursor-pointer flex items-center mb-6 gap-4 justify-between bg-gray-50 px-4 py-8 rounded-sm md:justify-start md:gap-8">
-                                    <Icon className="text-red-400 text-3xl" aria-hidden="true" />
-                                    <div className="w-3/4">
-                                        <h3 className="font-medium my-2">{val.title}</h3>
-                                        <p className="text-gray-500 text-xs">{val.text}</p>
-                                    </div>
-                                </div>
+                                <OverseasShippingOptionsDiv Icon={Icon as IconType} val={val} />
                             )
                         })
                     }
