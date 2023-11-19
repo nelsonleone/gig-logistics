@@ -8,6 +8,8 @@ import { roboto_slab } from "@/app/fonts";
 export default async function ServicesHighlight(){
 
     const servicesHighlightData = await getHighlightedServicesData()
+    const emptyArray = [1,2,3]
+
 
     return (
         <section className="mt-[9em] mb-[6.5em] px-3">
@@ -42,6 +44,20 @@ export default async function ServicesHighlight(){
                             </Link>
                         </Suspense>
                     ))
+                }
+                {
+                    !servicesHighlightData.length || servicesHighlightData.length < 1 ? 
+                    <div className="flex flex-col gap-4 md:flex-row justify-center h-20em w-full lg:gap-8">
+                        {
+                            emptyArray.map((val) =>{
+                                return(
+                                   <CustomSkeleton key={val} variant="rectangular" className="w-full h-[18em] md:w-[30%]" />
+                                )
+                            })
+                        }
+                    </div>
+                    :
+                    null
                 }
             </div>
         </section>

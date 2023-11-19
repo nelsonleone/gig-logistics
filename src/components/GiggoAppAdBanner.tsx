@@ -6,7 +6,7 @@ export default function GiggoAppAdBanner(){
 
     return(
         <div 
-          className="overflow-hidden bg-black w-full text-white rounded-lg px-4 pt-16 pb-20 flex flex-col gap-4 justify-center   md:items-center md:gap-8 lg:gap-4 lg:flex-row lg:px-9 lg:py-20 lg:justify-between"
+          className="overflow-hidden bg-black w-full text-white rounded-lg px-4 pt-16 pb-20 flex flex-col gap-4 justify-center   md:items-center md:gap-8 lg:gap-4 lg:flex-row lg:px-16 lg:py-20 lg:justify-between"
           >
             <div>
                 <p className="text-2xl font-bold my-2 lg:text-[2.25rem] lg:leading-10 lg:w-[60%]">
@@ -15,7 +15,7 @@ export default function GiggoAppAdBanner(){
                 <div className="flex justify-between items-center  gap-4 my-6 md:w-1/2 md:items-center lg:items-start lg:w-[60%]">
                     <Link href="" className="transition duration-200 ease-in-out hover:scale-105 w-full">
                         <Image className="w-auto" src="/images/app-store.svg" alt="App Store" width={200} height={100} />
-                    </Link>
+                </Link>
                     <Link href="" className="transition duration-200 ease-in-out hover:scale-105 w-full">
                         <Image className="w-auto"  src="/images/google-play.svg" alt="Google Play" width={200} height={100} />
                     </Link>
