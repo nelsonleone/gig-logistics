@@ -18,7 +18,7 @@ function ShipNowPageMainContent() {
                             <div 
                               key={val.vehicleName} 
                               tabIndex={0} 
-                              className="shadow-lg min-h-[13em] border border-gray-200 text-center rounded-lg p-4 flex flex-col justify-center items-center mb-16 cursor-pointer hover:border-red-600 focus:outline-none focus:border-red-600 transition duration-200 ease-in-out md:basis-2/5 lg:basis-1/3 lg:w-[15em] lg:mb-8 lg:h-64"
+                              className="shadow-lg min-h-[13em] border border-gray-200 text-center rounded-lg p-4 flex flex-col justify-center items-center mb-16 cursor-pointer hover:border-red-400 focus:outline-none focus:border-red-600 transition duration-200 ease-in-out md:basis-2/5 lg:basis-1/3 lg:w-[15em] lg:mb-8 lg:h-64"
                               >
                                 <motion.div initial="initial" animate="animate">
                                  {val.icon({ styling: "text-black", ariaLabel: "Motor Bike"})}

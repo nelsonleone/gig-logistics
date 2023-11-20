@@ -10,7 +10,6 @@ export default async function ServicesHighlight(){
     const servicesHighlightData = await getHighlightedServicesData()
     const emptyArray = [1,2,3]
 
-
     return (
         <section className="mt-[9em] mb-[6.5em] px-3">
             <h2 className={`${roboto_slab.className} text-[1.8rem] text-black text-center font-bold`}>Seamless Delivery Services</h2>
@@ -19,7 +18,7 @@ export default async function ServicesHighlight(){
                 {
                     servicesHighlightData.map(val => (
                         <Suspense key={val._id} fallback={<CustomSkeleton className="w-full h-[18em] md:w-[48%] lg:w-full" variant="rectangular" />}>
-                            <Link href={`/app-panel/${val.slug}`} className="focus:outline focus:outline-black block w-full md:w-[48%] lg:w-full">
+                            <Link href={val.slug} className="focus:outline focus:outline-black block w-full md:w-[48%] lg:w-full">
                                 <div 
                                    className="relative drop-shadow-sm bg-white  flex gap-4 justify-center items-center text-center flex-col text-[#4b5563] m-auto border-[1.5px] px-6  border-gray-200 transition-all duration-200 ease-linear
                                    hover:scale-105 hover:bg-black hover:text-white group/serviceCard overflow-hidden py-10  h-[18em] lg:text-left lg:justify-start lg:items-start

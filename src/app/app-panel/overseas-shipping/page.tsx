@@ -2,8 +2,7 @@ import AppPanelMCContainer from "@/components/AppPanelPagesMCContainer";
 import OverseasShippingOptionsDiv from "@/components/OverseasShippingOptionsDiv";
 import BackBtn from "@/components/assets/BackBtn";
 import { overseasShippingOptionsData } from "@/componentsData/overseasShippingOptionsData";
-import { BiSolidPaperPlane } from "react-icons/bi";
-import { IconType } from "react-icons/lib";
+
 
 export default function AppPanelOverseasShipping(){
     return(
@@ -15,10 +14,9 @@ export default function AppPanelOverseasShipping(){
 
                 <div>
                     {
-                        overseasShippingOptionsData.map(val => {
-                            const Icon = val?.icon || BiSolidPaperPlane;
+                        overseasShippingOptionsData.map((val,index) => {
                             return(
-                                <OverseasShippingOptionsDiv Icon={Icon as IconType} val={val} />
+                                <OverseasShippingOptionsDiv key={index} index={index} val={val} />
                             )
                         })
                     }

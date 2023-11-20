@@ -25,11 +25,11 @@ export function LanguagePicker() {
 
     return (
         <Select
-            mt="md"
-            data={['React', 'Angular', 'Svelte', 'Vue']}
-            placeholder="Pick one"
-            label="Your favorite library/framework"
-            classNames={classes}
+          mt="md"
+          data={['React', 'Angular', 'Svelte', 'Vue']}
+          placeholder="Pick one"
+          label="Your favorite library/framework"
+          classNames={classes}
         />
     )
 }
