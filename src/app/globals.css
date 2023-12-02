@@ -71,4 +71,9 @@
     .ap_page_cp_box{
        @apply  px-4 py-8 text-center flex flex-col items-center justify-center md:w-60;
     }
+
+
+    .cod_form_input_label {
+       @apply text-sm mb-2 font-medium block;
+    }
 }

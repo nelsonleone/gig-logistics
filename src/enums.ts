@@ -16,3 +16,14 @@ export enum PT_ServiceName {
     overseasShipping = "overseasShipping",
     walletAndAddedServices = "walletAndAddedServices"
 }
+
+
+export enum COD_wallet_input_names {
+    firstName = "firstName",
+    lastName = "lastName",
+    bvn = "bvn",
+    email = "email",
+    phoneNumber = "phoneNumber",
+    gender = "gender",
+    dateOfBirth = "dateOfBirth"
+}

@@ -172,3 +172,15 @@ type LocalOverseasShippingPromptMessageData = {
     introTextIllustrationImage: ISanityImageObjType,
     whatYouNeedToKnow: TypedObject[]
 }
+
+
+
+interface ICODWalletFormValues {
+    firstName: string,
+    lastName: string,
+    bvn: number | null,
+    email: string,
+    phoneNumber: string,
+    gender: string,
+    dateOfBirth: string
+}
