@@ -17,7 +17,7 @@ export default async function CorporateLogistics(){
     const cpPageSanityData = await getPTservicesData(PT_ServiceName.corporateLogistics)
 
     return(
-        <div className="page px-6 relative pt-5 text-[#374151] lg:pt-8 xl:px-10">
+        <div className="page px-6 relative pt-5 text-[#374151] md:px-8 lg:pt-8 xl:px-10">
             <BackBtn />
             <PortfolioSitesPageIntro introHeading="CORPORATE LOGISTICS" introText="Corporate logistics solutions in sync with your business goals" />
             <main className="my-20">

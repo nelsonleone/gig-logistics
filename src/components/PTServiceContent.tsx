@@ -10,14 +10,14 @@ import PTServiceContentLinkContainer from "./PTServiceContentLinkContainer";
 
 
 
-export default async function PTServiceContent({ contentData, serviceName }: { contentData:PT_SanityServiceData, serviceName: PT_ServiceName }){
+export default async function PTServiceContent({ contentData, serviceName }: { contentData:PT_SanityServiceData | null, serviceName: PT_ServiceName }){
 
     return(
         contentData ?
         <div className={`${serviceName === PT_ServiceName.walletAndAddedServices ? "items-end" : "items-center"} flex flex-col justify-center lg:flex-row lg:justify-between gap-8`}>
             <div className="w-full flex justify-center lg:justify-start lg:w-[52%]">
                 <Image 
-                    src={contentData?.service?.repImage ? urlForImage(contentData.service.repImage).url() : ""} 
+                    src={contentData?.service?.repImage ? urlForImage(contentData.service.repImage.asset).url() : ""} 
                     width={600} 
                     height={600}
                     alt={contentData?.service?.repImage?.alt || ""}
