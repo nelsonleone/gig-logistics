@@ -76,4 +76,16 @@
     .cod_form_input_label {
        @apply text-sm mb-2 font-medium block;
     }
+
+    .sdpl_label {
+        @apply text-black mt-4 text-sm;
+    }
+
+    .sdpl_step_indicator{
+        @apply flex items-center justify-center bg-black aspect-square w-7 text-center absolute rounded-full top-0 bottom-0 left-0 right-0 m-auto;
+    }
+
+    .sdpl_step_indicator_container {
+        @apply bg-black h-[0.28em] relative w-5/12;
+    }
 }
