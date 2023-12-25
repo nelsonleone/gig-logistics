@@ -44,7 +44,7 @@ export default function Footer(){
                 </ul>
 
                 <ul className="flex justify-center items-center gap-1 flex-col lg:justify-start ">
-                    <li className="footer-li" aria-hidden="true">Conect With Us</li>
+                    <li className="footer-li" aria-hidden="true">Connect With Us</li>
                     <div className="flex gap-4">
                         <li className="footer-li footer-li-with-svg">
                             <CustomTooltip title="Facebook">

@@ -184,3 +184,15 @@ interface ICODWalletFormValues {
     gender: string,
     dateOfBirth: string
 }
+
+
+
+type CountryNames = {
+    name: string
+}[]
+
+
+type DomesticQuoteObj = {
+    origin: string,
+    destination: string
+}

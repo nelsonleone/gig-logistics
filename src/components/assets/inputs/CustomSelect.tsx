@@ -1,35 +1,46 @@
-import { useState } from 'react';
-import { UnstyledButton, Menu, Image, Group, Select } from '@mantine/core';
-import classes from './OriginDestinationSelect.module.css';
-import { FaAngleDown } from 'react-icons/fa';
+"use client"
 
-const data = [
-  { label: 'USA', image: '/icons/uinted-states' },
-  { label: 'UK', image: '/icons/united-kingdom' },
-  { label: 'CHINA', image: '/icons/china' },
-]
+import Select from 'react-select'
+import { DomesticQuoteObj } from '../../../../types'
+import { Control, Controller } from 'react-hook-form'
 
-export function LanguagePicker() {
-  const [opened, setOpened] = useState(false)
-  const [selected, setSelected] = useState<typeof data[0]>()
+interface IProps {
+  data: {
+    value: string,
+    label: string
+  }[],
+  placeholder: string,
+  id: string,
+  control: Control<DomesticQuoteObj,any>
+}
 
-  const items = data.map((item) => (
-    <Menu.Item
-      icon={<Image src={item.image} width={18} height={18} />}
-      onClick={() => setSelected(item)}
-      key={item.label}
-    >
-      {item.label}
-    </Menu.Item>
-  ))
 
-    return (
-        <Select
-          mt="md"
-          data={['React', 'Angular', 'Svelte', 'Vue']}
-          placeholder="Pick one"
-          label="Your favorite library/framework"
-          classNames={classes}
+export default function CustomSelect({ data, placeholder, id, control }:IProps){
+
+  return(
+    <Controller  
+      name={id as keyof DomesticQuoteObj}
+      control={control}
+      rules={{required:"Receiver Station is required"}}
+      render={({ field }) => (
+        <Select   
+          {...field}
+          styles={{
+          control: (baseStyles) => ({
+            ...baseStyles,
+            padding: '.35em',
+            borderRadius: '13px',
+          }),
+          placeholder: (baseStyles) => ({
+            ...baseStyles,
+            fontSize: '.9rem'
+          })
+          }} 
+          options={data as any} 
+          placeholder={placeholder}
+          isClearable 
+          id={id} 
         />
-    )
+    )}/>
+  )
 }

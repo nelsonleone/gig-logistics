@@ -8,23 +8,26 @@ interface IProps {
     setValue: Dispatch<SetStateAction<string>>
     id: string,
     containerStyles?: string,
-    inputStyles?: string
+    inputStyles?: string,
 }
 
 export default function ClearableInput({ placeholder, setValue, id, value, containerStyles, inputStyles }:IProps){
     return(
-        <div className={`relative ${containerStyles}`}>
+        <div className={`relative min-h-[3.2em] ${containerStyles} w-full rounded-lg drop-shadow-none `}>
             <input 
                type="text" 
                placeholder={placeholder} 
                onChange={(e) => setValue(e.target.value)}
                value={value} 
                id={id}
-               className={`absolute w-full h-full top-0 bottom-0 left-0 right-0 m-auto rounded-md p-4 ${inputStyles}`}
+               className={`bg-gray-100 focus:border focus:border-emerald-700 rounded-lg focus:outline-none focus:outline-0  absolute w-full h-full top-0 bottom-0 left-0 right-0 m-auto py-6 px-4  ${inputStyles}`}
             />
-            <IconButton aria-controls={id} aria-describedby={`desc_clearable_input_${id}`} >
-                <IoMdClose aria-label="clear" />
-            </IconButton>
+            {
+                value &&
+                <IconButton onClick={() => setValue("")} className="absolute top-0 bottom-0 my-auto right-2 text-base" aria-controls={id} aria-describedby={`desc_clearable_input_${id}`} >
+                    <IoMdClose aria-label="clear" />
+                </IconButton>
+            }
 
             <span id={`desc_clearable_input_${id}`}>Clear Input</span>
         </div>

@@ -33,6 +33,7 @@
     "eslint-config-next": "13.4.19",
     "framer-motion": "^10.16.4",
     "groq": "^3.15.1",
+    "leaflet": "^1.9.4",
     "next": "13.4.19",
     "next-sanity": "^5.4.6",
     "postcss": "8.4.28",
@@ -43,12 +44,13 @@
     "react-icons": "^4.10.1",
     "react-phone-number-input": "^3.3.7",
     "react-redux": "^8.1.2",
+    "react-select": "^5.8.0",
     "sanity": "^3.15.1",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@types/leaflet": "^1.9.4",
+    "@types/leaflet": "^1.9.8",
     "@types/react-geocode": "^0.2.1",
     "react-leaflet": "^4.2.1"
   }
