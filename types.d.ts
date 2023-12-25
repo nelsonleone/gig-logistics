@@ -193,6 +193,18 @@ type CountryNames = {
 
 
 type DomesticQuoteObj = {
-    origin: string,
-    destination: string
+    quote_origin: string,
+    quote_destination: string
+    quote_quantity: string,
+    quote_weight: string,
+    quote_value: string
+}
+
+type InternationalQuoteObj = {
+    quote_IntlDepartureCountry: string,
+    quote_IntlDestinationCountry: string,
+    quote_IntlAddress: string,
+    quote_city: string,
+    quote_zipCode: string,
+    quote_packageType: "document" | "non-document",
 }

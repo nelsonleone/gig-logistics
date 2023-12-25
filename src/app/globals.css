@@ -88,4 +88,18 @@
     .sdpl_step_indicator_container {
         @apply bg-black h-[0.28em] relative w-5/12;
     }
+
+
+
+    .quote_dmst_form_label {
+        @apply block mb-2 ms-1;
+    }
+
+    .quote_dmst_number_input{
+        @apply border border-gray-300 rounded-lg p-3 block w-full placeholder:text-[.9rem] placeholder:capitalize;
+    }
+
+    .quote_dmst_input_container {
+        @apply mb-6;
+    }
 }

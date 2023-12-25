@@ -1,7 +1,7 @@
 import { Text, Select } from '@mantine/core';
 import { forwardRef } from 'react';
 import { CountryNames } from '../../../../types';
-import countriesNamesJson from '../../../componentsData/countries.json'
+import { countriesNamesArray } from '../../../componentsData/countries'
 
 interface SelectItemProps {
   name: string,
@@ -18,7 +18,7 @@ const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
   )
 )
 
-const unfilteredCountriesData : CountryNames = countriesNamesJson as CountryNames;
+const unfilteredCountriesData : CountryNames = countriesNamesArray as CountryNames;
 const countriesNames = unfilteredCountriesData.map(val => val.name)
 
 
