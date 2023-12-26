@@ -102,4 +102,9 @@
     .quote_dmst_input_container {
         @apply mb-6;
     }
+
+
+    .quote_intl_input_label{
+        @apply block mb-2 ms-1;
+    }
 }

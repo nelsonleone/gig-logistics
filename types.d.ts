@@ -193,18 +193,30 @@ type CountryNames = {
 
 
 type DomesticQuoteObj = {
-    quote_origin: string,
-    quote_destination: string
+    quote_origin: { label:string, value:string } | null,
+    quote_destination: { label:string, value:string } | null,
     quote_quantity: string,
     quote_weight: string,
     quote_value: string
 }
 
 type InternationalQuoteObj = {
-    quote_IntlDepartureCountry: string,
-    quote_IntlDestinationCountry: string,
+    quote_IntlDepartureCountry: { label:string, value:string } | null,
+    quote_IntlDestinationCountry: { label:string, value:string } | null,
     quote_IntlAddress: string,
     quote_city: string,
     quote_zipCode: string,
-    quote_packageType: "document" | "non-document",
+    quote_packageType: { label: string, value: "document" | "non-document"},
+    nonDocument?: {
+        length: string,
+        width: string,
+        weight: string,
+        value: string,
+        quantity: string,
+        height: string
+    },
+    document?: {
+        value: string,
+        quantity: string,
+    }
 }

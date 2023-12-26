@@ -27,3 +27,13 @@ export enum COD_wallet_input_names {
     gender = "gender",
     dateOfBirth = "dateOfBirth"
 }
+
+
+export enum NDPackageTypeInputIds {
+    quote_IntlLength = "quote_IntlLength",
+    quote_IntlWidth = "quote_IntlWidth",
+    quote_IntlHeight = "quote_IntlHeight",
+    quote_IntlWeight = "quote_IntlWeight",
+    quote_IntlQuantity = "quote_IntlQuantity",
+    quote_IntlValue = "quote_IntlValue"
+}

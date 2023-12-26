@@ -12,16 +12,18 @@ interface IProps {
   placeholder: string,
   id: keyof DomesticQuoteObj | keyof InternationalQuoteObj,
   control: any,
+  required: boolean | string,
+  hasError: boolean
 }
 
 
-export default function CustomQuotePageSelect({ data, placeholder, id, control }:IProps){
+export default function CustomQuotePageSelect({ data, placeholder, id, control, required, hasError }:IProps){
 
   return(
     <Controller  
       name={id as keyof DomesticQuoteObj}
       control={control}
-      rules={{required: id === "quote_origin" ? "Sender's Station Is Required" : id === "quote_destination" ? "Receiver Station is required" : ""}}
+      rules={{ required }}
       render={({ field }) => (
         <Select   
           {...field}
@@ -30,13 +32,8 @@ export default function CustomQuotePageSelect({ data, placeholder, id, control }
               ...baseStyles,
               padding: '.33em',
               borderRadius: '12px',
-              cursor: "pointer"
-            }),
-            placeholder: (baseStyles) => ({
-              ...baseStyles,
-              fontSize: '.9rem',
-              color: "#9ca3af",
-              textTransform: "capitalize"
+              cursor: "pointer",
+              borderColor: hasError ? 'red' : '#9ca3af'
             }),
             option: (baseStyles) => ({
               ...baseStyles,
@@ -47,6 +44,14 @@ export default function CustomQuotePageSelect({ data, placeholder, id, control }
           placeholder={placeholder}
           isClearable 
           id={id} 
+          theme={(theme) => ({
+            ...theme,
+            colors: {
+              ...theme.colors,
+              neutral0: '#fff', // Background color of the placeholder
+              primary: '#9ca3af', // Color of the placeholder text
+            },
+          })}
         />
     )}/>
   )
