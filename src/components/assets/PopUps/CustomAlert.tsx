@@ -1,8 +1,10 @@
 'use client'
 
+import { inter } from "@/app/fonts";
 import { useAppDispatch, useAppSelector } from "@/redux/customHooks";
 import { setHideAlert } from "@/redux/slices/alertSlice";
 import { Alert } from "@mui/material";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from 'react'
 
 export default function CustomAlert(){
@@ -21,8 +23,15 @@ export default function CustomAlert(){
     },[showAlert])
 
     return(
-        <Alert severity={severity ? severity : undefined} variant="filled" className="font-inter font-semibold">
-            {alertMssg}
-        </Alert>
+        <AnimatePresence>
+            {
+                showAlert &&
+                <motion.div exit={{ y: -300, transition: { duration: 300, ease: "linear"} }}>
+                    <Alert severity={severity || undefined} variant="filled" className={`${inter.className} top-8 font-semibold z-[100000] fixed left-4 lg:left-12`}>
+                        {alertMssg}
+                    </Alert>
+                </motion.div>
+            }
+        </AnimatePresence>
     )
 }

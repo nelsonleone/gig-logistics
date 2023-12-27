@@ -14,6 +14,8 @@ import DropDownLinks from "./DropdownLinks";
 import { AiOutlineClose } from 'react-icons/ai'
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
+import { inter } from "@/app/fonts";
 
 export default function MainNav(){
 
@@ -158,7 +160,7 @@ export default function MainNav(){
                         className="hidden lg:block">
                         <button
                             onClick={handleScrollIntoView}
-                            className="red-button-bright font-inter transition-opacity font-medium hover:opacity-80  focus:outline-2 focus:outline-dotted focus:outline-red-950 text-white py-3 h-[2.7em] px-4 hover:bg-red-700" 
+                            className={`${inter.className} red-button-bright font-inter transition-opacity font-medium hover:shadow-inner hover:opacity-90 focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent text-white py-3 h-[2.7em] px-4 hover:bg-red-700`}
                             >Track & Find
                         </button>
                     </li>
@@ -166,12 +168,12 @@ export default function MainNav(){
                     null
                 }
                 <li>
-                    <Link 
-                       className="red-button-bright transition relative py-3 w-20 px-4 font-medium hover:border hover:border-red-600 hover:text-red-600 hover:bg-transparent focus:outline-none focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent"
-                       href="/signin"
+                    <LoginLink
+                       postLoginRedirectURL={pathName}
+                       className={`${inter.className} red-button-bright transition relative py-3 w-20 px-4 font-medium hover:shadow-inner hover:opacity-90 focus:outline-none focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent`}
                         >
                        Sign In
-                    </Link>
+                    </LoginLink>
                 </li>
             </ul>
         </nav>

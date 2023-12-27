@@ -5,8 +5,14 @@ import BackBtn from "@/components/assets/BackBtn";
 import { domesticDepartureDestinationAreaData } from "@/componentsData/departureAndDestinationreasData";
 import CustomQuotePageSelect from '@/components/assets/inputs/CustomQuotePageSelect';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { inter } from "@/app/fonts";
-import { DomesticQuoteObj } from "../../types";
+import { DomesticQuoteObj, IQuoteResultModalData } from "../../types";
+import GetQuoteBtn from "./assets/Buttons/GetQuoteBtn";
+import { useState } from "react";
+import { useAppDispatch } from "@/redux/customHooks";
+import { setShowAlert } from "@/redux/slices/alertSlice";
+import { AlertSeverity } from "@/enums";
+import { getDomesticQuoteResultModalData } from "@/helperFns/getDomesticQuoteResultData";
+import QuoteResultModal from "./assets/PopUps/QuoteResultModal";
 
 export default function DomesticQuotePageMainCP(){
 
@@ -17,12 +23,29 @@ export default function DomesticQuotePageMainCP(){
         }
     })
 
-    const handleDmstFormSubmit : SubmitHandler<DomesticQuoteObj> = (data) => {
-        console.log(data)
+    const [gettingQuote,setGettingQuote] = useState(false)
+    const [resultModalData,setResultModalData] = useState<IQuoteResultModalData>({ weight:"", quantity:"", totalCostForShipment: 0})
+    const [showResultModal,setShowResultModal] = useState(false)
+    const dispatch = useAppDispatch()
+
+    const handleDmstFormSubmit : SubmitHandler<DomesticQuoteObj> = async(data) => {
+        try{  
+            setGettingQuote(true)
+            await new Promise((resolve) => setTimeout(resolve, 3000))
+            setResultModalData(getDomesticQuoteResultModalData(data))
+            setShowResultModal(true)
+        }
+        catch(err){
+            dispatch(setShowAlert({ mssg: "Error Getting Estimated Quote", severity: AlertSeverity.ERROR}))
+        }
+        finally{
+            setGettingQuote(false)
+        }
     }
 
     return(
         <AppPanelMCContainer className="relative">
+            <QuoteResultModal open={showResultModal} handleClose={() => setShowResultModal(false)} {...resultModalData} />
             <BackBtn />
             <div className="md:w-2/4 md:mx-auto">
                 <h2 className="my-8 font-semibold text-center md:text-lg">Get a quick quote for your item with an estimated cost.</h2>
@@ -73,7 +96,7 @@ export default function DomesticQuotePageMainCP(){
                         }
                     </div>
 
-                    <button className={`${inter.className} my-12 bg-black text-white font-medium text-center p-3 rounded-md w-full block cursor-pointer lg:w-3/4 lg:mx-auto hover:drop-shadow-lg hover:opacity-90 transition-all duration-200 ease-in-out`}>Proceed</button>
+                    <GetQuoteBtn isLoading={gettingQuote} text="Get Quote"  />
                 </form>
             </div>
         </AppPanelMCContainer>

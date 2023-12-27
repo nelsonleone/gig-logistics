@@ -4,11 +4,18 @@ import AppPanelMCContainer from "@/components/AppPanelPagesMCContainer";
 import BackBtn from "@/components/assets/BackBtn";
 import { ErrorOption, FieldError, SubmitHandler, useForm, useWatch } from "react-hook-form";
 import CustomQuotePageSelect from "@/components/assets/inputs/CustomQuotePageSelect";
-import { InternationalQuoteObj } from '../../types';
+import { IQuoteResultModalData, InternationalQuoteObj } from '../../types';
 import { countriesNamesArray } from '@/componentsData/countries';
 import { inter } from "@/app/fonts";
 import { documentQuotePackageTypeInputData, nonDocumentQuotePackageTypeInputData } from "@/componentsData/NonDocumentQuotePackageTypeInputsData";
-import { NDPackageTypeInputIds } from "@/enums";
+import { AlertSeverity, NDPackageTypeInputIds } from "@/enums";
+import { useAppDispatch } from "@/redux/customHooks";
+import { useState } from "react";
+import { getDomesticQuoteResultModalData } from "@/helperFns/getDomesticQuoteResultData";
+import { setShowAlert } from "@/redux/slices/alertSlice";
+import { getIntlQuoteResultData } from "@/helperFns/getIntlQuoteResultData";
+import QuoteResultModal from "./assets/PopUps/QuoteResultModal";
+import GetQuoteBtn from "./assets/Buttons/GetQuoteBtn";
 
 function InternationalQuotePageMainCP(){
 
@@ -30,13 +37,40 @@ function InternationalQuotePageMainCP(){
 
     const packageTypeSelectData = [{ label: "Document",value: "document" },{ label: "Non-Document",value: "non-document"}]
 
-    const handleIntlQuoteDataSubmit : SubmitHandler<InternationalQuoteObj> = (data) => {
-        console.log(data)
+    const [gettingQuote,setGettingQuote] = useState(false)
+    const [resultModalData,setResultModalData] = useState<IQuoteResultModalData>({ weight:"", quantity:"", totalCostForShipment: 0})
+    const [showResultModal,setShowResultModal] = useState(false)
+    const dispatch = useAppDispatch()
+
+    const handleIntlQuoteDataSubmit : SubmitHandler<InternationalQuoteObj> = async(data) => {
+
+        console.log(data.quote_packageType)
+
+        try{  
+            setGettingQuote(true)
+            await new Promise((resolve) => setTimeout(resolve, 3000))
+            setResultModalData(getIntlQuoteResultData(data))
+            setShowResultModal(true)
+        }
+        catch(err){
+            dispatch(setShowAlert({ mssg: "Error Getting Estimated Quote", severity: AlertSeverity.ERROR}))
+        }
+        finally{
+            setGettingQuote(false)
+        }
     }
 
     return(
         <AppPanelMCContainer className="relative">
             <BackBtn />
+            <QuoteResultModal 
+               quantity={resultModalData.quantity} 
+               weight={resultModalData.weight} 
+               totalCostForShipment={resultModalData.totalCostForShipment} 
+               packageType={resultModalData.resultPackageType}
+               open={showResultModal} 
+               handleClose={() => setShowResultModal(false)} 
+            />
 
             <form className="md:w-1/2 md:mx-auto py-8" onSubmit={handleSubmit(handleIntlQuoteDataSubmit)}>
                 <div className="mb-6">
@@ -156,9 +190,7 @@ function InternationalQuotePageMainCP(){
                     null
                 }
 
-                <button className={`${inter.className} my-12 bg-black text-white font-medium text-center p-3 rounded-md w-full block cursor-pointer lg:w-3/4 lg:mx-auto hover:drop-shadow-lg hover:opacity-90 transition-all duration-200 ease-in-out`}>
-                    Get Quote
-                </button>
+                <GetQuoteBtn isLoading={gettingQuote} text="Get Quote" />
             </form>
         </AppPanelMCContainer>
     )

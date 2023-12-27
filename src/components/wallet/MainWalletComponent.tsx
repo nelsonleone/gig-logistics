@@ -1,7 +1,9 @@
+import { roboto_slab } from "@/app/fonts";
+
 function MainWalletComponent() {
     return(
         <div className="my-10">
-            <h2 className="text-2xl lg:text-3xl mt-4 font-bold mb-8 text-[#374151] text-center">Fund your wallet to enjoy seamless transactions from start to finish</h2>
+            <h2 className={`${roboto_slab.className} text-2xl lg:text-3xl mt-4 font-bold mb-8 text-[#374151] text-center`}>Fund your wallet to enjoy seamless transactions from start to finish</h2>
 
             <div 
                className="bg-[url('/images/cardbg.svg')] bg-cover bg-right bg-no-repeat rounded-3xl bg-black min-h-[12em] lg:min-h-[17em] text-[#FFFFFF] lg:w-[58%] lg:mx-auto"

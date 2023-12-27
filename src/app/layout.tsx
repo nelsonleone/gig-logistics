@@ -4,6 +4,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import Footer from '@/components/LayoutComponents/Footer'
 import { inter } from './fonts'
+import CustomAlert from '@/components/assets/PopUps/CustomAlert'
 
 export const metadata: Metadata = {
   title: `GIGL | Africa's Leading Logistics Company | Express Delivery`,
@@ -23,6 +24,7 @@ export default function RootLayout({
       </head>
       <CustomAppStoreProvider>
         <body className={`${inter.className} bg-[#f4f5f6] scroll-smooth overflow-x-hidden`}>
+          <CustomAlert />
           <Header />
           {children}
           <Footer />
