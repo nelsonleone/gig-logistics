@@ -14,8 +14,12 @@ import DropDownLinks from "./DropdownLinks";
 import { AiOutlineClose } from 'react-icons/ai'
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
+import { LoginLink, useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { inter } from "@/app/fonts";
+import { MdNotifications } from "react-icons/md";
+import CustomBasicMenu from "./assets/PopUps/CustomBasicMenu";
+import Notification from "./Notification";
+import AuthUserPanel from "./AuthUserPanel";
 
 export default function MainNav(){
 
@@ -24,6 +28,7 @@ export default function MainNav(){
     const [showPrimaryNav,setShowPrimaryNav] = useState(openNav)
     const dispatch = useAppDispatch()
     const [showDropdownMenu,setShowDropdownMenu] = useState(openNav)
+    const { isAuthenticated } = useKindeBrowserClient()
 
     const handleClickAway = () => {
         if(window.innerWidth >= Breakpoints.Large)return;
@@ -167,14 +172,26 @@ export default function MainNav(){
                     :
                     null
                 }
-                <li>
-                    <LoginLink
-                       postLoginRedirectURL={pathName}
-                       className={`${inter.className} red-button-bright transition relative py-3 w-20 px-4 font-medium hover:shadow-inner hover:opacity-90 focus:outline-none focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent`}
-                        >
-                       Sign In
-                    </LoginLink>
-                </li>
+                {
+                    !isAuthenticated ?
+                    <li>
+                        <LoginLink
+                        postLoginRedirectURL={pathName}
+                        className={`${inter.className} red-button-bright transition relative py-3 w-20 px-4 font-medium hover:shadow-inner hover:opacity-90 focus:outline-none focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent`}
+                            >
+                        Sign In
+                        </LoginLink>
+                    </li>
+                    :
+                    <>
+                      <li>
+                        <>
+                          <Notification />
+                          <AuthUserPanel />
+                        </>
+                      </li>
+                    </>
+                }
             </ul>
         </nav>
     )

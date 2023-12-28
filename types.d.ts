@@ -1,3 +1,4 @@
+import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { PortableTextBlock, TypedObject } from "@portabletext/types"
 
 
@@ -263,3 +264,16 @@ type KindeState = {
     getPermission: getPermission;
     getStringFlag: getStringFlag;
 }
+
+
+
+
+
+interface AuthUser extends KindeUser {}
+
+type IUserNotifications = [
+    {
+        mssg: string,
+        type: "Prompt" | "Error" | "Success"
+    }
+]
