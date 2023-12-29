@@ -1,5 +1,9 @@
+"use client"
+
+import { inter } from "@/app/fonts";
 import { authUserMenuLinkData } from "@/componentsData/authUserMenuLinkData";
-import { IconButton, ListItemIcon, ListItemText, Menu, MenuItem, MenuList } from "@mui/material";
+import { ListItemIcon, Menu, MenuItem, MenuList } from "@mui/material";
+import Link from "next/link";
 import { useState } from "react";
 import { FaSortDown, FaUserCircle } from "react-icons/fa";
 
@@ -9,7 +13,7 @@ export default function AuthUserPanel(){
     const open = Boolean(anchorEl)
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget)
     }
     const handleClose = () => {
       setAnchorEl(null)
@@ -17,17 +21,19 @@ export default function AuthUserPanel(){
 
     return(
         <div>
-            <IconButton
+            <button
                 aria-label="open" 
                 onClick={handleClick} 
                 id="authUser-panel-button"
                 aria-controls={open ? 'authUser-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
-              >
-                <FaUserCircle />
-                <FaSortDown />
-            </IconButton>
+                className="flex gap-2 text-red-600 bg-gray-100 hover:bg-gray-200 transition duration-200 ease-in-out rounded-md p-3"
+
+            >
+                <FaUserCircle className="text-2xl xl:3xl" />
+                <FaSortDown className="text-xl xl:2xl" />
+            </button>
             <Menu
                 id="authUser-menu"
                 anchorEl={anchorEl}
@@ -43,11 +49,13 @@ export default function AuthUserPanel(){
                             authUserMenuLinkData.map(val => {
                                 const Icon = val.icon;
                                 return(
-                                    <MenuItem>
-                                        <ListItemIcon>
-                                            <Icon />
-                                        </ListItemIcon>
-                                        <ListItemText>Cut</ListItemText>
+                                    <MenuItem key={val.text} sx={{ p: 0}} className="p-0">
+                                        <Link href={val.link} className={`${inter.className} m-0 p-2 w-full hover:bg-gray-100 focus:bg-gray-100 transition duration-200 ease-linear rounded-sm flex items-center text-gray-800`}>
+                                            <ListItemIcon>
+                                                <Icon size={20} />
+                                            </ListItemIcon>
+                                            <span  className={`${inter.className} text-sm font-medium`}>{val.text}</span>
+                                        </Link>
                                     </MenuItem>
                                 )
                             })
@@ -56,5 +64,5 @@ export default function AuthUserPanel(){
                 </div>
             </Menu>
         </div>
-    )
+        )
 }

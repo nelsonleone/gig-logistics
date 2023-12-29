@@ -1,6 +1,6 @@
 import { inter } from "@/app/fonts";
 import { MenuItem } from "@mui/base";
-import { Menu } from "@mui/material";
+import { Menu, ThemeProvider, createTheme } from "@mui/material";
 import Link from "next/link";
 
 interface IProps {
@@ -16,6 +16,12 @@ interface IProps {
     styles?: string,
     usedIn: "notification"
 }
+
+const theme = createTheme({
+    typography: {
+        fontFamily: "Inter, sans-serif"
+    }
+})
 
 export default function CustomBasicMenu({ open, handleClose, styles, anchorEl, id, usedIn, menuItems, buttonId }:IProps){
     return(
@@ -33,15 +39,15 @@ export default function CustomBasicMenu({ open, handleClose, styles, anchorEl, i
                 menuItems.length ?
                 menuItems.map(val => (
                     val.link ?
-                    <Link href={val.link}>
-                        <MenuItem onClick={handleClose}>{val.text}</MenuItem>
-                    </Link>
+                    <MenuItem className={`${inter.className} text-sm font-medium`} onClick={handleClose}>
+                      <Link href={val.link}>{val.text}</Link>
+                    </MenuItem>
                     :
-                    <MenuItem onClick={handleClose}>{val.text}</MenuItem>
+                    <MenuItem className={`${inter.className} text-sm font-medium`} onClick={handleClose}>{val.text}</MenuItem>
                 ))
                 :
-                <MenuItem onClick={handleClose}>{usedIn === "notification"  ? "No Unread Notifications" : "Empty"}</MenuItem>
+                <span className={`${inter.className} px-3 text-sm font-medium`} onClick={handleClose}>{usedIn === "notification"  ? "No Unread Notifications" : "Empty"}</span>
             }
-      </Menu>
+        </Menu>
     )
 }

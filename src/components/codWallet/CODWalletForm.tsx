@@ -28,13 +28,22 @@ export default function CODWalletForm(props:IProps){
                 {
                     codWalletInputFormData.map((val) => {
                         return val.name === COD_wallet_input_names.phoneNumber ?
-                        <CustomPhoneInput control={control} name={val.name} />
+                        <CustomPhoneInput label="Phone Number:" control={control} name={val.name} />
                         :
                         val.name === COD_wallet_input_names.gender ?
                         <CustomBasicSelect control={control} />
                         :
                         val.name !== COD_wallet_input_names.gender && val.name !== COD_wallet_input_names.phoneNumber ?
-                        <CustomTextInput inputType={val.name === COD_wallet_input_names.email ? "email" : "text"} control={control} placeholder="" {...val} error={errors[val.name as keyof ICODWalletFormValues]?.message} />
+                        <CustomTextInput 
+                           required="This Field Is Required"
+                           inputType={val.name === COD_wallet_input_names.email ? "email" : "text"} 
+                           control={control} placeholder="" 
+                           {...val} 
+                           name={val.name as keyof ICODWalletFormValues}
+                           error={errors[val.name as keyof ICODWalletFormValues]?.message} 
+                           labelStyles="cod_form_input_label"
+                           inputStyles="border border-gray-300 rounded-md p-3  text-sm w-full lg:p-[.8rem]"
+                        />
                         :
                         null
                     })

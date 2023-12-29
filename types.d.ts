@@ -233,47 +233,19 @@ interface IQuoteResultModalData {
 }
 
 
-type KindeState = {
-    /**
-     * - Kinde access token
-     */
-    accessToken: string | null;
-    error?: string | null;
-    isAuthenticated: boolean | null;
-    isLoading: boolean | null;
-    /**
-     * - The organization that the current user is logged in to
-     */
-    organization: string | null;
-    /**
-     * - The current user's permissions
-     */
-    permissions: string[] | null;
-    /**
-     * - Kinde user
-     */
-    user: KindeUser | null;
-    /**
-     * - Organizations that the current user belongs to
-     */
-    userOrganizations: string[] | null;
-    getBooleanFlag: getBooleanFlag;
-    getClaim: getClaim;
-    getFlag: getFlag;
-    getIntegerFlag: getIntegerFlag;
-    getPermission: getPermission;
-    getStringFlag: getStringFlag;
+
+// Auth 
+type SignInFormData = {
+    email: string,
+    password: string
 }
 
 
-
-
-
-interface AuthUser extends KindeUser {}
-
-type IUserNotifications = [
-    {
-        mssg: string,
-        type: "Prompt" | "Error" | "Success"
-    }
-]
+type SignUpFormData = {
+    firstName: string,
+    lastName: string,
+    email: string,
+    phoneNumber: string,
+    password: string,
+    confirmPassword?: string
+}

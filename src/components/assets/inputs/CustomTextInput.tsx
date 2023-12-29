@@ -1,16 +1,20 @@
 import { BiSolidMessageAltError } from "react-icons/bi";
 import { inter } from '@/app/fonts';
 import { Control, Controller } from "react-hook-form";
-import { ICODWalletFormValues } from "../../../../types";
+import { ICODWalletFormValues, SignInFormData, SignUpFormData } from "../../../../types";
 
 interface IProps {
     error: string | undefined,
     label: string,
-    name: string
-    value: string | number,
+    name:  keyof SignUpFormData | keyof SignInFormData | keyof ICODWalletFormValues,
+    value?: string | number,
     placeholder: string,
     inputType?: string,
-    control?: Control<ICODWalletFormValues,undefined>
+    control?: Control<any,undefined>,
+    labelStyles?: string,
+    inputStyles?: string,
+    containerStyles?: string,
+    required: string | boolean
 }
 
 export default function CustomTextInput(props:IProps){
@@ -22,16 +26,25 @@ export default function CustomTextInput(props:IProps){
         placeholder,
         value,
         inputType,
-        name
+        name,
+        labelStyles,
+        inputStyles,
+        containerStyles,
+        required
     } = props;
 
     return(
-        <div className="mb-8">
-            <label htmlFor={name} className="cod_form_input_label">{label}:</label>
+        <div className={`mb-8 ${inter.className} ${containerStyles}`}>
+            {
+                label && label.length ?
+                <label htmlFor={name} className={labelStyles}>{label}:</label>
+                :
+                null
+            }
             <Controller
-                name="firstName"
+                name={name as keyof ICODWalletFormValues}
                 control={control || undefined}
-                rules={{required: "This field is required"}}
+                rules={{required}}
                 render={({ field }) => 
                 <input 
                     type={inputType || "text"} 
@@ -39,7 +52,7 @@ export default function CustomTextInput(props:IProps){
                     aria-invalid={error ? "true" : "false"} 
                     {...field}
                     value={value} 
-                    className="border border-gray-300 rounded-md p-3  text-sm w-full lg:p-[.8rem]"
+                    className={inputStyles}
                 />}
             />
             {

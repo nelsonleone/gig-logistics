@@ -14,10 +14,7 @@ import DropDownLinks from "./DropdownLinks";
 import { AiOutlineClose } from 'react-icons/ai'
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { LoginLink, useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { inter } from "@/app/fonts";
-import { MdNotifications } from "react-icons/md";
-import CustomBasicMenu from "./assets/PopUps/CustomBasicMenu";
 import Notification from "./Notification";
 import AuthUserPanel from "./AuthUserPanel";
 
@@ -28,7 +25,8 @@ export default function MainNav(){
     const [showPrimaryNav,setShowPrimaryNav] = useState(openNav)
     const dispatch = useAppDispatch()
     const [showDropdownMenu,setShowDropdownMenu] = useState(openNav)
-    const { isAuthenticated } = useKindeBrowserClient()
+    const [innerWidth,setInnerWidth] = useState<number>(0)
+
 
     const handleClickAway = () => {
         if(window.innerWidth >= Breakpoints.Large)return;
@@ -36,6 +34,7 @@ export default function MainNav(){
     }
 
     const handleResize = () => {
+        setInnerWidth(window.innerWidth)
         window.innerWidth >= Breakpoints.Large ? dispatch(setOpenNav(true)) : dispatch(setOpenNav(false))
     }
 
@@ -58,6 +57,7 @@ export default function MainNav(){
 
     useEffect(() => {
         window.addEventListener('resize',handleResize)
+        setInnerWidth(window.innerWidth)
         dispatch(setOpenNav(window.innerWidth >= Breakpoints.Large))
 
 
@@ -117,8 +117,8 @@ export default function MainNav(){
                                             </Link>
                                             :
                                             <button   
-                                              className={`${showDropdownMenu && window.innerWidth < Breakpoints.Large ? "text-red-600" : "text-[#374151]"} w-full text-left inline-block transition duration-200 ease-linear hover:text-red-600`}                                             
-                                              onClick={() => window.innerWidth < Breakpoints.Large ? setShowDropdownMenu(prevState => prevState = !prevState) : {}}
+                                              className={`${showDropdownMenu && innerWidth < Breakpoints.Large ? "text-red-600" : "text-[#374151]"} w-full text-left inline-block transition duration-200 ease-linear hover:text-red-600`}                                             
+                                              onClick={() => innerWidth < Breakpoints.Large ? setShowDropdownMenu(prevState => prevState = !prevState) : {}}
                                               >
                                                 {linkData.text}
                                             </button>
@@ -126,7 +126,7 @@ export default function MainNav(){
 
                                         {
                                             index === 0 &&
-                                            <FaAngleDown aria-hidden="true" className={`absolute top-1 right-2 transition-all duration-300 ease-linear ${showDropdownMenu && window.innerWidth < Breakpoints.Large ? "rotate-180 text-red-600" : "rotate-0 text-gray-800"} lg:top-1/2 lg:bottom-1/2 lg:m-auto lg:-right-[2.4rem] ${window.innerWidth >= Breakpoints.Large ? "group-hover/dropdownContainer:rotate-180" : ""} group-hover/dropdownContainer:text-red-600`} />
+                                            <FaAngleDown aria-hidden="true" className={`absolute top-1 right-2 transition-all duration-300 ease-linear ${showDropdownMenu && innerWidth < Breakpoints.Large ? "rotate-180 text-red-600" : "rotate-0 text-gray-800"} lg:top-1/2 lg:bottom-1/2 lg:m-auto lg:-right-[2.4rem] ${innerWidth >= Breakpoints.Large ? "group-hover/dropdownContainer:rotate-180" : ""} group-hover/dropdownContainer:text-red-600`} />
                                         }
 
                                         {
@@ -158,7 +158,7 @@ export default function MainNav(){
             </AnimatePresence>
 
             <ul 
-              className="relative items-center self-center lg:flex justify-between gap-4">
+              className="relative items-center self-center lg:flex justify-between gap-3">
                 {
                     pathName === "/" ?
                     <li 
@@ -173,18 +173,18 @@ export default function MainNav(){
                     null
                 }
                 {
-                    !isAuthenticated ?
+                    true ?
                     <li>
-                        <LoginLink
-                        postLoginRedirectURL={pathName}
-                        className={`${inter.className} red-button-bright transition relative py-3 w-20 px-4 font-medium hover:shadow-inner hover:opacity-90 focus:outline-none focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent`}
+                        <Link
+                            href="/auth/login"
+                            className={`${inter.className} red-button-bright transition relative py-3 w-20 px-4 font-medium hover:shadow-inner hover:opacity-90 focus:outline-none focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent`}
                             >
                         Sign In
-                        </LoginLink>
+                        </Link>
                     </li>
                     :
                     <>
-                      <li>
+                      <li className="flex gap-4 xl:gap-8 items-center xl:ms-3">
                         <>
                           <Notification />
                           <AuthUserPanel />
