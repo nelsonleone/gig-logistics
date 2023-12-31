@@ -37,3 +37,10 @@ export enum NDPackageTypeInputIds {
     quote_IntlQuantity = "quote_IntlQuantity",
     quote_IntlValue = "quote_IntlValue"
 }
+
+
+
+export enum SignUpRadioInputValue {
+    Individual = "individual",
+    Corporate = "corporate"
+}

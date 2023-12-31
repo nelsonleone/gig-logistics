@@ -45,7 +45,7 @@ export default function DomesticQuotePageMainCP(){
 
     return(
         <AppPanelMCContainer className="relative">
-            <QuoteResultModal open={showResultModal} handleClose={() => setShowResultModal(false)} {...resultModalData} />
+            <QuoteResultModal packageType={resultModalData.resultPackageType} open={showResultModal} handleClose={() => setShowResultModal(false)} {...resultModalData} />
             <BackBtn />
             <div className="md:w-2/4 md:mx-auto">
                 <h2 className="my-8 font-semibold text-center md:text-lg">Get a quick quote for your item with an estimated cost.</h2>

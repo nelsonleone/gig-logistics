@@ -176,7 +176,7 @@ export default function MainNav(){
                     true ?
                     <li>
                         <Link
-                            href="/auth/login"
+                            href="/auth/sign_in"
                             className={`${inter.className} red-button-bright transition relative py-3 w-20 px-4 font-medium hover:shadow-inner hover:opacity-90 focus:outline-none focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent`}
                             >
                         Sign In

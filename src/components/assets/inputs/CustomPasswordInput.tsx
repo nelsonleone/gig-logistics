@@ -60,14 +60,14 @@ export default function CustomPasswordInput(props:IProps){
                             aria-invalid={error ? "true" : "false"} 
                             {...field}
                             value={value} 
-                            className={`absolute top-0 left-0 w-full ${inputStyles}`}
+                            className={`absolute top-0 bottom-0 my-auto pe-4 left-0 w-full ${inputStyles}`}
                         />
 
                         <IconButton 
                            onClick={() => setShowPassword(prev => prev = !prev)} 
                            sx={{borderRadius: "10px"}} 
                            aria-label={showPassword ? "Hide Password" : "Show Password"}
-                           className="absolute left-3 top-0 bottom-0 my-auto" 
+                           className="absolute right-3 top-0 bottom-0 my-auto z-20" 
                            >
                             {
                                 showPassword ?
@@ -82,8 +82,7 @@ export default function CustomPasswordInput(props:IProps){
             />
             {
                 error &&
-                <p role="alert" className="text-red-500 text-sm mt-3"><BiSolidMessageAltError />{error}</p>
-            }
+<p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{error}</p>            }
         </div>
     )
 }

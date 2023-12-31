@@ -240,7 +240,6 @@ type SignInFormData = {
     password: string
 }
 
-
 type SignUpFormData = {
     firstName: string,
     lastName: string,
@@ -249,3 +248,10 @@ type SignUpFormData = {
     password: string,
     confirmPassword?: string
 }
+// 
+
+
+type RadioGroupData = {
+    value: string,
+    label: string
+}[]

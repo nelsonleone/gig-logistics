@@ -1,3 +1,5 @@
+"use client"
+
 import { BiSolidMessageAltError } from "react-icons/bi";
 import { inter } from '@/app/fonts';
 import { Control, Controller } from "react-hook-form";
@@ -57,7 +59,7 @@ export default function CustomTextInput(props:IProps){
             />
             {
                 error &&
-                <p role="alert" className="text-red-500 text-sm mt-3"><BiSolidMessageAltError />{error}</p>
+                <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{error}</p>
             }
         </div>
     )
