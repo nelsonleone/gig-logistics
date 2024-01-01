@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function Loading(){
 
     return(
-        <div className="h-screen w-screen fixed py-8 flex justify-center items-center gap-1">
+        <div className="h-screen w-screen fixed bg-white z-[1000] top-0 left-0 py-8 flex justify-center items-center gap-1">
             <AnimatePresence>
                 <motion.img 
                     src="/images/truck-loader.svg" 

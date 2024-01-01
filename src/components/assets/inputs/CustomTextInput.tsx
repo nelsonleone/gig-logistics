@@ -54,7 +54,7 @@ export default function CustomTextInput(props:IProps){
                     aria-invalid={error ? "true" : "false"} 
                     {...field}
                     value={value} 
-                    className={inputStyles}
+                    className={`${inputStyles} ${error ? "focus:outline-red-500" : ""}`}
                 />}
             />
             {

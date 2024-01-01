@@ -4,9 +4,9 @@ import TrackerArea from "@/components/TrackerArea";
 import FeaturedEventBanner from "@/components/FeaturedEventBanner";
 import CustomSkeleton from "@/components/assets/Loaders";
 import ServicesHighlight from "@/components/ServicesHighlight";
-import { Suspense } from "react";
+import { Suspense } from "react"; 
 import { roboto_slab } from "./fonts";
-
+ 
 export default function Home() {
 
   return (

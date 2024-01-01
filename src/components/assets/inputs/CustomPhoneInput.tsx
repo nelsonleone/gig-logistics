@@ -8,10 +8,11 @@ interface IProps {
     control: Control<any,undefined>,
     name: string,
     label?: string,
-    error?: string
+    error?: string,
+    className: string
 }
 
-function CustomPhoneInput({ control, name, label, error }:IProps) {
+function CustomPhoneInput({ control, name, label, error, className }:IProps) {
   return (
         <div>
             {
@@ -22,7 +23,7 @@ function CustomPhoneInput({ control, name, label, error }:IProps) {
                 name={name as keyof object}
                 control={control}
                 render={({ field }) =>
-                <PhoneInput {...field} className={`${classes.phoneInput} mb-8`} />
+                <PhoneInput {...field} defaultCountry='US' className={`${classes.phoneInput} ${className} mb-8`} />
                 }
             />
             {

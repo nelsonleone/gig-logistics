@@ -108,4 +108,9 @@
         @apply block mb-2 ms-1;
     }
 
+    
+    .signup-phoneInput input{
+        @apply focus:border-none focus:outline-offset-0 focus:outline-red-500;
+    }
+
 }

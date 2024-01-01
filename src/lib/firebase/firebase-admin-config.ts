@@ -1,11 +1,15 @@
-import { initializeApp, getApps, cert } from 'firebase-admin/app';
-
-const firebaseAdminConfig = {
-  credential: cert('../../../serviceKey.json')
-}
+import * as admin from 'firebase-admin';
 
 export function initializeFirebaseAdmin() {
-  if (getApps().length <= 0) {
-    initializeApp(firebaseAdminConfig)
+  if (!admin.apps.length) {
+    admin.initializeApp({
+      credential: admin.credential.cert({
+        clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
+        projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
+        privateKey: `${process.env.FIREBASE_ADMIN_PRIVATE_KEY || ""}`.replace(/\\n/g, '\n')
+      })
+    })
   }
 }
+
+initializeFirebaseAdmin()
