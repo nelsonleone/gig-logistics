@@ -246,7 +246,7 @@ type SignUpFormData = {
     email: string,
     phoneNumber: string,
     password: string,
-    confirmPassword?: string
+    confirmPassword: string
 }
 // 
 

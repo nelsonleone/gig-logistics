@@ -12,6 +12,9 @@ function customFirebaseError(errorCode:string) {
       case 'auth/internal-error':
         return 'Internal Error Authenticating User, Try again.';
        break;
+      case 'auth/invalid-credential':
+        return 'Invalid Credentials - Wrong Email Or password';
+       break;
       default:
         return 'An error occurred during authentication.';
     }

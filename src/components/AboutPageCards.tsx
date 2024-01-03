@@ -8,7 +8,7 @@ import { useMantineTheme, rem } from '@mantine/core';
 import AboutUsCarouselCard from "./AboutUsCarouselCard";
 
 interface IProps {
-  aboutUsServiceHighlightCards: AboutUsServiceHighlightCard[]
+  aboutUsServiceHighlightCards: AboutUsServiceHighlightCard[] | undefined
 }
 
 const carouselAnimationVariants = {
@@ -31,7 +31,7 @@ export default function AboutPageCards(props:IProps){
 
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`)
-  const slides = props.aboutUsServiceHighlightCards.map((item) => (
+  const slides = props.aboutUsServiceHighlightCards && props.aboutUsServiceHighlightCards.map((item) => (
     <Carousel.Slide key={item._key}>
       <AboutUsCarouselCard {...item} />
     </Carousel.Slide>
@@ -50,7 +50,7 @@ export default function AboutPageCards(props:IProps){
         loop 
         withIndicators
       >
-        {slides}
+        {slides ? slides : null}
       </Carousel>
     </motion.div>
   )

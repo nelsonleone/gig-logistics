@@ -16,7 +16,7 @@ interface IProps {
     labelStyles?: string,
     inputStyles?: string,
     containerStyles?: string,
-    required: string | boolean
+    required?: string
 }
 
 export default function CustomTextInput(props:IProps){

@@ -1,14 +1,15 @@
+import { initializeFirebaseAdmin } from "@/lib/firebase/firebase-admin-config";
 import { auth } from "firebase-admin";
 import { cookies, headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+
+initializeFirebaseAdmin()
 
 export async function POST(request: NextRequest, response: NextResponse) {
   try {
     const authorization = headers().get("Authorization")
     const res = await request.json()
-    const returnTo = res.body;
-
-    console.log(res,returnTo)
+    const { returnTo } = res;
 
     if (authorization?.startsWith("Bearer ")) {
       const idToken = authorization.split("Bearer ")[1]
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     }
 
 
-    return NextResponse.redirect(returnTo)
+    return NextResponse.redirect(returnTo || new URL('/', request.url));
 
   } catch (error:any|unknown) {
     console.error("Error processing authentication:", error.message)

@@ -1,15 +1,14 @@
-import * as admin from 'firebase-admin';
+import * as admin from 'firebase-admin'
+import serviceAccount from './serviceAccount.json'
 
 export function initializeFirebaseAdmin() {
   if (!admin.apps.length) {
     admin.initializeApp({
-      credential: admin.credential.cert({
-        clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-        projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
-        privateKey: `${process.env.FIREBASE_ADMIN_PRIVATE_KEY || ""}`.replace(/\\n/g, '\n')
-      })
+      credential: admin.credential.cert(serviceAccount as admin.ServiceAccount)
     })
   }
 }
 
 initializeFirebaseAdmin()
+
+export const firebaseAdmin = admin;

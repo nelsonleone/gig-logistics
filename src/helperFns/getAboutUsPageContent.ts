@@ -14,6 +14,6 @@ export default async function getAboutUsPageContent(){
   }
 
   catch(err){
-    return []
+    return null
   }
 }

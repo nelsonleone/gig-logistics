@@ -19,7 +19,7 @@ interface IProps {
     labelStyles?: string,
     inputStyles?: string,
     containerStyles?: string,
-    required: string | boolean
+    required: string
 }
 
 
@@ -51,7 +51,7 @@ export default function CustomPasswordInput(props:IProps){
             <Controller
                 name={name as keyof SignInFormData}
                 control={control || undefined}
-                rules={{required, minLength: { value: 5, message: "Invalid Password"}}}
+                rules={{required}}
                 render={({ field }) => (
                     <div className="relative min-h-[3em]">
                         <input 

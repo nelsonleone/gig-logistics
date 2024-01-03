@@ -110,7 +110,7 @@
 
     
     .signup-phoneInput input{
-        @apply focus:border-none focus:outline-offset-0 focus:outline-red-500;
+        @apply focus:border-none focus:outline-offset-0 focus:outline-cyan-500;
     }
 
 }
