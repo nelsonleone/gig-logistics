@@ -1,4 +1,4 @@
-import { initializeFirebaseAdmin } from "@/lib/firebase/firebase-admin-config";
+import { firebaseAdmin, initializeFirebaseAdmin } from "@/lib/firebase/firebase-admin-config";
 import { auth } from "firebase-admin";
 import { cookies, headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
@@ -8,8 +8,6 @@ initializeFirebaseAdmin()
 export async function POST(request: NextRequest, response: NextResponse) {
   try {
     const authorization = headers().get("Authorization")
-    const res = await request.json()
-    const { returnTo } = res;
 
     if (authorization?.startsWith("Bearer ")) {
       const idToken = authorization.split("Bearer ")[1]
@@ -27,20 +25,27 @@ export async function POST(request: NextRequest, response: NextResponse) {
           maxAge: expiresIn,
           httpOnly: true,
           secure: true,
+          sameSite: "lax" as "lax"
         }
 
         cookies().set(options)
+
+        const userDoc = await firebaseAdmin.firestore().collection('AuthUsers').doc(decodedToken.uid).get()
+
+        if (userDoc.exists) {
+          const userData = userDoc.data()
+          return NextResponse.json(userData)
+        } else {
+          throw new Error('User not found')
+        }
       }
 
       else{
         throw new Error("Invalid User Token")
       }
     }
-
-
-    return NextResponse.redirect(returnTo || new URL('/', request.url));
-
-  } catch (error:any|unknown) {
+  } 
+  catch (error:any|unknown) {
     console.error("Error processing authentication:", error.message)
     return NextResponse.json({ error: "Authentication failed" }, { status: 500 })
   }

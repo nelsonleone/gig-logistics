@@ -255,3 +255,19 @@ type RadioGroupData = {
     value: string,
     label: string
 }[]
+
+
+
+type AuthUser = {
+    uid: string;
+    firstName: string,
+    lastName: string,
+    phoneNumber: string,
+    email: string,
+    picture: string
+}
+
+
+type IUserNotifications = {
+    
+}

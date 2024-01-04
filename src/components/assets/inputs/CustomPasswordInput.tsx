@@ -19,7 +19,7 @@ interface IProps {
     labelStyles?: string,
     inputStyles?: string,
     containerStyles?: string,
-    required: string
+    required?: string
 }
 
 

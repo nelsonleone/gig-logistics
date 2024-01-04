@@ -13,6 +13,8 @@ export async function POST(request: NextRequest, response: NextResponse) {
   
       if (authorization?.startsWith("Bearer ")) {
         const idToken = authorization.split("Bearer ")[1]
+
+        console.log(idToken,"jjjj")
         const decodedToken = await auth().verifyIdToken(idToken)
   
         if (decodedToken) {
@@ -27,17 +29,23 @@ export async function POST(request: NextRequest, response: NextResponse) {
             maxAge: expiresIn,
             httpOnly: true,
             secure: true,
+            sameSite: process.env.NODE_ENV === "development" ? "none" as "none" : "lax" as "lax"
           }
   
           cookies().set(options)
 
           await firebaseAdmin.firestore().collection('AuthUsers').doc(decodedToken.uid).set({ firstName, lastName, picture, phoneNumber, uid: decodedToken.uid},{ merge: true} )
+            
+          const userDoc = await firebaseAdmin.firestore().collection('AuthUsers').doc(decodedToken.uid).get()
+
+          if (userDoc.exists) {
+            const userData = userDoc.data()
+            return NextResponse.json(userData)
+          } else {
+            throw new Error('User not found')
+          }
         }
       }
-
-  
-      return NextResponse.redirect(returnTo || new URL('/',request.url))
-
     } catch (error:any|unknown) {
       console.error("Error processing authentication:", error.message)
       return NextResponse.json({ error: "Authentication failed" }, { status: 500 })

@@ -15,7 +15,6 @@ export default function SignUpMainCP({ returnTo }: { returnTo:string | string[] 
     const id = "signup-account-type-radio-input"
 
     useEffect(() => {
-        auth.signOut()
         radioValue === SignUpRadioInputValue.Individual ? setActiveTab(0) : setActiveTab(1)
     },[radioValue])
 

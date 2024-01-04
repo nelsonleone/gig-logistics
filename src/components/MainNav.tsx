@@ -17,6 +17,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { inter } from "@/app/fonts";
 import Notification from "./Notification";
 import AuthUserPanel from "./AuthUserPanel";
+import Cookies from 'js-cookie'
+import { AuthUser } from "../../types";
+import { setAuthUserData } from "@/redux/slices/authUser";
+import { asyncWrapper } from "@/helperFns/asyncWrapper";
 
 export default function MainNav(){
 
@@ -26,6 +30,7 @@ export default function MainNav(){
     const dispatch = useAppDispatch()
     const [showDropdownMenu,setShowDropdownMenu] = useState(openNav)
     const [innerWidth,setInnerWidth] = useState<number>(0)
+    const { beenAuthenticated } = useAppSelector(store => store.authUser)
 
 
     const handleClickAway = () => {
@@ -55,14 +60,38 @@ export default function MainNav(){
         }
     }
 
+    const handleAuthentication = async() => {
+        await asyncWrapper(async() => {
+            //Handle Authenticaton
+            const authSessionToken = Cookies.get('authSessionToken')
+            const res = await fetch('/api/login',{
+                method: 'GET',
+                headers: {
+                Cookie: `authSessionToken=${authSessionToken}`,
+                }
+            })
+
+            console.log(authSessionToken)
+
+            
+            const authUserData : AuthUser = await res.json()
+
+            if(authUserData){
+                dispatch(setAuthUserData({...authUserData, beenAuthenticated:true }))
+            }else{
+                throw new Error("Authenticaton Failed")
+            }
+        }, dispatch)
+    }
+
     useEffect(() => {
         window.addEventListener('resize',handleResize)
         setInnerWidth(window.innerWidth)
         dispatch(setOpenNav(window.innerWidth >= Breakpoints.Large))
-
-
+        // handleAuthentication()
         return () => window.removeEventListener('resize',handleResize)
     },[])
+    
 
     useEffect(() => {
         setShowPrimaryNav(openNav)
@@ -173,7 +202,7 @@ export default function MainNav(){
                     null
                 }
                 {
-                    true ?
+                    !beenAuthenticated ?
                     <li>
                         <Link
                             href="/auth/sign_in"

@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import CustomPasswordInput from "@/components/assets/inputs/CustomPasswordInput"
 import Link from "next/link"
 import LoadingEllipse from "@/components/assets/Loaders/LoadingEllipse"
-import { SignInFormData } from "../../../types"
+import { AuthUser, SignInFormData } from "../../../types"
 import { roboto_slab } from "@/app/fonts"
 import ContinueWithGoogleBtn from "./ContinueWithGoogleBtn"
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
@@ -16,10 +16,13 @@ import { AlertSeverity } from "@/enums"
 import { asyncWrapper } from "@/helperFns/asyncWrapper"
 import customFirebaseError from "@/helperFns/CustomFirebaseAuthError"
 import { handleSignInWithPopUp } from "@/helperFns/handleSignInWithPopUp"
+import { useRouter } from "next/navigation"
+import { setAuthUserData } from "@/redux/slices/authUser"
 
 export default function SignInMainCP({ returnTo }: { returnTo:string | string[] | undefined }){
 
     const dispatch = useAppDispatch()
+    const router = useRouter()
     const { handleSubmit, formState: { isSubmitting, errors }, control } = useForm<SignInFormData>({
         defaultValues: {
             email: "",
@@ -36,21 +39,28 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
             async() => {
                 try{
                     const userCred = await signInWithEmailAndPassword(auth,email,password)
-                    await fetch('/api/login',{
+                    const res = await fetch('/api/login',{
                         method: "POST",
                         headers: {
                           Authorization: `Bearer ${await userCred.user.getIdToken()}`,
                         },
                         body: JSON.stringify(returnTo)
                     })
+
+                    const authUserData : AuthUser = await res.json()
+
+                    dispatch(setAuthUserData({ ...authUserData, beenAuthenticated: true }))
         
                     dispatch(setShowAlert({
                         mssg: "Successfully Signed In",
                         severity: AlertSeverity.SUCCESS
                     }))
+
+                    router.push(returnTo as string || "/")
                 }
         
                 catch(error:any|unknown){
+                    console.log(error.code)
                     dispatch(setShowAlert({
                         mssg: customFirebaseError(error.code) || "Authentication Failed",
                         severity: AlertSeverity.ERROR

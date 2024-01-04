@@ -2,24 +2,34 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AuthUser, IUserNotifications } from "../../../types";
 
 interface IinitState extends AuthUser {
-    notification: IUserNotifications[]
+    notifications: IUserNotifications[],
+    beenAuthenticated: boolean
 }
 
 const initialState : IinitState = {
-    id: "",
+    uid: "",
     email: "",
     picture: "",
-    given_name: "",
-    family_name: "",
-    notification: []
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    notifications: [],
+    beenAuthenticated: false
 }
 
 const authUser = createSlice({
     name: "authUser",
     initialState,
     reducers: {
-        setAuthUserData: (state, { payload }:PayloadAction<Partial<AuthUser>>) => {
-            state = {...state,...payload }
+        setAuthUserData: (state, { payload }:PayloadAction<Partial<IinitState>>) => {
+            state.beenAuthenticated = payload.beenAuthenticated || state.beenAuthenticated;
+            state.firstName = payload.firstName || state.firstName;
+            state.lastName = payload.lastName || state.lastName;
+            state.email = payload.email || state.email;
+            state.phoneNumber = payload.phoneNumber || state.phoneNumber;
+            state.picture = payload.picture || state.picture;
+            state.uid = payload.uid || state.uid;
+            state.notifications = payload.notifications || [];
         }
     }
 })

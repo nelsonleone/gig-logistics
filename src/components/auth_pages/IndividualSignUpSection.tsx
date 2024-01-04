@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm, useWatch } from "react-hook-form"
-import { SignUpFormData } from "../../../types"
+import { AuthUser, SignUpFormData } from "../../../types"
 import LoadingEllipse from "../assets/Loaders/LoadingEllipse"
 import CustomTextInput from "../assets/inputs/CustomTextInput"
 import CustomPhoneInput from "../assets/inputs/CustomPhoneInput"
@@ -16,6 +16,8 @@ import { handleSignInWithPopUp } from "@/helperFns/handleSignInWithPopUp"
 import ContinueWithGoogleBtn from "./ContinueWithGoogleBtn"
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from "next/navigation"
+import { setAuthUserData } from "@/redux/slices/authUser"
 
 
 const formSchema = Yup.object().shape({
@@ -44,8 +46,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
 
     const { handleSubmit, formState: { isSubmitting, errors }, control,  } = useForm<SignUpFormData>({ resolver: yupResolver(formSchema) })
     const dispatch = useAppDispatch()
-
-    console.log(returnTo)
+    const router = useRouter()
 
     const handleSignUp : SubmitHandler<SignUpFormData> = async(data) => {
         const { email, password, firstName, lastName, phoneNumber, confirmPassword } = data;
@@ -60,7 +61,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
 
                     const userCred = await createUserWithEmailAndPassword(auth,email,password)
                     const picture = auth.currentUser?.photoURL;
-                    await fetch('/api/signup',{
+                    const res = await fetch('/api/signup',{
                         method: "POST",
                         headers: {
                           Authorization: `Bearer ${await userCred.user.getIdToken()}`,
@@ -73,11 +74,17 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                             returnTo
                         })
                     })
+
+                    const authUserData : AuthUser = await res.json()
         
                     dispatch(setShowAlert({
                         mssg: "Successfully Signed In",
                         severity: AlertSeverity.SUCCESS
                     }))
+
+                    dispatch(setAuthUserData({ ...authUserData, beenAuthenticated: true }))
+
+                    router.push(returnTo as string || "/")
                 }
         
                 catch(error:any|unknown){

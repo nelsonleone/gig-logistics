@@ -17,7 +17,7 @@ export default function CustomAlert(){
 
         const timer = setTimeout(() => {
             dispatch(setHideAlert())
-        }, 4000)
+        }, 3000)
 
         return () => clearTimeout(timer)
     },[showAlert])
