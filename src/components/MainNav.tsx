@@ -17,12 +17,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { inter } from "@/app/fonts";
 import Notification from "./Notification";
 import AuthUserPanel from "./AuthUserPanel";
-import Cookies from 'js-cookie'
 import { AuthUser } from "../../types";
 import { setAuthUserData } from "@/redux/slices/authUser";
 import { asyncWrapper } from "@/helperFns/asyncWrapper";
 
-export default function MainNav(){
+export default function MainNav({ authSessionToken }: { authSessionToken: string | undefined }){
 
     const { openNav } = useAppSelector(store => store.openNav)
     const pathName = usePathname()
@@ -63,12 +62,11 @@ export default function MainNav(){
     const handleAuthentication = async() => {
         await asyncWrapper(async() => {
             //Handle Authenticaton
-            const authSessionToken = Cookies.get('authSessionToken')
             const res = await fetch('/api/login',{
-                method: 'GET',
+                method: 'POST',
                 headers: {
-                Cookie: `authSessionToken=${authSessionToken}`,
-                }
+                    Authorization: `Bearer ${authSessionToken}`,
+                },
             })
 
             console.log(authSessionToken)
@@ -76,7 +74,7 @@ export default function MainNav(){
             
             const authUserData : AuthUser = await res.json()
 
-            if(authUserData){
+            if(authUserData && authUserData.firstName){
                 dispatch(setAuthUserData({...authUserData, beenAuthenticated:true }))
             }else{
                 throw new Error("Authenticaton Failed")
@@ -88,7 +86,7 @@ export default function MainNav(){
         window.addEventListener('resize',handleResize)
         setInnerWidth(window.innerWidth)
         dispatch(setOpenNav(window.innerWidth >= Breakpoints.Large))
-        // handleAuthentication()
+        handleAuthentication()
         return () => window.removeEventListener('resize',handleResize)
     },[])
     

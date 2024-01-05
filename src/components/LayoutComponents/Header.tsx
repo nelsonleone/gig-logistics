@@ -5,7 +5,7 @@ import Logo from "../assets/Logo";
 import MenuIcon from "../assets/MenuIcon";
 import MainNav from "../MainNav";
 
-export default function Header(){
+export default function Header({ authSessionToken }: { authSessionToken:string | undefined }){
 
     const pathName = usePathname()
 
@@ -14,7 +14,7 @@ export default function Header(){
         <header className="bg-slate-50 w-full py-4 px-6 h-20 fixed top-0 z-50 flex justify-between items-center xl:px-10 lg:py-12 drop-shadow-md">
             <MenuIcon />
             <Logo />
-            <MainNav />
+            <MainNav authSessionToken={authSessionToken} />
         </header>
         :
         null

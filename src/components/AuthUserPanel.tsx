@@ -50,7 +50,7 @@ export default function AuthUserPanel(){
                                 const Icon = val.icon;
                                 return(
                                     <MenuItem key={val.text} sx={{ p: 0}} className="p-0">
-                                        <Link href={val.link} className={`${inter.className} m-0 p-2 w-full hover:bg-gray-100 focus:bg-gray-100 transition duration-200 ease-linear rounded-sm flex items-center text-gray-800`}>
+                                        <Link href={val.link} className={`${inter.className} m-0 py-2 px-3 w-full hover:bg-gray-100 focus:bg-gray-100 transition duration-200 ease-linear rounded-sm flex items-center text-gray-800`}>
                                             <ListItemIcon>
                                                 <Icon size={20} />
                                             </ListItemIcon>

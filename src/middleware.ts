@@ -10,7 +10,11 @@ export async function middleware(request: NextRequest, response: NextResponse) {
     return NextResponse.redirect(new URL(`/auth/sign_in?returnTo=${pathname}`, request.url))
   }
 
-  const responseAPI = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
+  if (session && pathname.match("/auth/sign_in") || session && pathname.match("/auth/create_account")) {
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/` || new URL("/", request.url))
+  }
+
+  const responseAPI = await fetch(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/api/login`, {
     method: 'GET',
     headers: {
       Cookie: `authSessionToken=${session?.value}`,
@@ -19,10 +23,6 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 
   if (responseAPI.status !== 200) {
     return NextResponse.redirect(new URL(`/auth/sign_in?returnTo=${pathname}`, request.url))
-  }
-
-  if(responseAPI.status === 200 && pathname.startsWith("/auth/sign_in") || responseAPI.status === 200 && pathname.startsWith("/auth/create_account")){
-    return NextResponse.redirect(process.env.NEXT_PUBLIC_BASE_APP_URL || new URL('/',request.url))
   }
 
   return NextResponse.next()

@@ -28,8 +28,8 @@ export async function POST(request: NextRequest, response: NextResponse) {
             value: sessionCookie,
             maxAge: expiresIn,
             httpOnly: true,
-            secure: true,
-            sameSite: process.env.NODE_ENV === "development" ? "none" as "none" : "lax" as "lax"
+            secure: process.env.NODE_ENV === "development",
+            sameSite: process.env.NODE_ENV === "development" ? "lax" as "lax" : "none" as "none"
           }
   
           cookies().set(options)

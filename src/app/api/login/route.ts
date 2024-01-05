@@ -1,3 +1,4 @@
+import { getUserFromDB } from "@/helperFns/getUserFromDB";
 import { firebaseAdmin, initializeFirebaseAdmin } from "@/lib/firebase/firebase-admin-config";
 import { auth } from "firebase-admin";
 import { cookies, headers } from "next/headers";
@@ -24,20 +25,13 @@ export async function POST(request: NextRequest, response: NextResponse) {
           value: sessionCookie,
           maxAge: expiresIn,
           httpOnly: true,
-          secure: true,
-          sameSite: "lax" as "lax"
+          secure: process.env.NODE_ENV === "development",
+          sameSite: process.env.NODE_ENV === "development" ? "lax" as "lax" : "none" as "none"
         }
 
         cookies().set(options)
 
-        const userDoc = await firebaseAdmin.firestore().collection('AuthUsers').doc(decodedToken.uid).get()
-
-        if (userDoc.exists) {
-          const userData = userDoc.data()
-          return NextResponse.json(userData)
-        } else {
-          throw new Error('User not found')
-        }
+        return NextResponse.json(await getUserFromDB(decodedToken.uid))
       }
 
       else{
