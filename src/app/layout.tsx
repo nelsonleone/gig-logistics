@@ -5,8 +5,8 @@ import type { Metadata } from 'next'
 import Footer from '@/components/LayoutComponents/Footer'
 import { inter } from './fonts'
 import CustomAlert from '@/components/assets/PopUps/CustomAlert'
-import { CookiesProvider } from 'next-client-cookies/server';
 import { cookies } from 'next/headers'
+import AuthUserHeaderSection from '@/components/AuthUserHeaderSection'
 
 
 export const metadata: Metadata = {
@@ -31,7 +31,9 @@ export default function RootLayout({
         <CustomAppStoreProvider>
           <body className={`${inter.className} bg-[#f4f5f6] scroll-smooth overflow-x-hidden`}>
             <CustomAlert />
-            <Header authSessionToken={authSessionToken} />
+            <Header authSessionToken={authSessionToken}>
+              <AuthUserHeaderSection />
+            </Header>
             {children}
             <Footer />
           </body>

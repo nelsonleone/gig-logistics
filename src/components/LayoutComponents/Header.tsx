@@ -4,8 +4,9 @@ import { usePathname } from "next/navigation";
 import Logo from "../assets/Logo";
 import MenuIcon from "../assets/MenuIcon";
 import MainNav from "../MainNav";
+import { ReactNode } from "react";
 
-export default function Header({ authSessionToken }: { authSessionToken:string | undefined }){
+export default function Header({ authSessionToken, children }: { authSessionToken:string | undefined, children: ReactNode }){
 
     const pathName = usePathname()
 
@@ -15,6 +16,7 @@ export default function Header({ authSessionToken }: { authSessionToken:string |
             <MenuIcon />
             <Logo />
             <MainNav authSessionToken={authSessionToken} />
+            {children}
         </header>
         :
         null

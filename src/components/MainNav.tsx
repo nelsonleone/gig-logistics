@@ -20,6 +20,7 @@ import AuthUserPanel from "./AuthUserPanel";
 import { AuthUser } from "../../types";
 import { setAuthUserData } from "@/redux/slices/authUser";
 import { asyncWrapper } from "@/helperFns/asyncWrapper";
+import ReactLoading from 'react-loading';
 
 export default function MainNav({ authSessionToken }: { authSessionToken: string | undefined }){
 
@@ -29,6 +30,7 @@ export default function MainNav({ authSessionToken }: { authSessionToken: string
     const dispatch = useAppDispatch()
     const [showDropdownMenu,setShowDropdownMenu] = useState(openNav)
     const [innerWidth,setInnerWidth] = useState<number>(0)
+    const [checkingPersistedAuthState,setCheckingPersistedAuthState] = useState(true)
     const { beenAuthenticated } = useAppSelector(store => store.authUser)
 
 
@@ -59,34 +61,14 @@ export default function MainNav({ authSessionToken }: { authSessionToken: string
         }
     }
 
-    const handleAuthentication = async() => {
-        await asyncWrapper(async() => {
-            //Handle Authenticaton
-            const res = await fetch('/api/login',{
-                method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${authSessionToken}`,
-                },
-            })
 
-            console.log(authSessionToken)
 
-            
-            const authUserData : AuthUser = await res.json()
 
-            if(authUserData && authUserData.firstName){
-                dispatch(setAuthUserData({...authUserData, beenAuthenticated:true }))
-            }else{
-                throw new Error("Authenticaton Failed")
-            }
-        }, dispatch)
-    }
 
     useEffect(() => {
         window.addEventListener('resize',handleResize)
         setInnerWidth(window.innerWidth)
         dispatch(setOpenNav(window.innerWidth >= Breakpoints.Large))
-        handleAuthentication()
         return () => window.removeEventListener('resize',handleResize)
     },[])
     
@@ -95,6 +77,8 @@ export default function MainNav({ authSessionToken }: { authSessionToken: string
         setShowPrimaryNav(openNav)
         setShowDropdownMenu(window.innerWidth >= Breakpoints.Large)
     },[openNav])
+
+    
 
     useEffect(() => {
         if(window.innerWidth < Breakpoints.Large){
@@ -200,7 +184,11 @@ export default function MainNav({ authSessionToken }: { authSessionToken: string
                     null
                 }
                 {
-                    !beenAuthenticated ?
+                    checkingPersistedAuthState &&
+                    <ReactLoading type="spin" color="#c20808" width={35} height={35}  />
+                }
+                {
+                    !beenAuthenticated && !checkingPersistedAuthState &&
                     <li>
                         <Link
                             href="/auth/sign_in"
@@ -209,15 +197,6 @@ export default function MainNav({ authSessionToken }: { authSessionToken: string
                         Sign In
                         </Link>
                     </li>
-                    :
-                    <>
-                      <li className="flex gap-4 xl:gap-8 items-center xl:ms-3">
-                        <>
-                          <Notification />
-                          <AuthUserPanel />
-                        </>
-                      </li>
-                    </>
                 }
             </ul>
         </nav>
