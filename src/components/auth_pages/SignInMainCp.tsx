@@ -60,7 +60,6 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
                 }
         
                 catch(error:any|unknown){
-                    console.log(error.code)
                     dispatch(setShowAlert({
                         mssg: customFirebaseError(error.code) || "Authentication Failed",
                         severity: AlertSeverity.ERROR

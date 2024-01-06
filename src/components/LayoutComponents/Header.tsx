@@ -5,6 +5,8 @@ import Logo from "../assets/Logo";
 import MenuIcon from "../assets/MenuIcon";
 import MainNav from "../MainNav";
 import { ReactNode } from "react";
+import { inter } from "@/app/fonts";
+import { handleScrollIntoView } from "@/helperFns/handleScrollIntoView";
 
 export default function Header({ authSessionToken, children }: { authSessionToken:string | undefined, children: ReactNode }){
 
@@ -16,7 +18,19 @@ export default function Header({ authSessionToken, children }: { authSessionToke
             <MenuIcon />
             <Logo />
             <MainNav authSessionToken={authSessionToken} />
-            {children}
+            <div className="flex gap-4">
+                {
+                    pathName === "/" ?
+                        <button
+                            onClick={handleScrollIntoView}
+                            className={`${inter.className} hidden lg:block red-button-bright font-inter transition-opacity font-medium hover:shadow-inner hover:opacity-90 focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent h-[3.2em] text-sm text-white py-2 px-4 hover:bg-red-700`}
+                            >Track & Find
+                        </button>
+                    :
+                    null
+                }
+                {children}
+            </div>
         </header>
         :
         null

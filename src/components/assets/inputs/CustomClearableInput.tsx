@@ -13,14 +13,14 @@ interface IProps {
 
 export default function ClearableInput({ placeholder, setValue, id, value, containerStyles, inputStyles }:IProps){
     return(
-        <div className={`relative min-h-[3.2em] ${containerStyles} w-full rounded-lg drop-shadow-none `}>
+        <div className={`bg-gray-100 relative min-h-[3.2em] } w-full rounded-lg overflow-hidden ${containerStyles}`}>
             <input 
                type="text" 
                placeholder={placeholder} 
                onChange={(e) => setValue(e.target.value)}
                value={value} 
                id={id}
-               className={`bg-gray-100 focus:border focus:border-emerald-700 rounded-lg focus:outline-none focus:outline-0  absolute w-full h-full top-0 bottom-0 left-0 right-0 m-auto py-6 px-4  ${inputStyles}`}
+               className={`focus:border focus:border-emerald-700 rounded-lg focus:outline-none focus:outline-0  absolute w-full h-full top-0 bottom-0 left-0 right-0 m-auto py-6 px-4  ${inputStyles}`}
             />
             {
                 value &&

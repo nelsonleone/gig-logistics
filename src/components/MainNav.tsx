@@ -14,13 +14,7 @@ import DropDownLinks from "./DropdownLinks";
 import { AiOutlineClose } from 'react-icons/ai'
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { inter } from "@/app/fonts";
-import Notification from "./Notification";
-import AuthUserPanel from "./AuthUserPanel";
-import { AuthUser } from "../../types";
-import { setAuthUserData } from "@/redux/slices/authUser";
-import { asyncWrapper } from "@/helperFns/asyncWrapper";
-import ReactLoading from 'react-loading';
+import { handleScrollIntoView } from "@/helperFns/handleScrollIntoView";
 
 export default function MainNav({ authSessionToken }: { authSessionToken: string | undefined }){
 
@@ -30,7 +24,6 @@ export default function MainNav({ authSessionToken }: { authSessionToken: string
     const dispatch = useAppDispatch()
     const [showDropdownMenu,setShowDropdownMenu] = useState(openNav)
     const [innerWidth,setInnerWidth] = useState<number>(0)
-    const [checkingPersistedAuthState,setCheckingPersistedAuthState] = useState(true)
     const { beenAuthenticated } = useAppSelector(store => store.authUser)
 
 
@@ -44,15 +37,6 @@ export default function MainNav({ authSessionToken }: { authSessionToken: string
         window.innerWidth >= Breakpoints.Large ? dispatch(setOpenNav(true)) : dispatch(setOpenNav(false))
     }
 
-    const handleScrollIntoView = () => {
-        const trackArea = document.getElementById('#track')
-
-        if(trackArea){
-            const yOffset = -120;
-            const y = trackArea.getBoundingClientRect().top +  window.scrollY + yOffset ;
-            window.scrollTo({ top: y, behavior: 'smooth' })
-        }
-    }
 
     const handleTrackButtonClick = () => {
         handleScrollIntoView()
@@ -60,8 +44,6 @@ export default function MainNav({ authSessionToken }: { authSessionToken: string
             dispatch(setOpenNav(false))
         }
     }
-
-
 
 
 
@@ -88,7 +70,7 @@ export default function MainNav({ authSessionToken }: { authSessionToken: string
 
 
     return(
-        <nav className="flex justify-between items-center xl:basis-[80%]" id="main-nav">
+        <nav className="flex justify-between items-center xl:w-[50%]" id="main-nav">
             <AnimatePresence>
             {
                 showPrimaryNav &&
@@ -167,38 +149,6 @@ export default function MainNav({ authSessionToken }: { authSessionToken: string
                 </ClickAwayListener>
             }
             </AnimatePresence>
-
-            <ul 
-              className="relative items-center self-center lg:flex justify-between gap-3">
-                {
-                    pathName === "/" ?
-                    <li 
-                        className="hidden lg:block">
-                        <button
-                            onClick={handleScrollIntoView}
-                            className={`${inter.className} red-button-bright font-inter transition-opacity font-medium hover:shadow-inner hover:opacity-90 focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent text-white py-3 h-[2.7em] px-4 hover:bg-red-700`}
-                            >Track & Find
-                        </button>
-                    </li>
-                    :
-                    null
-                }
-                {
-                    checkingPersistedAuthState &&
-                    <ReactLoading type="spin" color="#c20808" width={35} height={35}  />
-                }
-                {
-                    !beenAuthenticated && !checkingPersistedAuthState &&
-                    <li>
-                        <Link
-                            href="/auth/sign_in"
-                            className={`${inter.className} red-button-bright transition relative py-3 w-20 px-4 font-medium hover:shadow-inner hover:opacity-90 focus:outline-none focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent`}
-                            >
-                        Sign In
-                        </Link>
-                    </li>
-                }
-            </ul>
         </nav>
     )
 }

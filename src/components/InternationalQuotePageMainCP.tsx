@@ -44,8 +44,6 @@ function InternationalQuotePageMainCP(){
 
     const handleIntlQuoteDataSubmit : SubmitHandler<InternationalQuoteObj> = async(data) => {
 
-        console.log(data.quote_packageType)
-
         try{  
             setGettingQuote(true)
             await new Promise((resolve) => setTimeout(resolve, 3000))

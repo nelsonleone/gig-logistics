@@ -17,8 +17,6 @@ export default function SignIn({ params, searchParams }:IPageProps){
     const { returnTo } = searchParams;
     const authSessionToken = cookies().get('authSessionToken')?.value;
 
-    console.log(authSessionToken)
-
     if(authSessionToken){
         redirect('/')
     }
