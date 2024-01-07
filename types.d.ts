@@ -1,3 +1,4 @@
+import { XpressDropOffDeliveryType } from "@/enums";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { PortableTextBlock, TypedObject } from "@portabletext/types"
 
@@ -270,4 +271,37 @@ type AuthUser = {
 
 type IUserNotifications = {
     
+}
+
+
+
+// Xpress DropOff
+
+interface IXpressSenderInfo {
+    firstName: string,
+    lastName: string,
+    phoneNumber: string,
+    email: string,
+    location: string
+}
+
+interface IXpressReceiverInfo {
+    fullName: string,
+    phoneNumber: string,
+    deliveryOptionType: XpressDropOffDeliveryType,
+    deliveryOption: {
+        homeDelivery: {
+            address: string
+        },
+        terminalPickup: {
+            stateOrCity: string,
+            closestGIGLCenter: string
+        }
+    } 
+}
+
+
+type XpressDropOffInfo = {
+    sender: IXpressSenderInfo
+    receiver: IXpressReceiverInfo
 }

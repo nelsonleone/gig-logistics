@@ -28,13 +28,14 @@ export default function CODWalletForm(props:IProps){
                 {
                     codWalletInputFormData.map((val) => {
                         return val.name === COD_wallet_input_names.phoneNumber ?
-                        <CustomPhoneInput label="Phone Number:" control={control} name={val.name} />
+                        <CustomPhoneInput className="" id="cod-phoneInput" label="Phone Number:" control={control} name={val.name} />
                         :
                         val.name === COD_wallet_input_names.gender ?
                         <CustomBasicSelect control={control} />
                         :
                         val.name !== COD_wallet_input_names.gender && val.name !== COD_wallet_input_names.phoneNumber ?
                         <CustomTextInput 
+                           id={`cod-${val.name}`}
                            required="This Field Is Required"
                            inputType={val.name === COD_wallet_input_names.email ? "email" : "text"} 
                            control={control} placeholder="" 

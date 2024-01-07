@@ -106,7 +106,8 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
         <form onSubmit={handleSubmit(handleSignUp)} className="w-[92%] mx-auto mt-8">
             <div className="md:flex justify-between gap-8">
                 <CustomTextInput 
-                    name="firstName" 
+                    name="firstName"
+                    id="signup-firstName" 
                     control={control} 
                     placeholder="First Name"
                     label=""
@@ -116,6 +117,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                 />
                 <CustomTextInput 
                     name="lastName" 
+                    id="signup-lastName" 
                     control={control} 
                     placeholder="Last Name"
                     label=""
@@ -127,6 +129,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
 
             <CustomTextInput 
                 name="email" 
+                id="signup-email" 
                 control={control} 
                 placeholder="Email Address"
                 label=""
@@ -136,12 +139,13 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                 containerStyles="w-full"
             />
 
-            <CustomPhoneInput className="signup-phoneInput" control={control} error={errors.phoneNumber?.message} name="phoneNumber" />
+            <CustomPhoneInput id="signup-phoneInput" className="signup-phoneInput" control={control} error={errors.phoneNumber?.message} name="phoneNumber" />
 
             <CustomPasswordInput
                 name="password" 
                 control={control} 
                 placeholder="Password"
+                id="signup-password" 
                 label=""
                 error={errors.password?.message}
                 inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
@@ -152,6 +156,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                 name="confirmPassword" 
                 placeholder="Confirm Password"
                 label=""
+                id="signup-cpassword" 
                 error={errors.confirmPassword?.message}
                 control={control}
                 inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"

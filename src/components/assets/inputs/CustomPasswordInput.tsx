@@ -19,7 +19,8 @@ interface IProps {
     labelStyles?: string,
     inputStyles?: string,
     containerStyles?: string,
-    required?: string
+    required?: string,
+    id: string
 }
 
 
@@ -35,7 +36,8 @@ export default function CustomPasswordInput(props:IProps){
         labelStyles,
         inputStyles,
         containerStyles,
-        required
+        required,
+        id
     } = props;
 
     const [showPassword,setShowPassword] = useState(false)
@@ -57,6 +59,7 @@ export default function CustomPasswordInput(props:IProps){
                         <input 
                             type={!showPassword ? "password" : "text"} 
                             placeholder={placeholder || label} 
+                            id={id}
                             aria-invalid={error ? "true" : "false"} 
                             {...field}
                             value={value} 

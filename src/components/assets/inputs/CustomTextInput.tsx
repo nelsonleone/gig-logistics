@@ -3,12 +3,12 @@
 import { BiSolidMessageAltError } from "react-icons/bi";
 import { inter } from '@/app/fonts';
 import { Control, Controller } from "react-hook-form";
-import { ICODWalletFormValues, SignInFormData, SignUpFormData } from "../../../../types";
+import { ICODWalletFormValues, IXpressSenderInfo, SignInFormData, SignUpFormData } from "../../../../types";
 
 interface IProps {
-    error: string | undefined,
+    error?: string | undefined,
     label: string,
-    name:  keyof SignUpFormData | keyof SignInFormData | keyof ICODWalletFormValues,
+    name:  keyof SignUpFormData | keyof SignInFormData | keyof ICODWalletFormValues | keyof IXpressSenderInfo,
     value?: string | number,
     placeholder: string,
     inputType?: string,
@@ -16,7 +16,9 @@ interface IProps {
     labelStyles?: string,
     inputStyles?: string,
     containerStyles?: string,
-    required?: string
+    required?: string,
+    readOnly?: boolean,
+    id: string
 }
 
 export default function CustomTextInput(props:IProps){
@@ -32,14 +34,16 @@ export default function CustomTextInput(props:IProps){
         labelStyles,
         inputStyles,
         containerStyles,
-        required
+        required,
+        readOnly,
+        id
     } = props;
 
     return(
         <div className={`mb-8 ${inter.className} ${containerStyles}`}>
             {
                 label && label.length ?
-                <label htmlFor={name} className={labelStyles}>{label}:</label>
+                <label htmlFor={id} className={labelStyles}>{label}:</label>
                 :
                 null
             }
@@ -52,8 +56,10 @@ export default function CustomTextInput(props:IProps){
                     type={inputType || "text"} 
                     placeholder={placeholder || label} 
                     aria-invalid={error ? "true" : "false"} 
+                    readOnly={readOnly}
                     {...field}
-                    value={value} 
+                    value={value}
+                    id={id}
                     className={`${inputStyles} ${error ? "focus:outline-red-500" : ""}`}
                 />}
             />

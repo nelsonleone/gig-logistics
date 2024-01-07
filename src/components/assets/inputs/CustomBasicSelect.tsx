@@ -2,7 +2,7 @@ import { Controller, Control } from 'react-hook-form'
 import { ICODWalletFormValues } from '../../../../types'
 
 interface IProps {
-    control: Control<ICODWalletFormValues,undefined>
+    control?: Control<ICODWalletFormValues,undefined>
 }
 
 export default function CustomBasicSelect(props:IProps){

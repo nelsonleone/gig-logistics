@@ -86,6 +86,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
                    control={control} 
                    placeholder="Email Address"
                    label=""
+                   id="signin-email" 
                    error={errors.email?.message}
                    required="Please Enter A Valid Email"
                    containerStyles="w-full"
@@ -95,6 +96,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
                 <CustomPasswordInput
                     name="password" 
                     control={control} 
+                    id="signin-password" 
                     placeholder="Password"
                     required="Password field is required"
                     label=""
