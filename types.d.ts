@@ -4,6 +4,11 @@ import { PortableTextBlock, TypedObject } from "@portabletext/types"
 
 
 // //
+type LabelValueObj = {
+    label: string,
+    value: string
+}[]
+
 interface DataWithHTI {
     title: string,
     text: string,
@@ -252,10 +257,7 @@ type SignUpFormData = {
 // 
 
 
-type RadioGroupData = {
-    value: string,
-    label: string
-}[]
+interface RadioGroupData extends LabelValueObj {}
 
 
 

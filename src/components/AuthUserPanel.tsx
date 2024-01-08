@@ -4,13 +4,17 @@ import { inter } from "@/app/fonts";
 import { authUserMenuLinkData } from "@/componentsData/authUserMenuLinkData";
 import { ListItemIcon, Menu, MenuItem, MenuList } from "@mui/material";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaSortDown, FaUserCircle } from "react-icons/fa";
+import { AuthUser } from "../../types";
+import { useAppDispatch } from "@/redux/customHooks";
+import { setAuthUserData } from "@/redux/slices/authUser";
 
-export default function AuthUserPanel(){
+export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser }){
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
     const open = Boolean(anchorEl)
+    const dispatch = useAppDispatch()
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget)
@@ -18,6 +22,12 @@ export default function AuthUserPanel(){
     const handleClose = () => {
       setAnchorEl(null)
     }
+
+    useEffect(() => {
+        if(authUserData && authUserData?.uid){
+            dispatch(setAuthUserData({ beenAuthenticated: true, ...authUserData }))
+        }
+    },[authUserData?.uid])
 
     return(
         <div>

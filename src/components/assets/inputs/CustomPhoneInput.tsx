@@ -7,20 +7,22 @@ import { BiSolidMessageAltError } from 'react-icons/bi'
 interface IProps {
     control?: Control<any,undefined>,
     name: string,
-    label: string,
+    label?: string,
     error?: string,
     className: string,
     id: string,
     readonly?: boolean,
-    value?: string
+    value?: string,
+    containerStyles?: string,
+    labelStyles?: string
 }
 
-function CustomPhoneInput({ control, name, label, error, className, id, value, readonly }:IProps) {
+function CustomPhoneInput({ control, name, label, error, className, id, value, readonly,labelStyles, containerStyles }:IProps) {
   return (
-        <div>
+        <div className={containerStyles}>
             {
                 label &&
-                <label htmlFor={id} className='cod_form_input_label'>Phone Number:</label>
+                <label htmlFor={id} className={`cod_form_input_label ${labelStyles}`}>Phone Number</label>
             }
             {
                 readonly ?
@@ -30,7 +32,7 @@ function CustomPhoneInput({ control, name, label, error, className, id, value, r
                     name={name as keyof object}
                     control={control || undefined}
                     render={({ field }) =>
-                        <PhoneInput id={id} value={value} onChange={() => {}} defaultCountry='US' className={`${classes.phoneInput} ${className} mb-8`} />
+                        <PhoneInput id={id} {...field } value={value} onChange={() => {}} defaultCountry='US' className={`${classes.phoneInput} ${className} mb-8`} />
                     }
                 />
             }

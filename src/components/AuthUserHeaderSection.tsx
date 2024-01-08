@@ -10,6 +10,7 @@ async function AuthUserHeaderSection() {
 
     const authUserData = await getPersistedAuthUser(authSessionToken)
 
+    console.log(authUserData)
     
     return (
         <nav>
@@ -17,7 +18,7 @@ async function AuthUserHeaderSection() {
                 authUserData ?
                 <div className="flex gap-4 xl:gap-8 items-center xl:ms-3">
                     <Notification />
-                    <AuthUserPanel />
+                    <AuthUserPanel authUserData={authUserData} />
                 </div>
                 :
                 <SignInLink authUserData={authUserData} />

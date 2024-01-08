@@ -71,6 +71,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                             lastName,
                             phoneNumber,
                             picture,
+                            email,
                             returnTo
                         })
                     })

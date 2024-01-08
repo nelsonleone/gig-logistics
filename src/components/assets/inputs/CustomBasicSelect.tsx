@@ -1,29 +1,53 @@
 import { Controller, Control } from 'react-hook-form'
-import { ICODWalletFormValues } from '../../../../types'
+import { RadioGroupData } from '../../../../types';
+import { BiSolidMessageAltError } from 'react-icons/bi';
+
+interface ISelectOptionsData extends RadioGroupData {}
 
 interface IProps {
-    control?: Control<ICODWalletFormValues,undefined>
+    control?: Control<any,undefined> ,
+    label?: string,
+    name: string,
+    id: string,
+    labelStyles?: string,
+    containerStyles?: string,
+    selectStyles?: string,
+    error?: string,
+    selectOptionsData: ISelectOptionsData
 }
 
 export default function CustomBasicSelect(props:IProps){
 
-    const { control } = props;
+    const { control, selectOptionsData, id, error, name, labelStyles, label, containerStyles, selectStyles } = props;
 
     return(
-        <div>
-            <label htmlFor='gender' className="cod_form_input_label">Gender</label>
+        <div className={containerStyles}>
+            {
+                label &&
+                <label htmlFor={id} className={`basic_custom_select_label ${labelStyles}`}>{label}</label>
+            }
             <Controller
-                name="gender"
+                name={name}
                 control={control}
                 rules={{required:"This field is required"}}
                 render={({ field }) => <select 
                 {...field} 
-                className="block w-full border border-gray-300 rounded-md p-3 bg-transparent mb-8 lg:p-[.8em]"
+                aria-invalid={error ? "true" : "false"}
+                className={`block w-full border border-gray-300 rounded-md p-3 bg-transparent mb-8 lg:p-[.8em] ${selectStyles}`}
                 >
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    {
+                        selectOptionsData.map(val => {
+                            return(
+                                <option value={val.value}>{val.label}</option>
+                            )
+                        })
+                    }
                 </select>}
             />
+            {
+                error &&
+                <p role="alert" className="text-red-500 text-sm mt-3"><BiSolidMessageAltError />{error}</p>
+            }
         </div>
     )
 }

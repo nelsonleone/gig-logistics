@@ -25,3 +25,8 @@
 .phoneInput select {
     @apply border border-gray-300 rounded-md font-inter;
 }
+
+
+.phoneInput-xpressDropOff {
+  --PhoneInputCountryFlag-height: 2em;
+}

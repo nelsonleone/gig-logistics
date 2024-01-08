@@ -18,13 +18,15 @@ interface IProps {
     containerStyles?: string,
     required?: string,
     readOnly?: boolean,
-    id: string
+    id: string,
+    defaultValue?: string
 }
 
 export default function CustomTextInput(props:IProps){
 
     const {
         error,
+        defaultValue,
         control,
         label,
         placeholder,
@@ -43,7 +45,7 @@ export default function CustomTextInput(props:IProps){
         <div className={`mb-8 ${inter.className} ${containerStyles}`}>
             {
                 label && label.length ?
-                <label htmlFor={id} className={labelStyles}>{label}:</label>
+                <label htmlFor={id} className={labelStyles}>{label}</label>
                 :
                 null
             }
@@ -58,6 +60,7 @@ export default function CustomTextInput(props:IProps){
                     aria-invalid={error ? "true" : "false"} 
                     readOnly={readOnly}
                     {...field}
+                    defaultValue={defaultValue}
                     value={value}
                     id={id}
                     className={`${inputStyles} ${error ? "focus:outline-red-500" : ""}`}

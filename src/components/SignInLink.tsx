@@ -1,22 +1,13 @@
 "use client"
 
 import { inter } from "@/app/fonts";
-import { useAppDispatch, useAppSelector } from "@/redux/customHooks";
+import { useAppSelector } from "@/redux/customHooks";
 import Link from "next/link";
 import { AuthUser } from "../../types";
-import { useEffect } from "react";
-import { setAuthUserData } from "@/redux/slices/authUser";
 
 export default function SignInLink({ authUserData }: { authUserData:AuthUser }){
 
     const { beenAuthenticated } = useAppSelector(store => store.authUser)
-    const dispatch = useAppDispatch()
-
-    useEffect(() => {
-        if(authUserData && authUserData.uid){
-            dispatch(setAuthUserData({ beenAuthenticated: true, ...authUserData }))
-        }
-    },[authUserData.uid])
 
     return(
         !beenAuthenticated && !authUserData ?
