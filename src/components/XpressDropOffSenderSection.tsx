@@ -1,79 +1,74 @@
 "use client"
 
-import { useAppSelector } from "@/redux/customHooks";
 import CustomTextInput from "./assets/inputs/CustomTextInput";
 import CustomPhoneInput from "./assets/inputs/CustomPhoneInput";
-import { useForm } from "react-hook-form";
-import { IXpressSenderInfo } from "../../types";
-import { Metadata } from "next";
+import { Control, FieldErrors } from "react-hook-form";
+import { XpressDropOffInfo } from "../../types";
 import CustomQuotePageSelect from "./assets/inputs/CustomQuotePageSelect";
 import { getXpressDropOffLocationData } from "@/helperFns/getXpressDropOffLocationData";
 
-export const metadata : Metadata = {
-    title: "Xpress Dropoff | GIG Logistics",
-    description: "Ship Dropoff Items"
+
+interface IProps {
+    control: Control<XpressDropOffInfo,undefined>,
+    errors: FieldErrors<XpressDropOffInfo>,
+    firstName: string,
+    lastName: string,
+    phoneNumber: string,
+    email: string
 }
 
-function XpressDropOffSenderSection() {
+function XpressDropOffSenderSection(props:IProps) {
 
-    const { firstName, lastName, phoneNumber, email } = useAppSelector(store => store.authUser)
-    const { control, formState: { errors} } = useForm<IXpressSenderInfo>({
-        defaultValues:{
-            firstName,
-            lastName,
-            email,
-            phoneNumber
-        }
-    })
+    const { control, errors, firstName, lastName, email, phoneNumber } = props;
 
     return(
-        <form className="shadow-lg bg-white drop-shadow-sm rounded-md my-8 w-full pb-4">
-            <h3 className="w-full text-center bg-gray-100 font-medium p-3 mb-8">Sender's Info</h3>
-            <div className="px-3 flex flex-col items-center w-full relative">
+        <section className="shadow-lg bg-white drop-shadow-md rounded-md my-8 w-full pb-10">
+            <h3 className="w-full text-center bg-gray-100 font-semibold p-3 mb-8">Sender's Info</h3>
+            <div className="px-3 flex flex-col items-center w-full relative md:px-10">
                 <CustomTextInput 
                     readOnly 
                     defaultValue={firstName} 
                     control={control} 
                     id="xpress-dropoff-firstName" 
-                    name="firstName" 
+                    name="sender.firstName" 
                     label="First Name" 
                     placeholder="" 
                     containerStyles="w-full mb-2"
                     labelStyles="mb-4 block self-start ms-1"
-                    inputStyles="focus:outline-0 w-full focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.4em]"
+                    inputStyles="focus:outline-0 w-full focus:outline-offset-0 focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.4em]"
                 />
                 <CustomTextInput 
                     readOnly 
                     defaultValue={lastName} 
                     control={control} 
                     id="xpress-dropoff-lastName" 
-                    name="lastName" 
+                    name="sender.lastName" 
                     label="Last Name" 
                     placeholder="" 
                     containerStyles="w-full mb-2"
                     labelStyles="mb-4 block self-start ms-1"
-                    inputStyles="focus:outline-0 w-full focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.4em]"
+                    inputStyles="focus:outline-0 w-full focus:outline-offset-0 focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.4em]"
                 />
                 <CustomTextInput 
                     readOnly 
                     defaultValue={email} 
                     control={control} 
                     id="xpress-dropoff-email" 
-                    name="email"
+                    name="sender.email"
                     label="Email Adress"
                     placeholder="" 
                     containerStyles="w-full mb-2"
                     labelStyles="mb-4 block self-start ms-1"
-                    inputStyles="focus:outline-0 w-full focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.6em]"
+                    inputStyles="focus:outline-0 w-full focus:outline-offset-0 focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.6em]"
                 />
                 <CustomPhoneInput 
-                    readonly={true} 
+                    readOnly={true} 
                     value={phoneNumber} 
-                    name="phoneNumber" 
+                    name="sender.phoneNumber" 
                     id="xpress-dropoff-phoneNumber" 
                     label="Phone Number"
                     labelStyles="mb-4 block self-start ms-1"
-                    className="phoneInput-xpressDropOff h-[3.2em]"
+                    className="phoneInput-xpressDropOff h-[3.4em]"
                     control={control}
                     containerStyles="w-[100%] mx-auto"
                 />
@@ -81,15 +76,12 @@ function XpressDropOffSenderSection() {
                 <div className="w-full">
                     <label htmlFor="xpress-dropoff-location" className="mb-4 block self-start ms-1">Location</label>
                     <CustomQuotePageSelect 
-                        name="location" 
+                        name="sender.location" 
                         id="xpress-dropoff-location" 
                         control={control}
-                        selectStyles={{
-                            height: "3.4em",
-                            color: "#374151"
-                        }}
+                        selectStyles={{ height: "3.4em"  }}
                         placeholder="Location"
-                        hasError={errors.location?.message ? true : false}
+                        hasError={errors?.sender?.location?.message ? true : false}
                         data={getXpressDropOffLocationData()}
                         required="Please choose your location"
                         optionStyles={{
@@ -98,7 +90,7 @@ function XpressDropOffSenderSection() {
                     />
                 </div>
             </div>            
-        </form>
+        </section>
     )
 }
 

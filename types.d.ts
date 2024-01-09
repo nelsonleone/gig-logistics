@@ -1,3 +1,4 @@
+import { categoryValuesArr } from "@/componentsData/xressDropOffDeliveryItemsData";
 import { XpressDropOffDeliveryType } from "@/enums";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { PortableTextBlock, TypedObject } from "@portabletext/types"
@@ -278,6 +279,24 @@ type IUserNotifications = {
 
 
 // Xpress DropOff
+type ICategoryValue = "computer accessories" | "documents" | "electronics" | "food" | "health products" | "jewelries/accessories" | "others" | "phones"
+
+type ICategory = {
+    label: "Computer Accessories" | "Documents" | "Electronics" | "Food" | "Health Products" | "Jewelries/Accessories" | "Others" | "Phones";
+    value: ICategoryValue;
+}
+
+type DeliveryItems = {
+    category: ICategory,
+    item: { label: string, value: string },
+    weight: number,
+    quantity: number,
+    value: number,
+    itemImage: string,
+    otherItemName: string,
+    otherItemDescription: string,
+    otherItemWeight: number
+}
 
 interface IXpressSenderInfo {
     firstName: string,
@@ -290,14 +309,23 @@ interface IXpressSenderInfo {
 interface IXpressReceiverInfo {
     fullName: string,
     phoneNumber: string,
-    deliveryOptionType: XpressDropOffDeliveryType,
+    deliveryOptionType: {
+        value: XpressDropOffDeliveryType | "",
+        label: string
+    },
     deliveryOption: {
         homeDelivery: {
             address: string
         },
         terminalPickup: {
-            stateOrCity: string,
-            closestGIGLCenter: string
+            stateOrCity: {
+                label: string;
+                value: string;
+            },
+            closestGIGLCenter: {
+                label: string;
+                value: string;
+            }
         }
     } 
 }
@@ -305,5 +333,6 @@ interface IXpressReceiverInfo {
 
 type XpressDropOffInfo = {
     sender: IXpressSenderInfo
-    receiver: IXpressReceiverInfo
+    receiver: IXpressReceiverInfo,
+    deliveryItems: DeliveryItems
 }

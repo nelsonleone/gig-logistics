@@ -3,11 +3,12 @@
 import Select from 'react-select'
 import { DomesticQuoteObj, InternationalQuoteObj } from '../../../../types'
 import { Control, Controller } from 'react-hook-form'
+import { ReactNode } from 'react'
 
 interface IProps {
   data: {
     value: string,
-    label: string
+    label: string | ReactNode
   }[],
   placeholder: string,
   name?: string,
@@ -30,23 +31,36 @@ export default function CustomQuotePageSelect({ data, placeholder, optionStyles,
       render={({ field }) => (
         <Select   
           {...field}
+          menuPortalTarget={document.body}
           styles={{
-            control: (baseStyles) => ({
+            control: (baseStyles,state) => ({
               ...baseStyles,
               padding: '.33em',
               borderRadius: '12px',
               cursor: "pointer",
-              borderColor: hasError ? 'red' : '#9ca3af',
+              position: "relative",
+              borderColor: hasError ? 'red' : state.isFocused ? '#123fe0' : state.menuIsOpen ? '#123fe0' : '#9ca3af',
+              outlineOffset: "none",
+              outline: state.isFocused ? "none" : undefined,
               ...selectStyles
+            }),
+            menuPortal: base => ({ ...base, zIndex: 99 }),
+            menu: (provided) => ({
+              ...provided,
+              zIndex: 99,
+              position: "relative"
             }),
             option: (baseStyles) => ({
               ...baseStyles,
               color: "black",
+              position: "relative",
+              zIndex: "100",
               ...optionStyles
             })
           }} 
           options={data as any} 
           placeholder={placeholder}
+          className="text-[#374151]"
           isClearable 
           id={id} 
           theme={(theme) => ({
@@ -54,7 +68,7 @@ export default function CustomQuotePageSelect({ data, placeholder, optionStyles,
             colors: {
               ...theme.colors,
               neutral0: '#fff', // Background color of the placeholder
-              primary: '#9ca3af', // Color of the placeholder text
+              primary: '#9ca3af',
             },
           })}
         />

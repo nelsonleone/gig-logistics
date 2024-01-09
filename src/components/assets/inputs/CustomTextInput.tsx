@@ -3,12 +3,15 @@
 import { BiSolidMessageAltError } from "react-icons/bi";
 import { inter } from '@/app/fonts';
 import { Control, Controller } from "react-hook-form";
-import { ICODWalletFormValues, IXpressSenderInfo, SignInFormData, SignUpFormData } from "../../../../types";
+import { ICODWalletFormValues, SignInFormData, SignUpFormData } from "../../../../types";
 
 interface IProps {
     error?: string | undefined,
     label: string,
-    name:  keyof SignUpFormData | keyof SignInFormData | keyof ICODWalletFormValues | keyof IXpressSenderInfo,
+    name:  keyof SignUpFormData | keyof SignInFormData | keyof ICODWalletFormValues | 'sender.fullName' | 'sender.firstName' | 'sender.lastName' | 'sender.email' | 'sender.phoneNumber' |
+    'receiver.fullName' | `receiver.deliveryOption.homeDelivery.address` | `receiver.deliveryOption.terminalPickup.stateOrCity` | `receiver.deliveryOption.terminalPickup.closestGIGLCenter` |
+    "deliveryItems.otherItemName" | "deliveryItems.otherItemDescription" | "deliveryItems.otherItemWeight"
+
     value?: string | number,
     placeholder: string,
     inputType?: string,

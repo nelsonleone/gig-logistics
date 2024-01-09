@@ -48,5 +48,5 @@ export enum SignUpRadioInputValue {
 
 export enum XpressDropOffDeliveryType {
     HomeDelivery = "homeDelivery",
-    TerminalPickup = "terminalpickup"
+    TerminalPickup = "terminalPickup"
 }

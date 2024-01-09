@@ -12,6 +12,11 @@
     }
 }
 
+.Select-menu-outer {
+    position: relative;
+    z-index: 99 !important;
+}
+
 @layer components{
 
     .AT_only{
@@ -113,4 +118,10 @@
         @apply focus:border-none focus:outline-offset-0 focus:outline-cyan-500;
     }
 
+
+    /* Trying to reset react-select default styling */
+
+    .css-qbdosj-Input input {
+        @apply outline-0 outline-none border-none after:outline-none after:border-none focus:outline-offset-0 focus-visible:outline-none focus-visible:outline-offset-0;
+    }
 }

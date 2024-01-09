@@ -11,31 +11,27 @@ interface IProps {
     error?: string,
     className: string,
     id: string,
-    readonly?: boolean,
+    readOnly?: boolean,
     value?: string,
     containerStyles?: string,
-    labelStyles?: string
+    labelStyles?: string,
+    placeholder?: string,
 }
 
-function CustomPhoneInput({ control, name, label, error, className, id, value, readonly,labelStyles, containerStyles }:IProps) {
+function CustomPhoneInput({ control, name, placeholder, label, error, className, id, value, readOnly,labelStyles, containerStyles }:IProps) {
   return (
         <div className={containerStyles}>
             {
                 label &&
                 <label htmlFor={id} className={`cod_form_input_label ${labelStyles}`}>Phone Number</label>
             }
-            {
-                readonly ?
-                <PhoneInput id={id} value={value} onChange={() => {}} defaultCountry='US' className={`${classes.phoneInput} ${className} mb-8`} />
-                :
-                <Controller
-                    name={name as keyof object}
-                    control={control || undefined}
-                    render={({ field }) =>
-                        <PhoneInput id={id} {...field } value={value} onChange={() => {}} defaultCountry='US' className={`${classes.phoneInput} ${className} mb-8`} />
-                    }
-                />
-            }
+            <Controller
+                name={name as keyof object}
+                control={control || undefined}
+                render={({ field }) =>
+                    <PhoneInput id={id} readOnly={readOnly} {...field } placeholder={placeholder} value={value} onChange={() => {}} defaultCountry='NG' className={`${classes.phoneInput} ${className} mb-8`} />
+                }
+            />
             {
                 error &&
                 <p role="alert" className="text-red-500 text-sm mt-3"><BiSolidMessageAltError />{error}</p>
