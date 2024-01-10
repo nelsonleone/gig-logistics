@@ -68,7 +68,7 @@ function XpressDropOffSenderSection(props:IProps) {
                     id="xpress-dropoff-phoneNumber" 
                     label="Phone Number"
                     labelStyles="mb-4 block self-start ms-1"
-                    className="phoneInput-xpressDropOff h-[3.4em]"
+                    className="phoneInput-xpressDropOff h-[3.6em]"
                     control={control}
                     containerStyles="w-[100%] mx-auto"
                 />

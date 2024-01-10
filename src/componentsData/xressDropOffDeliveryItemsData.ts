@@ -1,4 +1,4 @@
-import { ICategory } from "../../types"
+import { LabelValueObj } from "../../types"
 
 export const categoryValuesArr = [
     "Computer Accessories",
@@ -11,7 +11,13 @@ export const categoryValuesArr = [
     "Phones"
 ]
 
-export const xpressDropOffFullCatergoryData : ICategory[] = [
+type IxpressDropOffFullCatergoryData =  {
+    value: string,
+    label: string,
+    items: LabelValueObj
+}[]
+
+export const xpressDropOffFullCatergoryData : IxpressDropOffFullCatergoryData = [
     {
         value: "computer accessories",
         label: "Computer Accessories",
@@ -35,8 +41,8 @@ export const xpressDropOffFullCatergoryData : ICategory[] = [
         label: "Documents",
         items: [
             {
-                value: "Cheque",
-                label: "cheque"
+                value: "cheque",
+                label: "Cheque"
             },
             {
                 value: "driver's license/id card/atm card",

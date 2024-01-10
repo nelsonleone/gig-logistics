@@ -31,7 +31,6 @@ export default function CustomQuotePageSelect({ data, placeholder, optionStyles,
       render={({ field }) => (
         <Select   
           {...field}
-          menuPortalTarget={document.body}
           styles={{
             control: (baseStyles,state) => ({
               ...baseStyles,

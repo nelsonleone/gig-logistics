@@ -1,0 +1,47 @@
+/* Overriding FilePond Styles */
+.filepond--root {
+    font-family:  'Inter', sans-serif !important;
+    position: relative;
+    height: 15em;
+}
+
+.filepond--file-action-button {
+    cursor:  pointer;
+}
+
+.filepond--drop-label{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.filepond--label-action {
+    color: hsl(217, 19%, 27%);
+    border: 2px solid #ddd;
+    display: block;
+    text-decoration: none !important;
+    padding: .6em;
+    margin-block: .5em;
+    border-radius: 8px;
+    color: white;
+    transition: scale;
+    transition-duration: .3s;
+    transition-timing-function: linear;
+}
+
+.filepond--drop-label span{
+    color: white;
+}
+
+.filepond--label-action:hover{
+    scale: 1.05;
+}
+
+.filepond--panel-root {
+   background-color: hsla(0, 4%, 9%, 0.898) ;
+   border: 2px dotted #ddd;
+   border-radius: 12px;
+}

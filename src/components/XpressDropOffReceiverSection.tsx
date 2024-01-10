@@ -28,7 +28,7 @@ function XpressDropOffReceiverSection(props:IProps) {
                     control={control} 
                     id="xpress-dropoff-RfirstName" 
                     name="receiver.fullName" 
-                    label="First Name" 
+                    label="Receiver's Name" 
                     placeholder="Enter Full Name" 
                     containerStyles="w-full mb-2"
                     labelStyles="mb-4 block self-start ms-1"
@@ -42,7 +42,7 @@ function XpressDropOffReceiverSection(props:IProps) {
                     label="Phone Number"
                     labelStyles="mb-4 block self-start ms-1"
                     placeholder="Enter Phone Number"
-                    className="phoneInput-xpressDropOff h-[3.4em]"
+                    className="phoneInput-xpressDropOff h-[3.6em]"
                     control={control}
                     containerStyles="w-[100%] mx-auto"
                     error={errors?.receiver?.phoneNumber?.message}

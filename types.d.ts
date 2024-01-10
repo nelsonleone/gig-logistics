@@ -334,5 +334,5 @@ interface IXpressReceiverInfo {
 type XpressDropOffInfo = {
     sender: IXpressSenderInfo
     receiver: IXpressReceiverInfo,
-    deliveryItems: DeliveryItems
+    deliveryItems: DeliveryItems[]
 }
