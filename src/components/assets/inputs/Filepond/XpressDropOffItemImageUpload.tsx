@@ -32,7 +32,6 @@ function XpressDropOffItemImageUpload({ setValue }: { setValue: UseFormSetValue<
         const reader = new FileReader()
         reader.onloadend = () => {
           const base64String = reader.result;
-          console.log('Base64 String:', base64String)
 
           setItemImage(base64String)
         }

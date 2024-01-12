@@ -7,6 +7,7 @@ import { inter } from './fonts'
 import CustomAlert from '@/components/assets/PopUps/CustomAlert'
 import { cookies } from 'next/headers'
 import AuthUserHeaderSection from '@/components/AuthUserHeaderSection'
+import Notification from '@/components/Notification'
 
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function RootLayout({
               <AuthUserHeaderSection />
             </Header>
             {children}
+            <Notification />
             <Footer />
           </body>
         </CustomAppStoreProvider>

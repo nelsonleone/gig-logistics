@@ -325,7 +325,7 @@ interface IXpressReceiverInfo {
             closestGIGLCenter: {
                 label: string;
                 value: string;
-            }
+            } | undefined
         }
     } 
 }

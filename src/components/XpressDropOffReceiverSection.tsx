@@ -2,7 +2,7 @@
 
 import CustomTextInput from "./assets/inputs/CustomTextInput";
 import CustomPhoneInput from "./assets/inputs/CustomPhoneInput";
-import { Control, FieldErrors } from "react-hook-form";
+import { Control, FieldErrors, UseFormSetValue, useWatch } from "react-hook-form";
 import { XpressDropOffInfo } from "../../types";
 import CustomQuotePageSelect from "./assets/inputs/CustomQuotePageSelect";
 import { XpressDropOffDeliveryType } from "@/enums";
@@ -13,7 +13,7 @@ interface IProps {
     control: Control<XpressDropOffInfo,undefined>,
     errors: FieldErrors<XpressDropOffInfo>,
     deliveryOptionType: XpressDropOffDeliveryType | "",
-    selectedStateOrCity: { label:string, value: string }
+    selectedStateOrCity: { label:string, value: string },
 }
 
 function XpressDropOffReceiverSection(props:IProps) {

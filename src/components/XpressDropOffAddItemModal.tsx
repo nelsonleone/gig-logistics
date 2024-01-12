@@ -17,11 +17,20 @@ interface IProps {
 
 function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps) {
 
-    const { control, formState: { errors }, setValue, handleSubmit } = useForm<DeliveryItems>()
+    const { control, formState: { errors }, reset, setValue, handleSubmit } = useForm<DeliveryItems>({
+        defaultValues: {}
+    })
     const deliveryItemCategory = useWatch({ control, name: 'category.value' })
-
+    
     const handlePostDeliveryItem : SubmitHandler<DeliveryItems> = (data) => {
         setDeliveryItem(data)
+        reset()
+        handleClose()
+    }
+
+    const handleCloseModal = () => {
+        reset()
+        handleClose()
     }
 
     return (
@@ -86,7 +95,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                 id="xpress-dropoff-deliveryItems-otherItemWeight" 
                                 name="otherItemWeight" 
                                 label="Item Weight" 
-                                placeholder="Enter item description" 
+                                placeholder="Enter item weight" 
                                 containerStyles="w-full mb-4"
                                 labelStyles="mb-3 block self-start ms-1"
                                 error={errors?.otherItemWeight?.message}
@@ -174,8 +183,8 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                     <XpressDropOffItemImageUpload setValue={setValue} />
 
                     <div className="mt-10 md:flex justify-between gap-8">
-                        <button type="button" onClick={() => handleSubmit(handlePostDeliveryItem)} className="text-center text-white bg-black rounded-md w-full block mb-4 h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:bg-transparent focus:text-black focus:border focus:border-[#374151] md:mb-0">Submit</button>
-                        <button type="button" className="text-center text-white bg-red-600 rounded-md w-full block h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:bg-transparent focus:text-black focus:border focus:border-red-600">Cancel</button>
+                        <button type="button" onClick={handleSubmit(handlePostDeliveryItem)} className="text-center text-white bg-black rounded-md w-full block mb-4 h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:border-2 focus:font-medium focus:bg-transparent focus:text-black focus:border-[#374151] md:mb-0">Submit</button>
+                        <button type="button" onClick={handleCloseModal} className="text-center text-white bg-red-600 rounded-md w-full block h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:bg-transparent focus:text-black focus:border-2 focus:font-medium focus:border-red-600">Cancel</button>
                     </div>
                 </div>
             </div>
