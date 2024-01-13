@@ -1,3 +1,4 @@
+import { getUserFromDB } from "@/helperFns/getUserFromDB";
 import { firebaseAdmin } from "@/lib/firebase/firebase-admin-config";
 import { auth } from "firebase-admin";
 import { cookies, headers } from "next/headers";
@@ -8,7 +9,9 @@ export async function POST(request: NextRequest, response: NextResponse) {
     try {
       const authorization = headers().get("Authorization")
       const res = await request.json()
-      const { firstName, lastName, picture, returnTo, phoneNumber } = res;
+      const { firstName, lastName, picture, phoneNumber } = res;
+
+      console.log(firstName,lastName,phoneNumber)
 
   
       if (authorization?.startsWith("Bearer ")) {
@@ -33,15 +36,14 @@ export async function POST(request: NextRequest, response: NextResponse) {
   
           cookies().set(options)
 
-          await firebaseAdmin.firestore().collection('AuthUsers').doc(decodedToken.uid).set({ firstName, lastName, picture, phoneNumber, uid: decodedToken.uid},{ merge: true} )
-            
           const userDoc = await firebaseAdmin.firestore().collection('AuthUsers').doc(decodedToken.uid).get()
 
           if (userDoc.exists) {
             const userData = userDoc.data()
             return NextResponse.json(userData)
           } else {
-            throw new Error('User not found')
+            await firebaseAdmin.firestore().collection('AuthUsers').doc(decodedToken.uid).set({ firstName, lastName, picture, phoneNumber, uid: decodedToken.uid},{ merge: true} )
+            return NextResponse.json(await getUserFromDB(decodedToken.uid))
           }
         }
       }

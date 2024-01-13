@@ -9,11 +9,12 @@ import XpressDropOffDeliveryItemsSection from "./XpressDropOffDeliveryItemsSecti
 import XpressDropOffEstimatedCostSection from "./XpressDropOffEstimatedCostSection"
 import { inter } from "@/app/fonts"
 import { useEffect } from "react"
+import { notifications } from "@mantine/notifications"
 
 export default function XpressDropOffFormContainer(){
 
     const { firstName, lastName, phoneNumber, email } = useAppSelector(store => store.authUser)
-    const { control, formState: { errors, isDirty }, clearErrors, setError, register, setValue, handleSubmit } = useForm<XpressDropOffInfo>({
+    const { control, formState: { errors }, clearErrors, setError, register, setValue, handleSubmit } = useForm<XpressDropOffInfo>({
         defaultValues:{
             sender: {
                 firstName,
@@ -21,14 +22,15 @@ export default function XpressDropOffFormContainer(){
                 email,
                 phoneNumber
             },
-            deliveryItems: []
+            deliveryItems: [],
+            receiver: {
+                phoneNumber: "sjd"
+            }
         }
     })
     const deliveryOptionType = useWatch({ control, name: 'receiver.deliveryOptionType.value'})
     const selectedStateOrCity = useWatch({ control, name: 'receiver.deliveryOption.terminalPickup.stateOrCity'})
     const deliveryItems = useWatch({ control, name: 'deliveryItems'})
-    const stateOrCity = useWatch({ control, name: 'receiver.deliveryOption.terminalPickup.stateOrCity.value' })
-
 
     const handleCreateXpressDropOff : SubmitHandler<XpressDropOffInfo> = (data) => {
         if(deliveryItems && !deliveryItems.length){
@@ -37,17 +39,22 @@ export default function XpressDropOffFormContainer(){
                 message: 'Please Add A Delivery Item',
             })
 
-            console.log(errors)
+            notifications.show({
+                id: "add-deliveryItems-error",
+                autoClose: 4000,
+                message: "No Delivery Item Added",
+                withCloseButton: true,
+                title: "Error",
+                color: '#1ca2bd',
+                className: `${inter.className}`,
+                style: { backgroundColor: 'red', borderRadius: "10px" },
+                loading: false,
+            })
+
             return;
         }
         console.log(data)
     }
-
-    useEffect(() => {
-        if(isDirty){
-            register('receiver.deliveryOption.terminalPickup.closestGIGLCenter.value',{ value: "" })
-        }
-    },[stateOrCity])
 
     useEffect(() => {
         if(deliveryItems.length && errors?.deliveryItems?.message){

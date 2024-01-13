@@ -1,4 +1,5 @@
 import SignInMainCP from "@/components/auth_pages/SignInMainCp";
+import { getPersistedAuthUser } from "@/helperFns/getPersistedAuthUser";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -17,8 +18,15 @@ export default function SignIn({ params, searchParams }:IPageProps){
     const { returnTo } = searchParams;
     const authSessionToken = cookies().get('authSessionToken')?.value;
 
+    
+    const shouldRedirect = async() => {
+        const authUserData = await getPersistedAuthUser(authSessionToken)
+        if(authUserData){
+            redirect('/')
+        }
+    }
     if(authSessionToken){
-        redirect('/')
+        shouldRedirect()
     }
 
     return(

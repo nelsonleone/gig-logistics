@@ -4,18 +4,28 @@ import { provider, auth } from "@/lib/firebase/firebase-client-config"
 import { setShowAlert } from "@/redux/slices/alertSlice"
 import { Dispatch } from "@reduxjs/toolkit"
 import { AlertSeverity } from "@/enums"
+import customFirebaseError from "./CustomFirebaseAuthError"
+import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice"
 
 export async function handleSignInWithPopUp(returnTo:string | string[] |undefined,dispatch:Dispatch){
     await asyncWrapper(
         async() => {
             try{
-                const userCred = await signInWithPopup(auth,provider)
-                await fetch('/api/login',{
+                dispatch(setShowRingLoader(true))
+                const { user: { getIdToken,email, displayName, phoneNumber, photoURL}} = await signInWithPopup(auth,provider)
+                await fetch('/api/signup',{
                     method: "POST",
                     headers: {
-                        Authorization: `Bearer ${await userCred.user.getIdToken()}`,
+                        Authorization: `Bearer ${await getIdToken()}`,
                     },
-                    body: JSON.stringify(returnTo)
+                    body: JSON.stringify({
+                        firstName: displayName?.split(" ")[0],
+                        lastName: displayName?.split(" ")[1],
+                        phoneNumber,
+                        picture: photoURL,
+                        email,
+                        returnTo
+                    })
                 })
     
                 dispatch(setShowAlert({
@@ -24,10 +34,15 @@ export async function handleSignInWithPopUp(returnTo:string | string[] |undefine
                 }))
             }
             catch(error:any|unknown){
+                console.log(error)
                 dispatch(setShowAlert({
-                    mssg: error.message || "Error Occurred During Login",
+                    mssg: customFirebaseError(error.code) || "Error Occurred During Login",
                     severity: AlertSeverity.ERROR
                 }))
+            }
+
+            finally{
+                dispatch(setShowRingLoader(false))
             }
         },
         dispatch

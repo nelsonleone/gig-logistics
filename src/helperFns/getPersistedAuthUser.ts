@@ -1,5 +1,7 @@
 "use server"
 
+import { AuthUser } from "../../types";
+
 export const getPersistedAuthUser = async(authSessionToken:string | undefined) => {
     try{
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/api/persist`,{
@@ -9,7 +11,7 @@ export const getPersistedAuthUser = async(authSessionToken:string | undefined) =
             }
         })
     
-        const authUserData = await res.json()
+        const authUserData : AuthUser = await res.json()
     
         return authUserData;
     }

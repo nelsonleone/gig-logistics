@@ -2,12 +2,13 @@
 
 import CustomTextInput from "./assets/inputs/CustomTextInput";
 import CustomPhoneInput from "./assets/inputs/CustomPhoneInput";
-import { Control, FieldErrors, UseFormSetValue, useWatch } from "react-hook-form";
+import { Control, FieldErrors, useWatch } from "react-hook-form";
 import { XpressDropOffInfo } from "../../types";
 import CustomQuotePageSelect from "./assets/inputs/CustomQuotePageSelect";
 import { XpressDropOffDeliveryType } from "@/enums";
 import { getXpressDropOffLocationData } from "@/helperFns/getXpressDropOffLocationData";
 import { setXpressDropOffClosestGIGLCenter } from "@/helperFns/setXpressDropOffClosestGIGLCenter";
+import { useCallback } from "react";
 
 interface IProps {
     control: Control<XpressDropOffInfo,undefined>,
@@ -19,10 +20,15 @@ interface IProps {
 function XpressDropOffReceiverSection(props:IProps) {
 
     const { control, errors, deliveryOptionType, selectedStateOrCity } = props;
+    const stateOrCity = useWatch({ control, name:"receiver.deliveryOption.terminalPickup.stateOrCity.value"})
 
-    return(
+    const handleClosetPickupAreaRefresh = useCallback(() => {
+        return setXpressDropOffClosestGIGLCenter(selectedStateOrCity?.value)
+    },[stateOrCity])
+
+    return( 
         <section className="shadow-lg bg-white drop-shadow-md rounded-md mt-12 w-full pb-10">
-            <h3 className="w-full text-center bg-gray-100 font-semibold p-3 mb-8">Receiver's Info</h3>
+            <h3 className="w-full text-center text-lg bg-gray-100 font-semibold p-3 mb-8">Receiver's Info</h3>
             <div className="px-3 flex flex-col items-center w-full relative md:px-10">
                 <CustomTextInput 
                     control={control} 
@@ -31,6 +37,7 @@ function XpressDropOffReceiverSection(props:IProps) {
                     label="Receiver's Name" 
                     placeholder="Enter Full Name" 
                     containerStyles="w-full mb-2"
+                    required="Receiver's Full Name is required"
                     labelStyles="mb-4 block self-start ms-1"
                     error={errors?.receiver?.fullName?.message}
                     inputStyles="focus:outline-0 w-full focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.4em]"
@@ -40,6 +47,7 @@ function XpressDropOffReceiverSection(props:IProps) {
                     name="receiver.phoneNumber" 
                     id="xpress-dropoff-RphoneNumber" 
                     label="Phone Number"
+                    required="Receiver's phone number is required"
                     labelStyles="mb-4 block self-start ms-1"
                     placeholder="Enter Phone Number"
                     className="phoneInput-xpressDropOff h-[3.6em]"
@@ -126,7 +134,7 @@ function XpressDropOffReceiverSection(props:IProps) {
                                 }}
                                 placeholder="Select Service Center"
                                 hasError={errors?.receiver?.deliveryOption?.terminalPickup?.closestGIGLCenter?.message ? true : false}
-                                data={setXpressDropOffClosestGIGLCenter(selectedStateOrCity?.value)}
+                                data={handleClosetPickupAreaRefresh()}
                                 required={deliveryOptionType === XpressDropOffDeliveryType.TerminalPickup && "Please select a service center"}
                                 optionStyles={{
                                     color: "#374151"

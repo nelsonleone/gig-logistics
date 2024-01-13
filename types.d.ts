@@ -289,13 +289,13 @@ type ICategory = {
 type DeliveryItems = {
     category: ICategory,
     item: { label: string, value: string },
-    weight: number,
-    quantity: number,
-    value: number,
+    weight: string,
+    quantity: string,
+    value: string,
     itemImage: string,
     otherItemName: string,
     otherItemDescription: string,
-    otherItemWeight: number
+    otherItemWeight: string
 }
 
 interface IXpressSenderInfo {

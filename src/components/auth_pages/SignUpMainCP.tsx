@@ -5,7 +5,6 @@ import IndividualSignupSection from "./IndividualSignUpSection"
 import CorporateSignUpSection from "./CorporateSignupSection"
 import CustomRadioGroup from "../assets/inputs/CustomRadioGroup"
 import { roboto_slab } from "@/app/fonts"
-import { auth } from "@/lib/firebase/firebase-client-config"
 import { SignUpRadioInputValue } from "@/enums"
 
 export default function SignUpMainCP({ returnTo }: { returnTo:string | string[] | undefined }){

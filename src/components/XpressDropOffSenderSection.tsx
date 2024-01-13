@@ -23,7 +23,7 @@ function XpressDropOffSenderSection(props:IProps) {
 
     return(
         <section className="shadow-lg bg-white drop-shadow-md rounded-md my-8 w-full pb-10">
-            <h3 className="w-full text-center bg-gray-100 font-semibold p-3 mb-8">Sender's Info</h3>
+            <h3 className="w-full text-center text-lg bg-gray-100 font-semibold p-3 mb-8">Sender's Info</h3>
             <div className="px-3 flex flex-col items-center w-full relative md:px-10">
                 <CustomTextInput 
                     readOnly 

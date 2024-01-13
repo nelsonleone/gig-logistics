@@ -20,20 +20,20 @@
 
 .filepond--label-action {
     color: hsl(217, 19%, 27%);
-    border: 2px solid #ddd;
+    border: 2px solid hsl(0, 1%, 14%);
     display: block;
     text-decoration: none !important;
     padding: .6em;
     margin-block: .5em;
     border-radius: 8px;
-    color: white;
+    color: black;
     transition: scale;
     transition-duration: .3s;
     transition-timing-function: linear;
 }
 
 .filepond--drop-label span{
-    color: white;
+    color: black;
 }
 
 .filepond--label-action:hover{
@@ -41,7 +41,7 @@
 }
 
 .filepond--panel-root {
-   background-color: hsla(0, 4%, 9%, 0.898) ;
-   border: 2px dotted #ddd;
+   background-color: hsla(0, 27%, 94%, 0.898) ;
+   border: 2px dotted hsl(0, 0%, 6%);
    border-radius: 12px;
 }

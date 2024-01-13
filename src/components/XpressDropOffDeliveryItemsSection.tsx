@@ -8,6 +8,7 @@ import { DeliveryItems, XpressDropOffInfo } from "../../types";
 import { useEffect, useState } from "react";
 import { notifications } from "@mantine/notifications";
 import { inter } from "@/app/fonts";
+import Image from "next/image";
 
 interface IProps {
     control: Control<XpressDropOffInfo,undefined>,
@@ -34,16 +35,16 @@ function XpressDropOffDeliveryItemsSection(props:IProps) {
                 autoClose: 4000,
                 title: "Xpress DropOff",
                 message: 'Delivery Item Added',
-                color: '#1ca2bd',
+                color: '#374151',
                 className: `${inter.className}`,
-                style: { backgroundColor: 'red', borderRadius: "10px" },
+                style: { backgroundColor: '#1ca2bd', borderRadius: "10px" },
                 loading: false,
             })
         }
     },[newDeliveryItem])
 
     return (
-        <section className="shadow-lg relative bg-white drop-shadow-md rounded-md my-8 p-4 w-full pb-10">
+        <section className="shadow-lg relative bg-white drop-shadow-md rounded-md my-8 p-4 md:px-7 w-full pb-10">
             <div className="flex justify-between mb-4">
                 <h3 className="font-medium text-lg">Delivery Items</h3>
                 <button type="button" onClick={() => setOpen(true)} className="flex text-sm justify-between items-center gap-2 transition-opacity duration-200 ease-in-out text-white bg-[#374151] p-3 rounded-sm hover:opacity-80">
@@ -53,10 +54,23 @@ function XpressDropOffDeliveryItemsSection(props:IProps) {
             </div>
             <Divider />
             <div className="mt-4 grid grid-cols-4 grid-row-1 justify-between">
-                <p id="deliveryItems-item">Item</p>
+                <p id="deliveryItems-itemImg">Item</p>
                 <p id="deliveryItems-name">Name</p>
                 <p id="deliveryItems-weight">Weight</p>
                 <p id="deliveryItems-quantity">Quantity</p>
+            </div>
+
+            <div>
+                {
+                    deliveryItems.map((item) => (
+                        <div key={item.otherItemName}>
+                            <Image src={item.itemImage} aria-labelledby="deliveryItems-itemImg" loading="eager" priority width={50} height={50} alt="Item Image" />
+                            <p aria-labelledby="deliveryItems-name">{item.category.value !== "others" ?  item.item.value : item.otherItemName}</p>
+                            <p aria-labelledby="deliveryItems-weight">{item.category.value !== "others" ?  parseInt(item.otherItemWeight.replace(/\D/g, ''), 10) : parseInt(item.weight.replace(/\D/g, ''), 10)}</p>
+                            <p aria-labelledby="deliveryItems-quantity">{parseInt(item.quantity.replace(/\D/g, ''), 10)}</p>
+                        </div>
+                    ))
+                }
             </div>
 
             {

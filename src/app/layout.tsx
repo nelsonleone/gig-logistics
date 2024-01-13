@@ -7,7 +7,8 @@ import { inter } from './fonts'
 import CustomAlert from '@/components/assets/PopUps/CustomAlert'
 import { cookies } from 'next/headers'
 import AuthUserHeaderSection from '@/components/AuthUserHeaderSection'
-import Notification from '@/components/Notification'
+import CustomNotification from '@/components/assets/PopUps/Notification'
+import RingLoader from '../components/assets/Loaders/RingLoader'
 
 
 export const metadata: Metadata = {
@@ -36,7 +37,8 @@ export default function RootLayout({
               <AuthUserHeaderSection />
             </Header>
             {children}
-            <Notification />
+            <RingLoader />
+            <CustomNotification />
             <Footer />
           </body>
         </CustomAppStoreProvider>

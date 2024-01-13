@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import openNavReducer from "./slices/openNavSlice";
 import alertReducer from "./slices/alertSlice";
 import authUserReducer from "./slices/authUser";
+import ringLoaderReducer from "./slices/ringLoaderSlice";
 
 const reduxStore = configureStore({
     reducer: {
         openNav: openNavReducer,
         alert: alertReducer,
-        authUser: authUserReducer
+        authUser: authUserReducer,
+        ringLoader: ringLoaderReducer
     }
 })
 
