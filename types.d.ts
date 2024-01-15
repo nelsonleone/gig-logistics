@@ -276,6 +276,11 @@ type IUserNotifications = {
     
 }
 
+type AuthUserXpressDropOff = XpressDropOffInfo & {
+    beenPickedUp: boolean,
+    xItemID: string
+}
+
 
 
 // Xpress DropOff
@@ -289,7 +294,7 @@ type ICategory = {
 type DeliveryItems = {
     category: ICategory,
     item: { label: string, value: string },
-    weight: string,
+    weight: { label: string, value: string },
     quantity: string,
     value: string,
     itemImage: string,
@@ -335,4 +340,22 @@ type XpressDropOffInfo = {
     sender: IXpressSenderInfo
     receiver: IXpressReceiverInfo,
     deliveryItems: DeliveryItems[]
+}
+
+interface IXpressDeliveryItemTransformed {
+    category: ICategoryValue,
+    item: string,
+    weight: string,
+    quantity: string,
+    value: string,
+    itemImage: string,
+    itemDescription?: string,
+}
+
+interface IXpressReceiverInfoTransformed {
+    fullName: string;
+    phoneNumber: string;
+    homeAddress?: string;
+    stateOrCity?: string;
+    pickupTerminal?: string;
 }

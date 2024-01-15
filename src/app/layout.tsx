@@ -7,7 +7,7 @@ import { inter } from './fonts'
 import CustomAlert from '@/components/assets/PopUps/CustomAlert'
 import { cookies } from 'next/headers'
 import AuthUserHeaderSection from '@/components/AuthUserHeaderSection'
-import CustomNotification from '@/components/assets/PopUps/Notification'
+import CustomSnackbar from '@/components/assets/PopUps/CustomSnackbar'
 import RingLoader from '../components/assets/Loaders/RingLoader'
 
 
@@ -38,7 +38,7 @@ export default function RootLayout({
             </Header>
             {children}
             <RingLoader />
-            <CustomNotification />
+            <CustomSnackbar />
             <Footer />
           </body>
         </CustomAppStoreProvider>

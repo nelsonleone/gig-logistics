@@ -8,6 +8,7 @@ import CustomTextInput from "./assets/inputs/CustomTextInput";
 import XpressDropOffDeliveryItemValueNotice from "./XpressDropOffDeliveryItemValueNotice";
 import XpressDropOffItemImageUpload from "./assets/inputs/Filepond/XpressDropOffItemImageUpload";
 import { Dispatch, SetStateAction } from "react";
+import { setDropOffItemWeight } from "@/helperFns/setDropOffItemWeight";
 
 interface IProps {
     open: boolean,
@@ -20,7 +21,9 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
     const { control, formState: { errors }, reset, setValue, handleSubmit } = useForm<DeliveryItems>({
         defaultValues: {}
     })
+
     const deliveryItemCategory = useWatch({ control, name: 'category.value' })
+    const item = useWatch({ control, name: 'item.value' })
     
     const handlePostDeliveryItem : SubmitHandler<DeliveryItems> = (data) => {
         setDeliveryItem(data)
@@ -131,16 +134,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                     selectStyles={{ height: "3.2em",}}
                                     placeholder="Weight"
                                     hasError={errors?.weight?.message ? true : false}
-                                    data={[
-                                        {
-                                            label: "0.0-1.0",
-                                            value: "0.0-1.0"
-                                        },
-                                        {
-                                            label: "1.0-2.0",
-                                            value: "1.0-2.0"
-                                        }
-                                    ]}
+                                    data={setDropOffItemWeight(deliveryItemCategory,item)}
                                     required="Please choose a range for the weight"
                                     optionStyles={{
                                         color: "#374151"
@@ -183,8 +177,8 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                     <XpressDropOffItemImageUpload setValue={setValue} />
 
                     <div className="mt-10 md:flex justify-between gap-8">
-                        <button type="button" onClick={handleSubmit(handlePostDeliveryItem)} className="text-center text-white bg-black rounded-md w-full block mb-4 h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:border-2 focus:font-medium focus:bg-transparent focus:text-black focus:border-[#374151] md:mb-0">Submit</button>
-                        <button type="button" onClick={handleCloseModal} className="text-center text-white bg-red-600 rounded-md w-full block h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:bg-transparent focus:text-black focus:border-2 focus:font-medium focus:border-red-600">Cancel</button>
+                        <button type="button" onClick={handleCloseModal} className="text-center text-white bg-red-600 rounded-md w-full block h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:bg-transparent focus:text-black focus:border focus:outline-none focus:font-medium focus:outline-offset-0 focus:border-red-600">Cancel</button>
+                        <button type="button" onClick={handleSubmit(handlePostDeliveryItem)} className="text-center text-white bg-black rounded-md w-full block mb-4 h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:border focus:outline-none focus:font-medium focus:bg-transparent focus:text-black focus:border-[hsl(0,2%,9%)] focus:outline-offset-0 focus:-black md:mb-0">Submit</button>
                     </div>
                 </div>
             </div>

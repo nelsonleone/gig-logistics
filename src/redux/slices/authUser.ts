@@ -1,9 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AuthUser, IUserNotifications } from "../../../types";
+import { AuthUser, AuthUserXpressDropOff, IUserNotifications } from "../../../types";
 
 interface IinitState extends AuthUser {
     notifications: IUserNotifications[],
-    beenAuthenticated: boolean
+    beenAuthenticated: boolean,
+    xpressDropOffs: AuthUserXpressDropOff[]
 }
 
 const initialState : IinitState = {
@@ -14,6 +15,7 @@ const initialState : IinitState = {
     lastName: "",
     phoneNumber: "",
     notifications: [],
+    xpressDropOffs: [],
     beenAuthenticated: false
 }
 

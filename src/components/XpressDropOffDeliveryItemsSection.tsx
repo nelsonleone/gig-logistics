@@ -65,17 +65,16 @@ function XpressDropOffDeliveryItemsSection(props:IProps) {
                     deliveryItems.map((item) => (
                         <div key={item.otherItemName}>
                             <Image src={item.itemImage} aria-labelledby="deliveryItems-itemImg" loading="eager" priority width={50} height={50} alt="Item Image" />
-                            <p aria-labelledby="deliveryItems-name">{item.category.value !== "others" ?  item.item.value : item.otherItemName}</p>
-                            <p aria-labelledby="deliveryItems-weight">{item.category.value !== "others" ?  parseInt(item.otherItemWeight.replace(/\D/g, ''), 10) : parseInt(item.weight.replace(/\D/g, ''), 10)}</p>
-                            <p aria-labelledby="deliveryItems-quantity">{parseInt(item.quantity.replace(/\D/g, ''), 10)}</p>
+                            <p aria-labelledby="deliveryItems-name">{item.category.value !== "others" ?  item.item.label?.toUpperCase() : item.otherItemName}</p>
+                            <p aria-labelledby="deliveryItems-weight">{item.category.value !== "others" ?  parseInt(item.weight.value.replace(/\D/g, ''), 10) : parseInt(item.otherItemWeight?.replace(/\D/g, ''), 10)}KG</p>
+                            <p aria-labelledby="deliveryItems-quantity">{parseInt(item.quantity.replace(/\D/g, ''), 10)}piece(s)</p>
                         </div>
                     ))
                 }
             </div>
-
             {
                 deliveryItemError &&
-                <p role="alert" className="text-red-500 text-sm mt-3 absolute bottom-4 left-4">{deliveryItemError}</p>
+                <p role="alert" className="text-red-500 text-sm mt-3 absolute bottom-4 left-4 md:left-7">{deliveryItemError}</p>
             }
 
             <XpressDropOffAddItemModal setDeliveryItem={setNewDeliveryItem} open={open} handleClose={() => setOpen(prev => prev = !prev)} />

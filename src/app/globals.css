@@ -12,10 +12,6 @@
     }
 }
 
-.Select-menu-outer {
-    position: relative;
-    z-index: 99 !important;
-}
 
 @layer components{
 
@@ -24,7 +20,7 @@
     }
 
     .page {
-        @apply min-h-screen mt-24 px-6 xl:px-10;
+        @apply min-h-screen mt-24 px-6 xl:px-10 w-full;
     }
 
 
@@ -119,9 +115,31 @@
     }
 
 
-    /* Trying to reset react-select default styling */
-
-    .css-qbdosj-Input input {
-        @apply outline-0 outline-none border-none after:outline-none after:border-none focus:outline-offset-0 focus-visible:outline-none focus-visible:outline-offset-0;
-    }
+    
 }
+
+/* Trying to reset react-select default styling */
+.css-qbdosj-Input input {
+    outline: none;
+    border: none;
+}
+.css-qbdosj-Input input:focus{
+    outline: none;
+    outline-offset: 0;
+    border: none;
+}
+
+.css-qbdosj-Input input::after{
+    border: none;
+    outline: none;
+}
+
+
+
+
+.Select-menu-outer {
+    position: relative;
+    z-index: 99 !important;
+}
+
+

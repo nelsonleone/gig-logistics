@@ -28,7 +28,7 @@ function XpressDropOffReceiverSection(props:IProps) {
 
     return( 
         <section className="shadow-lg bg-white drop-shadow-md rounded-md mt-12 w-full pb-10">
-            <h3 className="w-full text-center text-lg bg-gray-100 font-semibold p-3 mb-8">Receiver's Info</h3>
+            <h3 className="w-full text-center text-white shadow-sm-light bg-[hsl(0,2%,10%)] font-medium p-3 mb-8">Receiver's Info</h3>
             <div className="px-3 flex flex-col items-center w-full relative md:px-10">
                 <CustomTextInput 
                     control={control} 

@@ -3,6 +3,7 @@ import 'react-phone-number-input/style.css'
 import classes from './phone-input-customStyles.module.css'
 import PhoneInput from 'react-phone-number-input'
 import { BiSolidMessageAltError } from 'react-icons/bi'
+import { notifications } from '@mantine/notifications'
 
 interface IProps {
     control?: Control<any,undefined>,
@@ -20,7 +21,8 @@ interface IProps {
 }
 
 function CustomPhoneInput({ control, name, placeholder, required, label, error, className, id, value, readOnly,labelStyles, containerStyles }:IProps) {
-  return (
+  
+    return (
         <div className={containerStyles}>
             {
                 label &&

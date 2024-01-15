@@ -8,7 +8,7 @@ export default function Layout({
   return (
     <div className="page text-[#374151] relative pt-8 lg:flex lg:justify-between">
       <AppPanel />
-      <div className="lg:ms-[22em] lg:w-5/6">
+      <div className="lg:ms-[22em] lg:basis-[75%]">
        {children}
       </div>
     </div>

@@ -9,7 +9,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     try {
       const authorization = headers().get("Authorization")
       const res = await request.json()
-      const { firstName, lastName, picture, phoneNumber } = res;
+      const { firstName, lastName, picture, email, phoneNumber } = res;
 
       console.log(firstName,lastName,phoneNumber)
 
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
             const userData = userDoc.data()
             return NextResponse.json(userData)
           } else {
-            await firebaseAdmin.firestore().collection('AuthUsers').doc(decodedToken.uid).set({ firstName, lastName, picture, phoneNumber, uid: decodedToken.uid},{ merge: true} )
+            await firebaseAdmin.firestore().collection('AuthUsers').doc(decodedToken.uid).set({ email, firstName, lastName, picture, phoneNumber, uid: decodedToken.uid},{ merge: true} )
             return NextResponse.json(await getUserFromDB(decodedToken.uid))
           }
         }
