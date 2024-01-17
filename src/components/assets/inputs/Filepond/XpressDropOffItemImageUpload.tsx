@@ -5,6 +5,7 @@ import 'filepond/dist/filepond.min.css';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type'
 import FilePondPluginImageEdit from 'filepond-plugin-image-edit';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import { useEffect, useState } from 'react';
@@ -18,7 +19,8 @@ registerPlugin(
     FilePondPluginImagePreview,
     FilePondPluginImageExifOrientation,
     FilePondPluginFileValidateSize,
-    FilePondPluginImageEdit
+    FilePondPluginImageEdit,
+    FilePondPluginFileValidateType
 )
 
 
@@ -51,8 +53,12 @@ function XpressDropOffItemImageUpload({ setValue }: { setValue: UseFormSetValue<
             <FilePond
                 onupdatefiles={handleFileLoad}
                 allowMultiple={false}
+                allowFileTypeValidation
+                labelFileTypeNotAllowed="Added file is invalid"
                 acceptedFileTypes={['image/png', 'image/jpeg']}
                 maxFiles={1}
+                stylePanelAspectRatio="1:0.60"
+                imagePreviewMinHeight={230}
                 required
                 allowReplace
                 name="deliveryItems.itemImage"

@@ -21,7 +21,8 @@ interface IProps {
     required?: string,
     readOnly?: boolean,
     id: string,
-    defaultValue?: string
+    defaultValue?: string,
+    rule?: {[key:string]:string | { value: number, message: string}}
 }
 
 export default function CustomTextInput(props:IProps){
@@ -40,7 +41,8 @@ export default function CustomTextInput(props:IProps){
         containerStyles,
         required,
         readOnly,
-        id
+        id,
+        rule
     } = props;
 
     return(
@@ -54,7 +56,7 @@ export default function CustomTextInput(props:IProps){
             <Controller
                 name={name as keyof ICODWalletFormValues}
                 control={control || undefined}
-                rules={{required}}
+                rules={{required, ...rule }}
                 render={({ field }) => 
                 <input 
                     type={inputType || "text"} 

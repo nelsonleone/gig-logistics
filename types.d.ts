@@ -300,7 +300,8 @@ type DeliveryItems = {
     itemImage: string,
     otherItemName: string,
     otherItemDescription: string,
-    otherItemWeight: string
+    otherItemWeight: string,
+    id: string
 }
 
 interface IXpressSenderInfo {
@@ -308,7 +309,7 @@ interface IXpressSenderInfo {
     lastName: string,
     phoneNumber: string,
     email: string,
-    location: string
+    location: { label: string, value: string }
 }
 
 interface IXpressReceiverInfo {
@@ -355,7 +356,20 @@ interface IXpressDeliveryItemTransformed {
 interface IXpressReceiverInfoTransformed {
     fullName: string;
     phoneNumber: string;
+    deliveryOptionType: XpressDropOffDeliveryType | undefined;
     homeAddress?: string;
     stateOrCity?: string;
     pickupTerminal?: string;
+}
+
+type ServerReadyXpressDropOffInfo = {
+    deliveryItems: IXpressDeliveryItemTransformed[],
+    receiver: IXpressReceiverInfoTransformed,
+    sender: {
+        firstName: string,
+        lastName: string,
+        phoneNumber: string,
+        email: string,
+        location: string
+    }
 }

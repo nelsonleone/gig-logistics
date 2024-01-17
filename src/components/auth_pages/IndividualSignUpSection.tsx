@@ -60,11 +60,18 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                     }
 
                     const userCred = await createUserWithEmailAndPassword(auth,email,password)
+                    const idToken = await userCred.user.getIdToken()
+
+                    if(!idToken && !userCred){
+                        throw new Error("Authentication Failed")
+                        return;
+                    }
+
                     const picture = auth.currentUser?.photoURL;
                     const res = await fetch('/api/signup',{
                         method: "POST",
                         headers: {
-                          Authorization: `Bearer ${await userCred.user.getIdToken()}`,
+                          Authorization: `Bearer ${idToken}`,
                         },
                         body: JSON.stringify({
                             firstName,

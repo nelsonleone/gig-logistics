@@ -23,7 +23,7 @@ interface IProps {
 function CustomPhoneInput({ control, name, placeholder, required, label, error, className, id, value, readOnly,labelStyles, containerStyles }:IProps) {
   
     return (
-        <div className={containerStyles}>
+        <div className={` mb-8 ${containerStyles}`}>
             {
                 label &&
                 <label htmlFor={id} className={`cod_form_input_label ${labelStyles}`}>Phone Number</label>
@@ -43,13 +43,13 @@ function CustomPhoneInput({ control, name, placeholder, required, label, error, 
                     control={control || undefined}
                     rules={{ required: required || "Phone number is a required field" }}
                     render={({ field }) =>
-                        <PhoneInput id={id} {...field } placeholder={placeholder} defaultCountry='NG' className={`${classes.phoneInput} ${className} mb-8`} />
+                        <PhoneInput id={id} {...field } placeholder={placeholder} defaultCountry='NG' className={`${classes.phoneInput} ${className}`} />
                     }
                 />
             }
             {
                 error &&
-                <p role="alert" className="text-red-500 text-sm mt-3"><BiSolidMessageAltError />{error}</p>
+                <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError />{error}</p>
             }
         </div>
     )

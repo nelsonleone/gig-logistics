@@ -30,7 +30,7 @@ export default function SignIn({ params, searchParams }:IPageProps){
     }
 
     return(
-        <div className="mt-14 min-h-screen bg-[url('/images/black-truck-bg.jpg')] relative flex justify-center items-center bg-no-repeat bg-center bg-cover">
+        <div className="page mt-14 bg-[url('/images/black-truck-bg.jpg')] relative flex justify-center items-center bg-no-repeat bg-center bg-cover">
             <SignInMainCP returnTo={returnTo} />
         </div>
     )

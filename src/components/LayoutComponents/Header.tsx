@@ -4,15 +4,13 @@ import { usePathname } from "next/navigation";
 import Logo from "../assets/Logo";
 import MenuIcon from "../assets/MenuIcon";
 import MainNav from "../MainNav";
-import { Children, ReactElement, ReactNode, cloneElement, isValidElement } from "react";
+import { ReactNode } from "react";
 import { inter } from "@/app/fonts";
 import { handleScrollIntoView } from "@/helperFns/handleScrollIntoView";
-import { useAppSelector } from "@/redux/customHooks";
 
 export default function Header({ authSessionToken, children }: { authSessionToken:string | undefined, children: ReactNode }){
 
     const pathName = usePathname()
-    const { beenAuthenticated } = useAppSelector(store => store.authUser)
 
     return(
         !pathName.match(`/admin/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}`) ?

@@ -1,11 +1,5 @@
-import { DeliveryItems, IXpressDeliveryItemTransformed, IXpressReceiverInfoTransformed, IXpressSenderInfo, XpressDropOffInfo } from "../../types";
+import { DeliveryItems, IXpressDeliveryItemTransformed, IXpressReceiverInfoTransformed, IXpressSenderInfo, ServerReadyXpressDropOffInfo, XpressDropOffInfo } from "../../types";
 import { transformXpressDropOffDeliveryOptionObj } from "./transformXpressDropOffDeliveryOptionObj";
-
-interface IcleanedDropOffInfo {
-    deliveryItems: IXpressDeliveryItemTransformed[];
-    receiver: IXpressReceiverInfoTransformed,
-    sender: IXpressSenderInfo
-}
 
 export function cleanXpressDropOffInfo(info:XpressDropOffInfo){
 
@@ -37,8 +31,8 @@ export function cleanXpressDropOffInfo(info:XpressDropOffInfo){
     })
 
 
-    const cleanedDropOffObj : IcleanedDropOffInfo = {
-        ...info,
+    const cleanedDropOffObj : ServerReadyXpressDropOffInfo = {
+        sender: {...info.sender, location: info.sender.location.value},
         deliveryItems: modifiedDeliveryItems,
         receiver: transformXpressDropOffDeliveryOptionObj(info.receiver)
     }

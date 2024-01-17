@@ -7,44 +7,52 @@ import { AlertSeverity } from "@/enums"
 import customFirebaseError from "./CustomFirebaseAuthError"
 import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice"
 
-export async function handleSignInWithPopUp(returnTo:string | string[] |undefined,dispatch:Dispatch){
-    await asyncWrapper(
-        async() => {
-            try{
-                dispatch(setShowRingLoader(true))
-                const { user: { getIdToken,email, displayName, phoneNumber, photoURL}} = await signInWithPopup(auth,provider)
-                await fetch('/api/signup',{
-                    method: "POST",
-                    headers: {
-                        Authorization: `Bearer ${await getIdToken()}`,
-                    },
-                    body: JSON.stringify({
-                        firstName: displayName?.split(" ")[0],
-                        lastName: displayName?.split(" ")[1],
-                        phoneNumber,
-                        picture: photoURL,
-                        email,
-                        returnTo
-                    })
-                })
-    
-                dispatch(setShowAlert({
-                    mssg: "Successfully Signed In",
-                    severity: AlertSeverity.SUCCESS
-                }))
-            }
-            catch(error:any|unknown){
-                console.log(error)
-                dispatch(setShowAlert({
-                    mssg: customFirebaseError(error.code) || "Error Occurred During Login",
-                    severity: AlertSeverity.ERROR
-                }))
-            }
-
-            finally{
-                dispatch(setShowRingLoader(false))
-            }
-        },
-        dispatch
-    )
+export async function handleSignInWithPopUp(returnTo: string | string[] | undefined, dispatch: Dispatch) {
+    await asyncWrapper(async () => {
+      try {
+        dispatch(setShowRingLoader(true))
+  
+        const userCredential = await signInWithPopup(auth, provider)
+        const idToken = await userCredential.user.getIdToken()
+  
+        if (userCredential.user && idToken) {
+          const { email, displayName, phoneNumber, photoURL } = userCredential.user;
+  
+          await fetch('/api/signup', {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${idToken}`,
+            },
+            body: JSON.stringify({
+              firstName: displayName?.split(' ')[0],
+              lastName: displayName?.split(' ')[1],
+              phoneNumber,
+              picture: photoURL,
+              email,
+              returnTo,
+            }),
+          });
+  
+          dispatch(
+            setShowAlert({
+              mssg: 'Successfully Signed In',
+              severity: AlertSeverity.SUCCESS,
+            })
+          )
+        } else {
+          throw new Error('User not found in userCredential')
+        }
+      } catch (error: any | unknown) {
+        console.log(error.message,error.code)
+        dispatch(
+          setShowAlert({
+            mssg: customFirebaseError(error.code) || 'Error Occurred During Login',
+            severity: AlertSeverity.ERROR,
+          })
+        )
+      } finally {
+        dispatch(setShowRingLoader(false))
+      }
+    }, dispatch)
 }
+  

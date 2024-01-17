@@ -4,16 +4,14 @@ import { auth } from "firebase-admin";
 import { cookies, headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-
 export async function POST(request: NextRequest, response: NextResponse) {
     try {
       const authorization = headers().get("Authorization")
       const res = await request.json()
       const { firstName, lastName, picture, email, phoneNumber } = res;
 
-      console.log(firstName,lastName,phoneNumber)
-
-  
+      
+      
       if (authorization?.startsWith("Bearer ")) {
         const idToken = authorization.split("Bearer ")[1]
 

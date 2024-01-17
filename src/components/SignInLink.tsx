@@ -5,7 +5,7 @@ import { useAppSelector } from "@/redux/customHooks";
 import Link from "next/link";
 import { AuthUser } from "../../types";
 
-export default function SignInLink({ authUserData }: { authUserData:AuthUser }){
+export default function SignInLink({ authUserData }: { authUserData:AuthUser | undefined }){
 
     const { beenAuthenticated } = useAppSelector(store => store.authUser)
 

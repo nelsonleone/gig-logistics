@@ -14,11 +14,12 @@ import { AlertSeverity } from "@/enums"
 import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice"
 import { setShowAlert } from "@/redux/slices/alertSlice"
 import { cleanXpressDropOffInfo } from "@/helperFns/cleanXpressDropOffInfo"
+import LoadingEllipse from "./assets/Loaders/LoadingEllipse"
 
 export default function XpressDropOffFormContainer(){
 
     const { firstName, lastName, phoneNumber, email } = useAppSelector(store => store.authUser)
-    const { control, formState: { errors, isSubmitting }, clearErrors, setError, register, setValue, handleSubmit } = useForm<XpressDropOffInfo>({
+    const { control, formState: { errors, isSubmitting }, clearErrors, setError, setValue, handleSubmit } = useForm<XpressDropOffInfo>({
         defaultValues:{
             sender: {
                 firstName,
@@ -26,10 +27,7 @@ export default function XpressDropOffFormContainer(){
                 email,
                 phoneNumber
             },
-            deliveryItems: [],
-            receiver: {
-                phoneNumber: "sjd"
-            }
+            deliveryItems: []
         }
     })
     const deliveryOptionType = useWatch({ control, name: 'receiver.deliveryOptionType.value'})
@@ -49,12 +47,16 @@ export default function XpressDropOffFormContainer(){
             }))
             return;
         }
-        console.log(data)
 
         try{
-            dispatch(setShowRingLoader(true))
-            const xc = cleanXpressDropOffInfo(data)
-            console.log(xc)
+            const cleanedDropOffInfo = cleanXpressDropOffInfo(data)
+            
+            const userDropOffs = await fetch('/api/create_xpressDropoff',{
+                method: "POST",
+                body: JSON.stringify(cleanedDropOffInfo)
+            })
+
+            console.log(userDropOffs)
         }
 
         catch(err:unknown|any){
@@ -62,10 +64,6 @@ export default function XpressDropOffFormContainer(){
                 mssg: err.message || "Error Occurred Creating DropOff",
                 severity: AlertSeverity.ERROR
             }))
-        }
-
-        finally{
-            dispatch(setShowRingLoader(false))
         }
     }
 
@@ -80,9 +78,16 @@ export default function XpressDropOffFormContainer(){
             <XpressDropOffSenderSection errors={errors} control={control} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} />
             <XpressDropOffReceiverSection errors={errors} control={control} selectedStateOrCity={selectedStateOrCity} deliveryOptionType={deliveryOptionType} />
             <XpressDropOffDeliveryItemsSection deliveryItemError={errors.deliveryItems?.message} setValue={setValue} control={control} />
-            <XpressDropOffEstimatedCostSection />
+            <XpressDropOffEstimatedCostSection deliveryItems={deliveryItems} />
 
-            <button disabled={isSubmitting} className={`${inter.className} w-full md:w-[28em] bg-black text-white font-medium rounded-md p-4 my-8 md:my-10 mx-auto block`}>Proceed</button>
+            <button disabled={isSubmitting} className={`${inter.className} relative min-h-[3.8em] text-center w-full md:w-96 bg-black text-white font-medium rounded-md my-8 md:my-10 mx-auto block`}>
+                {
+                    isSubmitting ?
+                    <LoadingEllipse />
+                    :
+                    "Proceed"
+                }
+            </button>
         </form>
     )
 }

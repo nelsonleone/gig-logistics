@@ -39,10 +39,17 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
             async() => {
                 try{
                     const userCred = await signInWithEmailAndPassword(auth,email,password)
+                    const idToken = await userCred.user.getIdToken()
+
+                    if(!idToken && !userCred){
+                        throw new Error("Authentication Failed")
+                        return;
+                    }
+
                     const res = await fetch('/api/login',{
                         method: "POST",
                         headers: {
-                          Authorization: `Bearer ${await userCred.user.getIdToken()}`,
+                          Authorization: `Bearer ${idToken}`,
                         },
                         body: JSON.stringify(returnTo)
                     })

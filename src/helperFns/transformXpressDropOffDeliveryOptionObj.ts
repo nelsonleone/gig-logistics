@@ -10,6 +10,7 @@ export function transformXpressDropOffDeliveryOptionObj(info:IXpressReceiverInfo
         return {
             fullName,
             phoneNumber,
+            deliveryOptionType: deliveryOptionType.value,
             homeAddress: deliveryOption.homeDelivery.address,
         }
     }
@@ -18,6 +19,7 @@ export function transformXpressDropOffDeliveryOptionObj(info:IXpressReceiverInfo
         return {
             fullName,
             phoneNumber,
+            deliveryOptionType: deliveryOptionType.value,
             stateOrCity: deliveryOption.terminalPickup.stateOrCity.value,
             pickupTerminal: deliveryOption.terminalPickup.closestGIGLCenter?.value,
         }
@@ -26,7 +28,8 @@ export function transformXpressDropOffDeliveryOptionObj(info:IXpressReceiverInfo
     else {
        return{
             fullName,
-            phoneNumber
+            phoneNumber,
+            deliveryOptionType: undefined,
        }
     }
 }
