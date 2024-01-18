@@ -8,7 +8,7 @@ import { ReactNode } from "react";
 import { inter } from "@/app/fonts";
 import { handleScrollIntoView } from "@/helperFns/handleScrollIntoView";
 
-export default function Header({ authSessionToken, children }: { authSessionToken:string | undefined, children: ReactNode }){
+export default function Header({ children }:{ children: ReactNode }){
 
     const pathName = usePathname()
 
@@ -17,7 +17,7 @@ export default function Header({ authSessionToken, children }: { authSessionToke
         <header className="bg-slate-50 w-full py-4 px-6 h-20 fixed top-0 z-50 flex justify-between items-center xl:px-10 lg:py-12 drop-shadow-md">
             <MenuIcon />
             <Logo />
-            <MainNav authSessionToken={authSessionToken} />
+            <MainNav />
             <div className="flex gap-4">
                 {
                     pathName === "/" ?

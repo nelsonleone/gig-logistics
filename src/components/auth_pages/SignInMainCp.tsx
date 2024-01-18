@@ -57,13 +57,20 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
                     const authUserData : AuthUser = await res.json()
 
                     dispatch(setAuthUserData({ ...authUserData, beenAuthenticated: true }))
+
+                    console.log(authUserData)
         
                     dispatch(setShowAlert({
                         mssg: "Successfully Signed In",
                         severity: AlertSeverity.SUCCESS
                     }))
 
-                    router.push(returnTo as string || "/")
+                    if(returnTo){
+                        router.push(returnTo as string)
+                    }
+                    else{
+                        router.push("/")
+                    }
                 }
         
                 catch(error:any|unknown){
@@ -78,7 +85,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
     }
 
     const handleGoogleSignIn = async() => {
-        await handleSignInWithPopUp(returnTo,dispatch)
+        await handleSignInWithPopUp(returnTo,dispatch,router)
     }
 
 
@@ -87,7 +94,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
         <main className="my-10 pt-24 lg:my-28 pb-8 text-[#374151] bg-white rounded-lg w-11/12 mx-auto md:w-[25em] shadow-lg shadow-slate-500 drop-shadow-sm">
             <h1 className={`${roboto_slab.className} text-center text-3xl font-bold mb-8`}>Sign In</h1>
 
-            <form onSubmit={handleSubmit(handleSignIn)} className="w-[94%] mx-auto">
+            <form onSubmit={handleSubmit(handleSignIn)} className="w-[94%] md:w-11/12 mx-auto">
                 <CustomTextInput 
                    name="email" 
                    control={control} 
@@ -111,7 +118,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
                     inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
                 /> 
 
-                <Link href="" className="block underline ms-1 font-medium text-sm my-4">Forgot Password?</Link>
+                <Link href="/auth/reset_password" className="block underline ms-1 font-medium text-sm my-4">Forgot Password?</Link>
 
                 <button disabled={isSubmitting} className="h-[3.4em] bg-black relative text-[#FFFFFF] capitalize text-center block mt-6 mb-4 rounded-lg p-4 font-medium w-full hover:drop-shadow-lg transition duration-200 ease-linear focus:border focus:border-gray-300">{isSubmitting ? <LoadingEllipse styles="" /> :"Log In"}</button>
                 <ContinueWithGoogleBtn handleClick={handleGoogleSignIn} className="" />

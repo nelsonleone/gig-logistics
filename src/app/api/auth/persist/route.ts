@@ -1,4 +1,4 @@
-import { getUserFromDB } from "@/helperFns/getUserFromDB";
+import { getAuthUserDataFromFirestore } from "@/helperFns/getFirestoreData";
 import { auth } from "firebase-admin";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
@@ -16,5 +16,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ isLogged: false }, { status: 401 })
   }
 
-  return NextResponse.json(await getUserFromDB(decodedClaims.uid))
+  const authUserData = await getAuthUserDataFromFirestore(decodedClaims.uid)
+  return NextResponse.json(authUserData)
 }

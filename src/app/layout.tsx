@@ -5,7 +5,6 @@ import type { Metadata } from 'next'
 import Footer from '@/components/LayoutComponents/Footer'
 import { inter } from './fonts'
 import CustomAlert from '@/components/assets/PopUps/CustomAlert'
-import { cookies } from 'next/headers'
 import AuthUserHeaderSection from '@/components/AuthUserHeaderSection'
 import CustomSnackbar from '@/components/assets/PopUps/CustomSnackbar'
 import RingLoader from '../components/assets/Loaders/RingLoader'
@@ -22,7 +21,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  const authSessionToken = cookies().get('authSessionToken')?.value;
 
   return (
     <html lang="en">
@@ -33,7 +31,7 @@ export default function RootLayout({
         <CustomAppStoreProvider>
           <body className={`${inter.className} bg-[#f4f5f6] scroll-smooth overflow-x-hidden`}>
             <CustomAlert />
-            <Header authSessionToken={authSessionToken}>
+            <Header >
               <AuthUserHeaderSection />
             </Header>
             {children}

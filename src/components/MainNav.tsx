@@ -16,7 +16,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { handleScrollIntoView } from "@/helperFns/handleScrollIntoView";
 
-export default function MainNav({ authSessionToken }: { authSessionToken: string | undefined }){
+export default function MainNav(){
 
     const { openNav } = useAppSelector(store => store.openNav)
     const pathName = usePathname()
@@ -24,7 +24,6 @@ export default function MainNav({ authSessionToken }: { authSessionToken: string
     const dispatch = useAppDispatch()
     const [showDropdownMenu,setShowDropdownMenu] = useState(openNav)
     const [innerWidth,setInnerWidth] = useState<number>(0)
-    const { beenAuthenticated } = useAppSelector(store => store.authUser)
 
 
     const handleClickAway = () => {

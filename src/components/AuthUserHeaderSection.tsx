@@ -9,8 +9,6 @@ async function AuthUserHeaderSection() {
     const authSessionToken = cookies().get('authSessionToken')?.value;
 
     const authUserData = await getPersistedAuthUser(authSessionToken)
-
-    console.log(authUserData)
     
     return (
         <nav>

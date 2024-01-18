@@ -6,8 +6,11 @@ import { Dispatch } from "@reduxjs/toolkit"
 import { AlertSeverity } from "@/enums"
 import customFirebaseError from "./CustomFirebaseAuthError"
 import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice"
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
+import { setAuthUserData } from "@/redux/slices/authUser"
+import { AuthUser } from "../../types"
 
-export async function handleSignInWithPopUp(returnTo: string | string[] | undefined, dispatch: Dispatch) {
+export async function handleSignInWithPopUp(returnTo: string | string[] | undefined, dispatch: Dispatch,router:AppRouterInstance) {
     await asyncWrapper(async () => {
       try {
         dispatch(setShowRingLoader(true))
@@ -15,10 +18,10 @@ export async function handleSignInWithPopUp(returnTo: string | string[] | undefi
         const userCredential = await signInWithPopup(auth, provider)
         const idToken = await userCredential.user.getIdToken()
   
-        if (userCredential.user && idToken) {
+        if (userCredential && userCredential.user && idToken) {
           const { email, displayName, phoneNumber, photoURL } = userCredential.user;
   
-          await fetch('/api/signup', {
+          const res = await fetch('/api/signup', {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${idToken}`,
@@ -31,7 +34,14 @@ export async function handleSignInWithPopUp(returnTo: string | string[] | undefi
               email,
               returnTo,
             }),
-          });
+          })
+
+          const authUserData = await res.json()
+
+          dispatch(setAuthUserData({
+            ...authUserData,
+            beenAuthenticated: true
+          }))
   
           dispatch(
             setShowAlert({
@@ -39,6 +49,14 @@ export async function handleSignInWithPopUp(returnTo: string | string[] | undefi
               severity: AlertSeverity.SUCCESS,
             })
           )
+
+          if(returnTo){
+            router.push(returnTo as string)
+          }
+          else{
+            router.push("/")
+          }
+
         } else {
           throw new Error('User not found in userCredential')
         }

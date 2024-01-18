@@ -35,6 +35,6 @@ export const authUserMenuLinkData : IauthUserMenuLinkData[] = [
     {
         icon: TbLogout,
         text: "Logout",
-        link: `${process.env.NEXT_PUBLIC_APP_URL}/auth/signout` || ""
+        link: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/sign_out` || ""
     }
 ]

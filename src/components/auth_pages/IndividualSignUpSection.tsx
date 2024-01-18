@@ -92,7 +92,12 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
 
                     dispatch(setAuthUserData({ ...authUserData, beenAuthenticated: true }))
 
-                    router.push(returnTo as string || "/")
+                    if(returnTo){
+                        router.push(returnTo as string)
+                    }
+                    else{
+                        router.push("/")
+                    }
                 }
         
                 catch(error:any|unknown){
@@ -107,11 +112,11 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
     }
 
     const handleGoogleSignIn = async() => {
-        await handleSignInWithPopUp(returnTo,dispatch)
+        await handleSignInWithPopUp(returnTo,dispatch,router)
     }
 
     return(
-        <form onSubmit={handleSubmit(handleSignUp)} className="w-[92%] mx-auto mt-8">
+        <form onSubmit={handleSubmit(handleSignUp)} className="w-[92%] md:w-11/12 mx-auto mt-8">
             <div className="md:flex justify-between gap-8">
                 <CustomTextInput 
                     name="firstName"
