@@ -373,3 +373,9 @@ type ServerReadyXpressDropOffInfo = {
         location: string
     }
 }
+
+
+interface SavedDropOffs extends ServerReadyXpressDropOffInfo {
+    createdAt: string,
+    trackingID: string
+}

@@ -11,15 +11,15 @@ import { inter } from "@/app/fonts"
 import { useEffect } from "react"
 import { setShowSnackbar } from "@/redux/slices/snackbarSlice"
 import { AlertSeverity } from "@/enums"
-import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice"
 import { setShowAlert } from "@/redux/slices/alertSlice"
 import { cleanXpressDropOffInfo } from "@/helperFns/cleanXpressDropOffInfo"
 import LoadingEllipse from "./assets/Loaders/LoadingEllipse"
+import { useRouter } from "next/navigation"
 
 export default function XpressDropOffFormContainer(){
 
     const { firstName, lastName, phoneNumber, email } = useAppSelector(store => store.authUser)
-    const { control, formState: { errors, isSubmitting }, clearErrors, setError, setValue, handleSubmit } = useForm<XpressDropOffInfo>({
+    const { control, formState: { errors, isSubmitting }, reset, clearErrors, setError, setValue, handleSubmit } = useForm<XpressDropOffInfo>({
         defaultValues:{
             sender: {
                 firstName,
@@ -34,6 +34,7 @@ export default function XpressDropOffFormContainer(){
     const selectedStateOrCity = useWatch({ control, name: 'receiver.deliveryOption.terminalPickup.stateOrCity'})
     const dispatch = useAppDispatch()
     const deliveryItems = useWatch({ control, name: 'deliveryItems'})
+    const router = useRouter()
 
     const handleCreateXpressDropOff : SubmitHandler<XpressDropOffInfo> = async(data) => {
         if(deliveryItems && !deliveryItems.length){
@@ -51,12 +52,19 @@ export default function XpressDropOffFormContainer(){
         try{
             const cleanedDropOffInfo = cleanXpressDropOffInfo(data)
             
-            const userDropOffs = await fetch('/api/create_xpressDropoff',{
+            await fetch('/api/create_xpressDropoff',{
                 method: "POST",
                 body: JSON.stringify(cleanedDropOffInfo)
             })
 
-            console.log(userDropOffs)
+            reset()
+
+            dispatch(setShowAlert({
+                mssg: "DropOff Created",
+                severity: AlertSeverity.SUCCESS
+            }))
+
+            router.push("/app-panel/dropoff/manage")
         }
 
         catch(err:unknown|any){

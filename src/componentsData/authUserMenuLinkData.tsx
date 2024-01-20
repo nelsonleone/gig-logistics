@@ -15,26 +15,26 @@ export const authUserMenuLinkData : IauthUserMenuLinkData[] = [
     {
         icon: FiUser,
         text: "My Profile",
-        link: `${process.env.NEXT_PUBLIC_APP_URL}/user_profile` || ""
+        link: "/user_profile" || ""
     },
     {
         icon: IoMdWallet,
         text: "My Transactions",
-        link: `${process.env.NEXT_PUBLIC_APP_URL}/wallet` || ""
+        link: "/wallet" || ""
     },
     {
         icon: FaRegEdit,
         text: "Change Wallet Pin",
-        link: process.env.NEXT_PUBLIC_APP_URL || ""
+        link: "/" || ""
     },
     {
         icon: MdLockReset,
         text: "Reset Wallet Pin",
-        link: process.env.NEXT_PUBLIC_APP_URL || ""
+        link: "/" || ""
     },
     {
         icon: TbLogout,
         text: "Logout",
-        link: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/sign_out` || ""
+        link: "/api/auth/sign_out" || ""
     }
 ]

@@ -32,10 +32,20 @@ const authUser = createSlice({
             state.picture = payload.picture || state.picture;
             state.uid = payload.uid || state.uid;
             state.notifications = payload.notifications || [];
+        },
+        setSignOutAuthUser: (state) => {
+            state.beenAuthenticated = false;
+            state.firstName = "";
+            state.lastName = "";
+            state.email = "";
+            state.phoneNumber = "";
+            state.picture = "";
+            state.uid = "";          
+            state.notifications = []
         }
     }
 })
 
-export const { setAuthUserData } = authUser.actions
+export const { setAuthUserData, setSignOutAuthUser } = authUser.actions
 
 export default authUser.reducer;

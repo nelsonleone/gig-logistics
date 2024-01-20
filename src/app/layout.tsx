@@ -8,7 +8,7 @@ import CustomAlert from '@/components/assets/PopUps/CustomAlert'
 import AuthUserHeaderSection from '@/components/AuthUserHeaderSection'
 import CustomSnackbar from '@/components/assets/PopUps/CustomSnackbar'
 import RingLoader from '../components/assets/Loaders/RingLoader'
-
+import '@mantine/dates/styles.css';
 
 export const metadata: Metadata = {
   title: `GIGL | Africa's Leading Logistics Company | Express Delivery`,

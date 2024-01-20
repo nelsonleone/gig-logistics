@@ -8,7 +8,6 @@ import customFirebaseError from "./CustomFirebaseAuthError"
 import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice"
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
 import { setAuthUserData } from "@/redux/slices/authUser"
-import { AuthUser } from "../../types"
 
 export async function handleSignInWithPopUp(returnTo: string | string[] | undefined, dispatch: Dispatch,router:AppRouterInstance) {
     await asyncWrapper(async () => {
@@ -21,7 +20,7 @@ export async function handleSignInWithPopUp(returnTo: string | string[] | undefi
         if (userCredential && userCredential.user && idToken) {
           const { email, displayName, phoneNumber, photoURL } = userCredential.user;
   
-          const res = await fetch('/api/signup', {
+          const res = await fetch('/api/auth/signup', {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${idToken}`,

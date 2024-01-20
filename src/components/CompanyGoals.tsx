@@ -27,6 +27,7 @@ export default function CompanyGoals(){
             <motion.h3 
               initial={{ x:-200, opacity:0 }}
               whileInView={{ x: 0, opacity:1 }}
+              viewport={{ once: true }}
               transition={{ ease: "easeInOut", duration: .3 }}
               className={`${roboto_slab.className} text-center text-2xl font-bold lg:text-[2rem] lg:text-left lg:leading-10`}
               >
@@ -42,6 +43,7 @@ export default function CompanyGoals(){
                               className="flex flex-col justify-between gap-4 mb-12"
                               variants={companyGoalsAnimationVariant}
                               initial="initial"
+                              viewport={{ once: true }}
                               whileInView="animate"
                               >
                                 <img 

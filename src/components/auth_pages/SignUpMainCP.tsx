@@ -18,7 +18,7 @@ export default function SignUpMainCP({ returnTo }: { returnTo:string | string[] 
     },[radioValue])
 
     return(
-        <main className="my-12 pt-10 pb-8 lg:my-28 min-h-[20em] text-[#374151] bg-white rounded-lg w-11/12 mx-auto md:w-[27.5em] shadow-lg drop-shadow-md">
+        <main className="my-12 pt-10 pb-8 lg:my-28 min-h-[20em] text-[#374151] bg-white rounded-lg w-full mx-auto md:w-[27.5em] shadow-lg drop-shadow-md">
             <div>
                <h1 id={id} className={`${roboto_slab.className} text-2xl md:text-3xl font-bold text-center mt-4 mb-10 text-[#374151]`}>Sign Up With Us As</h1>
                 <CustomRadioGroup 

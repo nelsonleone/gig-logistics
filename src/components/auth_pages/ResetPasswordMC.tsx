@@ -9,6 +9,7 @@ import { auth } from "@/lib/firebase/firebase-client-config"
 import { setShowAlert } from "@/redux/slices/alertSlice"
 import { AlertSeverity } from "@/enums"
 import { roboto_slab } from "@/app/fonts"
+import Link from "next/link"
 
 export default function ResetPasswordMC(){
 
@@ -58,6 +59,7 @@ export default function ResetPasswordMC(){
                     "Reset"
                 }
             </button>
+            <Link href="/auth/sign_in" className="block my-4 underline capitalize">Return to Sign In</Link>
         </form>
     )
 }

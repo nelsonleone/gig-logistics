@@ -14,7 +14,7 @@ export function POST(request: NextRequest, response: NextResponse) {
 
     cookies().set(options)
 
-    return NextResponse.redirect('/', { status: 302 })
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/` || new URL("/", request.url), { status: 302 })
   } catch (error: any) {
     console.error('Error signing out user:', error.message)
     return NextResponse.json({ error: 'Sign out failed' }, { status: 500 })

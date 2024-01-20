@@ -68,7 +68,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                     }
 
                     const picture = auth.currentUser?.photoURL;
-                    const res = await fetch('/api/signup',{
+                    const res = await fetch('/api/auth/signup',{
                         method: "POST",
                         headers: {
                           Authorization: `Bearer ${idToken}`,
@@ -177,7 +177,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
             />
 
             <button disabled={isSubmitting} className="h-[3.4em] bg-black text-[#FFFFFF] capitalize text-center block mt-6 mb-4 rounded-lg p-4 font-medium w-full relative hover:drop-shadow-lg transition duration-200 ease-linear focus:border focus:border-gray-300">{isSubmitting ? <LoadingEllipse styles="" /> :"Sign Up"}</button>
-            <ContinueWithGoogleBtn handleClick={handleGoogleSignIn} className="" />
+            <ContinueWithGoogleBtn disabled={isSubmitting} handleClick={handleGoogleSignIn} className="" />
             <p className="text-sm text-center">Already have an account? <Link className="underline font-medium mx-2" href={`/auth/sign_in${returnTo ? `?returnTo=${returnTo}` : ""}`}>Log In</Link></p>
         </form>
     )

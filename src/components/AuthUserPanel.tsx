@@ -4,23 +4,56 @@ import { inter } from "@/app/fonts";
 import { authUserMenuLinkData } from "@/componentsData/authUserMenuLinkData";
 import { ListItemIcon, Menu, MenuItem, MenuList } from "@mui/material";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { FaSortDown, FaUserCircle } from "react-icons/fa";
 import { AuthUser } from "../../types";
 import { useAppDispatch } from "@/redux/customHooks";
-import { setAuthUserData } from "@/redux/slices/authUser";
+import { setAuthUserData, setSignOutAuthUser } from "@/redux/slices/authUser";
+import { setShowAlert } from "@/redux/slices/alertSlice";
+import { AlertSeverity } from "@/enums";
+import { useRouter } from "next/navigation";
+import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice";
 
-export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser }){
+export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser | undefined }){
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
     const open = Boolean(anchorEl)
     const dispatch = useAppDispatch()
+    const router = useRouter()
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget)
     }
     const handleClose = () => {
       setAnchorEl(null)
+    }
+
+    const handleLinkClick = async(e:MouseEvent<HTMLAnchorElement>,link:string) => {
+        const signOutLink = "/api/auth/sign_out";
+        if(link === signOutLink){
+            e.preventDefault()
+
+            try{
+                dispatch(setShowRingLoader(true))
+                await fetch(signOutLink,{
+                    method: "POST"
+                })
+
+                dispatch(setSignOutAuthUser())
+
+                // router.push("/")
+            }
+
+            catch(err:any|unknown){
+                dispatch(setShowAlert({
+                    mssg: err.message || "An Error Occurred Whiling During Sign-Out",
+                    severity: AlertSeverity.ERROR
+                }))
+            }
+            finally{
+                dispatch(setShowRingLoader(false))
+            }
+        }
     }
 
     useEffect(() => {
@@ -60,7 +93,7 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
                                 const Icon = val.icon;
                                 return(
                                     <MenuItem key={val.text} sx={{ p: 0}} className="p-0">
-                                        <Link href={val.link} className={`${inter.className} m-0 py-2 px-3 w-full hover:bg-gray-100 focus:bg-gray-100 transition duration-200 ease-linear rounded-sm flex items-center text-gray-800`}>
+                                        <Link href={val.link} onClick={(e) => handleLinkClick(e,val.link)} className={`${inter.className} m-0 py-2 px-3 w-full hover:bg-gray-100 focus:bg-gray-100 transition duration-200 ease-linear rounded-sm flex items-center text-gray-800`}>
                                             <ListItemIcon>
                                                 <Icon size={20} />
                                             </ListItemIcon>
