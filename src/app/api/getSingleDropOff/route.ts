@@ -1,16 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { firebaseAdmin } from '@/lib/firebase/firebase-admin-config';
 import { cookies } from 'next/headers';
+import { SavedDropOffs } from '../../../../types';
 
 export async function GET(request: NextRequest, response: NextResponse) {
   try {
-    const session = cookies().get("authSessionToken")?.value || "";
+    const { searchParams } = new URL(request.url)
+    const id = searchParams.get('id')
 
-    if (!session) {
-      throw new Error('Unauthorized action: Unauthenticated user')
+    const authSessionToken = cookies().get('authSessionToken')?.value;
+
+    if(!id){        
+        throw new Error("ID query is invalid")
     }
 
-    const decodedClaims = await firebaseAdmin.auth().verifySessionCookie(session, true)
+    if(!authSessionToken){
+        throw new Error("Unauthourized Action: Unauthenticated user")
+    }
+
+    const decodedClaims = await firebaseAdmin.auth().verifySessionCookie(authSessionToken, true)
 
     const userDocRef = firebaseAdmin.firestore().collection('XpressDropOffs').doc(decodedClaims.uid)
     const userDoc = await userDocRef.get()
@@ -20,9 +28,10 @@ export async function GET(request: NextRequest, response: NextResponse) {
     }
 
     const userData = userDoc.data()
-    const dropOffs = userData?.dropOffs || []
+    const dropOffs : SavedDropOffs[] = await userData?.dropOffs;
+    const dropOff = dropOffs.find((dropOff) => dropOff.id === id)
 
-    return NextResponse.json(dropOffs)
+    return NextResponse.json(dropOff)
   } catch (error:any|unknown) {
     return NextResponse.json({ error: error.message || 'Error retrieving dropOffs' }, { status: 500 })
   }

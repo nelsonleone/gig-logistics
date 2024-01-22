@@ -3,6 +3,7 @@
 import { useAppSelector } from "@/redux/customHooks";
 import { Modal } from "@mui/material";
 import Image from "next/image";
+import ReactLoader from 'react-loading'
 
 export default function RingLoader(){
 
@@ -14,5 +15,13 @@ export default function RingLoader(){
                 <Image className="" src="/icons/loading-ring.svg" alt="loading" aria-label="loading" loading="eager" priority width={200} height={200} />
             </div>
         </Modal>
+    )
+}
+
+export function MiniRingLoader(){
+    return(
+        <div className="bg-[hsla(0,0%,87%,0)] shadow-md border-none outline-none w-[10em] rounded-lg flex justify-center items-center aspect-square">
+           <ReactLoader type="spin" color="black" width={30} height={30} />
+        </div>
     )
 }

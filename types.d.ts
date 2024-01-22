@@ -2,6 +2,15 @@ import { categoryValuesArr } from "@/componentsData/xressDropOffDeliveryItemsDat
 import { XpressDropOffDeliveryType } from "@/enums";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { PortableTextBlock, TypedObject } from "@portabletext/types"
+import { Tuple, DefaultMantineColor } from '@mantine/core'
+
+type ExtendedCustomColors = "brand" | DefaultMantineColor;
+
+declare module "@mantine/core" {
+  export interface MantineThemeColorsOverride {
+    colors: Record<ExtendedCustomColors, string[]>;
+  }
+}
 
 
 // //
@@ -371,11 +380,13 @@ type ServerReadyXpressDropOffInfo = {
         phoneNumber: string,
         email: string,
         location: string
-    }
+    },
+    
 }
 
 
 interface SavedDropOffs extends ServerReadyXpressDropOffInfo {
     createdAt: string,
-    trackingID: string
+    trackingID: string,
+    dropOffID: string,
 }

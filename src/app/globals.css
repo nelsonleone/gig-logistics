@@ -119,27 +119,25 @@
 }
 
 /* Trying to reset react-select default styling */
-.css-qbdosj-Input input {
-    outline: none;
-    border: none;
-}
-.css-qbdosj-Input input:focus{
-    outline: none;
-    outline-offset: 0;
-    border: none;
-}
-
-.css-qbdosj-Input input::after{
-    border: none;
-    outline: none;
-}
-
-
-
 
 .Select-menu-outer {
     position: relative;
     z-index: 99 !important;
 }
 
+
+/* Mantine DateInput Style Refactor */
+.mantine-DatePickerInput-root *{
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1rem !important;
+    color: #374151 !important;
+}
+
+..mantine-DatePickerInput-root{
+    height: 3.5em !important;
+}
+
+.mantine-DatePickerInput-root .mantine-InputPlaceholder-placeholder{
+    color: hsl(0, 6%, 61%) !important;
+}
 

@@ -217,8 +217,8 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                     <XpressDropOffItemImageUpload setValue={setValue} />
 
                     <div className="mt-10 flex flex-col-reverse md:flex-row justify-between gap-3 md:gap-8">
-                        <button type="button" onClick={handleCloseModal} className="text-center text-white bg-red-600 rounded-md w-full block h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:bg-transparent focus:text-black focus:border focus:outline-none focus:font-medium focus:outline-offset-0 focus:border-red-600">Cancel</button>
-                        <button type="button" onClick={handleSubmit(handlePostDeliveryItem)} className="text-center text-white bg-black rounded-md w-full block mb-4 h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:border focus:outline-none focus:font-medium focus:bg-transparent focus:text-black focus:border-[hsl(0,2%,9%)] focus:outline-offset-0 focus:-black md:mb-0">Submit</button>
+                        <button type="button" onClick={handleCloseModal} className="text-center text-white bg-red-600 rounded-md w-full block h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:bg-transparent focus:text-black focus:border focus:outline-none focus:font-medium focus:outline-offset-0 focus:border-red-600 ">Cancel</button>
+                        <button type="button" onClick={handleSubmit(handlePostDeliveryItem)} className="text-center text-white bg-black rounded-md w-full block mb-4 h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:border focus:outline-none focus:font-medium focus:bg-transparent focus:text-black focus:border-[hsl(0,2%,9%)] focus:outline-offset-0 md:mb-0">Submit</button>
                     </div>
                 </div>
             </div>

@@ -178,7 +178,3 @@ export const xpressDropOffFullCatergoryData : IxpressDropOffFullCatergoryData = 
         ]
     },
 ] 
-
-const items = [
-
-]

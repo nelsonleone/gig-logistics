@@ -14,8 +14,8 @@ export default function XpressDropOffItem({ item, control, index, setValue }: { 
         <motion.div className="relative grid my-4 items-center" style={{gridTemplateColumns:'repeat(4, minmax(0, 1fr)) .5em'}} key={`${item.id}-x2`} exit={{ opacity: 0, height: 0 }} transition={{ ease: "linear", duration: 0.5 }}>
             <Image src={item.itemImage} className="rounded-sm h-16 object-cover w-20" aria-labelledby="deliveryItems-itemImg" loading="eager" priority width={80} height={50} alt="Item Image" />
             <p aria-labelledby="deliveryItems-name" className="text-ellipsis text-sm md:text-base">{item.category.value !== "others" ?  item.item.label?.toUpperCase() : item.otherItemName}</p>
-            <p aria-labelledby="deliveryItems-weight" className="text-sm md:text-base">{item.category.value !== "others" ?  parseInt(item.weight.value.replace(/\D/g, ''), 10) : parseInt(item.otherItemWeight?.replace(/\D/g, ''), 10)}KG</p>
-            <p aria-labelledby="deliveryItems-quantity" className="text-sm md:text-base">{item.quantity ? parseInt(item.quantity?.replace(/\D/g, ''), 10) : ""}piece(s)</p>
+            <p aria-labelledby="deliveryItems-weight" className="text-sm md:text-base">{item.category.value !== "others" ?  `${item.weight.value}KG` : `${item.otherItemWeight}KG`}</p>
+            <p aria-labelledby="deliveryItems-quantity" className="text-sm md:text-base">{item.quantity ? item.quantity : ""}piece(s)</p>
             <XpressDropOffDeliveryItemMenu control={control} setValue={setValue} index={index} setBeingDeleted={setBeingDeleted} />
  
             {

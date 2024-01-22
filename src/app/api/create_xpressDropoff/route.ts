@@ -26,18 +26,29 @@ export async function POST(request: NextRequest, response: NextResponse) {
     const decodedClaims = await auth().verifySessionCookie(authSessionToken, true)
 
     const userDocRef = firebaseAdmin.firestore().collection('XpressDropOffs').doc(decodedClaims.uid)
-    const userDoc = await userDocRef.get()
+    const userDoc = await userDocRef.get();
+    const id = nanoid()
+    const timestamp = new Date()
 
-    if (!userDoc.exists) {
-      await userDocRef.set({ dropOffs: [] })
+    const newDropOff = {
+      dropOffID: `PRE_${id}`.toUpperCase(),
+      trackingID: `TRK_${id}`.toUpperCase(),
+      deliveryItems,
+      receiver,
+      sender,
+      isPending: true,
+      createdAt: timestamp.toISOString()
     }
-
-    const date = new Date()
-
+    
+    if (!userDoc.exists) {
+      await userDocRef.set({ dropOffs: [newDropOff] })
+      return NextResponse.json({ message: "DropOff created", status: 201 })
+    }
+    
     await userDocRef.update({
-      dropOffs: firebaseAdmin.firestore.FieldValue.arrayUnion({ trackingID: `TRK_${nanoid(12)}`, deliveryItems, receiver, sender, isPending: true, createdAt: firebaseAdmin.firestore.Timestamp.fromDate(new Date()) })
+      dropOffs: firebaseAdmin.firestore.FieldValue.arrayUnion(newDropOff),
     })
-
+    
     return NextResponse.json({ message: "DropOff created", status: 201 })
   } catch (err:any|unknown) {
     return NextResponse.json({ message: err.message || "Error Creating DropOff" })

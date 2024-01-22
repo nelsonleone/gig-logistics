@@ -59,8 +59,8 @@ export default function XpressDropOffFormContainer(){
 
             reset()
 
-            dispatch(setShowAlert({
-                mssg: "DropOff Created",
+            dispatch(setShowSnackbar({
+                mssg: "Your DropOff have Created",
                 severity: AlertSeverity.SUCCESS
             }))
 

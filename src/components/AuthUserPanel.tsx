@@ -2,17 +2,18 @@
 
 import { inter } from "@/app/fonts";
 import { authUserMenuLinkData } from "@/componentsData/authUserMenuLinkData";
-import { ListItemIcon, Menu, MenuItem, MenuList } from "@mui/material";
+import { Avatar, ListItemIcon, Menu, MenuItem, MenuList } from "@mui/material";
 import Link from "next/link";
 import { MouseEvent, useEffect, useState } from "react";
 import { FaSortDown, FaUserCircle } from "react-icons/fa";
 import { AuthUser } from "../../types";
-import { useAppDispatch } from "@/redux/customHooks";
+import { useAppDispatch, useAppSelector } from "@/redux/customHooks";
 import { setAuthUserData, setSignOutAuthUser } from "@/redux/slices/authUser";
 import { setShowAlert } from "@/redux/slices/alertSlice";
 import { AlertSeverity } from "@/enums";
 import { useRouter } from "next/navigation";
 import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice";
+import { red } from "@mui/material/colors";
 
 export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser | undefined }){
 
@@ -20,6 +21,7 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
     const open = Boolean(anchorEl)
     const dispatch = useAppDispatch()
     const router = useRouter()
+    const { picture, firstName } = useAppSelector(store => store.authUser)
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget)
@@ -74,7 +76,7 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
                 className="flex gap-2 text-red-600 bg-gray-100 hover:bg-gray-200 transition duration-200 ease-in-out rounded-md p-3"
 
             >
-                <FaUserCircle className="text-2xl xl:3xl" />
+                <Avatar sx={{ bgcolor: red[500], width: 28, height: 28 }} src={authUserData?.picture || picture} alt={authUserData?.firstName || firstName} />
                 <FaSortDown className="text-xl xl:2xl" />
             </button>
             <Menu

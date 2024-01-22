@@ -8,7 +8,7 @@ export function getEstimatedDropOffCost(value: string,weight: string,quantity: s
     const baseTransportationPrice = 35500;
 
     // Calculate estimated drop-off cost
-    const estimatedCost = (baseTransportationPrice * ((cleanedValue * 0.0035) + cleanedWeight + cleanedQuantity)) * 0.005;
+    const estimatedCost = (baseTransportationPrice * ((cleanedValue * 0.0005) + cleanedWeight + cleanedQuantity)) * 0.005;
 
     const parsedEstimatedCost = Math.floor(parseFloat(estimatedCost.toString()))
 

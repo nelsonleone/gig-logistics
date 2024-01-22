@@ -8,7 +8,11 @@ import CustomAlert from '@/components/assets/PopUps/CustomAlert'
 import AuthUserHeaderSection from '@/components/AuthUserHeaderSection'
 import CustomSnackbar from '@/components/assets/PopUps/CustomSnackbar'
 import RingLoader from '../components/assets/Loaders/RingLoader'
+import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
+import { MantineProvider } from "@mantine/core";
+import ImportantPrompts from '@/components/assets/PopUps/ImportantPrompts'
+  
 
 export const metadata: Metadata = {
   title: `GIGL | Africa's Leading Logistics Company | Express Delivery`,
@@ -17,8 +21,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  dropOffItem
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  dropOffItem: React.ReactNode
 }) {
 
 
@@ -30,14 +36,19 @@ export default function RootLayout({
       </head>
         <CustomAppStoreProvider>
           <body className={`${inter.className} bg-[#f4f5f6] scroll-smooth overflow-x-hidden`}>
-            <CustomAlert />
-            <Header >
-              <AuthUserHeaderSection />
-            </Header>
-            {children}
-            <RingLoader />
-            <CustomSnackbar />
-            <Footer />
+            <MantineProvider theme={{ fontFamily: "Inter, sans-serif" }}>
+              <CustomAlert />
+              <Header >
+                <AuthUserHeaderSection />
+              </Header>
+
+              {children}
+              {dropOffItem}
+              <ImportantPrompts />
+              <RingLoader />
+              <CustomSnackbar />
+              <Footer />
+            </MantineProvider>
           </body>
         </CustomAppStoreProvider>
     </html>
