@@ -21,10 +21,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  dropOffItem
 }: {
-  children: React.ReactNode,
-  dropOffItem: React.ReactNode
+  children: React.ReactNode
 }) {
 
 
@@ -43,7 +41,6 @@ export default function RootLayout({
               </Header>
 
               {children}
-              {dropOffItem}
               <ImportantPrompts />
               <RingLoader />
               <CustomSnackbar />

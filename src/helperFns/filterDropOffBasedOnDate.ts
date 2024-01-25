@@ -8,7 +8,7 @@ export function filterDropOffsBasedOnDate(startDate: Date|null, endDate: Date|nu
     if(startTimestamp && endTimestamp){
         // Filter items based on the date range
         const filteredItems = dropOffs.filter((item) => {
-        const itemTimestamp = new Date(item.timestamp).getTime()
+        const itemTimestamp = new Date(item.createdAt).getTime()
         console.log(itemTimestamp,startTimestamp,endTimestamp)
             return itemTimestamp >= startTimestamp && itemTimestamp <= endTimestamp;
         })

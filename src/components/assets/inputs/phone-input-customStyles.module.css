@@ -26,6 +26,13 @@
     @apply border border-gray-300 rounded-md font-inter;
 }
 
+.phoneInputError input{
+  @apply border border-red-600;
+}
+.phoneInputError input:focus{
+  @apply outline outline-red-500 border-none outline-offset-0 ring-offset-0;
+}
+
 
 .phoneInput-xpressDropOff {
   --PhoneInputCountryFlag-height: 2em;

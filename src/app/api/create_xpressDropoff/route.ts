@@ -26,13 +26,13 @@ export async function POST(request: NextRequest, response: NextResponse) {
     const decodedClaims = await auth().verifySessionCookie(authSessionToken, true)
 
     const userDocRef = firebaseAdmin.firestore().collection('XpressDropOffs').doc(decodedClaims.uid)
-    const userDoc = await userDocRef.get();
-    const id = nanoid()
+    const userDoc = await userDocRef.get()
+    const id = nanoid(6).toUpperCase()
     const timestamp = new Date()
 
     const newDropOff = {
-      dropOffID: `PRE_${id}`.toUpperCase(),
-      trackingID: `TRK_${id}`.toUpperCase(),
+      dropOffID: `PRE${id}`,
+      trackingID: `TRK_${id}`,
       deliveryItems,
       receiver,
       sender,

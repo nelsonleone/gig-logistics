@@ -3,13 +3,14 @@ import Link from "next/link";
 import { XpressDropOffDeliveryType } from "@/enums";
 import { formatToWordsString } from "@/helperFns/formatDates";
 import { capitalizeString } from "@/helperFns/formatString";
+import { inter } from "@/app/fonts";
 
 export default function SavedDropOffItem(props:SavedDropOffs){
 
     return(
         <div className="border-gray-100 shadow-md rounded-sm md:rounded-md my-8 overflow-hidden">
             <Link href={`/app-panel/dropoff/manage/${props.dropOffID}`}>
-                <h2 className="bg-gray-100 p-4 font-semibold text-[1.05rem]">{props.trackingID}</h2>
+                <h2 className={`${inter.className} bg-gray-100 p-4 font-medium`}>{props.trackingID}</h2>
                 <div className="md:flex justify-between md:pb-8">
                     <div className="p-3">
                         <div>

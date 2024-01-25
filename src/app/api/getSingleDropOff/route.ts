@@ -29,7 +29,7 @@ export async function GET(request: NextRequest, response: NextResponse) {
 
     const userData = userDoc.data()
     const dropOffs : SavedDropOffs[] = await userData?.dropOffs;
-    const dropOff = dropOffs.find((dropOff) => dropOff.id === id)
+    const dropOff = dropOffs.find((dropOff) => dropOff.dropOffID.toString() === id.toString())
 
     return NextResponse.json(dropOff)
   } catch (error:any|unknown) {

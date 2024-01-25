@@ -76,7 +76,7 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
                 className="flex gap-2 text-red-600 bg-gray-100 hover:bg-gray-200 transition duration-200 ease-in-out rounded-md p-3"
 
             >
-                <Avatar sx={{ bgcolor: red[500], width: 28, height: 28 }} src={authUserData?.picture || picture} alt={authUserData?.firstName || firstName} />
+                <Avatar sx={{ bgcolor: red[500], width: 30, height: 30 }} src={authUserData?.picture || picture} alt={authUserData?.firstName || firstName} />
                 <FaSortDown className="text-xl xl:2xl" />
             </button>
             <Menu

@@ -34,7 +34,7 @@ function CustomPhoneInput({ control, name, placeholder, required, label, error, 
                     name={name as keyof object}
                     control={control || undefined}
                     render={({ field }) =>
-                        <PhoneInput id={id} readOnly={readOnly} {...field } value={value} placeholder={placeholder} defaultCountry='NG' className={`${classes.phoneInput} ${className} mb-8`} />
+                        <PhoneInput id={id} readOnly={readOnly} {...field } value={value} placeholder={placeholder} defaultCountry='NG' className={`${classes.phoneInput} phoneInputError  ${error ? classes.phoneInputError : ""} ${className} mb-8`} />
                     }
                 />
                 :
@@ -43,7 +43,7 @@ function CustomPhoneInput({ control, name, placeholder, required, label, error, 
                     control={control || undefined}
                     rules={{ required: required || "Phone number is a required field" }}
                     render={({ field }) =>
-                        <PhoneInput id={id} {...field } placeholder={placeholder} defaultCountry='NG' className={`${classes.phoneInput} ${className}`} />
+                        <PhoneInput id={id} {...field } placeholder={placeholder} defaultCountry='NG' className={`${classes.phoneInput} ${error ? classes.phoneInputError : ""} ${className}`} />
                     }
                 />
             }
