@@ -4,13 +4,14 @@ import { XpressDropOffDeliveryType } from "@/enums";
 import { formatToWordsString } from "@/helperFns/formatDates";
 import { capitalizeString } from "@/helperFns/formatString";
 import { inter } from "@/app/fonts";
+import CancelDropOffBtn from "./CancelDropOffBtn";
 
 export default function SavedDropOffItem(props:SavedDropOffs){
 
     return(
         <div className="border-gray-100 shadow-md rounded-sm md:rounded-md my-8 overflow-hidden">
             <Link href={`/app-panel/dropoff/manage/${props.dropOffID}`}>
-                <h2 className={`${inter.className} bg-gray-100 p-4 font-medium`}>{props.trackingID}</h2>
+                <h2 className={`${inter.className} bg-gray-100 p-4 font-medium`}>{props.dropOffID}</h2>
                 <div className="md:flex justify-between md:pb-8">
                     <div className="p-3">
                         <div>
@@ -27,7 +28,7 @@ export default function SavedDropOffItem(props:SavedDropOffs){
 
                     <div className="p-3 mb-4 md:mb-0">
                         <p className="text-cyan-600 underline decoration-dotted">{formatToWordsString(props.createdAt)}</p>
-                        <button className="bg-red-300 rounded-md block border border-white my-4 p-2 text-center text-red-600 w-32 h-10 hover:bg-transparent hover:border hover:border-red-500 focus:bg-transparent hover:text-red-500 focus:outline-offset-0 hover:outline-offset-0 focus:border focus:border-red-500 focus:text-red-500 transition-all duration-200 ease-in-out">Cancel</button>
+                        <CancelDropOffBtn text="Cancel" dropOffID={props.dropOffID} />  
                     </div>
                 </div>
             </Link>

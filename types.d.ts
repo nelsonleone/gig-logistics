@@ -285,12 +285,6 @@ type IUserNotifications = {
     
 }
 
-type AuthUserXpressDropOff = XpressDropOffInfo & {
-    beenPickedUp: boolean,
-    xItemID: string
-}
-
-
 
 // Xpress DropOff
 type ICategoryValue = "computer accessories" | "documents" | "electronics" | "food" | "health products" | "jewelries/accessories" | "others" | "phones"

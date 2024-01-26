@@ -72,7 +72,7 @@ export default function PersonalShoppingMainContent(){
                                 <div 
                                     onMouseOver={(e) => handleSetAnimateArrowObj(e,index)}
                                     onMouseLeave={handleDefaultAnimateArrow} 
-                                    className="text-[#374151] relative border border-gray-300 rounded p-4 pe-6 flex gap-4 items-center md:py-10 lg:pe-14 xl:pe-6"
+                                    className="text-[#374151] relative border border-gray-300 rounded p-4 pe-6 flex gap-4 items-center md:py-10 lg:py-14 lg:w-4/5 lg:pe-14 xl:pe-6"
                                     >
                                     <div className="w-14 rounded-full aspect-square bg-slate-100 flex justify-center items-center">
                                         <Icon className="text-[#C3302E] w-6 md:text-2xl" />

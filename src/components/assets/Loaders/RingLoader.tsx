@@ -20,8 +20,8 @@ export default function RingLoader(){
 
 export function MiniRingLoader(){
     return(
-        <div className="bg-[hsla(0,0%,87%,0)] shadow-md border-none outline-none w-[10em] rounded-lg flex justify-center items-center aspect-square">
-           <ReactLoader type="spin" color="black" width={30} height={30} />
+        <div className="bg-[hsla(0,0%,87%,0)] shadow-sm border-none absolute top-0 bottom-0 left-0 right-0 mx-auto outline-none w-[10em] rounded-lg flex justify-center items-center aspect-square">
+           <ReactLoader type="spin" color="black" width={50} height={50} />
         </div>
     )
 }

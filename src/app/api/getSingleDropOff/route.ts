@@ -11,11 +11,11 @@ export async function GET(request: NextRequest, response: NextResponse) {
     const authSessionToken = cookies().get('authSessionToken')?.value;
 
     if(!id){        
-        throw new Error("ID query is invalid")
+      throw new Error("ID query is invalid")
     }
 
     if(!authSessionToken){
-        throw new Error("Unauthourized Action: Unauthenticated user")
+      throw new Error("Unauthourized Action: Unauthenticated user")
     }
 
     const decodedClaims = await firebaseAdmin.auth().verifySessionCookie(authSessionToken, true)

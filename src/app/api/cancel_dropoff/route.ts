@@ -32,7 +32,7 @@ export async function DELETE(request: NextRequest, response: NextResponse) {
         dropOffs: dropOffs,
     })
 
-      return NextResponse.json({ message: "Drop-off cancelled Sucessfully" }, { status: 204 })
+      return NextResponse.json({ message: "Drop-off cancelled Sucessfully" }, { status: 202 })
     } 
     
     else {

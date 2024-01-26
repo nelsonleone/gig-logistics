@@ -7,8 +7,9 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { formatToWordsString } from "@/helperFns/formatDates";
 import { XpressDropOffDeliveryType } from "@/enums";
 import Image from "next/image";
-import { formatPhoneNumber } from "react-phone-number-input";
+import CancelDropOffBtn from "@/components/CancelDropOffBtn";
 import { capitalizeString } from "@/helperFns/formatString";
+import { notFound } from "next/navigation";
 
 export default async function Page({ params }: { params: { id:string }}){
 
@@ -21,6 +22,10 @@ export default async function Page({ params }: { params: { id:string }}){
     })
 
     const dropoff : SavedDropOffs = await res.json()
+
+    if(!dropoff){
+        notFound()
+    }
 
     return(
         dropoff ?
@@ -64,7 +69,6 @@ export default async function Page({ params }: { params: { id:string }}){
                                 <p>{dropoff.receiver.deliveryOptionType === XpressDropOffDeliveryType.HomeDelivery ? "Home Delivery" : "Terminal Pickup"}</p>
                                 <p>{dropoff.receiver.deliveryOptionType === XpressDropOffDeliveryType.HomeDelivery ? dropoff.receiver.homeAddress : dropoff.receiver.pickupTerminal}</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -97,8 +101,7 @@ export default async function Page({ params }: { params: { id:string }}){
                         ))
                     }
                 </div>
-
-                <button onClick={handle} className="bg-red-600 text-white rounded-md px-3 w-40 h-12 text-center block mx-auto my-6 hover:brightness-90 focus:bg-transparent focus:border focus:border-red-600 focus:text-red-600 transition duration-300 ease-in-out">Cancel Dropoff</button>
+                <CancelDropOffBtn dropOffID={dropoff?.dropOffID || ""} text="Cancel DropOff" />               
             </section>
         </AppPanelMCContainer>
         :

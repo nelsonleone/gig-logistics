@@ -5,7 +5,8 @@ import faqSchema from './faq-schema'
 import aboutUsContentSchema from './about-content-schema'
 import portfolioServices from './portfolio-services'
 import overseasShippingTradeOpt from './overseas-shipping-trade-opt'
-import localShippingPromptMessageSchema from './LocalShippingPromptMessage'
+import localShippingPromptMessageSchema from './localShippingPromptMessage'
+import personalShoppingInfo from './personal-shopping-info'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -15,6 +16,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     aboutUsContentSchema,
     portfolioServices,
     overseasShippingTradeOpt,
-    localShippingPromptMessageSchema
+    localShippingPromptMessageSchema,
+    personalShoppingInfo
   ]
 }

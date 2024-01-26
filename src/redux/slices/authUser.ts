@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AuthUser, AuthUserXpressDropOff, IUserNotifications } from "../../../types";
+import { AuthUser, SavedDropOffs, IUserNotifications  } from "../../../types";
 
 interface IinitState extends AuthUser {
     notifications: IUserNotifications[],
     beenAuthenticated: boolean,
-    xpressDropOffs: AuthUserXpressDropOff[]
+    xpressDropOffs: SavedDropOffs[]
 }
 
 const initialState : IinitState = {
@@ -42,10 +42,15 @@ const authUser = createSlice({
             state.picture = "";
             state.uid = "";          
             state.notifications = []
+        },
+        updatedDropOffsAfterCancel: (state,{ payload }:PayloadAction<{ dropOffID: string }>) => {
+            state.xpressDropOffs = state.xpressDropOffs.filter(dropOff => {
+                return dropOff.dropOffID !== payload.dropOffID
+            })
         }
     }
 })
 
-export const { setAuthUserData, setSignOutAuthUser } = authUser.actions
+export const { setAuthUserData, setSignOutAuthUser, updatedDropOffsAfterCancel } = authUser.actions
 
 export default authUser.reducer;

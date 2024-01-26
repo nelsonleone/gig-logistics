@@ -35,6 +35,7 @@ export default function XpressDropOffFormContainer(){
     const dispatch = useAppDispatch()
     const deliveryItems = useWatch({ control, name: 'deliveryItems'})
     const router = useRouter()
+    const uid = useAppSelector(store => store.authUser.uid)
 
     const handleCreateXpressDropOff : SubmitHandler<XpressDropOffInfo> = async(data) => {
         if(deliveryItems && !deliveryItems.length){
@@ -52,7 +53,7 @@ export default function XpressDropOffFormContainer(){
         try{
             const cleanedDropOffInfo = cleanXpressDropOffInfo(data)
             
-            await fetch('/api/create_xpressDropoff',{
+            await fetch(`/api/create_xpressDropoff?uid=${uid}`,{
                 method: "POST",
                 body: JSON.stringify(cleanedDropOffInfo)
             })
@@ -60,7 +61,7 @@ export default function XpressDropOffFormContainer(){
             reset()
 
             dispatch(setShowSnackbar({
-                mssg: "Your DropOff have Created",
+                mssg: "Your DropOff have been created",
                 severity: AlertSeverity.SUCCESS
             }))
 
