@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import getLocalOverseasShippingPromptMessageData from "@/helperFns/getLocalOverseasShippingPromptMessageData";
 import { PortableText } from "@portabletext/react";
-import { urlForImage } from "../../../../../sanity/lib/image";
+import { urlForImage } from "../../../../../sanity-studio/lib/image";
 import Image from "next/image";
 
 const serializer = {

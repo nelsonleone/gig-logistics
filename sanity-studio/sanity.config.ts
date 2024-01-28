@@ -7,11 +7,10 @@ import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import {apiVersion, dataset, projectId} from './sanity/env'
-import {schema} from './sanity/schema/index'
+import { apiVersion, dataset, projectId} from './env'
+import { schema } from './schema/index'
 
 export default defineConfig({
-  basePath: '/admin/tfsni4bd',
   projectId,
   dataset,
   // Add and edit the content schema in the './sanity/schema' folder
@@ -22,5 +21,4 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
   ],
-  
 })

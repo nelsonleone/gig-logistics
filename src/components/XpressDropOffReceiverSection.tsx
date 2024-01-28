@@ -2,29 +2,51 @@
 
 import CustomTextInput from "./assets/inputs/CustomTextInput";
 import CustomPhoneInput from "./assets/inputs/CustomPhoneInput";
-import { Control, FieldErrors, useWatch } from "react-hook-form";
+import { Control, FieldErrors, UseFormClearErrors, UseFormSetError, UseFormSetValue, useWatch } from "react-hook-form";
 import { XpressDropOffInfo } from "../../types";
 import CustomQuotePageSelect from "./assets/inputs/CustomQuotePageSelect";
 import { XpressDropOffDeliveryType } from "@/enums";
 import { getXpressDropOffLocationData } from "@/helperFns/getXpressDropOffLocationData";
 import { setXpressDropOffClosestGIGLCenter } from "@/helperFns/setXpressDropOffClosestGIGLCenter";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 interface IProps {
     control: Control<XpressDropOffInfo,undefined>,
     errors: FieldErrors<XpressDropOffInfo>,
     deliveryOptionType: XpressDropOffDeliveryType | "",
     selectedStateOrCity: { label:string, value: string },
+    setValue: UseFormSetValue<XpressDropOffInfo>,
+    isDirty: boolean,
+    stateOrCity: string,
+    closestGIGLCenter?: {
+        label:string,
+        value: string
+    },
+    setError: UseFormSetError<XpressDropOffInfo>,
+    clearErrors: UseFormClearErrors<XpressDropOffInfo>
 }
 
 function XpressDropOffReceiverSection(props:IProps) {
 
-    const { control, errors, deliveryOptionType, selectedStateOrCity } = props;
-    const stateOrCity = useWatch({ control, name:"receiver.deliveryOption.terminalPickup.stateOrCity.value"})
+    const { control, errors, stateOrCity, setError, clearErrors, closestGIGLCenter, deliveryOptionType, selectedStateOrCity, setValue, isDirty } = props;
 
     const handleClosetPickupAreaRefresh = useCallback(() => {
         return setXpressDropOffClosestGIGLCenter(selectedStateOrCity?.value)
     },[stateOrCity])
+
+    
+    useEffect(() => {
+        if(!isDirty)return;
+        setValue('receiver.deliveryOption.terminalPickup.closestGIGLCenter',undefined)
+        setError('receiver.deliveryOption.terminalPickup.closestGIGLCenter',{ message: "Closest terminal pickup center is required"})
+    },[stateOrCity])
+
+    useEffect(() => {
+        if(isDirty && closestGIGLCenter){
+            clearErrors('receiver.deliveryOption.terminalPickup.closestGIGLCenter')
+        }
+    },[closestGIGLCenter])
+
 
     return( 
         <section className="shadow-lg bg-white drop-shadow-md rounded-md mt-12 w-full pb-10">
@@ -79,6 +101,7 @@ function XpressDropOffReceiverSection(props:IProps) {
                         optionStyles={{
                             color: "#374151"
                         }}
+  
                     />
                 </div>
 
@@ -139,6 +162,7 @@ function XpressDropOffReceiverSection(props:IProps) {
                                 optionStyles={{
                                     color: "#374151"
                                 }}
+                                value={closestGIGLCenter}
                             />
                         </div>
                     </>

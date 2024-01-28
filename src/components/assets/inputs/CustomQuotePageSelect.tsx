@@ -17,11 +17,15 @@ interface IProps {
   required: boolean | string,
   hasError: boolean,
   optionStyles?: { [key: string]: string },
-  selectStyles?: { [key: string]: string }
+  selectStyles?: { [key: string]: string },
+  value?: {
+    value: string,
+    label: string | ReactNode
+  }
 }
 
 
-export default function CustomQuotePageSelect({ data, placeholder, optionStyles, selectStyles, id, name, control, required, hasError }:IProps){
+export default function CustomQuotePageSelect({ data, value, placeholder, optionStyles, selectStyles, id, name, control, required, hasError }:IProps){
 
   return(
     <Controller  
@@ -74,6 +78,7 @@ export default function CustomQuotePageSelect({ data, placeholder, optionStyles,
               primary: '#9ca3af',
             },
           })}
+          value={value}
         />
     )}/>
   )

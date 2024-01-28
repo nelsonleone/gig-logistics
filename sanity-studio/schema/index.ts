@@ -1,4 +1,4 @@
-import { type SchemaTypeDefinition } from 'sanity'
+import { SchemaPluginOptions } from 'sanity'
 import featured from './featured'
 import deliveryServicesHiglight from './delivery-services-higlight'
 import faqSchema from './faq-schema'
@@ -8,7 +8,7 @@ import overseasShippingTradeOpt from './overseas-shipping-trade-opt'
 import localShippingPromptMessageSchema from './localShippingPromptMessage'
 import personalShoppingInfo from './personal-shopping-info'
 
-export const schema: { types: SchemaTypeDefinition[] } = {
+export const schema: SchemaPluginOptions | undefined = {
   types: [
     featured,
     deliveryServicesHiglight,

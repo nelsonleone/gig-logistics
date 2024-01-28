@@ -1,7 +1,10 @@
 import { getAuthUserDataFromFirestore, updateAuthUserDataInFirestore } from "@/helperFns/getFirestoreData";
+import { initializeFirebaseAdmin } from "@/lib/firebase/firebase-admin-config";
 import { auth } from "firebase-admin";
 import { cookies, headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+
+initializeFirebaseAdmin()
 
 export async function POST(request: NextRequest, response: NextResponse) {
     try {

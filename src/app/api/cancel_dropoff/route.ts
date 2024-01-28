@@ -1,6 +1,8 @@
-import { firebaseAdmin } from "@/lib/firebase/firebase-admin-config"
+import { firebaseAdmin, initializeFirebaseAdmin } from "@/lib/firebase/firebase-admin-config"
 import { NextRequest, NextResponse } from "next/server"
 import { SavedDropOffs } from "../../../../types"
+
+initializeFirebaseAdmin()
 
 export async function DELETE(request: NextRequest, response: NextResponse) {
   try {

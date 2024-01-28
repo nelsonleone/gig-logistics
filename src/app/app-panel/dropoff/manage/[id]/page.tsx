@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: { id:string }}){
 
     return(
         dropoff ?
-        <AppPanelMCContainer className="relative px-2 md:p-8">
+        <AppPanelMCContainer className="relative px-2 md:p-8 lg:py-24">
             <BackBtn className="top-8" />
             <section>
                 <span className="absolute right-3 top-8 text-sm">{formatToWordsString(dropoff.createdAt)}</span>
@@ -77,7 +77,7 @@ export default async function Page({ params }: { params: { id:string }}){
                     {
                         dropoff.deliveryItems.map((item,index) => (
                             <div key={index} className="border-b border-b-gray-300 last:border-none basis-[45%] my-8 md:border-none">
-                                <Image src={item.itemImage} alt={`${item.item} image`} className="rounded-md w-auto md:w-72 h-auto md:h-52" width={150} height={150} quality={100} priority />
+                                <Image src={item.itemImage} alt={`${item.item} image`} className="rounded-md h-20 w-full md:w-72  md:h-52" width={200} height={100} quality={100} priority />
                                 <div>
                                     <p className="mb-6">{item.item.toUpperCase()}</p>
                                     <div className="mb-4">

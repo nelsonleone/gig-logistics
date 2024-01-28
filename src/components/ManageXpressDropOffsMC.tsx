@@ -9,6 +9,8 @@ import { MiniRingLoader } from "./assets/Loaders/RingLoader"
 import SavedDropOffItem from "./SavedDropOffItem"
 import { roboto_slab } from "@/app/fonts"
 import { filterDropOffsBasedOnDate } from "@/helperFns/filterDropOffBasedOnDate"
+import { useAppDispatch, useAppSelector } from "@/redux/customHooks"
+import { setDropOffs } from "@/redux/slices/authUser"
 
 export default function ManageXpressDropOffsMC({ dropOffs }:{ dropOffs:SavedDropOffs[] }){
 
@@ -16,11 +18,19 @@ export default function ManageXpressDropOffsMC({ dropOffs }:{ dropOffs:SavedDrop
     const startDate = useWatch({ control, name: 'startDate'})
     const endDate = useWatch({ control, name: 'endDate'})
     const [filteredDropOffs,setFilteredDropOffs] = useState<SavedDropOffs[]>([])
+    const dispatch = useAppDispatch()
+    const { xpressDropOffs } = useAppSelector(store => store.authUser)
+
+    useEffect(() => {
+        if(dropOffs && dropOffs.length){
+            dispatch(setDropOffs(dropOffs))
+        }
+    },[dropOffs?.length])
 
 
 
     useEffect(() => {
-        setFilteredDropOffs(filterDropOffsBasedOnDate(startDate,endDate,dropOffs))
+        setFilteredDropOffs(filterDropOffsBasedOnDate(startDate,endDate,xpressDropOffs))
     },[startDate,endDate])
 
     return(
@@ -43,8 +53,8 @@ export default function ManageXpressDropOffsMC({ dropOffs }:{ dropOffs:SavedDrop
                             :
                             <p className="text-sm font-medium text-center mx-auto">No DropOffs Found</p>
                         :
-                        dropOffs.length ?
-                        dropOffs.map(item => (
+                        xpressDropOffs.length ?
+                        xpressDropOffs.map(item => (
                             <SavedDropOffItem key={item.dropOffID} {...item} />
                         ))
                         :

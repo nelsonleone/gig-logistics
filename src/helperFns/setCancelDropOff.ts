@@ -1,3 +1,4 @@
+import setRevalidateDropOffs from "@/app/actions";
 import { AlertSeverity } from "@/enums";
 import { updatedDropOffsAfterCancel } from "@/redux/slices/authUser";
 import { setShowSnackbar } from "@/redux/slices/snackbarSlice";
@@ -10,6 +11,8 @@ export async function setCancelDropOff(uid:string,dropOffID:string,dispatch:Disp
         await fetch(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/api/cancel_dropoff?uid=${uid}&dropOffID=${dropOffID}`,{
             method: "DELETE"
         })
+
+        setRevalidateDropOffs()
 
         dispatch(updatedDropOffsAfterCancel({ dropOffID }))
 

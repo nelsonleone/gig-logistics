@@ -58,6 +58,8 @@ function XpressDropOffItemImageUpload({ setValue }: { setValue: UseFormSetValue<
                 acceptedFileTypes={['image/png', 'image/jpeg']}
                 maxFiles={1}
                 stylePanelAspectRatio="1:0.60"
+                allowFileSizeValidation
+                maxFileSize="200kb"
                 imagePreviewMinHeight={230}
                 required
                 allowReplace

@@ -15,14 +15,15 @@ import { setShowAlert } from "@/redux/slices/alertSlice"
 import { cleanXpressDropOffInfo } from "@/helperFns/cleanXpressDropOffInfo"
 import LoadingEllipse from "./assets/Loaders/LoadingEllipse"
 import { useRouter } from "next/navigation"
+import setRevalidateDropOffs from "@/app/actions"
 
 export default function XpressDropOffFormContainer(){
 
     const { firstName, lastName, phoneNumber, email } = useAppSelector(store => store.authUser)
-    const { control, formState: { errors, isSubmitting }, reset, clearErrors, setError, setValue, handleSubmit } = useForm<XpressDropOffInfo>({
+    const { control, formState: { errors, isSubmitting, isDirty }, reset, clearErrors, setError, setValue, handleSubmit } = useForm<XpressDropOffInfo>({
         defaultValues:{
             sender: {
-                firstName,
+                firstName, 
                 lastName,
                 email,
                 phoneNumber
@@ -36,6 +37,8 @@ export default function XpressDropOffFormContainer(){
     const deliveryItems = useWatch({ control, name: 'deliveryItems'})
     const router = useRouter()
     const uid = useAppSelector(store => store.authUser.uid)
+    const stateOrCity = useWatch({ control, name:"receiver.deliveryOption.terminalPickup.stateOrCity.value"})
+    const closestGIGLCenter = useWatch({ control, name:"receiver.deliveryOption.terminalPickup.closestGIGLCenter"})
 
     const handleCreateXpressDropOff : SubmitHandler<XpressDropOffInfo> = async(data) => {
         if(deliveryItems && !deliveryItems.length){
@@ -58,6 +61,8 @@ export default function XpressDropOffFormContainer(){
                 body: JSON.stringify(cleanedDropOffInfo)
             })
 
+            setRevalidateDropOffs()
+
             reset()
 
             dispatch(setShowSnackbar({
@@ -72,7 +77,7 @@ export default function XpressDropOffFormContainer(){
             dispatch(setShowAlert({
                 mssg: err.message || "Error Occurred Creating DropOff",
                 severity: AlertSeverity.ERROR
-            }))
+            })) 
         }
     }
 
@@ -85,7 +90,7 @@ export default function XpressDropOffFormContainer(){
     return(
         <form className="md:mx-auto md:w-[32em]" onSubmit={handleSubmit(handleCreateXpressDropOff)}>
             <XpressDropOffSenderSection errors={errors} control={control} firstName={firstName} lastName={lastName} email={email} phoneNumber={phoneNumber} />
-            <XpressDropOffReceiverSection errors={errors} control={control} selectedStateOrCity={selectedStateOrCity} deliveryOptionType={deliveryOptionType} />
+            <XpressDropOffReceiverSection clearErrors={clearErrors} setError={setError} closestGIGLCenter={closestGIGLCenter} stateOrCity={stateOrCity} isDirty={isDirty} setValue={setValue} errors={errors} control={control} selectedStateOrCity={selectedStateOrCity} deliveryOptionType={deliveryOptionType} />
             <XpressDropOffDeliveryItemsSection deliveryItemError={errors.deliveryItems?.message} setValue={setValue} control={control} />
             <XpressDropOffEstimatedCostSection deliveryItems={deliveryItems} />
 

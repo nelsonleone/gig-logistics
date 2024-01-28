@@ -1,4 +1,4 @@
-import { DeliveryItems, IXpressDeliveryItemTransformed, IXpressReceiverInfoTransformed, IXpressSenderInfo, ServerReadyXpressDropOffInfo, XpressDropOffInfo } from "../../types";
+import { IXpressDeliveryItemTransformed, ServerReadyXpressDropOffInfo, XpressDropOffInfo } from "../../types";
 import { transformXpressDropOffDeliveryOptionObj } from "./transformXpressDropOffDeliveryOptionObj";
 
 export function cleanXpressDropOffInfo(info:XpressDropOffInfo){
@@ -25,7 +25,8 @@ export function cleanXpressDropOffInfo(info:XpressDropOffInfo){
                 ...rest,
                 category: category.value,
                 item: item.value,
-                weight: weight.value
+                weight: weight.value,
+                itemDescription: ""
             }
         }
     })

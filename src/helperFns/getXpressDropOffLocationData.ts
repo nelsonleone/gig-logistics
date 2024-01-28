@@ -12,8 +12,8 @@ export function getXpressDropOffLocationData(){
     }
     for(let i = 0; i < officeLocationDataObj.ghanaOfficeLocationData.locations.length; i++){
         locationDataArr.push({
-            label: officeLocationDataObj.nigeriaOfficeLocationData.locations[i].state_capital.toUpperCase(),
-            value: officeLocationDataObj.nigeriaOfficeLocationData.locations[i].state_capital.toLowerCase()
+            label: officeLocationDataObj.ghanaOfficeLocationData.locations[i].state_capital.toUpperCase(),
+            value: officeLocationDataObj.ghanaOfficeLocationData.locations[i].state_capital.toLowerCase()
         })
     }
 

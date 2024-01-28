@@ -5,8 +5,10 @@ export async function getUserDropOffs(authSessionToken:string){
         method: "GET",
         headers: {
             Cookie: `authSessionToken=${authSessionToken}`,
-        }
+        },
+        next: { tags: ['dropoffs'] }
     })
+    
     const dropOffs : SavedDropOffs[] = await res.json() 
 
     return dropOffs;

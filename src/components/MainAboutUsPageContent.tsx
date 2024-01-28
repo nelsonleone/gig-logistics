@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import { Suspense } from 'react'
-import { urlForImage } from '../../sanity/lib/image'
+import { urlForImage } from '../../sanity-studio/lib/image'
 import { AboutUsPageContentData } from '../../types'
 import DuoSkeleton from './assets/Loaders/DuoSkeleton'
 

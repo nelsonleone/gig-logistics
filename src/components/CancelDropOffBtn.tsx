@@ -4,16 +4,20 @@ import { setCancelDropOff } from "@/helperFns/setCancelDropOff"
 import { useAppDispatch, useAppSelector } from "@/redux/customHooks"
 import { MouseEvent, useState } from "react"
 import LoadingEllipse from "./assets/Loaders/LoadingEllipse"
+import { useRouter } from "next/navigation"
 
 export default async function CancelDropOffBtn({ dropOffID, text }:{ dropOffID:string, text:string }){
 
     const dispatch = useAppDispatch()
     const [isCancelling,setIsCancelling] = useState(false)
     const { uid } = useAppSelector(store => store.authUser)
+    const router = useRouter()
+    const DROP_OFF_MANAGE_PAGE = "/app-panel/dropoff/manage"
 
-    const handleClick = (e:MouseEvent<HTMLButtonElement>) => {
+    const handleClick = async (e:MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation()
-        setCancelDropOff(uid,dropOffID,dispatch,setIsCancelling)
+        await setCancelDropOff(uid,dropOffID,dispatch,setIsCancelling)
+        router.push(DROP_OFF_MANAGE_PAGE)
     }
 
     return(

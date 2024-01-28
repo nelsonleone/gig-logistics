@@ -43,14 +43,19 @@ const authUser = createSlice({
             state.uid = "";          
             state.notifications = []
         },
+        setDropOffs: (state, { payload }:PayloadAction<SavedDropOffs[]>) => {
+            state.xpressDropOffs = payload;
+        },
         updatedDropOffsAfterCancel: (state,{ payload }:PayloadAction<{ dropOffID: string }>) => {
-            state.xpressDropOffs = state.xpressDropOffs.filter(dropOff => {
+            const updatedDropOffsArray = state.xpressDropOffs.filter(dropOff => {
                 return dropOff.dropOffID !== payload.dropOffID
             })
+
+            state.xpressDropOffs = updatedDropOffsArray;
         }
     }
 })
 
-export const { setAuthUserData, setSignOutAuthUser, updatedDropOffsAfterCancel } = authUser.actions
+export const { setAuthUserData, setDropOffs,  setSignOutAuthUser, updatedDropOffsAfterCancel } = authUser.actions
 
 export default authUser.reducer;

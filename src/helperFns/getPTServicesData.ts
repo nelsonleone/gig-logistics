@@ -1,5 +1,5 @@
 import groq from "groq";
-import { sanityClient } from "../../sanity/lib/client";
+import { sanityClient } from "../../sanity-studio/lib/client";
 import { OverseasShippingTradeOptDataType, PT_SanityServiceData } from "../../types";
 import { PT_ServiceName } from "@/enums";
 

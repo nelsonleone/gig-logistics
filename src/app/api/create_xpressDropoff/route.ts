@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ServerReadyXpressDropOffInfo } from "../../../../types";
 import { checkDropOffCreationInfo } from "@/helperFns/checkDropOffCreationInfos";
-import { auth } from "firebase-admin";
-import { cookies } from "next/headers";
-import { firebaseAdmin } from "@/lib/firebase/firebase-admin-config";
+import { firebaseAdmin, initializeFirebaseAdmin } from "@/lib/firebase/firebase-admin-config";
 import { nanoid } from "@reduxjs/toolkit";
+
+initializeFirebaseAdmin()
 
 export async function POST(request: NextRequest, response: NextResponse) {
   try {
@@ -13,8 +13,12 @@ export async function POST(request: NextRequest, response: NextResponse) {
     const uid = searchParams.get('uid') || "";
     const { deliveryItems, receiver, sender }: ServerReadyXpressDropOffInfo = res;
 
+    if(!uid){
+      throw new Error("Error Creating DropOff: Invalid UID query parameter")
+    }
+
     if (!deliveryItems || !deliveryItems.length || !receiver || !sender) {
-      throw new Error("Error Creating DropOff: Incomplete Parameters. (DeliveryItems | Receiver | Sender was not provided appropriately)");
+      return NextResponse.json({ message: "Error Creating DropOff: Incomplete Parameters. (DeliveryItems | Receiver | Sender was not provided appropriately)" }, { status: 400 })
     }
 
     await checkDropOffCreationInfo({ receiver, sender })
@@ -25,13 +29,14 @@ export async function POST(request: NextRequest, response: NextResponse) {
     const timestamp = new Date()
 
     const newDropOff = {
-      dropOffID: `PRE${id}`,
+      dropOffID: `PRE_${id}`,
       trackingID: `TRK_${id}`,
       deliveryItems,
       receiver,
       sender,
       isPending: true,
-      createdAt: timestamp.toISOString()
+      createdAt: timestamp.toISOString(),
+      hasBeenPickedUp: false
     }
     
     if (!userDoc.exists) {
@@ -45,6 +50,6 @@ export async function POST(request: NextRequest, response: NextResponse) {
     
     return NextResponse.json({ message: "DropOff created", status: 201 })
   } catch (err:any|unknown) {
-    return NextResponse.json({ message: err.message || "Error Creating DropOff" })
+    return NextResponse.json({ message: err.message || "Error Creating DropOff" },{ status: 500 })
   }
 }

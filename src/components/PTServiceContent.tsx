@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { urlForImage } from "../../sanity/lib/image";
+import { urlForImage } from "../../sanity-studio/lib/image";
 import DuoSkeleton from "./assets/Loaders/DuoSkeleton";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";

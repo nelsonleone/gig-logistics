@@ -1,5 +1,5 @@
 import { Control, Controller } from "react-hook-form";
-import { DatePickerInput, DatePickerProps } from '@mantine/dates'
+import { DatePickerInput } from '@mantine/dates'
 import { inter } from "@/app/fonts";
 
 interface IProps {
