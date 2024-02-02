@@ -68,7 +68,7 @@ export default function PersonalShoppingMainContent(){
                         const Icon = val.icon;
 
                         return(
-                            <Link href={`${pathName}/${val.link}`} key={`${val.title}-${index}`} className="group/personalShoppingMCLink">
+                            <Link href={val.link} key={`${val.title}-${index}`} className="group/personalShoppingMCLink">
                                 <div 
                                     onMouseOver={(e) => handleSetAnimateArrowObj(e,index)}
                                     onMouseLeave={handleDefaultAnimateArrow} 
