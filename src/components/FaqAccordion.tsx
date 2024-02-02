@@ -7,7 +7,7 @@ import { PortableTextComponents } from "@portabletext/react";
 import { urlForImage } from "../../sanity-studio/lib/image";
 import { PortableTextBlock } from "@portabletext/types";
 import { inter } from "@/app/fonts";
-import styles from '../customStyles/faq-accordion-styling.module.css'
+import styles from '../LibCSSModules/faq-accordion-styling.module.css'
 
 
 interface IProps {

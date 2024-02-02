@@ -4,21 +4,25 @@
 
 import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, dataset, projectId} from './env'
 import { schema } from './schema/index'
+import { structureTool } from 'sanity/structure'
+import { FaTruckLoading } from 'react-icons/fa'
 
 export default defineConfig({
-  projectId,
-  dataset,
+  projectId: "tfsni4bd",
+  dataset: "production",
   // Add and edit the content schema in the './sanity/schema' folder
   schema,
   plugins: [
-    deskTool({title: "GIGL Desk"}),
+    structureTool({
+      name: "Desk",
+      title: "GIGL Clone CMS",
+      icon: FaTruckLoading
+    }),
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({defaultApiVersion: apiVersion}),
+    visionTool({ defaultApiVersion: "2024-01-29" }),
   ],
 })

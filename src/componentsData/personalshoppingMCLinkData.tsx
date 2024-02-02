@@ -6,7 +6,7 @@ export const personalShoppingMCLinkData = [
         title: "Create a shopping item",
         text: "Shopping for your item(s) as well as delivering it to you will be on us",
         icon: SiShopee,
-        link: "details"
+        link: "item_details"
     },
     {
         title: "View my shopping histroy",

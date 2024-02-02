@@ -54,6 +54,17 @@ type HighlightedService = {
 }
 
 
+type PersonalShoppingInfoSanityData = {
+    heading: string,
+    secondHeading: string,
+    introBgImage: ISanityImageObjType,
+    howItWorksSection: {
+        heading: string,
+        text: string
+    }[]
+}
+
+
 
 // This is Just a Demo For The Shipment Details, Correct Data Property Are Yet To Be Known
 type CodeResult = {

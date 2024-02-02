@@ -35,12 +35,6 @@ const personalShoppingInfo = defineField({
             validation: (Rule:Rule) => Rule.required().error("This field is required").min(5).error("Too short")
         },
         {
-            name: "secondHeading",
-            title: "Second Heading",
-            type: "string",
-            validation: (Rule:Rule) => Rule.required().error("This field is required").min(5).error("Too short")
-        },
-        {
             name: "howItWorksSection",
             title: "How It Works Info",
             type: "array",
