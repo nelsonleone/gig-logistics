@@ -12,6 +12,6 @@ export const personalShoppingMCLinkData = [
         title: "View my shopping histroy",
         text: "Send already purchased items from China to Nigeria",
         icon:  FaBox ,
-        link: "/app-panel/personal-shopping/histroy"
+        link: "/app-panel/personal-shopping/shopping_history"
     }
 ]

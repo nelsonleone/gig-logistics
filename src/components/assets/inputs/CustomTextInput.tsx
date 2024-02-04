@@ -3,17 +3,17 @@
 import { BiSolidMessageAltError } from "react-icons/bi";
 import { inter } from '@/app/fonts';
 import { Control, Controller } from "react-hook-form";
-import { DeliveryItems, ICODWalletFormValues, SignInFormData, SignUpFormData } from "../../../../types";
+import { DeliveryItems, ICODWalletFormValues, PersonalShoppingItemDetailsFormInfo, SignInFormData, SignUpFormData } from "../../../../types";
 
 interface IProps {
     error?: string | undefined,
     label: string,
-    name:  keyof SignUpFormData | keyof SignInFormData | keyof ICODWalletFormValues | 'sender.fullName' | 'sender.firstName' | 'sender.lastName' | 'sender.email' | 'sender.phoneNumber' |
+    name:  keyof SignUpFormData | keyof SignInFormData | keyof ICODWalletFormValues | keyof PersonalShoppingItemDetailsFormInfo | 'sender.fullName' | 'sender.firstName' | 'sender.lastName' | 'sender.email' | 'sender.phoneNumber' |
     'receiver.fullName' | `receiver.deliveryOption.homeDelivery.address` | `receiver.deliveryOption.terminalPickup.stateOrCity` | `receiver.deliveryOption.terminalPickup.closestGIGLCenter` | keyof DeliveryItems,
 
     value?: string | number,
     placeholder: string,
-    inputType?: string,
+    inputType?: "email" | "text" | "number",
     control?: Control<any,undefined>,
     labelStyles?: string,   
     inputStyles?: string,
@@ -67,7 +67,7 @@ export default function CustomTextInput(props:IProps){
                     defaultValue={defaultValue}
                     value={value}
                     id={id}
-                    className={`${inputStyles} ${error ? "focus:outline-red-500" : ""}`}
+                    className={`${inputStyles} placeholder:text-gray-400 outline-offset-0 focus:outline-offset-0 ${error ? "border-red-500 focus:outline-red-500 md:focus:outline-red-500" : ""}`}
                 />}
             />
             {

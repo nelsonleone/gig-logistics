@@ -16,7 +16,7 @@ interface IAnimateArrowObj {
 
 
 const smoothAnimation = {
-    translateX: [0, 25,0],
+    translateX: [0, 23,0],
     transition: { repeat: Infinity, ease: 'linear', duration: 1.15 },
 }
 
@@ -72,7 +72,7 @@ export default function PersonalShoppingMainContent(){
                                 <div 
                                     onMouseOver={(e) => handleSetAnimateArrowObj(e,index)}
                                     onMouseLeave={handleDefaultAnimateArrow} 
-                                    className="text-[#374151] relative border border-gray-300 rounded p-4 pe-6 flex gap-4 items-center md:py-10 lg:py-14 lg:w-4/5 lg:pe-14 xl:pe-6"
+                                    className="text-[#374151] relative border border-gray-300 rounded p-4 pe-10 flex gap-4 items-center md:py-10 lg:py-14 lg:w-4/5 lg:pe-14 xl:pe-6"
                                     >
                                     <div className="w-14 rounded-full aspect-square bg-slate-100 flex justify-center items-center">
                                         <Icon className="text-[#C3302E] w-6 md:text-2xl" />
@@ -83,7 +83,7 @@ export default function PersonalShoppingMainContent(){
                                         <p className="text-xs text-[#6b7280] md:text-sm">{val.text}</p>
                                     </div>
 
-                                    <motion.span className="flex justify-center items-center absolute top-0 bottom-0 my-auto right-2 lg:right-8 xl:right-12" animate={animateArrowObj[index].start ? smoothAnimation : {}}>
+                                    <motion.span className="flex justify-center items-center absolute top-0 bottom-0 my-auto right-4 lg:right-8 xl:right-12" animate={animateArrowObj[index].start ? smoothAnimation : {}}>
                                         <FaAngleRight className="md:text-2xl"/>
                                     </motion.span>
                                 </div>

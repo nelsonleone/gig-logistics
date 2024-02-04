@@ -3,7 +3,7 @@
 import { useAppSelector } from "@/redux/customHooks";
 import { Modal } from "@mui/material";
 import Image from "next/image";
-import ReactLoader from 'react-loading'
+import ReactLoading from 'react-loading';
 
 export default function RingLoader(){
 
@@ -21,7 +21,7 @@ export default function RingLoader(){
 export function MiniRingLoader(){
     return(
         <div className="bg-[hsla(0,0%,87%,0)] shadow-sm border-none absolute top-0 bottom-0 left-0 right-0 mx-auto outline-none w-[10em] rounded-lg flex justify-center items-center aspect-square">
-           <ReactLoader type="spin" color="black" width={50} height={50} />
+           <ReactLoading type="spin" color="black" width={50} height={50} />
         </div>
     )
 }

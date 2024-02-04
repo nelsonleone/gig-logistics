@@ -20,7 +20,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     const decodedToken = await auth().verifyIdToken(idToken)
 
     if (decodedToken) {
-      const expiresIn = 60 * 60 * 24 * 5 * 1000
+      const expiresIn = 60 * 60 * 24 * 3
       const sessionCookie = await auth().createSessionCookie(idToken, {
         expiresIn,
       })

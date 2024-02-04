@@ -11,7 +11,7 @@ export const metadata : Metadata = {
  
 export default function NotFound() {
   return (
-    <div className="page">
+    <div className="page pt-8">
       <div className="flex justify-center items-center h-screen w-full my-10">
         <Container className={classes.root}>
           <SimpleGrid spacing={{ base: 40, sm: 80 }} cols={{ base: 1, sm: 2 }}>

@@ -396,3 +396,11 @@ interface SavedDropOffs extends ServerReadyXpressDropOffInfo {
     dropOffID: string,
     hasBeenPickedUp: boolean
 }
+
+
+type PersonalShoppingItemDetailsFormInfo = {
+    productLink: string,
+    itemName: string,
+    quantity: number,
+    description: string
+}
