@@ -6,7 +6,6 @@ import { SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { getXpressDropOffDeliveryItemCategoryData, getXpressDropOffDeliveryItemCategoryItems } from "@/helperFns/getXpressDropOffDeliveryItemCategoryData";
 import CustomTextInput from "./assets/inputs/CustomTextInput";
 import XpressDropOffDeliveryItemValueNotice from "./XpressDropOffDeliveryItemValueNotice";
-import XpressDropOffItemImageUpload from "./assets/inputs/Filepond/XpressDropOffItemImageUpload";
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { setDropOffItemWeight } from "@/helperFns/setDropOffItemWeight";
 import { nanoid } from "@reduxjs/toolkit";
@@ -14,6 +13,7 @@ import { useAppDispatch } from "@/redux/customHooks";
 import { setShowSnackbar } from "@/redux/slices/snackbarSlice";
 import { AlertSeverity } from "@/enums";
 import { BiSolidMessageAltError } from "react-icons/bi";
+import XpressDropOffItemImageUpload from "./assets/inputs/Filepond/XpressDropOffImageUpload";
 
 interface IProps {
     open: boolean,

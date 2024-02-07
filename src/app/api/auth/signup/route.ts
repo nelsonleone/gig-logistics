@@ -64,7 +64,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
         return NextResponse.json({ error: "Authentication Error: Expired ID Token" }, { status: 500 })
       }
 
-      return NextResponse.json({ error: "Authentication failed" }, { status: 500 })
+      return NextResponse.json({ error: `Authentication failed : ${error.message}, ${error.code}` }, { status: 500 })
     }
 }
   

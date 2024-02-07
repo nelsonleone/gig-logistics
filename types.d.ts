@@ -404,3 +404,12 @@ type PersonalShoppingItemDetailsFormInfo = {
     quantity: number,
     description: string
 }
+
+
+interface IProfileDetailsUpdateFormData {
+    updatedProfileImage: string,
+    updatedName: {
+        firstName: string,
+        lastName: string
+    }
+}

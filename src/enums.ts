@@ -50,3 +50,10 @@ export enum XpressDropOffDeliveryType {
     HomeDelivery = "homeDelivery",
     TerminalPickup = "terminalPickup"
 }
+
+
+export enum TransactionSectionTabName {
+    Wallet = "wallet",
+    Shipments = "shipments",
+    InternationalShipments = "intl_shipments"
+}

@@ -4,7 +4,8 @@ import { inter } from "@/app/fonts";
 
 interface IProps {
     control: Control<{ startDate: Date | null, endDate: Date | null },undefined>,
-    name: ["startDate","endDate"]
+    name: ["startDate","endDate"],
+    containerClassName?: string
 }
 
   
@@ -12,7 +13,7 @@ interface IProps {
 export default function CustomDuoDatePickerInput(props:IProps){
 
     return(
-        <div className="flex w-full">
+        <div className={`flex w-full ${props.containerClassName}`}>
             <div className="w-1/2">
                 <Controller
                     control={props.control}
@@ -33,7 +34,7 @@ export default function CustomDuoDatePickerInput(props:IProps){
                                 yearLevelControl: 'Change to decade view',
                                 monthLevelControl: 'Change to year view',
                             }}
-                            className={`${inter.className} h-14`}
+                            className={`${inter.className} h-16 focus:border-black`}
                         />
                     )}
                 />

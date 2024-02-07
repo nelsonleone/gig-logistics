@@ -6,7 +6,9 @@ export const metadata : Metadata = {
     description: "GIGL wallet Page"
 }
 
-export default function Wallet(){
+// Note: No Api Or Functionality Build For Transactions
+
+export default function Page(){
     return(
         <MainWalletComponent />
     )

@@ -11,7 +11,7 @@ export default function ShippingInformation(){
 
     return(
         <AppPanelMCContainer className="relative pt-12">
-            <BackBtn className="top-12" />
+            <BackBtn className="top-12 z-30" />
             <ShippingDetailsTab currentStep={currentStep} />
         </AppPanelMCContainer>
     )

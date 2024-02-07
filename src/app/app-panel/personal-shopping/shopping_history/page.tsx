@@ -1,17 +1,9 @@
 import { roboto_slab } from "@/app/fonts";
 import AppPanelMCContainer from "@/components/AppPanelPagesMCContainer";
 import BackBtn from "@/components/assets/BackBtn";
+import { MiniRingLoader } from "@/components/assets/Loaders/RingLoader";
 import { cookies } from "next/headers";
 import { Suspense } from "react";
-import ReactLoader from 'react-loading'
-
-
-
-const Loading = () => (
-    <div className="w-full flex justify-center items-center">
-        <ReactLoader type="spin" width={100} height={100} color="#383535" />
-    </div>
-)
 
 export default async function PersonalShoppingHistory(){
 
@@ -32,17 +24,16 @@ export default async function PersonalShoppingHistory(){
     }
 
     return(
-        <AppPanelMCContainer className="relative">
+        <AppPanelMCContainer className="relative lg:pt-20">
             <BackBtn />
             <section>
-                <h1 className={`${roboto_slab.className} font-bold`}>Shopping History</h1>
-                <Suspense fallback={<Loading />}>
+                <h1 className={`${roboto_slab.className} font-bold text-center text-2xl mb-8`}>Shopping History</h1>
+                <Suspense fallback={<MiniRingLoader className="relative" width={80} height={100} color="#374151" />}>
                     {
                         shoppingInfo.length ?
                         <p>Demo Text</p>
                         :
-
-                        <p>No History Found</p>
+                        <p className="text-gray-400 capitalize text-center text-lg font-medium">No History</p>
                     }
                 </Suspense>
             </section>

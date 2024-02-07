@@ -31,7 +31,6 @@ export async function handleSignInWithPopUp(returnTo: string | string[] | undefi
               phoneNumber,
               picture: photoURL,
               email,
-              returnTo,
             }),
           })
 

@@ -18,10 +18,10 @@ export default function RingLoader(){
     )
 }
 
-export function MiniRingLoader(){
+export function MiniRingLoader({ color, width, height, className }: { color?:string, width?:number, height?: number, className?:string }){
     return(
-        <div className="bg-[hsla(0,0%,87%,0)] shadow-sm border-none absolute top-0 bottom-0 left-0 right-0 mx-auto outline-none w-[10em] rounded-lg flex justify-center items-center aspect-square">
-           <ReactLoading type="spin" color="black" width={50} height={50} />
+        <div className={`bg-[hsla(0,0%,87%,0)] shadow-sm border-none absolute top-0 bottom-0 left-0 right-0 mx-auto outline-none w-[10em] rounded-lg flex justify-center items-center aspect-square ${className}`}>
+           <ReactLoading type="spin" color={color || "black"} width={width || 50} height={height || 50} />
         </div>
     )
 }
