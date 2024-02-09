@@ -408,8 +408,14 @@ type PersonalShoppingItemDetailsFormInfo = {
 
 interface IProfileDetailsUpdateFormData {
     updatedProfileImage: string,
-    updatedName: {
-        firstName: string,
-        lastName: string
-    }
+    updatedfirstName: string,
+    updatedLastName: string,
+    updatedEmailAddress: readonly string,
+    updatedPhoneNumber: readonly string
+}
+
+type ProfilePasswordChangeForm  = {
+    currentPassword: string,
+    newPassword: string,
+    confirmNewPassword: string
 }

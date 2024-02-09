@@ -44,12 +44,18 @@ const formSchema = Yup.object().shape({
 
 export default function IndividualSignupSection({ returnTo }: { returnTo:string | string[] | undefined }){
 
-    const { handleSubmit, formState: { isSubmitting, errors }, control,  } = useForm<SignUpFormData>({ resolver: yupResolver(formSchema) })
+    const { handleSubmit, formState: { isSubmitting, errors }, control,setError } = useForm<SignUpFormData>({ resolver: yupResolver(formSchema) })
     const dispatch = useAppDispatch()
     const router = useRouter()
 
     const handleSignUp : SubmitHandler<SignUpFormData> = async(data) => {
         const { email, password, firstName, lastName, phoneNumber, confirmPassword } = data;
+
+        // second level checking
+        if(password !== confirmPassword){
+            setError('confirmPassword',{ message: "Passwords should match"})
+            return;
+        }
 
         await asyncWrapper(
             async() => {

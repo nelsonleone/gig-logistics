@@ -57,3 +57,10 @@ export enum TransactionSectionTabName {
     Shipments = "shipments",
     InternationalShipments = "intl_shipments"
 }
+
+
+
+export enum FirebaseProvideIds {
+    Google = "google.com",
+    Password = "password"
+}

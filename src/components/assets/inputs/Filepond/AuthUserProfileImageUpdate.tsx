@@ -11,7 +11,7 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import { useEffect, useState } from 'react';
 import { FilePondFile } from 'filepond';
 import { UseFormSetValue } from 'react-hook-form';
-import "./filepond-overide.css";
+import "./filepond-override2.css";
 import { IProfileDetailsUpdateFormData } from '../../../../../types';
 
 
@@ -48,7 +48,7 @@ function AuthUserProfileImageUpdate({ setValue }: { setValue: UseFormSetValue<IP
     },[itemImage])
 
     return (
-        <div>
+        <div className="mb-5 md:max-h-[20em]">
             <p className="my-3">Update Profile Picture</p>
             <FilePond
                 onupdatefiles={handleFileLoad}

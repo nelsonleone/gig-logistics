@@ -104,7 +104,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
                    error={errors.email?.message}
                    required="Please Enter A Valid Email"
                    containerStyles="w-full"
-                   inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
+                   inputStyles="w-full z-20 border z-20 border-gray-300 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-1 focus:outline-black"
                 />
 
                 <CustomPasswordInput
@@ -115,7 +115,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
                     required="Password field is required"
                     label=""
                     error={errors.password?.message}
-                    inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
+                    inputStyles="w-full z-20 border z-20 border-gray-300 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-1 focus:outline-black"
                 /> 
 
                 <Link href="/auth/reset_password" className="block underline ms-1 font-medium text-sm my-4">Forgot Password?</Link>

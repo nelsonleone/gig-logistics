@@ -20,7 +20,8 @@ interface IProps {
     inputStyles?: string,
     containerStyles?: string,
     required?: string,
-    id: string
+    id: string,
+    readOnly?: boolean
 }
 
 
@@ -37,7 +38,8 @@ export default function CustomPasswordInput(props:IProps){
         inputStyles,
         containerStyles,
         required,
-        id
+        id,
+        readOnly
     } = props;
 
     const [showPassword,setShowPassword] = useState(false)
@@ -63,6 +65,7 @@ export default function CustomPasswordInput(props:IProps){
                             aria-invalid={error ? "true" : "false"} 
                             {...field}
                             value={value} 
+                            readOnly={readOnly}
                             className={`absolute top-0 bottom-0 my-auto pe-4 left-0 w-full ${error ? "focus:outline-red-500" : ""} ${inputStyles}`}
                         />
 

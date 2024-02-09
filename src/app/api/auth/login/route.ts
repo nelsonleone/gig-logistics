@@ -11,8 +11,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     const authorization = headers().get("Authorization")
 
     if(!authorization || !authorization.startsWith("Bearer ")){
-      throw new Error("Invalid or missing Authorization header")
-      return;
+      return NextResponse.json({ error: "Invalid or missing Authorization header" }, { status: 500 })
     }
     
     const idToken = authorization.split("Bearer ")[1]
