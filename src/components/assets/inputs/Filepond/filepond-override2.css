@@ -2,11 +2,11 @@
 .filepond--root {
     font-family:  'Inter', sans-serif !important;
     position: relative;
-    height: 15em;
+    max-height: 15em;
 }
 
 .filepond--hopper{
-    max-height: 15em !important;
+    max-height: 18em !important;
 }
 
 .filepond--file-action-button {

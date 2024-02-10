@@ -74,7 +74,7 @@ export default function PasswordChangeForm(){
                 mssg: err.message || "Error Occurred Completing Request",
                 severity: AlertSeverity.ERROR
             }))
-        }
+        } 
     }
 
     return(
@@ -117,7 +117,7 @@ export default function PasswordChangeForm(){
             /> 
 
                         
-            <button disabled={isDirty || isSubmitting ? true : false} className="relative block my-10 w-full text-center mx-auto font-medium text-white bg-black p-4 text-sm rounded lg:text-base disabled:opacity-80 disabled:cursor-not-allowed md:w-28">
+            <button disabled={!isDirty || isSubmitting ? true : false} className="relative my-10 w-full text-center mx-auto font-medium text-white bg-black p-4 text-sm rounded lg:text-base disabled:opacity-80 disabled:cursor-not-allowed md:w-36 h-9 flex justify-center items-center">
                 {
                     isSubmitting ?
                     <LoadingEllipse />

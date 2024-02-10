@@ -10,7 +10,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     try {
       const authorization = headers().get("Authorization")
       const res = await request.json()
-      const { firstName, lastName, picture, email, phoneNumber } = res;
+      const { firstName, lastName, picture, email, phoneNumber } = await res;
 
       if(!authorization || !authorization.startsWith("Bearer ")){
         throw new Error("Invalid or missing Authorization header")

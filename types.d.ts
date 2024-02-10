@@ -407,7 +407,7 @@ type PersonalShoppingItemDetailsFormInfo = {
 
 
 interface IProfileDetailsUpdateFormData {
-    updatedProfileImage: string,
+    updatedProfileImage: string | null,
     updatedfirstName: string,
     updatedLastName: string,
     updatedEmailAddress: readonly string,

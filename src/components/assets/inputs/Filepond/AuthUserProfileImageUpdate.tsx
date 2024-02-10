@@ -29,6 +29,7 @@ function AuthUserProfileImageUpdate({ setValue }: { setValue: UseFormSetValue<IP
     const [itemImage, setItemImage] = useState<string | ArrayBuffer | null>()
 
     const handleFileLoad = (fileItems:FilePondFile[]) => {
+        if(!fileItems || !fileItems.length || !fileItems[0].file)return;
         const uploadedFile = fileItems[0].file;
     
         const reader = new FileReader()
@@ -42,7 +43,7 @@ function AuthUserProfileImageUpdate({ setValue }: { setValue: UseFormSetValue<IP
     }
 
     useEffect(() => {
-        if(setValue && itemImage){
+        if(setValue){
             setValue('updatedProfileImage',itemImage as string)
         }
     },[itemImage])
@@ -53,6 +54,7 @@ function AuthUserProfileImageUpdate({ setValue }: { setValue: UseFormSetValue<IP
             <FilePond
                 onupdatefiles={handleFileLoad}
                 allowMultiple={false}
+                onremovefile={() => setItemImage(null)}
                 allowFileTypeValidation
                 labelFileTypeNotAllowed="Added file is invalid"
                 acceptedFileTypes={['image/png', 'image/jpeg']}

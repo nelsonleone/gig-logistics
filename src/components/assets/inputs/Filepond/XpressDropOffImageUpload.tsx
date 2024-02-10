@@ -53,6 +53,7 @@ function XpressDropOffItemImageUpload({ setValue }: { setValue: UseFormSetValue<
             <FilePond
                 onupdatefiles={handleFileLoad}
                 allowMultiple={false}
+                onremovefile={() => setItemImage(null)}
                 allowFileTypeValidation
                 labelFileTypeNotAllowed="Added file is invalid"
                 acceptedFileTypes={['image/png', 'image/jpeg']}

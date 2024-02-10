@@ -18,7 +18,7 @@ export default async function PasswordUpdateSection(){
     const { provider } : { provider:FirebaseProvideIds } = await res.json()
 
     return(
-        provider === FirebaseProvideIds.Google ? 
+        provider === FirebaseProvideIds.Password ? 
         <div className="my-8">
             <h4 className={`${roboto_slab.className} my-4 font-bold text-2xl`}>Change Password</h4>
             <PasswordChangeForm />

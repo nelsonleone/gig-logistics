@@ -5,13 +5,12 @@ import { authUserMenuLinkData } from "@/componentsData/authUserMenuLinkData";
 import { Avatar, ListItemIcon, Menu, MenuItem, MenuList } from "@mui/material";
 import Link from "next/link";
 import { MouseEvent, useEffect, useState } from "react";
-import { FaSortDown, FaUserCircle } from "react-icons/fa";
+import { FaSortDown } from "react-icons/fa";
 import { AuthUser } from "../../types";
 import { useAppDispatch, useAppSelector } from "@/redux/customHooks";
 import { setAuthUserData, setSignOutAuthUser } from "@/redux/slices/authUser";
 import { setShowAlert } from "@/redux/slices/alertSlice";
 import { AlertSeverity } from "@/enums";
-import { useRouter } from "next/navigation";
 import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice";
 import { red } from "@mui/material/colors";
 
@@ -20,7 +19,6 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
     const open = Boolean(anchorEl)
     const dispatch = useAppDispatch()
-    const router = useRouter()
     const { picture, firstName } = useAppSelector(store => store.authUser)
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -76,7 +74,7 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
                 className="flex gap-2 text-red-600 bg-gray-100 hover:bg-gray-200 transition duration-200 ease-in-out rounded-md p-3"
 
             >
-                <Avatar sx={{ bgcolor: red[500], width: 30, height: 30 }} src={authUserData?.picture || picture} alt={authUserData?.firstName || firstName} />
+                <Avatar sx={{ bgcolor: red[500], width: 30, height: 30 }} src={picture || authUserData?.picture } alt={firstName || authUserData?.firstName} />
                 <FaSortDown className="text-xl xl:2xl" />
             </button>
             <Menu
