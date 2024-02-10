@@ -10,6 +10,7 @@ import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 
 import { auth } from '@/lib/firebase/firebase-client-config';
 import { setShowAlert } from '@/redux/slices/alertSlice';
 import { AlertSeverity } from '@/enums';
+import LoadingEllipse from '../assets/Loaders/LoadingEllipse';
 
 
 const formSchema = Yup.object().shape({
@@ -33,7 +34,7 @@ const formSchema = Yup.object().shape({
 
 export default function PasswordChangeForm(){
 
-    const { control, formState: { errors, isSubmitting }, handleSubmit, setError } = useForm<ProfilePasswordChangeForm>({ resolver: yupResolver(formSchema) })
+    const { control, formState: { errors, isSubmitting, isDirty }, handleSubmit, setError } = useForm<ProfilePasswordChangeForm>({ resolver: yupResolver(formSchema) })
     const { email } = useAppSelector(store => store.authUser)
     const dispatch = useAppDispatch()
 
@@ -77,7 +78,7 @@ export default function PasswordChangeForm(){
     }
 
     return(
-        <form onSubmit={handleSubmit(handleUpdatePassword)} className="bg-white rounded-xl py-8 px-3 my-8">
+        <form onSubmit={handleSubmit(handleUpdatePassword)} className="bg-white rounded-xl py-8 px-3 my-8 md:p-5 lg:px-8">
 
            <CustomPasswordInput
                 name="currentPassword"
@@ -114,6 +115,16 @@ export default function PasswordChangeForm(){
                 inputStyles="w-full z-20 border z-20 border-gray-300 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
                 containerStyles="w-full"
             /> 
+
+                        
+            <button disabled={isDirty || isSubmitting ? true : false} className="relative block my-10 w-full text-center mx-auto font-medium text-white bg-black p-4 text-sm rounded lg:text-base disabled:opacity-80 disabled:cursor-not-allowed md:w-28">
+                {
+                    isSubmitting ?
+                    <LoadingEllipse />
+                    :
+                    "Save"
+                }
+            </button>
         </form>
     )
 }

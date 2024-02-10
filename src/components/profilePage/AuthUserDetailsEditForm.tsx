@@ -1,21 +1,32 @@
 "use client"
 
-import { useForm } from "react-hook-form"
+import { SubmitHandler, useForm } from "react-hook-form"
 import { IProfileDetailsUpdateFormData } from "../../../types"
 import AuthUserProfileImageUpdate from "../assets/inputs/Filepond/AuthUserProfileImageUpdate"
 import CustomTextInput from "../assets/inputs/CustomTextInput"
-import { useAppSelector } from "@/redux/customHooks"
+import { useAppDispatch, useAppSelector } from "@/redux/customHooks"
 import CustomPhoneInput from "../assets/inputs/CustomPhoneInput"
 import LoadingEllipse from "../assets/Loaders/LoadingEllipse"
+import { asyncWrapper } from "@/helperFns/asyncWrapper"
 
 
 export default function AuthUserDetailsEditForm(){
 
     const { setValue, control, formState: { errors, isDirty, isSubmitting } } = useForm<IProfileDetailsUpdateFormData>()
-    const { email, firstName, lastName, phoneNumber } = useAppSelector(store => store.authUser)
+    const { email, firstName, lastName, phoneNumber, uid } = useAppSelector(store => store.authUser)
+    const dispatch = useAppDispatch()
+
+    const handleFormEdit : SubmitHandler<IProfileDetailsUpdateFormData> = async(data) => {
+        asyncWrapper(
+            async() => {
+                
+            },
+            dispatch
+        )
+    }
 
     return(
-        <form className="bg-white rounded-xl py-8 px-3 my-8">
+        <form className="bg-white rounded-xl py-8 px-3 my-8 md:p-5 lg:px-8">
             <AuthUserProfileImageUpdate setValue={setValue}  />
             <CustomTextInput 
                 readOnly 
@@ -69,7 +80,7 @@ export default function AuthUserDetailsEditForm(){
             />
 
             
-            <button disabled={isDirty || isSubmitting ? true : false} className="relative block my-10 w-full text-center mx-auto font-medium text-white bg-black p-4 text-sm rounded lg:text-base disabled:opacity-80 disabled:cursor-not-allowed">
+            <button disabled={isDirty || isSubmitting ? true : false} className="relative block my-10 w-full text-center mx-auto font-medium text-white bg-black p-4 text-sm rounded lg:text-base disabled:opacity-80 disabled:cursor-not-allowed md:w-28">
                 {
                     isSubmitting ?
                     <LoadingEllipse />

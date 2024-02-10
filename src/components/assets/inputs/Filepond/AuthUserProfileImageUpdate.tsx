@@ -48,7 +48,7 @@ function AuthUserProfileImageUpdate({ setValue }: { setValue: UseFormSetValue<IP
     },[itemImage])
 
     return (
-        <div className="mb-5 md:max-h-[20em]">
+        <div className="mb-5">
             <p className="my-3">Update Profile Picture</p>
             <FilePond
                 onupdatefiles={handleFileLoad}

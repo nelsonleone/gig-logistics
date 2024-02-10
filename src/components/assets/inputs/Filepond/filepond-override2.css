@@ -5,6 +5,10 @@
     height: 15em;
 }
 
+.filepond--hopper{
+    max-height: 15em !important;
+}
+
 .filepond--file-action-button {
     cursor:  pointer;
 }
