@@ -64,3 +64,9 @@ export enum FirebaseProvideIds {
     Google = "google.com",
     Password = "password"
 }
+
+
+export enum AuthUserWalletPinStatus {
+    HasPin = 'has_pin',
+    NoPin = 'no_pin'
+}

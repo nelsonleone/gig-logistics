@@ -83,7 +83,7 @@ export default function AuthUserDetailsEditForm(){
                 placeholder="" 
                 containerStyles="w-full mb-2"
                 labelStyles="mb-3 block self-start ms-1"
-                inputStyles="focus:outline-0 w-full focus:outline-offset-0 focus:outline-none rounded-xl border-gray-300 bg-gray-50 h-[3.3em]"
+                inputStyles="w-full border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.3em]"
             />
             <CustomTextInput 
                 defaultValue={firstName} 
@@ -92,11 +92,11 @@ export default function AuthUserDetailsEditForm(){
                 name="updatedfirstName" 
                 label="First Name" 
                 required="First Name field is required"
-                error={errors?.updatedLastName?.message}
+                error={errors?.updatedfirstName?.message}
                 placeholder="Enter First Name" 
                 containerStyles="w-full mb-2"
                 labelStyles="mb-3 block self-start ms-1"
-                inputStyles="focus:outline-0 w-full focus:outline-offset-0 focus:outline-none rounded-xl border-gray-300 bg-gray-50 h-[3.3em]"
+                inputStyles="w-full border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.3em]"
             />
             <CustomTextInput 
                 defaultValue={lastName} 
@@ -109,7 +109,7 @@ export default function AuthUserDetailsEditForm(){
                 placeholder="Enter Last Name" 
                 containerStyles="w-full mb-2"
                 labelStyles="mb-3 block self-start ms-1"
-                inputStyles="focus:outline-0  w-full focus:outline-offset-0 focus:outline-none rounded-xl border-gray-300 bg-gray-50 h-[3.3em]"
+                inputStyles="w-full border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.3em]"
             />
             
             <CustomPhoneInput 
@@ -119,13 +119,13 @@ export default function AuthUserDetailsEditForm(){
                 id="xpress-dropoff-phoneNumber" 
                 label="Phone Number"
                 labelStyles="mb-3 block self-start ms-1"
-                className="phoneInput-xpressDropOff h-[3.8em]"
+                className="phoneInput-xpressDropOff h-[2.8em]"
                 control={control}
                 containerStyles="w-[100%] mx-auto"
             />
 
             
-            <button disabled={!updatedProfileImage || !hasFormChanged() || isSubmitting} className="relative my-10 w-full text-center mx-auto font-medium text-white bg-black p-4 text-sm rounded lg:text-base disabled:opacity-80 disabled:cursor-not-allowed md:w-36 h-9 flex justify-center items-center">
+            <button disabled={!updatedProfileImage || !hasFormChanged() || isSubmitting} className="relative my-10 w-full text-center mx-auto font-medium text-white bg-black p-4 text-sm rounded lg:text-base disabled:opacity-80 disabled:cursor-not-allowed md:w-36 md:h-12 flex justify-center items-center hover:scale-105 transition duration-200 ease-in focus:outline focus:outline-cyan-500">
                 {
                     isSubmitting ?
                     <LoadingEllipse />

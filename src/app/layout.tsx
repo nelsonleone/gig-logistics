@@ -21,8 +21,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  createPin
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  createPin: React.ReactNode
 }) {
 
 
@@ -41,6 +43,7 @@ export default function RootLayout({
               </Header>
 
               {children}
+              {createPin}
               <ImportantPrompts />
               <RingLoader />
               <CustomSnackbar />
