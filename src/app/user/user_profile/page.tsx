@@ -1,5 +1,5 @@
 import AuthUserDetailsEditForm from "@/components/profilePage/AuthUserDetailsEditForm";
-import { roboto_slab } from "../fonts";
+import { roboto_slab } from "../../fonts";
 import PasswordUpdateSection from "@/components/profilePage/PasswordUpdateSection";
 
 export default function MyProfile(){

@@ -1,5 +1,5 @@
 import { categoryValuesArr } from "@/componentsData/xressDropOffDeliveryItemsData";
-import { XpressDropOffDeliveryType } from "@/enums";
+import { AuthUserWalletPinStatus, XpressDropOffDeliveryType } from "@/enums";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { PortableTextBlock, TypedObject } from "@portabletext/types"
 import { Tuple, DefaultMantineColor } from '@mantine/core'
@@ -288,7 +288,8 @@ type AuthUser = {
     lastName: string,
     phoneNumber: string,
     email: string,
-    picture: string
+    picture: string,
+    walletPinStatus: AuthUserWalletPinStatus | undefined
 }
 
 

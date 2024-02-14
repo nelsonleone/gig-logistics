@@ -1,10 +1,7 @@
-import { firebaseAdmin } from '@/lib/firebase/firebase-admin-config';
-import bcrypt from 'bcrypt';
-import { NextRequest, NextResponse } from 'next/server';
 
-// Define your custom salt
-const customSaltRounds = 10; // You can adjust the number of rounds as needed
-const customSalt = bcrypt.genSaltSync(customSaltRounds);
+import { handleHashPin } from '@/helperFns/handleHashPin';
+import { firebaseAdmin } from '@/lib/firebase/firebase-admin-config';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request:NextRequest, response:NextResponse) {
   try {
@@ -18,15 +15,14 @@ export async function POST(request:NextRequest, response:NextResponse) {
     }
 
     if(!uid){
-        return NextResponse.json({ error: "'UID' query is invalid" }, { status: 400 })
+      return NextResponse.json({ error: "'UID' query is invalid" }, { status: 400 })
     }
 
-    const hashedPin = await bcrypt.hash(pin, 64)
+    const hashedPin = await handleHashPin(pin)
 
     await firebaseAdmin.firestore().collection('TransactionPins').doc(uid).set({
       pin: hashedPin
     })
-
     return NextResponse.json({ message: 'Transaction pin created successfully' })
 
   } catch (error:any|unknown) {

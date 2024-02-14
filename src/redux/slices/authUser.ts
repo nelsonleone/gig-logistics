@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AuthUser, SavedDropOffs, IUserNotifications  } from "../../../types";
+import { AuthUserWalletPinStatus } from "@/enums";
 
 interface IinitState extends AuthUser {
     notifications: IUserNotifications[],
@@ -16,7 +17,8 @@ const initialState : IinitState = {
     phoneNumber: "",
     notifications: [],
     xpressDropOffs: [],
-    beenAuthenticated: false
+    beenAuthenticated: false,
+    walletPinStatus: undefined
 }
 
 const authUser = createSlice({
@@ -52,10 +54,14 @@ const authUser = createSlice({
             })
 
             state.xpressDropOffs = updatedDropOffsArray;
+        },
+
+        setWalletPinStatus: (state,{ payload }:PayloadAction<AuthUserWalletPinStatus>) => {
+            state.walletPinStatus = payload
         }
     }
 })
 
-export const { setAuthUserData, setDropOffs,  setSignOutAuthUser, updatedDropOffsAfterCancel } = authUser.actions
+export const { setAuthUserData, setDropOffs, setWalletPinStatus,  setSignOutAuthUser, updatedDropOffsAfterCancel } = authUser.actions
 
 export default authUser.reducer;

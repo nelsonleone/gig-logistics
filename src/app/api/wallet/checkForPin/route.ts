@@ -17,7 +17,7 @@ export async function GET(request:NextRequest, response:NextResponse) {
       return NextResponse.json({ error: 'Invalid UID query' }, { status: 400 })
     }
 
-    const pinSnapshot = await firebaseAdmin.firestore().collection('transactionPins').doc(uid).get()
+    const pinSnapshot = await firebaseAdmin.firestore().collection('TransactionPins').doc(uid).get()
 
     if (pinSnapshot.exists) {
       return NextResponse.json({ message: 'User has a transaction pin saved', status: 'has_pin' })

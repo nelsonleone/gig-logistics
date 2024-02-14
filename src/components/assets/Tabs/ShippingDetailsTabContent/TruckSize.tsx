@@ -22,7 +22,7 @@ export default function TruckSize(props:IProps){
     return(
         <Modal open={props.open} onClose={props.onClose} id="shipnow_trucksize_modal">
             <div className="w-[90%]  overflow-y-auto h-[30em] top-0 bottom-0 absolute left-0 m-auto md:max-w-[30em] md:w-[30em] right-0 rounded-lg  shadow-xl bg-[#FFFFFF] text-[#374151] px-8 pt-14 pb-8 text-center">
-                <IconButton aria-control="shipnow_trucksize_modal" onClick={props.onClose} aria-expanded={props.open ? "true" : "false"} className="absolute top-4 left-4 text-[#374151]">
+                <IconButton aria-controls="shipnow_trucksize_modal" onClick={props.onClose} aria-expanded={props.open ? "true" : "false"} className="absolute top-4 left-4 text-[#374151]">
                     <IoMdClose />
                 </IconButton>
                 <h4 className="font-bold text-3xl mb-5">Select truck size</h4>

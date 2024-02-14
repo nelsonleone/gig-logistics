@@ -24,8 +24,8 @@ export default function CustomAlert(){
         <AnimatePresence>
             {
                 showAlert &&
-                <motion.div exit={{ y: -300, transition: { duration: .5, ease: "linear"} }} className="relative z-[999]">
-                    <Alert severity={severity || undefined} variant="filled" className={`${inter.className} top-8 font-medium z-[100000] fixed left-4 lg:left-12`}>
+                <motion.div exit={{ y: -300, transition: { duration: .5, ease: "linear"} }} className="relative z-[999999]">
+                    <Alert severity={severity || undefined} variant="filled" className={`${inter.className} top-8 font-medium fixed left-4 lg:left-12`}>
                         {alertMssg}
                     </Alert>
                 </motion.div>
