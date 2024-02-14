@@ -6,6 +6,10 @@
   @apply h-full w-1/5;
 }
 
+.pinInput2{
+  @apply h-full w-[15%];
+}
+
 .input{
     @apply text-2xl font-medium border placeholder:text-3xl placeholder:text-gray-500 border-gray-700 font-inter h-full flex justify-center outline-offset-0 focus:outline-offset-0 focus:border-none items-center focus:outline focus:outline-2 focus:outline-black transition duration-200 ease-in-out;
 }

@@ -48,8 +48,7 @@ function ChangeWalletPinModal(){
                 return;
             }
 
-            console.log(newPin,oldPin)
-            return;
+            setChangingPin(true)
 
             const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/api/wallet/change_pin?uid=${uid}`,{
                 method: "POST",
