@@ -39,6 +39,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
 
     return NextResponse.json({ message: 'Transaction pin changed successfully' })
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to check transaction pin' }, { status: 500 })
+    console.log(error.message)
+    return NextResponse.json({ error: error.message || 'Failed to change transaction pin' }, { status: 500 })
   }
 }

@@ -17,19 +17,17 @@ export default function CreateTransactionPinModalClient({ authUserPinStatus }: {
         walletPinStatus !== AuthUserWalletPinStatus.HasPin &&
         authUserPinStatus === AuthUserWalletPinStatus.NoPin && 
         beenAuthenticated && 
-        pathName !== "/wallet_pin" &&
-        pathName !== "/wallet_pin/change"
+        pathName !== "/user/wallet_pin" &&
+        pathName !== "/user/wallet_pin/change"
     )
-
-    console.log(authUserPinStatus)
 
     useEffect(() => {
         setOpen(
             walletPinStatus !== AuthUserWalletPinStatus.HasPin &&
             authUserPinStatus === AuthUserWalletPinStatus.NoPin && 
             beenAuthenticated && 
-            pathName !== "/wallet_pin" &&
-            pathName !== "/wallet_pin/change"
+            pathName !== "/user/wallet_pin" &&
+            pathName !== "/user/wallet_pin/change"
         )
     },[beenAuthenticated,authUserPinStatus,pathName,walletPinStatus])
 
@@ -46,7 +44,7 @@ export default function CreateTransactionPinModalClient({ authUserPinStatus }: {
                     Exciting News! We are thrilled to announce the introduction of a Wallet PIN feature for enhanced security on your GIGGo wallet. Your transactions on the app will now be safeguarded by your personalized PIN. Take control of your security and set up your Wallet PIN today to unlock this advanced feature!
                 </p>
 
-                <button onClick={() => router.push('/wallet_pin')} className="w-full bg-black font-medium text-center p-4 rounded my-4 block text-white mx-auto hover:opacity-90 focus:opacity-90 transition duration-200 ease-in-out">Set Up Wallet Pin</button>
+                <button onClick={() => router.push('/user/wallet_pin')} className="w-full bg-black font-medium text-center p-4 rounded my-4 block text-white mx-auto hover:opacity-90 focus:opacity-90 transition duration-200 ease-in-out">Set Up Wallet Pin</button>
             </div> 
         </Modal>
     )

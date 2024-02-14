@@ -30,8 +30,6 @@
     "@types/node": "20.5.6",
     "@types/react": "^18.2.54",
     "@types/react-dom": "18.2.7",
-    "@zag-js/pin-input": "^0.35.0",
-    "@zag-js/react": "^0.35.0",
     "autoprefixer": "10.4.15",
     "bcrypt": "^5.1.1",
     "dayjs": "^1.11.10",
