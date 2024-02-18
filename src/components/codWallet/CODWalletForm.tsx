@@ -31,7 +31,7 @@ export default function CODWalletForm(props:IProps){
                         <CustomPhoneInput className="" id="cod-phoneInput" label="Phone Number:" control={control} name={val.name} />
                         :
                         val.name === COD_wallet_input_names.gender ?
-                        <CustomBasicSelect control={control} />
+                        <CustomBasicSelect id="cod-wallet-form-gender" selectOptionsData={[{ value: "male", label: "Male"}, { value: "female", label: "Female"}]} name="gender" control={control} />
                         :
                         val.name !== COD_wallet_input_names.gender && val.name !== COD_wallet_input_names.phoneNumber ?
                         <CustomTextInput 

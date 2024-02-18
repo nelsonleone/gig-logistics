@@ -32,13 +32,14 @@ export default function CustomBasicSelect(props:IProps){
                 name={name}
                 control={control}
                 rules={{required:"This field is required"}}
-                render={({ field }) => <select 
-                {...field} 
-                defaultValue=""
-                placeholder={props.placeholder || undefined}
-                aria-invalid={error ? "true" : "false"}
-                className={`block w-full border border-gray-300 rounded-md p-3 bg-transparent mb-8 lg:p-[.8em] ${selectStyles}`}
-                >
+                render={({ field }) => (
+                <select 
+                    {...field} 
+                    defaultValue=""
+                    
+                    aria-invalid={error ? "true" : "false"}
+                    className={`block w-full border border-gray-300 rounded-md p-3 bg-transparent mb-8 lg:p-[.8em] ${selectStyles}`}
+                  >
                     {
                         selectOptionsData.map(val => {
                             return(
@@ -46,7 +47,7 @@ export default function CustomBasicSelect(props:IProps){
                             )
                         })
                     }
-                </select>}
+                </select>)}
             />
             {
                 error &&

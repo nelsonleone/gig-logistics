@@ -11,7 +11,7 @@ export default async function ServicesHighlight(){
     const emptyArray = [1,2,3]
 
     return (
-        <section className="mt-[9em] mb-[6.5em] px-3">
+        <section className="mt-[15em] lg:mt-72 mb-[6.5em] px-3">
             <h2 className={`${roboto_slab.className} text-[1.8rem] text-black text-center font-bold`}>Seamless Delivery Services</h2>
 
             <div className="flex justify-center items-center gap-4 flex-col mt-5 md:flex-wrap md:flex-row md:justify-between lg:flex-nowrap lg:flex-row lg:mt-10 lg:justify-between">

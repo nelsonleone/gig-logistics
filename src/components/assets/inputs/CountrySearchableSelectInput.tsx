@@ -28,11 +28,10 @@ export default function CountrySearchableSelectInput() {
     <Select
       label="Choose employee of the month"
       placeholder="Pick one"
-      itemComponent={SelectItem}
+      component={SelectItem}
       data={countriesNames}
       searchable
       maxDropdownHeight={400}
-      nothingFound="Nobody here"
     />
   )
 }

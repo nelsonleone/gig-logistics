@@ -13,7 +13,7 @@ export async function getAuthUserDataFromFirestore(uid:string) {
     }
 }
 
-export async function updateAuthUserDataInFirestore(uid:string, data:AuthUser) {
+export async function updateAuthUserDataInFirestore(uid:string, data:Omit<AuthUser,'walletPinStatus'>) {
     try{
         const firestore = firebaseAdmin.firestore()
         await firestore.collection('AuthUsers').doc(uid).set(data, { merge: true })

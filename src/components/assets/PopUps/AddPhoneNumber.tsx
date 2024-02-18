@@ -47,7 +47,7 @@ export default function AddPhoneNumber(){
 
     return(
         <Modal open={open}>
-            <form onSubmit={handleSubmit(handleAddPhoneNumber)} className="max-h-fit h-80 text-[#374151] bg-white shadow-lg rounded-lg p-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-[95%] md:w-[30em]">
+            <form onSubmit={handleSubmit(handleAddPhoneNumber)} className="max-h-fit h-80 text-[#374151] bg-white border-none outline-none shadow-lg rounded-lg p-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-[95%] md:w-[30em]">
                 <h2 className="text-center my-4 font-bold text-2xl md:text-3xl">Enter Your Phone Number</h2>
                 <p className="mt-6 mb-4 italic text-sm font-medium">Your phone number helps us serve you and deliver seamless services</p>
                 <CustomPhoneInput className="mt-4" error={errors.phoneNumber?.message} id="add_phoneNumber_popup_input" control={control} name="phoneNumber" placeholder="Phone Number" />
@@ -55,7 +55,7 @@ export default function AddPhoneNumber(){
                     {
                         isSubmitting ?
                         <LoadingEllipse />
-                        :
+                        :                                                                                                                                                                                                                                                                                                                                                                                                                   
                         "Add"
                     }
                 </button>

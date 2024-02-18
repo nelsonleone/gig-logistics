@@ -1,6 +1,6 @@
 "use client"
 
-import Select from 'react-select'
+import Select, { CSSObjectWithLabel } from 'react-select'
 import { DomesticQuoteObj, InternationalQuoteObj } from '../../../../types'
 import { Control, Controller } from 'react-hook-form'
 import { ReactNode } from 'react'
@@ -42,7 +42,7 @@ export default function CustomQuotePageSelect({ data, value, placeholder, option
               borderRadius: '12px',
               cursor: "pointer",
               position: "relative",
-              borderColor: hasError ? 'red' : state.isFocused ? '#123fe0' : state.menuIsOpen ? '#123fe0' : '#9ca3af',
+              borderColor: hasError ? 'red' : state.isFocused ? 'black' : state.menuIsOpen ? '#123fe0' : '#9ca3af',
               outlineOffset: "none",
               textOverflow: "ellipsis",
               overflow: "hidden",
@@ -50,20 +50,20 @@ export default function CustomQuotePageSelect({ data, value, placeholder, option
               width: "100%",
               outline: state.isFocused ? "none" : undefined,
               ...selectStyles
-            }),
-            menuPortal: base => ({ ...base, zIndex: 99 }),
+            } as CSSObjectWithLabel),
+            menuPortal: base => ({ ...base, zIndex: 99 } as CSSObjectWithLabel),
             menu: (provided) => ({
               ...provided,
               zIndex: 99,
               position: "relative"
-            }),
+            } as CSSObjectWithLabel),
             option: (baseStyles) => ({
               ...baseStyles,
               color: "black",
               position: "relative",
               zIndex: "100",
               ...optionStyles
-            })
+            } as CSSObjectWithLabel )
           }} 
           options={data as any} 
           placeholder={placeholder}

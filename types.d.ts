@@ -187,7 +187,7 @@ type PT_SanityServiceData = {
 
 
 type OverseasShippingTradeOptDataType = {
-    tradeOptPreviewGuideLine: TypedObject[]
+    tradeOptPreviewGuideLine: ITypedObject[]
 }
 
 
@@ -195,10 +195,12 @@ interface AddedWalletServiceData extends DataWithHTI {};
 
 
 //
-type LocalOverseasShippingPromptMessageData = {
-    introText: TypedObject[],
-    introTextIllustrationImage: ISanityImageObjType,
-    whatYouNeedToKnow: TypedObject[]
+
+type LocalOverseasShippingIntroData = {
+    introTextIllustrationImageAlt: string,
+    whatYouNeedToKnow: ITypedObject[],
+    introText: ITypedObject[],
+    introTextIllustrationImage: string
 }
 
 
@@ -211,6 +213,13 @@ interface ICODWalletFormValues {
     phoneNumber: string,
     gender: string,
     dateOfBirth: string
+}
+
+
+
+type LocalOverseasShippingIntroPageDestinationOrigin = {
+    origin: { label: "UK", value: "uk"} | { label: "USA", value: "usa"} | { label: "CHINA", value: "china" },
+    destination: { label: "NIGERIA", value: "nigeria"} | { label: "GHANA", value: "ghana" }
 }
 
 

@@ -19,12 +19,12 @@
 }
 
 .phoneInput input{
-    @apply border border-gray-300 rounded-lg p-[.7em] h-[3.3em] lg:p-[.75em] text-[#6B7181];
+    @apply border border-gray-300 outline-none rounded-lg p-[.7em] h-[3.3em] lg:p-[.75em] text-[#374151];
 }
 
 
 .phoneInput input:focus{
-  @apply outline outline-1 outline-black;
+  @apply outline outline-2 outline-offset-0 border-none outline-black;
 }
 
 .phoneInput select {

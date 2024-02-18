@@ -15,7 +15,6 @@ export default async function ResetWalletPin(){
     const { status } = await res.json()
     const authUserPinStatus : AuthUserWalletPinStatus = status;
 
-
     return(
         <WalletPinResetModal authUserPinStatus={authUserPinStatus} />
     )

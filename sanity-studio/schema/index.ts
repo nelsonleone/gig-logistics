@@ -5,8 +5,8 @@ import faqSchema from './faq-schema'
 import aboutUsContentSchema from './about-content-schema'
 import portfolioServices from './portfolio-services'
 import overseasShippingTradeOpt from './overseas-shipping-trade-opt'
-import localShippingPromptMessageSchema from './localShippingPromptMessage'
 import personalShoppingInfo from './personal-shopping-info'
+import localShippingIntroDataSchema from './localShippingIntroDataSchema'
 
 export const schema: SchemaPluginOptions | undefined = {
   types: [
@@ -16,7 +16,7 @@ export const schema: SchemaPluginOptions | undefined = {
     aboutUsContentSchema,
     portfolioServices,
     overseasShippingTradeOpt,
-    localShippingPromptMessageSchema,
+    localShippingIntroDataSchema,
     personalShoppingInfo
   ]
 }

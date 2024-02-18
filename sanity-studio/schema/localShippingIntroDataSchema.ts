@@ -1,10 +1,10 @@
 import { GiAfrica } from "react-icons/gi";
 import { defineField } from "sanity";
 
-const localShippingPromptMessageSchema = defineField({
+const localShippingIntroDataSchema = defineField({
     name: "localShippingPromptMessage",
     type: "document",
-    title: "Local Shipping Prompt Message",
+    title: "Local Shipping Intro Data",
     icon: GiAfrica,
     fields: [
         {
@@ -39,4 +39,4 @@ const localShippingPromptMessageSchema = defineField({
 })
 
 
-export default localShippingPromptMessageSchema;
+export default localShippingIntroDataSchema;
