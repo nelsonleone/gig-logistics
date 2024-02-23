@@ -13,7 +13,7 @@ export const metadata : Metadata = {
     title: "Login | GIGL"
 }
 
-export default function SignIn({ params, searchParams }:IPageProps){
+export default async function SignIn({ params, searchParams }:IPageProps){
 
     const { returnTo } = searchParams;
     const authSessionToken = cookies().get('authSessionToken')?.value;
@@ -26,7 +26,7 @@ export default function SignIn({ params, searchParams }:IPageProps){
         }
     }
     if(authSessionToken){
-        shouldRedirect()
+        await shouldRedirect()
     }
 
     return(

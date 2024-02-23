@@ -69,7 +69,7 @@ export default function MainNav(){
 
 
     return(
-        <nav className="flex justify-between items-center xl:w-[50%]" id="main-nav">
+        <nav className="flex justify-between items-center lg:w-[65%] xl:w-[50%]" id="main-nav">
             <AnimatePresence>
             {
                 showPrimaryNav &&

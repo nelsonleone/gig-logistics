@@ -3,8 +3,7 @@
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { LocalOverseasShippingIntroData, LocalOverseasShippingIntroPageDestinationOrigin } from '../../types';
-import { urlForImage } from '../../sanity-studio/lib/image';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import CustomQuotePageSelect from './assets/inputs/CustomQuotePageSelect';
 import { BiSolidMessageAltError } from 'react-icons/bi';
 import Link from "next/link";
@@ -12,7 +11,7 @@ import Link from "next/link";
 const serializer1 = {
     block: {
         h1({ children }:any){
-            return <h3 className="text-3xl font-bold mb-6">{children}</h3>
+            return <h3 className="text-3xl font-bold my-12">{children}</h3>
         },
         h3({ children }:any){
             return <h3 className="text-xl font-bold my-2">{children}</h3>
@@ -21,13 +20,12 @@ const serializer1 = {
             return <p className="mb-4">{children}</p>
         },
     },
-    listI
     marks: {    
         link: ({ value, children }:any) => {
           const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
 
           return (
-            <Link className="underline font-medium" href={value?.href} target={target} rel={target === '_blank' ? 'noindex nofollow' : "" }>
+            <Link className="underline font-medium text-cyan-600" href={value?.href} target={target} rel={target === '_blank' ? 'noindex nofollow' : "" }>
               {children}
             </Link>
           )
@@ -38,15 +36,21 @@ const serializer1 = {
 const serializer2 = {
     block: {
         normal({ children }:any){
-            return <p className="my-6">{children}</p>
+            return <p className="my-6 leading-8">{children}</p>
         },
+    },
+    list: {
+        bullet: ({children}:any) => <ul className="my-8">{children}</ul>,
+    },
+    listItem: {
+        bullet: ({children}:any) => <li className="ms-4 my-1">{children}</li>,
     },
     marks: {    
         link: ({ value, children }:any) => {
           const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
 
           return (
-            <Link className="underline font-medium" href={value?.href} target={target} rel={target === '_blank' ? 'noindex nofollow' : "" }>
+            <Link className="underline font-medium text-cyan-600" href={value?.href} target={target} rel={target === '_blank' ? 'noindex nofollow' : "" }>
               {children}
             </Link>
           )
@@ -67,12 +71,14 @@ const destinationOriginData = {
 function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingIntroData | null }) {
 
     const { control, handleSubmit, formState: { errors } } = useForm<LocalOverseasShippingIntroPageDestinationOrigin>() 
+    const origin = useWatch({ control, name: 'origin.label' })
+    const destination = useWatch({ control, name: 'destination.label' })
 
     return(
-        data ?
+        data &&
         <div role="presentation" className="text-[#374151]">
-            <section className="flex flex-col justify-between lg:flex-row  px-6 xl:px-10">
-                <div>
+            <section className="flex flex-col justify-between md:flex-row  px-6 xl:px-10">
+                <div className="md:w-1/2">
                     <PortableText value={data.introText} components={serializer1} />
                 </div>
                 <div>
@@ -80,10 +86,10 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
                 </div>
             </section>
 
-            <section className="mt-16 bg-white px-6 xl:px-10 py-8">
-                <h2 className="text-center mb-10 font-bold text-2xl">Overseas Shipping - what you need to know</h2>
+            <section className="mt-16 bg-white px-6 xl:px-10 py-10">
+                <h2 className="text-center mb-12 font-bold text-2xl">Overseas Shipping {destination && origin && `( from ${origin} to ${destination})`} - what you need to know</h2>
                 <div className="md:flex gap-8">
-                    <div className="w-full mb-6">
+                    <div className="w-full mb-6 lg:w-80">
                         <CustomQuotePageSelect 
                             name="origin" 
                             id="overseas-shipping-intro-origin" 
@@ -103,7 +109,7 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
                         }
                     </div>
 
-                    <div className="w-full mb-6">
+                    <div className="w-full mb-6 lg:w-80">
                         <CustomQuotePageSelect 
                             name="destination" 
                             id="overseas-shipping-intro-destination" 
@@ -128,11 +134,9 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
                     <PortableText value={data.whatYouNeedToKnow} components={serializer2} />
                 </div>
 
-                <button className="block text-white bg-black rounded-sm font-medium text-sm p-3 text-center mx-auto w-20 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+                <Link href="app-panel\overseas-shipping\shipping-details" className="block text-white bg-black font-medium p-4 text-center mx-auto w-[20em] my-16 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</Link>
             </section>
         </div>
-        :
-        <p>Error Fetching Prompt Content, Please Try Again</p>
     )
 }
 

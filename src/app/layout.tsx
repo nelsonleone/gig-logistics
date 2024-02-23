@@ -43,7 +43,6 @@ export default function RootLayout({
               </Header>
 
               {children}
-              {createPin}
               <ImportantPrompts />
               <RingLoader />
               <CustomSnackbar />
