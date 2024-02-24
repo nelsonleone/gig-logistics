@@ -12,10 +12,10 @@ export default function ShippingDetailsTab(){
         <div className="relative">
             <ShippingDetailsProgressLoader stepLabel={["Pick up location","Shipment details","Upload item"]} className="w-full lg:w-1/2 mx-auto" currentStep={currentStep} />
             {
-                currentStep === 1 ? 
+                currentStep === 0 ? 
                 <PickUpLocationSection />
                 :
-                currentStep === 2 ? 
+                currentStep === 1 ? 
                 null
                 :
                 null

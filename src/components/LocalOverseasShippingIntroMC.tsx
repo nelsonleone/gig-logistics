@@ -134,7 +134,7 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
                     <PortableText value={data.whatYouNeedToKnow} components={serializer2} />
                 </div>
 
-                <Link href="app-panel\overseas-shipping\shipping-details" className="block text-white bg-black font-medium p-4 text-center mx-auto w-[20em] my-16 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</Link>
+                <Link href="app-panel\overseas-shipping\shipping-details" className="block rounded-sm text-white bg-black font-medium p-4 text-center mx-auto w-[20em] my-16 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</Link>
             </section>
         </div>
     )

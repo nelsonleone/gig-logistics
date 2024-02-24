@@ -429,3 +429,15 @@ type ProfilePasswordChangeForm  = {
     newPassword: string,
     confirmNewPassword: string
 }
+
+
+
+type OverseasShippingItemInfo = {
+    fullName: string,
+    desc: string,
+    quantity: string,
+    storeName: string,
+    trackingNumber?: string,
+    itemValueInPounds: string,
+    agreedToTermsAndConditions: boolean
+}

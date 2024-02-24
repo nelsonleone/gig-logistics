@@ -17,7 +17,7 @@ function OverseasShippingCompaniesBox({ imgSrc, nameText, imgAlt, linkHref }:IPr
             </div>
         </Link>
        :
-       <Link href={linkHref} className="w-full p-3 rounded-md flex overflow-hidden justify-center items-center border border-gray-100 my-4 shadow-sm h-24">
+       <Link href={linkHref} className="w-full p-3 rounded-md flex overflow-hidden justify-center items-center border border-gray-100 my-4 shadow-sm h-20">
             <div className="flex justify-center items-center">
                 <p className="text-center capitalize">{nameText}</p>
             </div>

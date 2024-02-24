@@ -88,8 +88,8 @@ function ChangeWalletPinModal(){
     }
 
     return(
-        <Modal open id="change_wallet_pin_modal">
-            <div className="h-[30em] overflow-y-scroll md:h-[35em] md:overflow-y-auto outline-none border-none overflow-hidden bg-white shadow-lg rounded-lg p-4 pt-9 absolute top-0 bottom-0 left-0 right-0 m-auto w-[95%] md:w-[30em] md:px-20 flex justify-center flex-col items-center">
+        <Modal open id="change_wallet_pin_modal" className="flex justify-center items-center">
+            <div className="h-[30em] overflow-y-auto md:h-[35em] md:overflow-y-auto outline-none border-none overflow-hidden bg-white shadow-lg rounded-lg p-4 pt-9 w-[95%] md:w-[30em] md:px-20 flex justify-center flex-col items-center">
                 <IconButton aria-controls="change_wallet_pin_modal" onClick={() => router.back()} aria-expanded="true" className="absolute top-4 right-4 text-black">
                     <IoMdClose />
                 </IconButton>

@@ -12,7 +12,7 @@ interface IMultiUseModalProps{
 export default function PSModal(props:IMultiUseModalProps){
     return(
         <Modal open={props.open} onClose={props.onClose} id="pssm_modal">
-            <div className="max-h-fit overflow-hidden z-10 h-80 text-white bg-white flex flex-col justify-center shadow-lg rounded-lg p-4 md:p-8 absolute top-0 bottom-0 left-0 right-0 m-auto w-[95%] md:w-[30em]   ">
+            <div className="max-h-fit overflow-hidden z-10 h-80 text-white bg-white flex flex-col justify-center shadow-lg rounded-lg p-4 md:p-8 absolute top-0 bottom-0 left-0 right-0 m-auto w-[95%] md:w-[30em]">
                 <IconButton aria-controls="pssm_modal" onClick={props.onClose} aria-expanded={props.open ? "true" : "false"} className="absolute top-4 right-4 text-white">
                     <IoMdClose />
                 </IconButton>

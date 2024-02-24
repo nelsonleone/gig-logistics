@@ -1,8 +1,9 @@
 import { overseasShippingShipmentAddresses } from "@/componentsData/overseasShippingShipmentAddresses"
 import CustomCopyButton from "../../Buttons/CustomCopyButton"
 import OverseasShippingShopsHighlight from "@/components/OverseasShippingShopsHighlight"
+import { Dispatch, SetStateAction } from "react"
 
-export default function OverseasShipmentAddress(){
+export default function OverseasShipmentAddress({ setCurrentStep }: { setCurrentStep: Dispatch<SetStateAction<number>>}){
 
     const id = 'overseas-shipment-address'
 
@@ -55,7 +56,7 @@ export default function OverseasShipmentAddress(){
                 </div>
             </div>
 
-            <button className="rounded-md block text-white bg-black font-medium p-[.8em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+            <button onClick={() => setCurrentStep(prev => prev = prev + 1)} className="rounded-md block text-white bg-black font-medium p-[.8em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
         
            <OverseasShippingShopsHighlight />
         </div>

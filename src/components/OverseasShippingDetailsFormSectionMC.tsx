@@ -4,6 +4,7 @@ import { useState } from "react";
 import AppPanelMCContainer from "./AppPanelPagesMCContainer";
 import ShippingDetailsProgressLoader from "./assets/Loaders/ShippingDetailsProgressBar";
 import OverseasShippingDetailsTabContent from "./assets/Tabs/OverseasShippingDetailsTabContent";
+import OverseasShippingPromptModal from "./assets/PopUps/OverseasShippingPromptModal";
 
 function OverseasShippingDetailsFormSectionMC() {
 
@@ -12,6 +13,7 @@ function OverseasShippingDetailsFormSectionMC() {
     return (
         <AppPanelMCContainer className="py-12 relative lg:pt-16">
             <div className="lg:w-3/5 lg:mx-auto">
+                <OverseasShippingPromptModal />
                 <ShippingDetailsProgressLoader stepLabel={["Shipping address","Shipment Item","Process Shipping"]} className="md:w-[30em] mx-auto" currentStep={currentStep} />
                 <OverseasShippingDetailsTabContent setCurrentStep={setCurrentStep} currentStep={currentStep} />
             </div>
