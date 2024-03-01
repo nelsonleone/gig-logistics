@@ -12,7 +12,7 @@ export default function OverseasShippingPromptModal(){
 
     return(
         <Modal open={open} id={id} className="flex justify-center items-center">
-            <div className="h-[30em] relative outline-none outline-offset-0 focus:outline-none overflow-y-auto text-[#374151] bg-white shadow-lg rounded-md p-4 md:p-10 w-[95%] md:w-[32em]">
+            <div className="h-[30em] md:h-[33em] relative outline-none outline-offset-0 focus:outline-none overflow-y-auto text-[#374151] bg-white shadow-lg rounded-md p-4 md:p-10 w-[95%] md:w-[32em]">
                 <IconButton aria-controls={id} onClick={() => setOpen(false)} aria-expanded={open ? "true" : "false"} className="absolute top-4 right-4">
                     <IoMdClose />
                 </IconButton>

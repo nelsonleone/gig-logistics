@@ -1,11 +1,15 @@
-import { overseasShippingShipmentAddresses } from "@/componentsData/overseasShippingShipmentAddresses"
-import CustomCopyButton from "../../Buttons/CustomCopyButton"
-import OverseasShippingShopsHighlight from "@/components/OverseasShippingShopsHighlight"
-import { Dispatch, SetStateAction } from "react"
+"use client"
 
-export default function OverseasShipmentAddress({ setCurrentStep }: { setCurrentStep: Dispatch<SetStateAction<number>>}){
+import { overseasShippingShipmentAddresses } from "@/componentsData/overseasShippingShipmentAddresses"
+import CustomCopyButton from "../assets/Buttons/CustomCopyButton"
+import OverseasShippingShopsHighlight from "../OverseasShippingShopsHighlight"
+import { useRouter } from "next/navigation"
+
+export default function OverseasShipmentAddressMC(){
 
     const id = 'overseas-shipment-address'
+    const router = useRouter()
+    const nextStep = "/app-panel/overseas-shipping/shipping-details/item-info"
 
     return(
         <div className="relative mt-24 mb-6">
@@ -56,7 +60,7 @@ export default function OverseasShipmentAddress({ setCurrentStep }: { setCurrent
                 </div>
             </div>
 
-            <button onClick={() => setCurrentStep(prev => prev = prev + 1)} className="rounded-md block text-white bg-black font-medium p-[.8em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+            <button onClick={() => router.push(nextStep)} className="rounded-md block text-white bg-black font-medium p-[.8em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
         
            <OverseasShippingShopsHighlight />
         </div>

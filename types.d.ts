@@ -441,3 +441,8 @@ type OverseasShippingItemInfo = {
     itemValueInPounds: string,
     agreedToTermsAndConditions: boolean
 }
+
+interface OverseasShippingSavedItemInfo extends OverseasShippingItemInfo {
+    id: string,
+    quantity: number
+}

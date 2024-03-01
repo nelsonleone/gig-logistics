@@ -4,6 +4,7 @@ import alertReducer from "./slices/alertSlice";
 import snackbarReducer from "./slices/snackbarSlice";
 import authUserReducer from "./slices/authUser";
 import ringLoaderReducer from "./slices/ringLoaderSlice";
+import overseasShippingItemsReducer from "./slices/overseasShippingItemsSlice";
 
 const reduxStore = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ const reduxStore = configureStore({
         alert: alertReducer,
         snackbar: snackbarReducer,
         authUser: authUserReducer,
-        ringLoader: ringLoaderReducer
+        ringLoader: ringLoaderReducer,
+        overseasShippingItems: overseasShippingItemsReducer
     }
 })
 
