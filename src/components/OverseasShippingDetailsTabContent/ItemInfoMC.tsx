@@ -7,42 +7,37 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { OverseasShippingItemInfo } from "../../../types";
 import { BiSolidMessageAltError } from "react-icons/bi";
 import Link from "next/link";
-import { useEffect } from "react";
 import { useAppDispatch } from "@/redux/customHooks";
 import { setItem } from "@/redux/slices/overseasShippingItemsSlice";
 import { nanoid } from "@reduxjs/toolkit";
 import { useRouter } from "next/navigation";
+import { Checkbox } from "@mantine/core";
 
 
 const formSchema = Yup.object().shape({
     fullName: Yup.string().required('This field is required'),
     desc: Yup.string().required('Enter a short description for the item').min(5,"Description is too short"),
-    quantity: Yup.string().required('This field is required').min(1,"Invalid Input"),
-    itemValueInPounds: Yup.string().required('This field is a required').min(1,"Please enter a valid amount"),
+    quantity: Yup.number().required('This field is required').positive('Please enter a valid input').integer('Please enter a valid input').min(1, 'Quantity must be at least 1'),
+    itemValueInPounds: Yup.number().required('This field is a required').positive('Please enter a valid amount').integer('Please enter a valid amount').min(1, 'Please enter a valid amount'),
     storeName: Yup.string().required('Store name is required'),
     trackingNumber:  Yup.string(),
-    agreedToTermsAndConditions:  Yup.boolean().required("Please read and accept the terms and conditions to continue")
+    agreedToTermsAndConditions:  Yup.boolean().oneOf([true], "Please read and accept the terms and conditions to continue").required("Please read and accept the terms and conditions to continue")
 })
 
 export default function ItemInfoMC(){
 
-    const { control, handleSubmit, setValue, formState: { errors, isSubmitting }} = useForm<OverseasShippingItemInfo>({ resolver: yupResolver(formSchema) })
+    const { control, handleSubmit, register, formState: { errors, isSubmitting }} = useForm<OverseasShippingItemInfo>({ resolver: yupResolver(formSchema) })
     const id = "overseasShippingItemDetails"
     const dispatch = useAppDispatch()
     const router = useRouter()
 
-    const agreedToTermsAndConditions = useWatch({ control, name: 'agreedToTermsAndConditions'})
     
     const handleItemsInfoSubmit : SubmitHandler<OverseasShippingItemInfo> = (data) => {
-        const itemInfo = {...data, id: nanoid(), quantity: parseFloat(data.quantity) }
+        const itemInfo = {...data, id: nanoid() }
         dispatch(setItem(itemInfo))
 
         router.push('/app-panel/overseas-shipping/shipping-details/items')
     }
-
-    useEffect(() => {
-        console.log(agreedToTermsAndConditions)
-    },[agreedToTermsAndConditions])
 
     return(
         <div className="mt-24 mb-6">
@@ -119,7 +114,7 @@ export default function ItemInfoMC(){
 
                 <div className="my-8 mx-2">
                     <div className="flex gap-2 items-center">
-                        <input type="checkbox" className="rounded-sm focus:border-none focus:after:hidden focus:outline-none focus:outline-offset-0" checked={agreedToTermsAndConditions} onChange={(e) => setValue('agreedToTermsAndConditions',e.target.checked)} aria-label='controlled' width={50} />
+                        <Checkbox aria-label="Agree to terms and conditions" {...register('agreedToTermsAndConditions')} width={40} />
                         <p className="text-sm italic">By selecting this checkbox, you agree to our <Link href="#" className="underline text-red-500">Terms and conditions</Link></p>
                     </div>
                     {

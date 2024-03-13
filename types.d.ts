@@ -435,10 +435,10 @@ type ProfilePasswordChangeForm  = {
 type OverseasShippingItemInfo = {
     fullName: string,
     desc: string,
-    quantity: string,
+    quantity: number,
     storeName: string,
     trackingNumber?: string,
-    itemValueInPounds: string,
+    itemValueInPounds: number,
     agreedToTermsAndConditions: boolean
 }
 

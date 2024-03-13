@@ -12,7 +12,7 @@ export const metadata : Metadata = {
 export default function NotFound() {
   return (
     <div className="page pt-8">
-      <div className="flex justify-center items-center h-screen w-full my-10">
+      <div className="flex justify-center items-center h-screen w-full">
         <Container className={classes.root}>
           <SimpleGrid spacing={{ base: 40, sm: 80 }} cols={{ base: 1, sm: 2 }}>
             <Image src="/images/not-found-page-img.svg" alt="" aria-hidden="true" width={400} height={400} className={classes.mobileImage} />

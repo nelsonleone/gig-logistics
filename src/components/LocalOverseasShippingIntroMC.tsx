@@ -3,9 +3,10 @@
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { LocalOverseasShippingIntroData, LocalOverseasShippingIntroPageDestinationOrigin } from '../../types';
-import { useForm, useWatch } from 'react-hook-form';
+import { SubmitHandler, useForm, useWatch } from 'react-hook-form';
 import CustomQuotePageSelect from './assets/inputs/CustomQuotePageSelect';
 import { BiSolidMessageAltError } from 'react-icons/bi';
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const serializer1 = {
@@ -73,6 +74,11 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
     const { control, handleSubmit, formState: { errors } } = useForm<LocalOverseasShippingIntroPageDestinationOrigin>() 
     const origin = useWatch({ control, name: 'origin.label' })
     const destination = useWatch({ control, name: 'destination.label' })
+    const router = useRouter()
+
+    const handleStartOverseasShopping : SubmitHandler<LocalOverseasShippingIntroPageDestinationOrigin> = (data) => {
+        router.push("/app-panel/overseas-shipping/shipping-details/shipment-address")
+    }
 
     return(
         data &&
@@ -86,8 +92,8 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
                 </div>
             </section>
 
-            <section className="mt-16 bg-white px-6 xl:px-10 py-10">
-                <h2 className="text-center mb-12 font-bold text-2xl">Overseas Shipping {destination && origin && `( from ${origin} to ${destination})`} - what you need to know</h2>
+            <form onSubmit={handleSubmit(handleStartOverseasShopping)} className="mt-16 bg-white px-6 xl:px-10 py-10">
+                <h2 className="text-center mb-12 font-bold text-2xl">Overseas Shipping {destination && origin && `( from ${origin} to ${destination} )`} - what you need to know</h2>
                 <div className="md:flex gap-8">
                     <div className="w-full mb-6 lg:w-80">
                         <CustomQuotePageSelect 
@@ -134,8 +140,8 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
                     <PortableText value={data.whatYouNeedToKnow} components={serializer2} />
                 </div>
 
-                <Link href="app-panel\overseas-shipping\shipping-details" className="block rounded-sm text-white bg-black font-medium p-4 text-center mx-auto w-[20em] my-16 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</Link>
-            </section>
+                <button className="block rounded-sm text-white bg-black font-medium p-4 text-center mx-auto w-[20em] my-16 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+            </form>
         </div>
     )
 }
