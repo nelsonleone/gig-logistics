@@ -18,7 +18,7 @@ const overseasShippingItemsSlice = createSlice({
             state.items = [...state.items,payload]
         },
         removeItem: (state, { payload }: PayloadAction<{ id: string }>) => {
-            state.items = state.items.filter(item => item.id === payload.id)
+            state.items = state.items.filter(item => item.id !== payload.id)
         }
     }
 })

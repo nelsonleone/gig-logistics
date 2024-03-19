@@ -1,6 +1,7 @@
 "use client"
 
 import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
 import { FiCheck } from "react-icons/fi"
 
 interface IProgressProps {
@@ -13,11 +14,16 @@ export default function ShippingDetailsProgressLoader({ className, stepLabel }: 
     const pathName = usePathname()
     const stepArray = [
         "/app-panel/overseas-shipping/shipping-details/shipment-address",
-        "/app-panel/overseas-shipping/shipping-details/item-info",
-        "/app-panel/overseas-shipping/shipping-details/items"
+        "/app-panel/overseas-shipping/shipping-details/item-info"
     ]
 
-    const currentStep = stepArray.findIndex(path => path === pathName)
+    const [currentStep,setCurrentStep] = useState(stepArray.findIndex(path => path === pathName))
+
+    useEffect(() => {
+        if(pathName === "/app-panel/overseas-shipping/shipping-details/delivery" || pathName === "/app-panel/overseas-shipping/shipping-details/items"){
+            setCurrentStep(2)
+        }
+    },[pathName])
 
     return(
         <div role="progressbar" className={className}>

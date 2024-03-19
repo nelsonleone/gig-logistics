@@ -42,7 +42,7 @@ export default function CustomQuotePageSelect({ data, value, placeholder, option
               borderRadius: '12px',
               cursor: "pointer",
               position: "relative",
-              borderColor: hasError ? 'red' : state.isFocused ? 'black' : state.menuIsOpen ? '#123fe0' : '#9ca3af',
+              borderColor: hasError ? 'red' : state.isFocused && hasError ? 'red' : state.isFocused ? 'black' : state.menuIsOpen ? '#123fe0' : '#9ca3af',
               outlineOffset: "none",
               textOverflow: "ellipsis",
               overflow: "hidden",

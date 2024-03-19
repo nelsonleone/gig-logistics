@@ -1,6 +1,6 @@
 "use client"
 
-import { Controller, SubmitHandler, useForm, useWatch } from "react-hook-form"
+import { SubmitHandler, useForm } from "react-hook-form"
 import CustomTextInput from "../assets/inputs/CustomTextInput"
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';

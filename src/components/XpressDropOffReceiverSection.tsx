@@ -114,6 +114,7 @@ function XpressDropOffReceiverSection(props:IProps) {
                             name="receiver.deliveryOption.homeDelivery.address"
                             label="Address" 
                             placeholder="Address" 
+                            required="Please enter an address for home delivery"
                             containerStyles="w-full mt-5"
                             error={errors?.receiver?.deliveryOption?.homeDelivery?.address?.message}
                             labelStyles="mb-4 block self-start ms-1"

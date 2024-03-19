@@ -442,6 +442,37 @@ type OverseasShippingItemInfo = {
     agreedToTermsAndConditions: boolean
 }
 
+
+
+type OverseasShippingDeliveryInfo = {
+    receiverInfo: {
+        fullName: string,
+        phoneNumber: string,
+        email: string
+    },
+
+    deliveryOption: {
+        deliveryOptionType: {
+            value: XpressDropOffDeliveryType | "",
+            label: string
+        },
+        homeDelivery: {
+            address: string
+        },
+        terminalPickup: {
+            stateOrCity: {
+                label: string;
+                value: string;
+            },
+            closestGIGLCenter: {
+                label: string;
+                value: string;
+            } | undefined
+        }
+    }
+}
+
+
 interface OverseasShippingSavedItemInfo extends OverseasShippingItemInfo {
     id: string,
     quantity: number

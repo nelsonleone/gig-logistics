@@ -9,7 +9,7 @@ interface IProps {
     error?: string | undefined,
     label: string,
     name:  keyof SignUpFormData | keyof SignInFormData | keyof OverseasShippingItemInfo | keyof ICODWalletFormValues | keyof PersonalShoppingItemDetailsFormInfo | keyof IProfileDetailsUpdateFormData | 'sender.fullName' | 'sender.firstName' | 'sender.lastName' | 'sender.email' | 'sender.phoneNumber' |
-    'receiver.fullName' | `receiver.deliveryOption.homeDelivery.address` | `receiver.deliveryOption.terminalPickup.stateOrCity` | `receiver.deliveryOption.terminalPickup.closestGIGLCenter` | keyof DeliveryItems,
+    'receiver.fullName' | `receiver.deliveryOption.homeDelivery.address` | `receiver.deliveryOption.terminalPickup.stateOrCity` | `receiver.deliveryOption.terminalPickup.closestGIGLCenter` | keyof DeliveryItems | 'receiverInfo.fullName' | 'receiverInfo.phoneNumber' | 'receiverInfo.email' | 'deliveryOption.homeDelivery.address',
 
     value?: string | number,
     placeholder: string,
@@ -22,7 +22,7 @@ interface IProps {
     readOnly?: boolean,
     id: string,
     defaultValue?: string,
-    rule?: {[key:string]:string | { value: number, message: string}}
+    rule?: {[key:string]:string | { value: number | RegExp, message: string}}
 }
 
 export default function CustomTextInput(props:IProps){

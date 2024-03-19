@@ -39,14 +39,14 @@ export default function SavedItems(){
     }
 
     return(
-        <div className="mt-12 mb-6">
+        <div className="mt-14 mb-6">
             <p className="font-medium text-center my-5">You can add and delete more items here.</p>
             <i className="text-sm mx-auto block text-center text-red-500">Please note these items will use same address provided for your shipment</i>
             
             <div className="flex flex-wrap gap-4 flex-col md:justify-center md:flex-row my-8">
                 {
                     items.map(item => (
-                        <div key={item.id} className="flex flex-col relative justify-center md:w-[45%] lg:w-[32%] text-center h-40 items-center gap-2 py-8 px-2 rounded-lg border border-gray-400">
+                        <div key={item.id} className="flex flex-col relative justify-center md:w-[45%] lg:w-[31%] text-center h-40 items-center gap-2 py-8 px-2 rounded-lg border border-gray-400">
                             <IconButton aria-label="delete item" className="text-red-500 absolute top-2 right-3" onClick={() => handleRemoveItem(item.id)}>
                                 <FaTrash size={17} />
                             </IconButton>
@@ -56,7 +56,7 @@ export default function SavedItems(){
                         </div>
                     ))
                 }
-                <Link href={overseasShippingItemInfoPage} className="md:w-[45%] lg:w-[32%] flex flex-col text-center h-40 justify-center items-center gap-2 py-8 px-2 rounded-lg border border-gray-400 hover:shadow-md transition ease-in-out duration-200">
+                <Link href={overseasShippingItemInfoPage} className="md:w-[45%] lg:w-[31%] flex flex-col text-center h-40 justify-center items-center gap-2 py-8 px-2 rounded-lg border border-gray-400 hover:shadow-md transition ease-in-out duration-200">
                     <FaPlusCircle aria-label="add item" className="text-[1.9rem]" />
                     <div>
                         <p className="font-medium">Add Item</p>
