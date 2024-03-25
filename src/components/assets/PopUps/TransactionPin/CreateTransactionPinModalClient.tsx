@@ -22,6 +22,9 @@ export default function CreateTransactionPinModalClient({ authUserPinStatus }: {
     )
 
     useEffect(() => {
+        const renderedBefore = localStorage.getItem("createTransactionPinModalClientRenderedBefore")
+        if(renderedBefore && renderedBefore === "yes")return;
+        
         setOpen(
             walletPinStatus !== AuthUserWalletPinStatus.HasPin &&
             authUserPinStatus === AuthUserWalletPinStatus.NoPin && 
@@ -29,6 +32,7 @@ export default function CreateTransactionPinModalClient({ authUserPinStatus }: {
             pathName !== "/user/wallet_pin" &&
             pathName !== "/user/wallet_pin/change"
         )
+        localStorage.setItem("createTransactionPinModalClientRenderedBefore",JSON.stringify("yes"))
     },[beenAuthenticated,authUserPinStatus,pathName,walletPinStatus])
 
 

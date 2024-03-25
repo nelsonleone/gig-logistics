@@ -1,5 +1,5 @@
 import { categoryValuesArr } from "@/componentsData/xressDropOffDeliveryItemsData";
-import { AuthUserWalletPinStatus, XpressDropOffDeliveryType } from "@/enums";
+import { AuthUserWalletPinStatus, OutBoundShippingSenderInfoPickup, XpressDropOffDeliveryType } from "@/enums";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { PortableTextBlock, TypedObject } from "@portabletext/types"
 import { Tuple, DefaultMantineColor } from '@mantine/core'
@@ -470,6 +470,16 @@ type OverseasShippingDeliveryInfo = {
             } | undefined
         }
     }
+}
+
+
+type OutBoundShippingSenderInfo = {
+    senderName: string,
+    senderAddress: string,
+    phoneNumber: string,
+    email: string,
+    pickupTime: OutBoundShippingSenderInfoPickup,
+    pickupTimeLater: Date
 }
 
 

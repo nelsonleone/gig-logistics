@@ -30,7 +30,7 @@ export default function SavedItems(){
 
             return;
         }
-        router.push("/app-panel/overseas-shipping/shipping-details/delivery")
+        router.push("/app-panel/overseas-shipping/shipping-details/delivery?hasItems=t")
     }
 
     const handleRemoveItem = (id:string) => {

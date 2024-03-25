@@ -5,10 +5,17 @@ import { AuthUser } from "../../types";
 import AuthUserPanel from "./AuthUserPanel";
 import Notification from "./Notification";
 import SignInLink from "./SignInLink";
+import { useEffect } from "react";
 
 export default function AuthUserHeaderSectionNav({ authUserData }: { authUserData: AuthUser | undefined }){
 
     const { beenAuthenticated } = useAppSelector(store => store.authUser)
+
+    useEffect(() => {
+        return () => {
+            localStorage.removeItem("createTransactionPinModalClientRenderedBefore")
+        }
+    },[])
     
     return(
         <nav>

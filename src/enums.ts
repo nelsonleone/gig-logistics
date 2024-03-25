@@ -29,6 +29,12 @@ export enum COD_wallet_input_names {
 }
 
 
+export enum OutBoundShippingSenderInfoPickup {
+    rightnow = "rightnow",
+    later = "later"
+}
+
+
 export enum NDPackageTypeInputIds {
     quote_IntlLength = "quote_IntlLength",
     quote_IntlWidth = "quote_IntlWidth",
