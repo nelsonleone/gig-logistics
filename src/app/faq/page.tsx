@@ -1,4 +1,4 @@
-import getFaqData from "@/helperFns/getFaqData"
+import { getFaqData } from "@/helperFns/getFaqData"
 import FaqAccordion from "@/components/FaqAccordion"
 import { roboto_slab } from "../fonts"
 import { Metadata } from "next"

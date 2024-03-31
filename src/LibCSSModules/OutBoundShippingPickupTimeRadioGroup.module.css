@@ -1,0 +1,15 @@
+.root{
+    height: 3em;
+}
+
+.input{
+    @apply rounded-lg font-inter text-sm p-[.9rem] focus:border-none focus:inset-0 focus:outline focus:outline-offset-0 focus:outline-2 focus:outline-black;
+}
+
+.wrapper{
+    @apply rounded-lg font-inter text-sm;
+}
+
+.placeholder{
+    @apply font-inter text-sm text-[#374151];
+}

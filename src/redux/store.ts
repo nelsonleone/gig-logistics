@@ -5,6 +5,7 @@ import snackbarReducer from "./slices/snackbarSlice";
 import authUserReducer from "./slices/authUser";
 import ringLoaderReducer from "./slices/ringLoaderSlice";
 import overseasShippingItemsReducer from "./slices/overseasShippingItemsSlice";
+import outboundShippingFormDataReducer from "./slices/outboundShippingFormDataSlice";
 
 const reduxStore = configureStore({
     reducer: {
@@ -13,7 +14,8 @@ const reduxStore = configureStore({
         snackbar: snackbarReducer,
         authUser: authUserReducer,
         ringLoader: ringLoaderReducer,
-        overseasShippingItems: overseasShippingItemsReducer
+        overseasShippingItems: overseasShippingItemsReducer,
+        outboundShipping: outboundShippingFormDataReducer
     }
 })
 

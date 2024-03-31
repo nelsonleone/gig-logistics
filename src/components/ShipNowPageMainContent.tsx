@@ -32,7 +32,7 @@ function ShipNowPageMainContent() {
                             <div 
                               key={val.vehicleName} 
                               tabIndex={0} 
-                              onClick={() => handleNavigate(val.vehicleName)}
+                              onClick={() => handleNavigate(val.value)}
                               className="shadow-lg min-h-[13em] border border-gray-200 text-center rounded-lg p-4 flex flex-col justify-center items-center mb-16 cursor-pointer hover:border-cyan-600 focus:outline-none focus:border-cyan-600 hover:translate-y-6 transition duration-300 ease-in-out md:basis-2/5 lg:basis-1/3 lg:w-[15em] lg:mb-8 lg:h-64"
                               >
                                 <div>

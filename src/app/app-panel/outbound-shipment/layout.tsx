@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 export default function Layout({children}: { children:ReactNode }){
     return(
         <main>
-            <AppPanelMCContainer className="relative pt-60">
+            <AppPanelMCContainer className="relative lg:pt-28">
                 <BackBtn className="" />
                 {children}
             </AppPanelMCContainer>

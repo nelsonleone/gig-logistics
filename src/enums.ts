@@ -76,3 +76,11 @@ export enum AuthUserWalletPinStatus {
     HasPin = 'has_pin',
     NoPin = 'no_pin'
 }
+
+
+export enum ShippingVehicles {
+    Bike = "bike",
+    Car = "car",
+    Bus = "bus",
+    Truck = "truck",
+}

@@ -474,16 +474,40 @@ type OverseasShippingDeliveryInfo = {
 
 
 type OutBoundShippingSenderInfo = {
-    senderName: string,
-    senderAddress: string,
+    name: string,
+    address: string,
     phoneNumber: string,
     email: string,
-    pickupTime: OutBoundShippingSenderInfoPickup,
-    pickupTimeLater: Date
+    pickupTime: OutBoundShippingSenderInfoPickup | string,
+    pickupTimeLater?: Date
 }
 
+
+type OutBoundShippingReceiverInfo = {
+    country: object | { label: string, value: string},
+    address: string,
+    city: string,
+    zipCode: string,
+    name: string,
+    phoneNumber: string,
+    email: string
+}
 
 interface OverseasShippingSavedItemInfo extends OverseasShippingItemInfo {
     id: string,
     quantity: number
+}
+
+
+type OutboundShippingFormData = {
+    senderInfo : {
+        name: string,
+        address: string,
+        phoneNumber: string,
+        email: string,
+        pickupTime: OutBoundShippingSenderInfoPickup | string,
+        pickupTimeLater?: number
+    },
+    vehicleInfo: ShippingVehicles,
+    receiverInfo: OutBoundShippingReceiverInfo
 }
