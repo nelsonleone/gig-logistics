@@ -492,12 +492,39 @@ type OutBoundShippingReceiverInfo = {
     phoneNumber: string,
     email: string
 }
+ 
 
 interface OverseasShippingSavedItemInfo extends OverseasShippingItemInfo {
     id: string,
     quantity: number
 }
 
+
+interface OutBoundShippingItem {
+    itemName: string,
+    quantity: number,
+    length?: number,
+    width?: number,
+    weight?: number,
+    height?: number,
+    value: number,
+    description: string,
+    itemImage: string,
+    id?: Readonly<string>
+}
+
+interface OutBoundShippingItem2 {
+    itemName: string,
+    quantity: number,
+    length: number,
+    width: number,
+    weight: number,
+    height: number,
+    value: number,
+    description: string,
+    itemImage: string,
+    id?: Readonly<string>
+}
 
 type OutboundShippingFormData = {
     senderInfo : {
@@ -509,5 +536,6 @@ type OutboundShippingFormData = {
         pickupTimeLater?: number
     },
     vehicleInfo: ShippingVehicles,
-    receiverInfo: OutBoundShippingReceiverInfo
+    receiverInfo: OutBoundShippingReceiverInfo,
+    shipmentItems: OutBoundShippingItem[]
 }

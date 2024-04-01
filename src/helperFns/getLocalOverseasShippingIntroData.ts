@@ -1,9 +1,10 @@
 import groq from "groq";
 import { sanityClient } from "../../sanity-studio/lib/client";
 import { LocalOverseasShippingIntroData } from "../../types";
+import { cache } from "react";
 
 
-export default async function getLocalOverseasShippingIntroData(){
+export const getLocalOverseasShippingIntroData = cache(async () => {
     try{
         const data : LocalOverseasShippingIntroData = await sanityClient.fetch(
             groq`
@@ -14,7 +15,13 @@ export default async function getLocalOverseasShippingIntroData(){
                 "introTextIllustrationImage": introTextIllustrationImage.asset->url
 
             }
-            `
+            `,
+            {},
+            {
+                next: {
+                    revalidate: 3600
+                }
+            }
         )
     
         return data;
@@ -22,4 +29,4 @@ export default async function getLocalOverseasShippingIntroData(){
     catch(err:any|unknown){
         return  null;
     }
-}
+})

@@ -9,7 +9,7 @@ export const getAboutUsPageContent = cache( async ()=> {
       groq`
         *[_type == 'aboutUsContent']
       `,{},{next:{
-         revalidate: 3600
+         revalidate: 3600,
       }}
   )
 

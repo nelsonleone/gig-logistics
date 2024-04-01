@@ -13,7 +13,7 @@ import { useAppDispatch } from "@/redux/customHooks";
 import { setShowSnackbar } from "@/redux/slices/snackbarSlice";
 import { AlertSeverity } from "@/enums";
 import { BiSolidMessageAltError } from "react-icons/bi";
-import XpressDropOffItemImageUpload from "./assets/inputs/Filepond/XpressDropOffImageUpload";
+import XpressDropOffItemImageUpload from "./assets/inputs/Filepond/CustomImageUpload";
 
 interface IProps {
     open: boolean,

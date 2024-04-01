@@ -1,8 +1,9 @@
 import groq from "groq";
 import { sanityClient } from "../../sanity-studio/lib/client";
 import { HighlightedService } from "../../types";
+import { cache } from "react";
 
-export default async function getHighlightedServicesData(){
+export const getHighlightedServicesData = cache(async()=> {
     try{
         const data : HighlightedService[] = await sanityClient.fetch(
             groq`
@@ -24,4 +25,4 @@ export default async function getHighlightedServicesData(){
     catch(err){
         return []
     }
-}
+})

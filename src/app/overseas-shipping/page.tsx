@@ -1,6 +1,6 @@
 import LocalOverseasShippingIntroMC from "@/components/LocalOverseasShippingIntroMC"
 import DuoSkeleton from "@/components/assets/Loaders/DuoSkeleton"
-import getLocalOverseasShippingIntroData from "@/helperFns/getLocalOverseasShippingIntroData"
+import { getLocalOverseasShippingIntroData } from "@/helperFns/getLocalOverseasShippingIntroData"
 import { Suspense } from "react"
 
 export default async function LocalOverseasShippingIntroPage(){

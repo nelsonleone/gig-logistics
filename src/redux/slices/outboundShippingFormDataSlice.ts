@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { OutBoundShippingReceiverInfo, OutboundShippingFormData } from "../../../types";
+import { OutBoundShippingItem, OutBoundShippingReceiverInfo, OutboundShippingFormData } from "../../../types";
 import { OutBoundShippingSenderInfoPickup, ShippingVehicles } from "@/enums";
 
 interface OutBoundShippingSenderInfo2 {
@@ -12,7 +12,7 @@ interface OutBoundShippingSenderInfo2 {
 }
 
 const initialState : Partial<OutboundShippingFormData> = {
-
+    shipmentItems: []
 }
 
 const outboundShippingFormDataSlice = createSlice({
@@ -27,11 +27,25 @@ const outboundShippingFormDataSlice = createSlice({
         },
         setVehicleInfo: (state, { payload }:PayloadAction<ShippingVehicles>) => {
             state.vehicleInfo = payload
+        },
+        setItems: (state, { payload }:PayloadAction<OutBoundShippingItem>) => {
+            if(!state.shipmentItems){
+                state.shipmentItems = []
+            }
+            state.shipmentItems = [...state.shipmentItems,payload]
+        },
+        setDeleteOutBoundShippingItem:  (state, { payload }:PayloadAction<{ id:string }>) => {
+            state.shipmentItems = state.shipmentItems?.filter(item => item.id !== payload.id)
+        },
+        clearOutBoundShippingFormData: state => {
+            state.receiverInfo = undefined;
+            state.senderInfo = undefined;
+            state.shipmentItems = []
         }
     }
 })
 
 
-export const { setReceiverInfo, setSenderInfo, setVehicleInfo } = outboundShippingFormDataSlice.actions;
+export const { setReceiverInfo, setSenderInfo, clearOutBoundShippingFormData, setVehicleInfo, setItems, setDeleteOutBoundShippingItem } = outboundShippingFormDataSlice.actions;
 
 export default outboundShippingFormDataSlice.reducer;

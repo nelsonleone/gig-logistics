@@ -4,7 +4,7 @@ import BackBtn from "@/components/assets/BackBtn";
 import DuoSkeleton from "@/components/assets/Loaders/DuoSkeleton";
 import PortfolioSitesPageIntro from "@/components/assets/PortfolioSitesPageIntro";
 import { PT_ServiceName } from "@/enums";
-import getPTservicesData from "@/helperFns/getPTServicesData";
+import { getPTservicesData } from "@/helperFns/getPTServicesData";
 import { Metadata } from "next"
 import { Suspense } from 'react'
 

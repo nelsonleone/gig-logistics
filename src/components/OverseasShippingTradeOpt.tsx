@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 import CustomSkeleton from "./assets/Loaders";
 
 interface IProps {
-    overseasShippingTradeOptData: OverseasShippingTradeOptDataType[]
+    overseasShippingTradeOptData: OverseasShippingTradeOptDataType[] | null
 }
 
 const serializer = {
@@ -40,7 +40,7 @@ function OverseasShippingTradeOpt({ overseasShippingTradeOptData }:IProps) {
     return (
         <section className="flex flex-col gap-4 mb-8 md:flex-row md:flex-wrap md:justify-between">
             {
-                overseasShippingTradeOptData.map((val,index) => {
+                overseasShippingTradeOptData ? overseasShippingTradeOptData?.map((val,index) => {
                     return(
                         <Suspense key={`ostod-${index}`} fallback={<CustomSkeleton variant="rectangular" className="w-full h-80 md:w-[45%] lg:h-[30em]" />}>
                            <div key={`ostod-${index}`} className="mb-4 md:basis-[45%]">
@@ -49,6 +49,8 @@ function OverseasShippingTradeOpt({ overseasShippingTradeOptData }:IProps) {
                         </Suspense>
                     )
                 })
+                :
+                <CustomSkeleton variant="rectangular" className="w-full h-80 md:w-[45%] lg:h-[30em]" />
             }
         </section>
     )

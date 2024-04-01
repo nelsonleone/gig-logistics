@@ -5,9 +5,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { BiSolidMessageAltError } from "react-icons/bi";
 import CustomQuotePageSelect from "./assets/inputs/CustomQuotePageSelect";
 import { OutBoundShippingReceiverInfo } from '../../types';
-import { useForm } from 'react-hook-form';
-import { getXpressDropOffLocationData } from '@/helperFns/getXpressDropOffLocationData';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import CustomTextInput from './assets/inputs/CustomTextInput';
+import { useRouter } from 'next/navigation';
+import { countriesNamesArray } from '@/componentsData/countries';
+import CustomPhoneInput from './assets/inputs/CustomPhoneInput';
+import { useAppDispatch, useAppSelector } from '@/redux/customHooks';
+import { setReceiverInfo } from '@/redux/slices/outboundShippingFormDataSlice';
 
 
 
@@ -29,11 +33,28 @@ const formSchema = Yup.object().shape({
 
 export default function OutBoundShipmentReceiverInfoMC(){
 
-    const { control, formState:{ errors, isSubmitting }, setValue, handleSubmit, setError, clearErrors } = useForm<OutBoundShippingReceiverInfo>({ resolver: yupResolver(formSchema) })
+    const { control, formState:{ errors, isSubmitting }, handleSubmit } = useForm<OutBoundShippingReceiverInfo>({ resolver: yupResolver(formSchema) })
     const id = "outbound-shipping-receiver"
+    const router = useRouter()
+    const dispatch = useAppDispatch()
+    const data : { label:string, value:string }[] = countriesNamesArray.map(val => {
+        return { label: val.name.toUpperCase(), value: val.name }
+    })
+    const { senderInfo } = useAppSelector(store => store.outboundShipping)
+
+
+    if(!senderInfo?.name){
+        router.push("/app-panel/outbound-shipment/sender-info")
+    }
+    
+
+    const handleFormSubmit : SubmitHandler<OutBoundShippingReceiverInfo> = (data) => {
+        dispatch(setReceiverInfo(data))
+        router.push("/app-panel/outbound-shipment/item-category")
+    }
 
     return(
-        <form className="pb-8 md:w-3/4 lg:w-1/2 md:mx-auto">
+        <form className="pb-12 md:w-3/4 lg:w-1/2 md:mx-auto" onSubmit={handleSubmit(handleFormSubmit)}>
             <h2 className="font-bold text-2xl text-center mx-auto my-8">Receiver's information</h2>
 
             <div className="w-full mb-6">
@@ -43,12 +64,12 @@ export default function OutBoundShipmentReceiverInfoMC(){
                     id={`${id}-category`}
                     control={control}
                     selectStyles={{
-                        height: "3em",
+                        height: "3.1em",
                         borderRadius: "6px"
                     }}
                     placeholder="Select country"
                     hasError={errors?.country?.message ? true : false}
-                    data={getXpressDropOffLocationData()}
+                    data={data}
                     required="Please select a country"
                     optionStyles={{
                         color: "#374151"
@@ -67,12 +88,12 @@ export default function OutBoundShipmentReceiverInfoMC(){
                 error={errors?.address?.message}
                 containerStyles="w-full mt-5"
                 labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.3em]"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black h-[3.3em]"
                 id={`${id}-receiverAddress`} 
                 name="address"
             />
 
-            <div>
+            <div className="flex gap-10 justify-between">
                 <CustomTextInput
                     label="City:" 
                     control={control}
@@ -80,7 +101,7 @@ export default function OutBoundShipmentReceiverInfoMC(){
                     error={errors?.city?.message}
                     containerStyles="w-full mt-5"
                     labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.1em]"
+                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black h-[3.1em]"
                     id={`${id}-city`} 
                     name="city"
                 />
@@ -91,7 +112,7 @@ export default function OutBoundShipmentReceiverInfoMC(){
                     error={errors?.zipCode?.message}
                     containerStyles="w-full mt-5"
                     labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.1em]"
+                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black h-[3.1em]"
                     id={`${id}-zipCode`} 
                     name="zipCode"
                 />
@@ -104,34 +125,38 @@ export default function OutBoundShipmentReceiverInfoMC(){
                 error={errors?.name?.message}
                 containerStyles="w-full mt-5"
                 labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.1em]"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black h-[3.1em]"
                 id={`${id}-receiverName`} 
                 name="name"
             />
 
-            <CustomTextInput
-                label="Phone Number:" 
-                control={control}
-                placeholder="Enter phone number"
-                error={errors?.phoneNumber?.message}
-                containerStyles="w-full mt-5"
-                labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.1em]"
+            <CustomPhoneInput
+                name="phoneNumber" 
                 id={`${id}-phoneNumber`} 
-                name="phoneNumber"
+                label="Phone Number"
+                required="Please this field is required"
+                labelStyles="mb-4 block self-start ms-1"
+                placeholder="Enter phone number"
+                className="phoneInput-xpressDropOff h-[3em]"
+                control={control}
+                containerStyles="w-[100%] mx-auto"
+                error={errors?.phoneNumber?.message}
             />
 
             <CustomTextInput
                 label="Receiver's Email:" 
                 control={control}
+                inputType='email'
                 placeholder="Enter Receiver's email"
                 error={errors?.email?.message}
                 containerStyles="w-full mt-5"
                 labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.1em]"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black h-[3.1em]"
                 id={`${id}-receiverEmail`} 
                 name="email"
             />
+
+            <button disabled={isSubmitting} className="block w-full rounded-md text-white bg-black font-medium p-4 text-center mx-auto mt-16 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
         </form>
     )
 }

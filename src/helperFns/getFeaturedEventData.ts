@@ -1,5 +1,6 @@
 import groq from "groq";
 import { sanityClient } from "../../sanity-studio/lib/client";
+import { cache } from "react";
 
 type FeaturedEventData = {
     bannerIcon: string,
@@ -8,7 +9,7 @@ type FeaturedEventData = {
     textContent: string
 }[]
 
-export default async function getFeaturedEventData(){
+async function getFeaturedEventData(){
     
     try{
         const featuredData : FeaturedEventData = await sanityClient.fetch(
@@ -18,7 +19,14 @@ export default async function getFeaturedEventData(){
                 "eventPageLink": eventPageLink.current,
                 "bannerIcon": bannerIcon.asset->url
 
-            }`
+            }`,
+            {},
+            {
+                next: {
+                    revalidate: 3600
+                }
+            }
+            
         )
 
         return featuredData[0];
@@ -28,3 +36,5 @@ export default async function getFeaturedEventData(){
         console.log(err.message || "Error Occured Fetching Featured Event Data")
     }
 }
+
+export default cache(getFeaturedEventData)

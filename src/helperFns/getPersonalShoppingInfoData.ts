@@ -1,8 +1,9 @@
 import groq from "groq";
 import { sanityClient } from "../../sanity-studio/lib/client";
 import { PersonalShoppingInfoSanityData } from "../../types";
+import { cache } from "react";
 
-export default async function getPersonalShoppingInfoData(){
+export const getPersonalShoppingInfoData = cache(async() => {
 
     try{
         const personalShoppingInfoSanityData : PersonalShoppingInfoSanityData[] = await sanityClient.fetch(
@@ -11,7 +12,13 @@ export default async function getPersonalShoppingInfoData(){
                 heading,
                 secondHeading,
                 howItWorksSection
-            }`
+            }`,
+            {},
+            {
+                next: {
+                    revalidate: 3600
+                }
+            }
         )
 
 
@@ -21,4 +28,4 @@ export default async function getPersonalShoppingInfoData(){
     catch(err:any|unknown){
         throw new Error(err.message || "Error Occured Fetching Featured Event Data")
     }
-}
+})

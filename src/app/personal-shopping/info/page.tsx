@@ -1,6 +1,6 @@
 import { roboto_slab } from "@/app/fonts"
 import AppPanelMCContainer from "@/components/AppPanelPagesMCContainer"
-import getPersonalShoppingInfoData from "@/helperFns/getPersonalShoppingInfoData"
+import { getPersonalShoppingInfoData } from "@/helperFns/getPersonalShoppingInfoData"
 import Link from "next/link"
 import { FaStarHalf } from "react-icons/fa"
 import { FaArrowRightLong } from "react-icons/fa6"

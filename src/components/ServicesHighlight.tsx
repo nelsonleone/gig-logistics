@@ -1,4 +1,4 @@
-import getHighlightedServicesData from "@/helperFns/getHighlightedServicesData";
+import { getHighlightedServicesData } from "@/helperFns/getHighlightedServicesData";
 import Image from "next/image";
 import { Suspense } from 'react'
 import CustomSkeleton from "./assets/Loaders";

@@ -24,7 +24,7 @@ registerPlugin(
 )
 
 
-function XpressDropOffItemImageUpload({ setValue }: { setValue: UseFormSetValue<DeliveryItems>}) {
+function CustomImageUpload({ setValue }: { setValue: UseFormSetValue<any>}) {
     
     const [itemImage, setItemImage] = useState<string | ArrayBuffer | null>()
 
@@ -71,4 +71,4 @@ function XpressDropOffItemImageUpload({ setValue }: { setValue: UseFormSetValue<
     )
 }
 
-export default XpressDropOffItemImageUpload;
+export default CustomImageUpload;

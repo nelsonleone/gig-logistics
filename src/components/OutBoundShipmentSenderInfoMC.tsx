@@ -2,7 +2,7 @@
 
 import { OutBoundShippingSenderInfo } from "../../types";
 import CustomTextInput from "./assets/inputs/CustomTextInput";
-import { useAppDispatch, useAppSelector } from "@/redux/customHooks";
+import { useAppDispatch } from "@/redux/customHooks";
 import CustomPhoneInput from "./assets/inputs/CustomPhoneInput";
 import { Radio, RadioGroup } from "@mantine/core";
 import { OutBoundShippingSenderInfoPickup } from "@/enums";
@@ -31,7 +31,6 @@ function OutBoundShipmentSenderInfoMC() {
 
     const { control, formState:{ errors, isSubmitting }, setValue, handleSubmit, setError, clearErrors } = useForm<OutBoundShippingSenderInfo>({ resolver: yupResolver(formSchema) })
     const id = "outbound-shipping"
-    const { email, phoneNumber } = useAppSelector(store => store.authUser)
     const pickupTime = useWatch({ control, name: 'pickupTime'})
     const pickupTimeLater = useWatch({ control, name: 'pickupTimeLater'})
     const router = useRouter()
@@ -67,7 +66,7 @@ function OutBoundShipmentSenderInfoMC() {
                     error={errors?.address?.message}
                     containerStyles="w-full mt-5"
                     labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.3em]"
+                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black h-[3.1em]"
                     id={`${id}-senderAddress`} 
                     name="address"
                 />
@@ -78,7 +77,7 @@ function OutBoundShipmentSenderInfoMC() {
                     error={errors?.name?.message}
                     containerStyles="w-full mt-5"
                     labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.3em]"
+                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black h-[3.1em]"
                     id={`${id}-senderName`} 
                     name="name"
                 />
@@ -90,9 +89,8 @@ function OutBoundShipmentSenderInfoMC() {
                     required="Please this field is required"
                     labelStyles="mb-4 block self-start ms-1"
                     placeholder="Phone Number"
-                    className="phoneInput-xpressDropOff h-[3.3em]"
+                    className="phoneInput-xpressDropOff h-[3em]"
                     control={control}
-                    value={phoneNumber}
                     containerStyles="w-[100%] mx-auto"
                     error={errors?.phoneNumber?.message}
                 />
@@ -100,12 +98,11 @@ function OutBoundShipmentSenderInfoMC() {
                     label="Email:"
                     inputType="email" 
                     control={control}
-                    defaultValue={email}
                     placeholder="Enter email address"
                     error={errors?.email?.message}
                     containerStyles="w-full mt-5"
                     labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.3em]"
+                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black h-[3.1em]"
                     id={`${id}-email`} 
                     name="email"
                 />
