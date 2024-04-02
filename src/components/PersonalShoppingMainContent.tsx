@@ -61,7 +61,7 @@ export default function PersonalShoppingMainContent(){
         <AppPanelMCContainer className="relative pt-26 lg:pt-28 md:pb-10 md:px-24">
             <BackBtn className="font-semibold left-24" />
 
-           <h2 className='text-[#374151] text-lg font-semibold text-center capitalize lg:text-left md:text-2xl'>What would you like to do ?</h2>
+           <h2 className='text-primary text-lg font-semibold text-center capitalize lg:text-left md:text-2xl'>What would you like to do ?</h2>
            <div className="my-8 flex flex-col gap-4 lg:gap-6 justify-center">
                 {
                     personalShoppingMCLinkData.map((val,index) => {
@@ -72,7 +72,7 @@ export default function PersonalShoppingMainContent(){
                                 <div 
                                     onMouseOver={(e) => handleSetAnimateArrowObj(e,index)}
                                     onMouseLeave={handleDefaultAnimateArrow} 
-                                    className="text-[#374151] relative border border-gray-300 rounded p-4 pe-10 flex gap-4 items-center md:py-10 lg:py-14 lg:w-4/5 lg:pe-14 xl:pe-6"
+                                    className="text-primary relative border border-gray-300 rounded p-4 pe-10 flex gap-4 items-center md:py-10 lg:py-14 lg:w-4/5 lg:pe-14 xl:pe-6"
                                     >
                                     <div className="w-14 rounded-full aspect-square bg-slate-100 flex justify-center items-center">
                                         <Icon className="text-[#C3302E] w-6 md:text-2xl" />

@@ -19,8 +19,8 @@ export default function DeleteOverseasShippingItemModal({ openDeleteModal, delet
 
     return(
         <Modal open={openDeleteModal} onClose={() => setOpenDeleteModal(false)} id={id} className="flex justify-center items-center">
-            <div className="relative flex justify-center gap-8 flex-col h-80 outline-none outline-offset-0 focus:outline-none overflow-y-auto text-[#374151] bg-white shadow-lg rounded-md p-4 md:p-10 w-[95%] md:w-[32em]">
-                <IconButton aria-controls={id} onClick={() => setOpenDeleteModal(false)} aria-expanded={openDeleteModal ? "true" : "false"} className="absolute top-4 right-4 text-black">
+            <div className="relative flex justify-center gap-8 flex-col h-80 outline-none outline-offset-0 focus:outline-none overflow-y-auto text-primary bg-base-color1 shadow-lg rounded-md p-4 md:p-10 w-[95%] md:w-[32em]">
+                <IconButton aria-controls={id} onClick={() => setOpenDeleteModal(false)} aria-expanded={openDeleteModal ? "true" : "false"} className="absolute top-4 right-4 base-color22222222222222">
                     <IoMdClose />
                 </IconButton>
 
@@ -29,7 +29,7 @@ export default function DeleteOverseasShippingItemModal({ openDeleteModal, delet
 
                 <div className="flex justify-center gap-10">
                     <button type="button" onClick={() => setOpenDeleteModal(false)} className="border mb-2 font-medium px-10 border-black rounded p-3 hover:shadow-md transition duration-200 ease-in-out">Cancel</button>
-                    <button type="button" onClick={handleDelete} className="border mb-2 font-medium px-10 text-white bg-black rounded p-3 hover:shadow-md transition duration-200 ease-in-out">Delete</button>
+                    <button type="button" onClick={handleDelete} className="border mb-2 font-medium px-10 base-color1 bg-base-color2 rounded p-3 hover:shadow-md transition duration-200 ease-in-out">Delete</button>
                 </div>
             </div>
         </Modal>

@@ -47,10 +47,10 @@ function XpressDropOffDeliveryItemsSection(props:IProps) {
     },[newDeliveryItem])
 
     return (
-        <section className="shadow-lg relative border border-gray-50 bg-white drop-shadow-md rounded-md my-8 p-2 md:px-7 w-full pb-10">
+        <section className="shadow-lg relative border border-gray-50 bg-base-color1 drop-shadow-md rounded-md my-8 p-2 md:px-7 w-full pb-10">
             <div className="flex justify-between mb-4">
                 <h3 className="font-medium text-lg">Delivery Items</h3>
-                <button type="button" onClick={() => setOpen(true)} className="flex text-sm justify-between items-center gap-2 transition-opacity duration-200 ease-in-out text-white bg-[#374151] p-3 rounded-sm hover:opacity-80">
+                <button type="button" onClick={() => setOpen(true)} className="flex text-sm justify-between items-center gap-2 transition-opacity duration-200 ease-in-out text-base-color1 bg-primary p-3 rounded-sm hover:opacity-80">
                     <span>Add Item </span>
                     <IoMdAddCircle className="text-lg" />
                 </button>
@@ -75,7 +75,7 @@ function XpressDropOffDeliveryItemsSection(props:IProps) {
             </div>
             {
                 deliveryItemError &&
-                <p role="alert" className="text-red-500 text-sm mt-3 absolute bottom-4 left-4 md:left-7">{deliveryItemError}</p>
+                <p role="alert" className="text-primary2 text-sm mt-3 absolute bottom-4 left-4 md:left-7">{deliveryItemError}</p>
             }
 
             <XpressDropOffAddItemModal setDeliveryItem={setNewDeliveryItem} open={open} handleClose={() => setOpen(prev => prev = !prev)} />

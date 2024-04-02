@@ -85,7 +85,7 @@ export default function PersonalShoppingItemDetailsMC(){
                     <textarea 
                         {...field} 
                         maxLength={150} 
-                        className={`rounded-md p-4 block w-full border-gray-300 h-40 outline-offset-0 focus:outline-offset-0 focus:border-none focus:outline-orange-500 md:focus:outline-black ${errors?.description?.message ? "border-red-500 focus:outline-red-500 md:focus:outline-red-500": ""}`}
+                        className={`rounded-md p-4 block w-full border-gray-300 h-40 outline-offset-0 focus:outline-offset-0 focus:border-none focus:outline-orange-500 md:focus:outline-black ${errors?.description?.message ? "border-primary2 focus:outline-primary2 md:focus:outline-primary2": ""}`}
                         placeholder="E.g Color, Texture, Fabric. (Max 150 characters)" 
                     />
                   )}
@@ -93,11 +93,11 @@ export default function PersonalShoppingItemDetailsMC(){
 
                 {
                     errors?.description?.message &&
-                    <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors?.description.message}</p>
+                    <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors?.description.message}</p>
                 }
             </div>
 
-            <button disabled={isSubmitting} className="relative block my-10 w-full text-center mx-auto font-medium text-white bg-black p-4 text-sm rounded lg:text-base">
+            <button disabled={isSubmitting} className="relative block my-10 w-full text-center mx-auto font-medium base-color1 bg-base-color2 p-4 text-sm rounded lg:text-base">
                 {
                     isSubmitting ?
                     <LoadingEllipse />

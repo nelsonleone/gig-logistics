@@ -58,7 +58,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
 
     return (
         <Modal open={open} onClose={() => {}} id="xpressDropOff-deliveryItems-modal" aria-expanded={open ? "true" : "false" }>
-            <div className="text-[#374151] overflow-y-auto h-[30em] bg-gray-100 rounded-lg py-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-11/12 md:w-[37em]">
+            <div className="text-primary overflow-y-auto h-[30em] bg-gray-100 rounded-lg py-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-11/12 md:w-[37em]">
                 <div className="p-6">
                     <h4 className="text-center font-medium text-lg">Items's Info</h4>
                     <IconButton className="absolute text-xl left-3 top-3" aria-label="close" onClick={handleCloseModal} aria-controls="xpressDropOff-deliveryItems-modal">
@@ -87,7 +87,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                         />
                         {
                             errors.category?.message &&
-                            <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.category.message}</p>
+                            <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.category.message}</p>
                         }
                     </div>
                     
@@ -154,7 +154,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                 />
                                 {
                                     errors.item?.message &&
-                                    <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.item.message}</p>
+                                    <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.item.message}</p>
                                 }
                             </div>
                             <div className="w-full mb-6">
@@ -174,7 +174,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                 />
                                 {
                                     errors.weight?.message &&
-                                    <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.weight.message}</p>
+                                    <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.weight.message}</p>
                                 }
                             </div>
                         </>
@@ -217,8 +217,8 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                     <XpressDropOffItemImageUpload setValue={setValue} />
 
                     <div className="mt-10 flex flex-col-reverse md:flex-row justify-between gap-3 md:gap-8">
-                        <button type="button" onClick={handleCloseModal} className="text-center text-white bg-red-600 rounded-md w-full block h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:bg-transparent focus:text-black focus:border focus:outline-none focus:font-medium focus:outline-offset-0 focus:border-red-600 ">Cancel</button>
-                        <button type="button" onClick={handleSubmit(handlePostDeliveryItem)} className="text-center text-white bg-black rounded-md w-full block mb-4 h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:border focus:outline-none focus:font-medium focus:bg-transparent focus:text-black focus:border-[hsl(0,2%,9%)] focus:outline-offset-0 md:mb-0">Submit</button>
+                        <button type="button" onClick={handleCloseModal} className="text-center text-base-color1 bg-red-600 rounded-md w-full block h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:bg-transparent focus:text-base-color2 focus:border focus:outline-none focus:font-medium focus:outline-offset-0 focus:border-red-600">Cancel</button>
+                        <button type="button" onClick={handleSubmit(handlePostDeliveryItem)} className="text-center base-color1 bg-base-color2 rounded-md w-full block mb-4 h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:border focus:outline-none focus:font-medium focus:bg-transparent focus:text-base-color2 focus:border-[hsl(0,2%,9%)] focus:outline-offset-0 md:mb-0">Submit</button>
                     </div>
                 </div>
             </div>

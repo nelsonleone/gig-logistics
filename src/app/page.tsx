@@ -22,7 +22,7 @@ export default function Home() {
 
       <div className="relative w-[92.5%] lg:w-[93.5%] m-auto">
         <div 
-          className="absolute -top-[34.5em] lg:-top-[39.5em] left-0 right-0  text-white flex align-middle gap-2 flex-col m-auto  md:w-[60%] md:m-0 lg:ms-0 lg:me-auto lg:w-1/2">
+          className="absolute -top-[34.5em] lg:-top-[39.5em] left-0 right-0  text-base-color1 flex align-middle gap-2 flex-col m-auto  md:w-[60%] md:m-0 lg:ms-0 lg:me-auto lg:w-1/2">
           <h1 className={`${roboto_slab.className} w-11/12 md:w-5/6 leading-tight font-medium text-3xl my-3 lg:text-4xl`}>Delivering Excellence Beyond Boundaries</h1>
           <p className="text-base lg:leading-8">
             At GIGL, we redefine the art of logistics. With a seamless blend of precision and innovation, we propel your ecommerce business to new horizons. Our commitment to excellence knows no bounds, whether across cities or continents.

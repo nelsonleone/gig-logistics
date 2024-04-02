@@ -47,7 +47,7 @@ export default function PTdedicatedServicesCardsContainer({ serviceName }:IProps
                                 whileInView="animate"
                                 key={details.title} 
                                 viewport={{ once: true, margin: "-30px" }}
-                                className="drop-shadow-md rounded-lg bg-white flex flex-col items-center p-4 py-6 md:basis-[40%] lg:basis-[25%]"
+                                className="drop-shadow-md rounded-lg bg-base-color1 flex flex-col items-center p-4 py-6 md:basis-[40%] lg:basis-[25%]"
                             >
                                 <Image 
                                     src={details?.icon as string}

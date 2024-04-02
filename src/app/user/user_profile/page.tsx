@@ -4,7 +4,7 @@ import PasswordUpdateSection from "@/components/profilePage/PasswordUpdateSectio
 
 export default function MyProfile(){
     return( 
-        <section className="page text-[#374151] py-8">
+        <section className="page text-primary py-8">
             <h1 className="AT_only">User Profile</h1>
 
             <div className="md:w-[38em] lg:w-2/5 md:mx-auto md:mt-8">

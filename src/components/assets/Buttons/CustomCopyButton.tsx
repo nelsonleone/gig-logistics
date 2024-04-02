@@ -9,9 +9,9 @@ export default function CustomCopyButton({ value }: { value:string }) {
         <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="right">
           <ActionIcon color={copied ? 'teal' : 'black'} variant="subtle" onClick={copy} className=''>
             {!copied ? (
-              <IoCopy className='text-white text-xl' />
+              <IoCopy className='base-color1 text-xl' />
             ) : (
-                <FaCheck className='text-cyan-500 text-lg' />
+                <FaCheck className='text-accent-color2 text-lg' />
             )}
           </ActionIcon>
         </Tooltip>

@@ -38,7 +38,7 @@ export default function ResetPasswordMC(){
     }
 
     return(
-        <form onSubmit={handleSubmit(handleResetRequest)} className="px-4 my-10 py-8 lg:my-28 pb-8 text-[#374151] bg-white rounded-lg w-11/12 mx-auto md:w-[25em] shadow-lg shadow-slate-700 drop-shadow-sm">
+        <form onSubmit={handleSubmit(handleResetRequest)} className="px-4 my-10 py-8 lg:my-28 pb-8 text-primary bg-base-color1 rounded-lg w-11/12 mx-auto md:w-[25em] shadow-lg shadow-slate-700 drop-shadow-sm">
             <h1 className={`${roboto_slab.className} font-bold  text-center text-2xl md:text-3xl mb-8`}>Reset Password</h1>
             <CustomTextInput 
                 error={errors.email?.message} 
@@ -49,9 +49,9 @@ export default function ResetPasswordMC(){
                 name="email"  
                 required="Please Enter A Valid Email"
                 containerStyles="w-full"
-                inputStyles="w-full z-20 mt-3 border z-20 border-gray-400 rounded-md p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
+                inputStyles="w-full z-20 mt-3 border z-20 border-gray-400 rounded-md p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
             />
-            <button disabled={isSubmitting} className="w-36 bg-black hover:opacity-80 text-white focus:border focus:border-black focus:text-white transition duration-300 ease-linear relative p-3 font-medium min-h-[3.5em] text-center rounded-md block my-2">
+            <button disabled={isSubmitting} className="w-36 bg-base-color2 hover:opacity-80 base-color1 focus:border focus:border-black focus:base-color1 transition duration-300 ease-linear relative p-3 font-medium min-h-[3.5em] text-center rounded-md block my-2">
                 {
                     isSubmitting ?
                     <LoadingEllipse />

@@ -36,8 +36,8 @@ export default async function Page({ params }: { params: { id:string }}){
                 <div className="md:flex justify-between gap-14">
                     <div className="border-gray-100 overflow-hidden rounded-md shadow-md py-4 px-3 md:px-6 my-6 md:w-1/2">
                         <div>
-                            <h2 className="rounded-md bg-black text-white block w-full p-4 font-semibold ">Viewing Dropoff - {dropoff.dropOffID}</h2>
-                            <button className="transition border border-white duration-300 ease-in-out bg-red-500 text-white p-3 w-32 rounded-sm my-4 hover:bg-transparent hover:text-red-600 hover:border hover:border-red-600 focus:bg-transparent focus:text-red-600 focus:border focus:border-red-600">Track</button>
+                            <h2 className="rounded-md bg-base-color2 text-base-color1 block w-full p-4 font-semibold ">Viewing Dropoff - {dropoff.dropOffID}</h2>
+                            <button className="transition border border-base-color1 duration-300 ease-in-out bg-accent-color text-base-color1 p-3 w-32 rounded-sm my-4 hover:bg-transparent hover:text-red-600 hover:border hover:border-red-600 focus:bg-transparent focus:text-red-600 focus:border focus:border-red-600">Track</button>
                         </div>
                         <h3 className="flex gap-4">
                             <BsSendArrowUpFill className="text-red-600 text-2xl" />

@@ -88,8 +88,8 @@ export default async function WalletPinResetModal({ authUserPinStatus }: { authU
 
     return(
         <Modal open>
-            <div className="h-96 outline-none border-none overflow-y-auto bg-white shadow-lg rounded-lg p-4 pt-9 absolute top-0 bottom-0 left-0 right-0 m-auto w-[95%] md:w-[30em] md:px-20 flex justify-center flex-col items-center">
-               <IconButton aria-controls="walletPinSetpup" onClick={() => router.back()} aria-expanded="true" className="absolute top-4 right-4 text-black">
+            <div className="h-96 outline-none border-none overflow-y-auto bg-base-color1 shadow-lg rounded-lg p-4 pt-9 absolute top-0 bottom-0 left-0 right-0 m-auto w-[95%] md:w-[30em] md:px-20 flex justify-center flex-col items-center">
+               <IconButton aria-controls="walletPinSetpup" onClick={() => router.back()} aria-expanded="true" className="absolute top-4 right-4 text-base-color2">
                     <IoMdClose />
                 </IconButton>
                 {
@@ -118,11 +118,11 @@ export default async function WalletPinResetModal({ authUserPinStatus }: { authU
                             />
                             {
                                 otpError &&
-                                <p role="alert" className="w-full text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{otpError}</p>
+                                <p role="alert" className="w-full text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{otpError}</p>
                             }
                         </div>
 
-                        <button onClick={handleConfirm} className="relative bg-black h-14 mt-6 flex justify-center items-start text-white w-full mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">
+                        <button onClick={handleConfirm} className="relative bg-base-color2 h-14 mt-6 flex justify-center items-start base-color1 w-full mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">
                             {
                                 isResetting ?
                                 <LoadingEllipse />

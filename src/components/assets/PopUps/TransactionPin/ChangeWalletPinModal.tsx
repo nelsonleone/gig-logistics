@@ -89,8 +89,8 @@ function ChangeWalletPinModal(){
 
     return(
         <Modal open id="change_wallet_pin_modal" className="flex justify-center items-center">
-            <div className="h-[30em] overflow-y-auto md:h-[35em] md:overflow-y-auto outline-none border-none overflow-hidden bg-white shadow-lg rounded-lg p-4 pt-9 w-[95%] md:w-[30em] md:px-20 flex justify-center flex-col items-center">
-                <IconButton aria-controls="change_wallet_pin_modal" onClick={() => router.back()} aria-expanded="true" className="absolute top-4 right-4 text-black">
+            <div className="h-[30em] overflow-y-auto md:h-[35em] md:overflow-y-auto outline-none border-none overflow-hidden bg-base-color1 shadow-lg rounded-lg p-4 pt-9 w-[95%] md:w-[30em] md:px-20 flex justify-center flex-col items-center">
+                <IconButton aria-controls="change_wallet_pin_modal" onClick={() => router.back()} aria-expanded="true" className="absolute top-4 right-4 text-base-color2">
                     <IoMdClose />
                 </IconButton>
 
@@ -116,7 +116,7 @@ function ChangeWalletPinModal(){
                     />
                     {
                         oldPinError &&
-                        <p role="alert" className="w-full text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{oldPinError}</p>
+                        <p role="alert" className="w-full text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{oldPinError}</p>
                     }
                 </div>
 
@@ -142,13 +142,13 @@ function ChangeWalletPinModal(){
                     />
                     {
                         newPinError &&
-                        <p role="alert" className="w-full text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{newPinError}</p>
+                        <p role="alert" className="w-full text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{newPinError}</p>
                     }
                 </div>
 
                 <button 
                    onClick={handleChangePin} 
-                   className="relative bg-black h-16 text-white w-full block mt-8 mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">
+                   className="relative bg-base-color2 h-16 base-color1 w-full block mt-8 mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">
                     {
                         changingPin ?
                         <LoadingEllipse />

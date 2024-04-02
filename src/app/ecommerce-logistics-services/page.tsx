@@ -17,7 +17,7 @@ export default async function EcommerceLogistics(){
     const ecommerceContentData = await getPTservicesData(PT_ServiceName.ecommerceLogistics)
 
     return(
-        <div className="page px-6 relative pt-5 text-[#374151] lg:pt-8 xl:px-10">
+        <div className="page px-6 relative pt-5 text-primary lg:pt-8 xl:px-10">
             <BackBtn />
             <PortfolioSitesPageIntro introHeading="ECOMMERCE LOGISTICS" introText="Empowering small businesses with innovative logistics support" />
             <main className="my-20">

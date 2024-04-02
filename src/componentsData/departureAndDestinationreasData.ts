@@ -55,9 +55,9 @@ const areaData : string[] = [
 ]
 
 
-export const domesticDepartureDestinationAreaData : { value:string,label:string }[] = areaData.map(val => {
+export const domesticDepartureDestinationAreaData: { value: string, label: string }[] = areaData.map(val => {
     return {
         value: val,
-        label: val.toUpperCase()
-    }
+        label: (val ?? "").toUpperCase()
+    }   
 })

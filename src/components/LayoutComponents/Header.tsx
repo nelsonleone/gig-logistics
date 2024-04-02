@@ -40,7 +40,7 @@ export default function Header({ children }:{ children: ReactNode }){
                     pathName === "/" ?
                         <button
                             onClick={handleScrollIntoView}
-                            className={`${inter.className} hidden lg:block red-button-bright font-inter transition-opacity font-medium hover:shadow-inner hover:opacity-90 focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent h-[3.2em] text-sm text-white py-2 px-4 hover:bg-red-700`}
+                            className={`${inter.className} hidden lg:block red-button-bright font-inter transition-opacity font-medium hover:shadow-inner hover:opacity-90 focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent h-[3.2em] text-sm base-color1 py-2 px-4 hover:bg-red-700`}
                             >Track & Find
                         </button>
                     :

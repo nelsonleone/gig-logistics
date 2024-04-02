@@ -13,16 +13,16 @@ export default async function PersonalShoppingInfo(){
     return(
         <section className="page px-0">
             <div className="h-[87vh] w-full bg-cover bg-center bg-no-repeat relative" style={{backgroundImage:backgroundImageUrl}}>
-                <div className="bg-black rounded-sm py-4 px-6 xl:px-10 absolute bottom-0 left-0 w-4/5 flex flex-col justify-center text-white md:w-2/5 md:py-8">
+                <div className="bg-base-color2 rounded-sm py-4 px-6 xl:px-10 absolute bottom-0 left-0 w-4/5 flex flex-col justify-center text-base-color1 md:w-2/5 md:py-8">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold md:mb-8">{personalShoppingInfoSanityData?.heading}</h1>
-                    <Link href="/app-panel/personal-shopping/item_details" className="inline-flex w-40 mt-4 justify-between items-center bg-red-500 p-3 font-medium text-white hover:bg-transparent border border-red-500 hover:text-red-500 focus:bg-transparent focus:text-red-500 duration-300 ease-in-out">
+                    <Link href="/app-panel/personal-shopping/item_details" className="inline-flex w-40 mt-4 justify-between items-center bg-primary2 p-3 font-medium text-base-color1 hover:bg-transparent border border-primary2 hover:text-primary2 focus:bg-transparent focus:text-primary2 duration-300 ease-in-out">
                         <span>Start Shopping</span>
                         <FaArrowRightLong aria-hidden="true" />
                     </Link>
                 </div>
             </div>
 
-            <div className="px-6 xl:px-10 text-[#374151]"> 
+            <div className="px-6 xl:px-10 text-primary"> 
                 <h2 className="my-8 font-semibold text-center text-2xl md:text-4xl md:my-14">{personalShoppingInfoSanityData?.secondHeading}</h2>
                 <AppPanelMCContainer className="rounded-sm lg:px-28 lg:py-10">
                     <div>

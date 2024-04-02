@@ -43,15 +43,15 @@
     }
     
     .red-button-dark{
-        @apply bg-red-700 text-white duration-300 rounded font-normal ;
+        @apply bg-red-700 text-base-color1 duration-300 rounded font-normal ;
     }
     
     .footer-li{
-        @apply my-2 first:text-lg  first:font-semibold mb-3 lg:my-4 transition duration-[.25s] ease-linear hover:text-red-500 first:hover:text-white;
+        @apply my-2 first:text-lg  first:font-semibold mb-3 lg:my-4 transition duration-[.25s] ease-linear hover:text-accent-color first:hover:text-base-color1;
     }
     
     .footer-li-with-svg{
-        @apply text-2xl first:text-[1.5rem] my-0 first:hover:text-red-500;
+        @apply text-2xl first:text-[1.5rem] my-0 first:hover:text-accent-color;
     }
 
 
@@ -66,7 +66,7 @@
 
 
     .ap_page_cp_box_link{
-        @apply mb-6 duration-300 transition-transform ease-in-out border border-gray-400 hover:border hover:border-cyan-600 hover:-translate-y-3 focus:border-2 focus:border-cyan-600 focus:outline focus:outline-none rounded-lg block w-auto h-auto;
+        @apply mb-6 duration-300 transition-transform ease-in-out border border-gray-400 hover:border hover:border-accent-color2 hover:-translate-y-3 focus:border-2 focus:border-accent-color2 focus:outline focus:outline-none rounded-lg block w-auto h-auto;
     }
 
     .ap_page_cp_box{
@@ -83,11 +83,11 @@
     }
 
     .sdpl_step_indicator{
-        @apply flex items-center justify-center bg-black aspect-square w-7 text-center absolute rounded-full top-0 bottom-0 left-0 right-0 m-auto;
+        @apply flex items-center justify-center bg-base-color2 aspect-square w-7 text-center absolute rounded-full top-0 bottom-0 left-0 right-0 m-auto;
     }
 
     .sdpl_step_indicator_container {
-        @apply bg-black h-[0.28em] relative w-5/12;
+        @apply bg-base-color2 h-[0.28em] relative w-5/12;
     }
 
 
@@ -111,7 +111,7 @@
 
     
     .signup-phoneInput input{
-        @apply focus:border-none focus:outline-offset-0 focus:outline-cyan-500;
+        @apply focus:border-none focus:outline-offset-0 focus:outline-accent-color2;
     }
 
 

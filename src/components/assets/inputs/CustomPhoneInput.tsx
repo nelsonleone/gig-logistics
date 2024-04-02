@@ -49,7 +49,7 @@ function CustomPhoneInput({ control, name, placeholder, required, label, error, 
             }
             {
                 error &&
-                <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError />{error}</p>
+                <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError />{error}</p>
             }
         </div>
     )

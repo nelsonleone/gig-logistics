@@ -41,13 +41,13 @@ export default function SavedItems(){
     return(
         <div className="mt-14 mb-6">
             <p className="font-medium text-center my-5">You can add and delete more items here.</p>
-            <i className="text-sm mx-auto block text-center text-red-500">Please note these items will use same address provided for your shipment</i>
+            <i className="text-sm mx-auto block text-center text-primary2">Please note these items will use same address provided for your shipment</i>
             
             <div className="flex flex-wrap gap-4 flex-col md:justify-center md:flex-row my-8">
                 {
                     items.map(item => (
                         <div key={item.id} className="flex flex-col relative justify-center md:w-[45%] lg:w-[31%] text-center h-40 items-center gap-2 py-8 px-2 rounded-lg border border-gray-400">
-                            <IconButton aria-label="delete item" className="text-red-500 absolute top-2 right-3" onClick={() => handleRemoveItem(item.id)}>
+                            <IconButton aria-label="delete item" className="text-primary2 absolute top-2 right-3" onClick={() => handleRemoveItem(item.id)}>
                                 <FaTrash size={17} />
                             </IconButton>
                             <Image src="/icons/overseas-shipping-box-icon.svg" loading="eager" width={40} height={40} alt="" aria-hidden="true" />
@@ -65,7 +65,7 @@ export default function SavedItems(){
                 </Link>
             </div>
 
-            <button onClick={handleCheckForSavedItem} className="block rounded-md text-white bg-black font-medium p-3 text-center mx-auto w-full md:w-[20em] mt-8  hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+            <button onClick={handleCheckForSavedItem} className="block rounded-md text-white bg-base-color2 font-medium p-3 text-center mx-auto w-full md:w-[20em] mt-8  hover:opacity-90 focus:bg-transparent focus:text-base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
             <DeleteOverseasShippingItemModal setOpenDeleteModal={setShowDeleteModal} openDeleteModal={showDeleteModal} deleteItem={() => dispatch(removeItem({ id: aboutToDeletedItemId }))} />
         </div>
     )

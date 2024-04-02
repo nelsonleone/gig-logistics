@@ -17,7 +17,7 @@ export default function OfficeContactDetails({ val }:IProps){
             initial={{ opacity: 0, x: -300, y: 200 }}
             animate={{ opacity: 1, x: 0, y: 0, transition: { duration: .5, ease: "linear" } }}
             viewport={{ once: true }}
-            className="mb-8 text-[#374151]"
+            className="mb-8 text-primary"
             >
             <h3 className="font-bold text-[1rem] my-2" id={val.id}>{val.heading}</h3>
             {

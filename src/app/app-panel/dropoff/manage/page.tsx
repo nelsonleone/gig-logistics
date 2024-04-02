@@ -10,7 +10,7 @@ export default async function ManageDropOffs(){
     const authUserDropOffs = await getUserDropOffs(authSessionToken)
 
     return(
-        <AppPanelMCContainer className="relative px-[0.7em] mb-12 text-[#374151] md:px-10 md:py-24">
+        <AppPanelMCContainer className="relative px-[0.7em] mb-12 text-primary md:px-10 md:py-24">
             <BackBtn className="md:absolute md:top-10" />
 
             <ManageXpressDropOffsMC dropOffs={authUserDropOffs} />

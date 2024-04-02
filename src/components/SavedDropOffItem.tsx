@@ -29,7 +29,7 @@ export default function SavedDropOffItem(props:SavedDropOffs){
                     </Link>
 
                     <div className="my-4 md:my-0">
-                        <p className="text-cyan-600 underline decoration-dotted">{formatToWordsString(props.createdAt)}</p>
+                        <p className="text-accent-color3 underline decoration-dotted">{formatToWordsString(props.createdAt)}</p>
                         <CancelDropOffBtn text="Cancel" dropOffID={props.dropOffID} />  
                     </div>
                 </div>

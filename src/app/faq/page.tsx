@@ -14,7 +14,7 @@ export default async function FaqPage(){
     return(
         <div className="page py-5 mt-16 mb-12 lg:overflow-y-auto lg:min-h-0 lg:h-screen scroll-mx-2 lg:me-1">
             <div className="bg-[url('/images/offices_bg.svg')] py-14 px-4 w-full h-[45vh] md:pt-20 md:flex md:justify-center lg:items-center">
-                <h1 className={`${roboto_slab.className} font-bold text-[2.2rem] text-[#374151]`}>Frequently Asked Questions</h1>
+                <h1 className={`${roboto_slab.className} font-bold text-[2.2rem] text-primary`}>Frequently Asked Questions</h1>
             </div>
 
             <div>

@@ -51,7 +51,7 @@ export default function CustomBasicSelect(props:IProps){
             />
             {
                 error &&
-                <p role="alert" className="text-red-500 text-sm mt-3"><BiSolidMessageAltError />{error}</p>
+                <p role="alert" className="text-primary2 text-sm mt-3"><BiSolidMessageAltError />{error}</p>
             }
         </div>
     )

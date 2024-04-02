@@ -24,7 +24,7 @@ export default function XpressDropOffDeliveryItemValueNotice(){
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClick}
-              className="text-white bg-gray-500 text-xs hover:bg-gray-500"
+              className="base-color1 bg-gray-500 text-xs hover:bg-gray-500"
             >
               <TbMessageReport />
             </IconButton>
@@ -38,7 +38,7 @@ export default function XpressDropOffDeliveryItemValueNotice(){
                 'aria-labelledby': 'xpress-dropoff-deliveryItem-value-report-button',
               }}
             >
-              <li className="text-[#374151] text-sm p-2">This information is important because it ensures your shipment against theft and in-transit damages</li>
+              <li className="text-primary text-sm p-2">This information is important because it ensures your shipment against theft and in-transit damages</li>
             </Menu>
         </div>
     )

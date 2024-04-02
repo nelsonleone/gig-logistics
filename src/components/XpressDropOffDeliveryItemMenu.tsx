@@ -30,8 +30,8 @@ function XpressDropOffDeliveryItemMenu({ index, control, setValue, setBeingDelet
   
 
     return (
-        <div className='text-[#374151] justify-self-end absolute -right-3 col-span-1'>
-           <IconButton className='text-[#374151] text-sm md:text-base'  aria-label="menu" onClick={handleClick}>
+        <div className='text-primary justify-self-end absolute -right-3 col-span-1'>
+           <IconButton className='text-primary text-sm md:text-base'  aria-label="menu" onClick={handleClick}>
                 <BsThreeDotsVertical />
            </IconButton>
             <Menu
@@ -44,8 +44,8 @@ function XpressDropOffDeliveryItemMenu({ index, control, setValue, setBeingDelet
                 'aria-labelledby': 'basic-button',
                 }}
                 >
-                <button onClick={handleDeleteDeliveryItem} className={`${inter.className} items-center cursor-pointer hover:bg-gray-200 h-full w-full flex justify-start gap-2 p-1 text-sm text-[#374151]`}>
-                    <FaTrash aria-label="delete" color='text-[#374151]' />
+                <button onClick={handleDeleteDeliveryItem} className={`${inter.className} items-center cursor-pointer hover:bg-gray-200 h-full w-full flex justify-start gap-2 p-1 text-sm text-primary`}>
+                    <FaTrash aria-label="delete" color='text-primary' />
                     <span>Delete</span>
                 </button>
             </Menu>

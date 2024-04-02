@@ -1,4 +1,4 @@
-import WalletPinSetupModal from "@/components/assets/PopUps/TransactionPin/WalletPinSetupModal";
+import CustomPinInput from "@/components/assets/PopUps/TransactionPin/CustomPinInput";
 import { AuthUserWalletPinStatus } from "@/enums";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -21,6 +21,6 @@ export default async function CreateWalletPin(){
 
 
     return(
-        <WalletPinSetupModal />
+        <CustomPinInput for="createWalletPin" open={true} />
     )
 }

@@ -53,46 +53,74 @@ export default function DomesticQuotePageMainCP(){
                 <form className="pb-8" onSubmit={handleSubmit(handleDmstFormSubmit)}>
                     <div className="quote_dmst_input_container">
                         <label htmlFor="quote_origin" className="quote_dmst_form_label">Origin</label>
-                        <CustomQuotePageSelect hasError={errors.quote_origin ? true : false} required="Sender Station is required" control={control} placeholder='Origin' id="quote_origin" data={domesticDepartureDestinationAreaData} />
-                        {
+                        <CustomQuotePageSelect
+                            name="country"  
+                            id="quote_origin" 
+                            control={control}
+                            selectStyles={{
+                                height: "3.1em",
+                                borderRadius: "6px"
+                            }}
+                            required="Sender Station is required"  
+                            placeholder='Origin' 
+                            hasError={errors?.quote_origin?.message ? true : false}
+                            data={domesticDepartureDestinationAreaData}
+                            optionStyles={{
+                                color: "#374151"
+                            }}
+                        />                        {
                             errors.quote_origin && 
-                            <p role="error" className="text-xs mt-2 text-red-500">{errors.quote_origin.message}</p>
+                            <p role="error" className="text-xs mt-2 text-primary2">{errors.quote_origin?.message}</p>
                         }
                     </div>
 
                     <div className="quote_dmst_input_container">
                         <label htmlFor="destination" className="quote_dmst_form_label">Destination</label>
-                        <CustomQuotePageSelect hasError={errors.quote_destination ? true : false} required="Reciever's Station is required" control={control} placeholder='Destination' id="quote_destination" data={domesticDepartureDestinationAreaData} />
-                        {
+                        <CustomQuotePageSelect
+                            name="country"  
+                            id="quote_destination"
+                            control={control}
+                            selectStyles={{
+                                height: "3.1em",
+                                borderRadius: "6px"
+                            }}   
+                            required="Reciever's Station is required" 
+                            placeholder='Destination'
+                            hasError={errors?.quote_destination?.message ? true : false}
+                            data={domesticDepartureDestinationAreaData}
+                            optionStyles={{
+                                color: "#374151"
+                            }}
+                        />                        {
                             errors.quote_destination && 
-                            <p role="error" className="text-xs mt-2 text-red-500">{errors.quote_destination.message}</p>
+                            <p role="error" className="text-xs mt-2 text-primary2">{errors.quote_destination?.message}</p>
                         }
                     </div>
 
                     <div className="quote_dmst_input_container">
                         <label htmlFor='quote_quantity' className="quote_dmst_form_label">Quantity</label>
-                        <input type="number" placeholder="Enter Quantity" id="'quote_quantity" className={`quote_dmst_number_input ${errors.quote_quantity ? "border border-red-500" : ""}`} min={1} {...register("quote_quantity",{ required: "Quantity is required" })} />
+                        <input type="number" placeholder="Enter Quantity" id="'quote_quantity" className={`quote_dmst_number_input ${errors.quote_quantity ? "border border-primary2" : ""}`} min={1} {...register("quote_quantity",{ required: "Quantity is required" })} />
                         {
                             errors.quote_quantity && 
-                            <p role="error" className="text-xs mt-2 text-red-500">{errors.quote_quantity.message}</p>
+                            <p role="error" className="text-xs mt-2 text-primary2">{errors.quote_quantity?.message}</p>
                         }
                     </div>
 
                     <div className="quote_dmst_input_container">
                         <label htmlFor='quote_weight' className="quote_dmst_form_label">Weight (KG)</label>
-                        <input type="number" placeholder="Enter Weight" id="'quote_weight" className={`quote_dmst_number_input ${errors.quote_weight ? "border border-red-500" : ""}`} min={1} {...register("quote_weight",{ required: "Weight is required" })} />
+                        <input type="number" placeholder="Enter Weight" id="'quote_weight" className={`quote_dmst_number_input ${errors.quote_weight ? "border border-primary2" : ""}`} min={1} {...register("quote_weight",{ required: "Weight is required" })} />
                         {
                             errors.quote_weight && 
-                            <p role="error" className="text-xs mt-2 text-red-500">{errors.quote_weight.message}</p>
+                            <p role="error" className="text-xs mt-2 text-primary2">{errors.quote_weight?.message}</p>
                         }
                     </div>
 
                     <div className="quote_dmst_input_container">
                         <label htmlFor='quote_value' className="quote_dmst_form_label">Value (Naira)</label>
-                        <input type="number" placeholder="Enter Value" id="'quote_value" className={`quote_dmst_number_input ${errors.quote_quantity ? "border border-red-500" : ""}`} min={1} {...register("quote_value",{ required: "Value is required" })} />
+                        <input type="number" placeholder="Enter Value" id="'quote_value" className={`quote_dmst_number_input ${errors.quote_quantity ? "border border-primary2" : ""}`} min={1} {...register("quote_value",{ required: "Value is required" })} />
                         {
                             errors.quote_value && 
-                            <p role="error" className="text-xs mt-2 text-red-600">{errors.quote_value.message}</p>
+                            <p role="error" className="text-xs mt-2 text-red-600">{errors.quote_value?.message}</p>
                         }
                     </div>
 

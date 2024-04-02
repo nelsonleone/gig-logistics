@@ -66,7 +66,7 @@ export default function CustomPasswordInput(props:IProps){
                             {...field}
                             value={value} 
                             readOnly={readOnly}
-                            className={`absolute top-0 bottom-0 my-auto pe-4 left-0 w-full ${error ? "focus:outline-red-500" : ""} ${inputStyles}`}
+                            className={`absolute top-0 bottom-0 my-auto pe-4 left-0 w-full ${error ? "focus:outline-primary2" : ""} ${inputStyles}`}
                         />
 
                         <IconButton 
@@ -88,7 +88,7 @@ export default function CustomPasswordInput(props:IProps){
             />
             {
                 error &&
-                <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{error}</p>
+                <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{error}</p>
             }
         </div>
     )

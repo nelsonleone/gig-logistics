@@ -51,12 +51,12 @@ export default async function OutBoundShippingItemsPage(){
                     items && items.length ? items?.map(val => {
                         return( 
                             <div className="border border-gray-100 bg-gray-50 rounded-lg p-4 relative md:w-1/2 lg:w-[30%]">
-                                <IconButton aria-label="delete item" onClick={() => handleDeleteDeliveryItem(val.id!)} className={`absolute top-2 right-2 cursor-pointer hover:bg-gray-200 text-red-500`}>
+                                <IconButton aria-label="delete item" onClick={() => handleDeleteDeliveryItem(val.id!)} className={`absolute top-2 right-2 cursor-pointer hover:bg-gray-200 text-accent-color`}>
                                     <FaTrash aria-label="delete" className="text-xl" />
                                 </IconButton>
                                 <Image src={val.itemImage} alt="item image" width={130} height={130} className="block mx-auto w-auto h-auto rounded mt-7" />
                                 <div className="text-center mx-auto">
-                                    <p className="text-cyan-600 capitalize">{val.itemName}</p>
+                                    <p className="text-accent-color3 capitalize">{val.itemName}</p>
                                     <p className="text-sm">{val.description}</p>
                                 </div>
 
@@ -101,7 +101,7 @@ export default async function OutBoundShippingItemsPage(){
             </div>
 
             <OverseasShippingSuccessModal open={openSuccessModal} id="outbound-shipping" />
-            <button type="button" disabled={submittingShipment} onClick={handleSubmitShipment} className="relative block w-full rounded-md text-white bg-black font-medium p-4 md:w-80 text-center mx-auto mt-16 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">
+            <button type="button" disabled={submittingShipment} onClick={handleSubmitShipment} className="relative block w-full rounded-md text-base-color1 bg-base-color2 font-medium p-4 md:w-80 text-center mx-auto mt-16 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-base-color2">
                 {
                     submittingShipment ?
                     <LoadingEllipse />

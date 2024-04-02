@@ -6,7 +6,7 @@ export default function Layout({
   children: React.ReactNode
 }) {
   return (
-    <div className="page text-[#374151] relative pt-8 lg:flex lg:justify-between">
+    <div className="page text-primary relative pt-8 lg:flex lg:justify-between">
       <AppPanel />
       <div className="lg:ms-[22em] lg:basis-[75%]">
        {children}

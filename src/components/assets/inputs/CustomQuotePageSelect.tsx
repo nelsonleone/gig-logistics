@@ -67,7 +67,7 @@ export default function CustomQuotePageSelect({ data, value, placeholder, option
           }} 
           options={data as any} 
           placeholder={placeholder}
-          className="text-[#374151]"
+          className="text-primary"
           isClearable 
           id={id} 
           theme={(theme) => ({

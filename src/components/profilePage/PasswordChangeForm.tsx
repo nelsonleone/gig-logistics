@@ -78,7 +78,7 @@ export default function PasswordChangeForm(){
     }
 
     return(
-        <form onSubmit={handleSubmit(handleUpdatePassword)} className="bg-white rounded-xl py-8 px-3 my-8 md:p-5 lg:px-8">
+        <form onSubmit={handleSubmit(handleUpdatePassword)} className="bg-base-color1 rounded-xl py-8 px-3 my-8 md:p-5 lg:px-8">
 
            <CustomPasswordInput
                 name="currentPassword"
@@ -88,7 +88,7 @@ export default function PasswordChangeForm(){
                 id="profile-update-currentPassword" 
                 label="Current Password"
                 error=""
-                inputStyles="w-full z-20 border z-20 border-gray-300 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
+                inputStyles="w-full z-20 border z-20 border-gray-300 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
                 containerStyles="w-full"
             />
 
@@ -100,7 +100,7 @@ export default function PasswordChangeForm(){
                 id="profile-update-password" 
                 label="New Password"
                 error={errors?.newPassword?.message}
-                inputStyles="w-full z-20 border z-20 border-gray-300 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
+                inputStyles="w-full z-20 border z-20 border-gray-300 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
                 containerStyles="w-full"
             />
 
@@ -112,12 +112,12 @@ export default function PasswordChangeForm(){
                 id="profile-update-cpassword" 
                 error={errors.confirmNewPassword?.message}
                 control={control}
-                inputStyles="w-full z-20 border z-20 border-gray-300 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
+                inputStyles="w-full z-20 border z-20 border-gray-300 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
                 containerStyles="w-full"
             /> 
 
                         
-            <button disabled={!isDirty || isSubmitting ? true : false} className="relative my-10 w-full text-center mx-auto font-medium text-white bg-black p-4 text-sm rounded lg:text-base disabled:opacity-80 disabled:cursor-not-allowed md:w-36 md:h-12 flex justify-center items-center hover:scale-105 transition duration-200 ease-in focus:outline focus:outline-cyan-500">
+            <button disabled={!isDirty || isSubmitting ? true : false} className="relative my-10 w-full text-center mx-auto font-medium base-color1 bg-base-color2 p-4 text-sm rounded lg:text-base disabled:opacity-80 disabled:cursor-not-allowed md:w-36 md:h-12 flex justify-center items-center hover:scale-105 transition duration-200 ease-in focus:outline focus:outline-accent-color1">
                 {
                     isSubmitting ?
                     <LoadingEllipse />

@@ -22,7 +22,7 @@ export default function OverseasShipmentAddressMC(){
                 <label htmlFor={`${id}-address`} className="mb-3 block">Address</label>
                 <div className="relative h-32 ">
                     <textarea id={`${id}-address`} className="absolute w-full h-full mx-auto bg-gray-50 top-0 left-0 pe-14 border border-gray-300 rounded-lg focus:outline-offset-0 focus:outline focus:outline-2 focus:border-none focus:outline-black" readOnly defaultValue={overseasShippingShipmentAddresses.uk.address}></textarea>
-                    <div className="absolute right-0 p-3 flex justify-center items-center w-14 bottom-0 bg-black rounded-lg">
+                    <div className="absolute right-0 p-3 flex justify-center items-center w-14 bottom-0 bg-base-color2 rounded-lg">
                         <CustomCopyButton value={overseasShippingShipmentAddresses.uk.address} />
                     </div>
                 </div>
@@ -32,7 +32,7 @@ export default function OverseasShipmentAddressMC(){
                 <label htmlFor={`${id}-city`} className="mb-3 block">City</label>
                 <div className="relative h-[3.7em]">
                     <input type="text" id={`${id}-city`} className="absolute w-full h-full mx-auto bg-gray-50 top-0 left-0 p-3 pe-[3.6em] border border-gray-300 rounded-lg focus:outline-offset-0 focus:outline focus:outline-2 focus:border-none focus:outline-black" readOnly defaultValue={overseasShippingShipmentAddresses.uk.city} />
-                    <div className="absolute right-0 p-3 top-0 my-auto flex justify-center items-center w-14 bottom-0 bg-black rounded-tr-lg rounded-br-lg">
+                    <div className="absolute right-0 p-3 top-0 my-auto flex justify-center items-center w-14 bottom-0 bg-base-color2 rounded-tr-lg rounded-br-lg">
                         <CustomCopyButton value={overseasShippingShipmentAddresses.uk.city} />
                     </div>
                 </div>
@@ -43,7 +43,7 @@ export default function OverseasShipmentAddressMC(){
                     <label htmlFor={`${id}-state`} className="mb-3 block">State</label>
                     <div className="relative h-[3.7em]">
                         <input type="text" id={`${id}-state`} className="absolute w-full h-full mx-auto bg-gray-50 top-0 left-0 p-3 pe-[3.6em] border border-gray-300 rounded-lg focus:outline-offset-0 focus:outline focus:outline-2 focus:border-none focus:outline-black" readOnly defaultValue={overseasShippingShipmentAddresses.uk.state} />
-                        <div className="absolute right-0 p-3 top-0 my-auto flex justify-center items-center w-14 bottom-0 bg-black rounded-tr-lg rounded-br-lg">
+                        <div className="absolute right-0 p-3 top-0 my-auto flex justify-center items-center w-14 bottom-0 bg-base-color2 rounded-tr-lg rounded-br-lg">
                             <CustomCopyButton value={overseasShippingShipmentAddresses.uk.state} />
                         </div>
                     </div>
@@ -53,14 +53,14 @@ export default function OverseasShipmentAddressMC(){
                     <label htmlFor={`${id}-zipCode`} className="mb-3 block">ZipCode</label>
                     <div className="relative h-[3.7em]">
                         <input type="text" id={`${id}-zipCode`} className="absolute w-full h-full mx-auto bg-gray-50 top-0 left-0 p-3 pe-[3.6em] border border-gray-300 rounded-lg focus:outline-offset-0 focus:outline focus:outline-2 focus:border-none focus:outline-black" readOnly defaultValue={overseasShippingShipmentAddresses.uk.zipCode} />
-                        <div className="absolute right-0 p-3 top-0 my-auto flex justify-center items-center w-14 bottom-0 bg-black rounded-tr-lg rounded-br-lg">
+                        <div className="absolute right-0 p-3 top-0 my-auto flex justify-center items-center w-14 bottom-0 bg-base-color2 rounded-tr-lg rounded-br-lg">
                             <CustomCopyButton value={overseasShippingShipmentAddresses.uk.zipCode} />
                         </div>
                     </div>
                 </div>
             </div>
 
-            <button onClick={() => router.push(nextStep)} className="rounded-md block text-white bg-black font-medium p-[.8em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+            <button onClick={() => router.push(nextStep)} className="rounded-md block base-color1 bg-base-color2 font-medium p-[.8em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
         
            <OverseasShippingShopsHighlight />
         </div>

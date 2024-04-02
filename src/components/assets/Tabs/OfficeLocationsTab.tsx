@@ -28,7 +28,7 @@ export default function OfficeLocationTabs(){
                       const { countryName } =  Object.values(officeLocationDataObj)[index]
                       return(
                         <button 
-                           className={`${roboto_slab.className} flex justify-between items-center font-medium  place-self-center  last-of-type:place-self-start md:last-of-type:place-self-center md:first:place-self-center  relative text-lg lg:text-xl ${activeTab === index ? "after:content-[''] after:w-full after:h-[3px] after:absolute after:block after:bg-red-500 after:-bottom-1 after:left-0 after:right-0 after:m-auto after:rounded-sm lg:after:-bottom-[.65rem]" : ''}`}
+                           className={`${roboto_slab.className} flex justify-between items-center font-medium  place-self-center  last-of-type:place-self-start md:last-of-type:place-self-center md:first:place-self-center  relative text-lg lg:text-xl ${activeTab === index ? "after:content-[''] after:w-full after:h-[3px] after:absolute after:block after:bg-primary2 after:-bottom-1 after:left-0 after:right-0 after:m-auto after:rounded-sm lg:after:-bottom-[.65rem]" : ''}`}
                            role="tab" 
                            key={`${index}-${val}`}
                            aria-selected={index === activeTab ? "true" : "false"} 

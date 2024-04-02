@@ -67,12 +67,12 @@ export default function CustomTextInput(props:IProps){
                     defaultValue={defaultValue}
                     value={value}
                     id={id}
-                    className={`${inputStyles} placeholder:text-gray-400 outline-offset-0 focus:outline-offset-0 ${error ? "border-red-500 focus:outline-red-500 md:focus:outline-red-500" : ""}`}
+                    className={`${inputStyles} placeholder:text-gray-400 outline-offset-0 focus:outline-offset-0 ${error ? "border-primary2 focus:outline-primary2 md:focus:outline-primary2" : ""}`}
                 />}
             />
             {
                 error &&
-                <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{error}</p>
+                <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{error}</p>
             }
         </div>
     )

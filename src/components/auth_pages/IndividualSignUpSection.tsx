@@ -131,7 +131,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                     placeholder="First Name"
                     label=""
                     error={errors.firstName?.message}
-                    inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
+                    inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
                     containerStyles="w-full"
                 />
                 <CustomTextInput 
@@ -141,7 +141,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                     placeholder="Last Name"
                     label=""
                     error={errors.lastName?.message}
-                    inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
+                    inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
                     containerStyles="w-full"
                 />
             </div>
@@ -154,7 +154,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                 label=""
                 inputType="email"
                 error={errors.email?.message}
-                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
+                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
                 containerStyles="w-full"
             />
 
@@ -167,7 +167,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                 id="signup-password" 
                 label=""
                 error={errors.password?.message}
-                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
+                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
                 containerStyles="w-full"
             />
 
@@ -178,11 +178,11 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                 id="signup-cpassword" 
                 error={errors.confirmPassword?.message}
                 control={control}
-                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-cyan-500"
+                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
                 containerStyles="w-full"
             />
 
-            <button disabled={isSubmitting} className="h-[3.4em] bg-black text-[#FFFFFF] capitalize text-center block mt-6 mb-4 rounded-lg p-4 font-medium w-full relative hover:drop-shadow-lg transition duration-200 ease-linear focus:border focus:border-gray-300">{isSubmitting ? <LoadingEllipse styles="" /> :"Sign Up"}</button>
+            <button disabled={isSubmitting} className="h-[3.4em] bg-base-color2 text-[#FFFFFF] capitalize text-center block mt-6 mb-4 rounded-lg p-4 font-medium w-full relative hover:drop-shadow-lg transition duration-200 ease-linear focus:border focus:border-gray-300">{isSubmitting ? <LoadingEllipse styles="" /> :"Sign Up"}</button>
             <ContinueWithGoogleBtn disabled={isSubmitting} handleClick={handleGoogleSignIn} className="" />
             <p className="text-sm text-center">Already have an account? <Link className="underline font-medium mx-2" href={`/auth/sign_in${returnTo ? `?returnTo=${returnTo}` : ""}`}>Log In</Link></p>
         </form>

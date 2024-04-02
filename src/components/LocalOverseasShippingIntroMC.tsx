@@ -26,7 +26,7 @@ const serializer1 = {
           const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
 
           return (
-            <Link className="underline font-medium text-cyan-600" href={value?.href} target={target} rel={target === '_blank' ? 'noindex nofollow' : "" }>
+            <Link className="underline font-medium text-accent-color2" href={value?.href} target={target} rel={target === '_blank' ? 'noindex nofollow' : "" }>
               {children}
             </Link>
           )
@@ -51,7 +51,7 @@ const serializer2 = {
           const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
 
           return (
-            <Link className="underline font-medium text-cyan-600" href={value?.href} target={target} rel={target === '_blank' ? 'noindex nofollow' : "" }>
+            <Link className="underline font-medium text-accent-color2" href={value?.href} target={target} rel={target === '_blank' ? 'noindex nofollow' : "" }>
               {children}
             </Link>
           )
@@ -82,7 +82,7 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
 
     return(
         data &&
-        <div role="presentation" className="text-[#374151]">
+        <div role="presentation" className="text-primary">
             <section className="flex flex-col justify-between md:flex-row  px-6 xl:px-10">
                 <div className="md:w-1/2">
                     <PortableText value={data.introText} components={serializer1} />
@@ -92,7 +92,7 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
                 </div>
             </section>
 
-            <form onSubmit={handleSubmit(handleStartOverseasShopping)} className="mt-16 bg-white px-6 xl:px-10 py-10">
+            <form onSubmit={handleSubmit(handleStartOverseasShopping)} className="mt-16 bg-base-color1 px-6 xl:px-10 py-10">
                 <h2 className="text-center mb-12 font-bold text-2xl">Overseas Shipping {destination && origin && `( from ${origin} to ${destination} )`} - what you need to know</h2>
                 <div className="md:flex gap-8">
                     <div className="w-full mb-6 lg:w-80">
@@ -111,7 +111,7 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
                         />
                         {
                             errors.origin?.message &&
-                            <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.origin.message}</p>
+                            <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.origin.message}</p>
                         }
                     </div>
 
@@ -131,7 +131,7 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
                         />
                         {
                             errors.destination?.message &&
-                            <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.destination.message}</p>
+                            <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.destination.message}</p>
                         }
                     </div>
                 </div>
@@ -140,7 +140,7 @@ function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingInt
                     <PortableText value={data.whatYouNeedToKnow} components={serializer2} />
                 </div>
 
-                <button className="block rounded-sm text-white bg-black font-medium p-4 text-center mx-auto w-full md:w-[20em] my-16 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+                <button className="block rounded-sm text-base-color1 bg-base-color2 font-medium p-4 text-center mx-auto w-full md:w-[20em] my-16 hover:opacity-90 focus:bg-transparent focus:text-base-color2 focus:outline focus:outline-2 focus:outline-base-color2">Proceed</button>
             </form>
         </div>
     )

@@ -19,7 +19,7 @@ export default async function OverseasShipping(){
     const overseasShippingTradeOptData = await getOverseasShippingTradeOptData()
 
     return(
-        <div className="page px-6 relative pt-5 text-[#374151] lg:pt-8 xl:px-10 h-screen overflow-y-auto">
+        <div className="page px-6 relative pt-5 text-primary lg:pt-8 xl:px-10 h-screen overflow-y-auto">
             <BackBtn />
             <PortfolioSitesPageIntro introHeading="OVERSEAS SHIPPING" introText="Connect the world to your doorstep. Ship anything, anywhere, anytime" />
             <main className="my-20">

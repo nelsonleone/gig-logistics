@@ -11,5 +11,5 @@
 }
 
 .placeholder{
-    @apply font-inter text-sm text-[#374151];
+    @apply font-inter text-sm text-primary;
 }

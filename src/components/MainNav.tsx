@@ -103,13 +103,13 @@ export default function MainNav(){
                                             !linkData.dropDown ?
                                             <Link 
                                                 href={linkData.link} 
-                                                className={`${pathName === linkData.link ? "text-red-600" : "text-[#374151]"} w-full inline-block transition duration-200 pointer-events-auto ease-linear hover:text-red-600`}
+                                                className={`${pathName === linkData.link ? "text-red-600" : "text-primary"} w-full inline-block transition duration-200 pointer-events-auto ease-linear hover:text-red-600`}
                                               >
                                              {linkData.text}
                                             </Link>
                                             :
                                             <button   
-                                              className={`${showDropdownMenu && innerWidth < Breakpoints.Large ? "text-red-600" : "text-[#374151]"} w-full text-left inline-block transition duration-200 ease-linear hover:text-red-600`}                                             
+                                              className={`${showDropdownMenu && innerWidth < Breakpoints.Large ? "text-red-600" : "text-primary"} w-full text-left inline-block transition duration-200 ease-linear hover:text-red-600`}                                             
                                               onClick={() => innerWidth < Breakpoints.Large ? setShowDropdownMenu(prevState => prevState = !prevState) : {}}
                                               >
                                                 {linkData.text}

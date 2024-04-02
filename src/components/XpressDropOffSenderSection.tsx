@@ -22,8 +22,8 @@ function XpressDropOffSenderSection(props:IProps) {
     const { control, errors, firstName, lastName, email, phoneNumber } = props;
 
     return(
-        <section className="shadow-lg bg-white drop-shadow-md rounded-md my-8 w-full pb-10">
-            <h3 className="w-full text-center text-white shadow-sm-light bg-[hsl(0,2%,10%)] 100 font-medium p-3 mb-8">Sender's Info</h3>
+        <section className="shadow-lg bg-base-color1 drop-shadow-md rounded-md my-8 w-full pb-10">
+            <h3 className="w-full text-center base-color1 shadow-sm-light bg-[hsl(0,2%,10%)] 100 font-medium p-3 mb-8">Sender's Info</h3>
             <div className="px-3 flex flex-col items-center w-full relative md:px-10">
                 <CustomTextInput 
                     readOnly 

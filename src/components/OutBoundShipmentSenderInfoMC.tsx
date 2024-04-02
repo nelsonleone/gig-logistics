@@ -132,7 +132,7 @@ function OutBoundShipmentSenderInfoMC() {
                         />
                         {
                             errors.pickupTime?.message &&
-                            <p role="alert" className="text-red-500 text-sm mt-3 mb-6 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.pickupTime?.message}</p>
+                            <p role="alert" className="text-primary2 text-sm mt-3 mb-6 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.pickupTime?.message}</p>
                         }
                     </div>
 
@@ -161,12 +161,12 @@ function OutBoundShipmentSenderInfoMC() {
                     }   
                     {
                         errors.pickupTimeLater?.message &&
-                        <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.pickupTimeLater?.message}</p>
+                        <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.pickupTimeLater?.message}</p>
                     }
                 </div>
             </div>
 
-            <button disabled={isSubmitting} className="block w-full rounded-md text-white bg-black font-medium p-4 text-center mx-auto md:w-[20em] mt-12 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+            <button disabled={isSubmitting} className="block w-full rounded-md base-color1 bg-base-color2 font-medium p-4 text-center mx-auto md:w-[20em] mt-12 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
         </form>
     )
 }

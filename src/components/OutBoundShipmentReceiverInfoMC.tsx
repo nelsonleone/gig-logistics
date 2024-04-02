@@ -77,7 +77,7 @@ export default function OutBoundShipmentReceiverInfoMC(){
                 />
                 {
                     errors.country?.message &&
-                    <p role="alert" className="text-red-500 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.country.message}</p>
+                    <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.country.message}</p>
                 }
             </div>
 
@@ -156,7 +156,7 @@ export default function OutBoundShipmentReceiverInfoMC(){
                 name="email"
             />
 
-            <button disabled={isSubmitting} className="block w-full rounded-md text-white bg-black font-medium p-4 text-center mx-auto mt-16 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+            <button disabled={isSubmitting} className="block w-full rounded-md text-base-color1 bg-base-color2 font-medium p-4 text-center mx-auto mt-16 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-base-color2">Proceed</button>
         </form>
     )
 }

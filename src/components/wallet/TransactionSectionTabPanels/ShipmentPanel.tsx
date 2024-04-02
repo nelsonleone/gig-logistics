@@ -17,9 +17,9 @@ export default function ShipmentPanel({ id }:{ id:string }){
 
     return(
         <div id={`${id}-panel2`}>
-            <div className="md:flex items-center justify-between mb-8 md:my-8">
+            <div className="md:flex items-center justify-between mb-8 md:my-8 text-primary">
                 <h2 className="font-semibold text-xl my-8 md:my-0 text-center">Shipment History</h2>
-                <div className="flex justify-center items-center">
+                <div>
                     <CustomQuotePageSelect 
                         id={`${id}-shipment-filter`}
                         control={control} 
@@ -28,6 +28,7 @@ export default function ShipmentPanel({ id }:{ id:string }){
                         required={false} 
                         data={transactionSelectOptionsData} 
                         placeholder="Filter by status"
+                        optionStyles={{ height: "2em"}}
                     />
                 </div>
             </div>

@@ -17,7 +17,7 @@ export default function TrackerArea(){
     }
 
     return(
-        <form id="#track" onSubmit={handleAlphaCodeSubmit} className="w-full mt-16 bg-black p-4 py-8 rounded-md text-slate-50 flex flex-col justify-center align-middle lg:my-32 lg:py-20">
+        <form id="#track" onSubmit={handleAlphaCodeSubmit} className="w-full mt-16 bg-base-color2 p-4 py-8 rounded-md text-slate-50 flex flex-col justify-center align-middle lg:my-32 lg:py-20">
             {
                 errorInput &&
                 <p className='text-center my-3 text-red-700 text-sm' role="alert">{errorInput}</p>

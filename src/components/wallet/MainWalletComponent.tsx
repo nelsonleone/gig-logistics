@@ -13,8 +13,8 @@ function MainWalletComponent() {
     const id = "transaction_section_tab"
 
     return(
-        <div className="my-10 lg:mb-16 text-[#374151] ">
-            <h2 className={`${roboto_slab.className} text-2xl lg:text-3xl mt-4 font-bold mb-8 text-[#374151] text-center`}>Fund your wallet to enjoy seamless transactions from start to finish</h2>
+        <div className="my-10 lg:mb-16 text-primary ">
+            <h2 className={`${roboto_slab.className} text-2xl lg:text-3xl mt-4 font-bold mb-8 text-primary text-center`}>Fund your wallet to enjoy seamless transactions from start to finish</h2>
             <WalletCard />
 
             <div className="mt-12 md:w-3/4 md:mx-auto">

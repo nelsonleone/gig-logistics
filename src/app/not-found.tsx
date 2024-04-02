@@ -20,9 +20,9 @@ export default function NotFound() {
               <h1 className={`${classes.h1} ${roboto_slab.className} text-3xl my-5 font-bold`}>Something is not right...</h1>
               <p className={inter.className}>
                 Page you are trying to open does not exist. You may have mistyped the address, or the
-                page has been moved to another URL. If you think this is an <span className="text-red-500">error</span> contact support.
+                page has been moved to another URL. If you think this is an <span className="text-primary2">error</span> contact support.
               </p>
-              <Link href="/"  className={`${classes.control} bg-black p-4 text-center inline-block my-5 text-white focus:border focus:border-black focus:text-black focus:bg-transparent transition duration-300 ease-in-out hover:border hover:border-black hover:text-black hover:bg-transparent`}>
+              <Link href="/"  className={`${classes.control} bg-base-color2 p-4 text-center inline-block my-5 text-base-color1 focus:border focus:border-black focus:text-black focus:bg-transparent transition duration-300 ease-in-out hover:border hover:border-black hover:base-color2 hover:bg-transparent`}>
                 Get back to home page
               </Link>
             </div>

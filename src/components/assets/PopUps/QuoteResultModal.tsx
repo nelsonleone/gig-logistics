@@ -23,7 +23,7 @@ export default function QuoteResultModal({ open, handleClose, quantity, weight, 
             aria-describedby="modal-modal-description"
             id="quote_result_modal"
             >
-            <div className={` ${inter.className} w-[90%] overflow-y-auto h-[30em] top-0 bottom-0 absolute left-0 m-auto md:max-w-[30em] md:w-[30em] right-0 rounded-lg  shadow-xl bg-[#FFFFFF] text-[#374151] px-0 pt-10 text-center`}>
+            <div className={` ${inter.className} w-[90%] overflow-y-auto h-[30em] top-0 bottom-0 absolute left-0 m-auto md:max-w-[30em] md:w-[30em] right-0 rounded-lg  shadow-xl bg-[#FFFFFF] text-primary px-0 pt-10 text-center`}>
                 <IconButton aria-controls="quote_result_modal" onClick={handleClose} aria-expanded={open ? "true" : "false"} className="absolute top-4 right-4">
                     <IoMdClose />
                 </IconButton>

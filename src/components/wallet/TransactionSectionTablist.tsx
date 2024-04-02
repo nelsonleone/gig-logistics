@@ -13,10 +13,10 @@ function TransactionSectionTablist({ id }:{ id:string }) {
     const tabName = searchParamsGet('tab')
 
     return (
-        <div role="tablist" aria-label="Transaction Section Tab" className="bg-white p-4 rounded items-center flex justify-center gap-4 h-24 md:h-16 md:w-[33em] md:mx-auto">
+        <div role="tablist" aria-label="Transaction Section Tab" className="bg-base-color1 p-4 rounded items-center flex justify-center gap-4 h-24 md:h-16 md:w-[33em] md:mx-auto">
             <button
                 className={`
-                    ${tabName !== TransactionSectionTabName.Shipments && tabName !== TransactionSectionTabName.InternationalShipments ? "text-black after:bg-black" : "text-[#374151]"} ${inter.className} after:block after:left-0 after:right-0 after:mx-auto after:absolute after:h-1 after:-bottom-4 flex-grow after:transition after:duration-200 after:ease-linear after:w-full font-bold relative h-full uppercase text-sm`
+                    ${tabName !== TransactionSectionTabName.Shipments && tabName !== TransactionSectionTabName.InternationalShipments ? "base-color2 after:bg-base-color2" : "text-primary"} ${inter.className} after:block after:left-0 after:right-0 after:mx-auto after:absolute after:h-1 after:-bottom-4 flex-grow after:transition after:duration-200 after:ease-linear after:w-full font-bold relative h-full uppercase text-sm`
                 }
                 role="tab"
                 onClick={() => router.push(`${pathName}?tab=${TransactionSectionTabName.Wallet}`)}
@@ -33,7 +33,7 @@ function TransactionSectionTablist({ id }:{ id:string }) {
 
             <button
                 className={`
-                ${tabName === TransactionSectionTabName.Shipments ? "text-black after:bg-black" : "text-[#374151]"} ${inter.className} after:w-full after:block after:left-0 after:right-0 after:mx-auto after:absolute after:h-1 after:-bottom-4 flex-grow after:transition after:duration-200 after:ease-linear font-bold relative h-full uppercase text-sm`
+                ${tabName === TransactionSectionTabName.Shipments ? "base-color2 after:bg-base-color2" : "text-primary"} ${inter.className} after:w-full after:block after:left-0 after:right-0 after:mx-auto after:absolute after:h-1 after:-bottom-4 flex-grow after:transition after:duration-200 after:ease-linear font-bold relative h-full uppercase text-sm`
                 }
                 role="tab"
                 onClick={() => router.push(`${pathName}?tab=${TransactionSectionTabName.Shipments}`)}
@@ -49,7 +49,7 @@ function TransactionSectionTablist({ id }:{ id:string }) {
 
             <button
                 className={`
-                    ${tabName === TransactionSectionTabName.InternationalShipments ? "text-black after:bg-black" : "text-[#374151]"} ${inter.className} after:block after:left-0 after:right-0 after:mx-auto after:absolute after:h-1 after:-bottom-4 flex-grow after:transition after:duration-200 after:ease-linear after:w-full font-bold relative h-full uppercase text-sm`
+                    ${tabName === TransactionSectionTabName.InternationalShipments ? "base-color2 after:bg-base-color2" : "text-primary"} ${inter.className} after:block after:left-0 after:right-0 after:mx-auto after:absolute after:h-1 after:-bottom-4 flex-grow after:transition after:duration-200 after:ease-linear after:w-full font-bold relative h-full uppercase text-sm`
                 }
                 role="tab"
                 onClick={() => router.push(`${pathName}?tab=${TransactionSectionTabName.InternationalShipments}`)}

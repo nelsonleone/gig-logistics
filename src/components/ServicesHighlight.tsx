@@ -12,7 +12,7 @@ export default async function ServicesHighlight(){
 
     return (
         <section className="mt-[15em] lg:mt-72 mb-[6.5em] px-3">
-            <h2 className={`${roboto_slab.className} text-[1.8rem] text-black text-center font-bold`}>Seamless Delivery Services</h2>
+            <h2 className={`${roboto_slab.className} text-[1.8rem] text-base-color2 text-center font-bold`}>Seamless Delivery Services</h2>
 
             <div className="flex justify-center items-center gap-4 flex-col mt-5 md:flex-wrap md:flex-row md:justify-between lg:flex-nowrap lg:flex-row lg:mt-10 lg:justify-between">
                 {
@@ -20,8 +20,8 @@ export default async function ServicesHighlight(){
                         <Suspense key={val._id} fallback={<CustomSkeleton className="w-full h-[18em] md:w-[48%] lg:w-full" variant="rectangular" />}>
                             <Link href={val.slug} className="focus:outline focus:outline-black block w-full md:w-[48%] lg:w-full">
                                 <div 
-                                   className="relative drop-shadow-sm bg-white  flex gap-4 justify-center items-center text-center flex-col text-[#4b5563] m-auto border-[1.5px] px-6  border-gray-200 transition-all duration-200 ease-linear
-                                   hover:scale-105 hover:bg-black hover:text-white group/serviceCard overflow-hidden py-10  h-[18em] lg:text-left lg:justify-start lg:items-start
+                                   className="relative drop-shadow-sm bg-base-color1  flex gap-4 justify-center items-center text-center flex-col text-[#4b5563] m-auto border-[1.5px] px-6  border-gray-200 transition-all duration-200 ease-linear
+                                   hover:scale-105 hover:bg-base-color2 hover:base-color1 group/serviceCard overflow-hidden py-10  h-[18em] lg:text-left lg:justify-start lg:items-start
                                    "
                                    >
                                     <Image 
@@ -37,7 +37,7 @@ export default async function ServicesHighlight(){
 
                                     {
                                         val.isNewService &&
-                                        <p className="font-bold absolute p-2 text-center top-4 rotate-45 -right-10 w-1/2 bg-red-600 text-white text-sm">New</p>
+                                        <p className="font-bold absolute p-2 text-center top-4 rotate-45 -right-10 w-1/2 bg-red-600 base-color1 text-sm">New</p>
                                     }
                                 </div>
                             </Link>

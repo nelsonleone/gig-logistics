@@ -19,7 +19,7 @@
 }
 
 .phoneInput input{
-    @apply border border-gray-300 outline-none rounded-lg p-[.7em] h-[3.3em] lg:p-[.75em] text-[#374151];
+    @apply border border-gray-300 outline-none rounded-lg p-[.7em] h-[3.3em] lg:p-[.75em] text-primary;
 }
 
 
@@ -35,7 +35,7 @@
   @apply border border-red-600;
 }
 .phoneInputError input:focus{
-  @apply outline outline-red-500 border-none outline-offset-0 ring-offset-0;
+  @apply outline outline-primary2 border-none outline-offset-0 ring-offset-0;
 }
 
 

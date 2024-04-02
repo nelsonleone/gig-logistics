@@ -54,8 +54,8 @@ export default function DeliveryPageMC(){
         <div className="mt-24 mb-6 md:w-[28em] lg:w-[27em] md:mx-auto">
             <p className="mb-7 text-center">To guarantee hassle-free shipping please input details of item(s) purchased from store in order to complete the overseas shipping process.</p>
             <form onSubmit={handleSubmit(handleFinalizeShipping)}>
-                <section className="shadow-lg bg-white drop-shadow-md rounded-md mt-12 w-full pb-10 flex overflow-hidden flex-col items-center relative">
-                    <h4 className="w-full text-center text-white shadow-sm-light bg-[hsl(0,2%,10%)] font-medium p-3 mb-8">Receiver's Details</h4>
+                <section className="shadow-lg bg-base-color1 drop-shadow-md rounded-md mt-12 w-full pb-10 flex overflow-hidden flex-col items-center relative">
+                    <h4 className="w-full text-center base-color1 shadow-sm-light bg-[hsl(0,2%,10%)] font-medium p-3 mb-8">Receiver's Details</h4>
                     <div className="w-full px-2 md:px-10">
                         <CustomTextInput
                             label="Receiver name" 
@@ -106,8 +106,8 @@ export default function DeliveryPageMC(){
                     </div>
                 </section>
 
-                <section className="shadow-lg bg-white drop-shadow-md rounded-md mt-12 w-full pb-10 flex overflow-hidden flex-col items-center relative">
-                    <h4 className="w-full text-center text-white shadow-sm-light bg-[hsl(0,2%,10%)] font-medium p-3 mb-8">Delivery Details</h4>
+                <section className="shadow-lg bg-base-color1 drop-shadow-md rounded-md mt-12 w-full pb-10 flex overflow-hidden flex-col items-center relative">
+                    <h4 className="w-full text-center base-color1 shadow-sm-light bg-[hsl(0,2%,10%)] font-medium p-3 mb-8">Delivery Details</h4>
 
                     <div className="w-full px-2 md:px-10">
                         <div className="w-full">
@@ -207,7 +207,7 @@ export default function DeliveryPageMC(){
 
                     </div>
                 </section>
-                <button disabled={isSubmitting} className="rounded-md block text-white bg-black font-medium p-[.9em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:text-black focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+                <button disabled={isSubmitting} className="rounded-md block base-color1 bg-base-color2 font-medium p-[.9em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
             </form>
 
 

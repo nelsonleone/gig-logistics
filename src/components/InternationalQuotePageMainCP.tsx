@@ -94,7 +94,7 @@ function InternationalQuotePageMainCP(){
                     <input 
                        type="text" 
                        id="quote_IntlAddress"
-                       className={`border ${errors.quote_IntlAddress ? "border-red-500" : "border-gray-300"} rounded-lg p-3 block w-full placeholder:text-[.9rem] placeholder:capitalize`}
+                       className={`border ${errors.quote_IntlAddress ? "border-primary2" : "border-gray-300"} rounded-lg p-3 block w-full placeholder:text-[.9rem] placeholder:capitalize`}
                        placeholder="Enter Address" {...register("quote_IntlAddress",{ required: "Address Is Required", minLength: { value: 1, message: "Enter a valid Address"} })} 
                     />
                     {
@@ -145,7 +145,7 @@ function InternationalQuotePageMainCP(){
                                         type={val.type} 
                                         id={val.id}
                                         {...register(val.name as keyof InternationalQuoteObj, { required: val.id === NDPackageTypeInputIds.quote_IntlQuantity ? "Quantity Is Required" : NDPackageTypeInputIds.quote_IntlValue ? "Value Is Required" : false})}
-                                        className={`border border-gray-300 ${val.id === NDPackageTypeInputIds.quote_IntlQuantity && errors.nonDocument?.quantity || val.id === NDPackageTypeInputIds.quote_IntlValue && errors.nonDocument?.value ? "border-red-500" : ""} rounded-md p-2 block w-full placeholder:text-[.9rem] placeholder:capitalize`}
+                                        className={`border border-gray-300 ${val.id === NDPackageTypeInputIds.quote_IntlQuantity && errors.nonDocument?.quantity || val.id === NDPackageTypeInputIds.quote_IntlValue && errors.nonDocument?.value ? "border-primary2" : ""} rounded-md p-2 block w-full placeholder:text-[.9rem] placeholder:capitalize`}
                                     />
                                     {
                                         val.id === NDPackageTypeInputIds.quote_IntlQuantity && errors.nonDocument?.quantity && 
@@ -170,7 +170,7 @@ function InternationalQuotePageMainCP(){
                                         type={val.type} 
                                         id={val.id}
                                         {...register(val.name as keyof InternationalQuoteObj, { required: val.id === "quote_IntlQuantity2" ? "Quantity Is Required" : val.id === "quote_IntlValue2" ? "Value Is Required" : false})}
-                                        className={`border border-gray-300 ${errors.document?.quantity || errors.document?.value ? "border-red-500" : ""} rounded-md p-2 block w-full placeholder:text-[.9rem] placeholder:capitalize`}
+                                        className={`border border-gray-300 ${errors.document?.quantity || errors.document?.value ? "border-primary2" : ""} rounded-md p-2 block w-full placeholder:text-[.9rem] placeholder:capitalize`}
                                     />
                                     {
                                         val.id === "quote_IntlQuantity2" && errors.document?.quantity && 

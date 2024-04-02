@@ -89,7 +89,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
 
 
     return(
-        <main className="my-10 pt-24 lg:my-28 pb-8 text-[#374151] bg-white rounded-lg w-full mx-auto md:w-[25em] shadow-lg shadow-slate-500 drop-shadow-sm">
+        <main className="my-10 pt-24 lg:my-28 pb-8 text-primary bg-base-color1 rounded-lg w-full mx-auto md:w-[25em] shadow-lg shadow-slate-500 drop-shadow-sm">
             <h1 className={`${roboto_slab.className} text-center text-3xl font-bold mb-8`}>Sign In</h1>
 
             <form onSubmit={handleSubmit(handleSignIn)} className="w-[94%] md:w-11/12 mx-auto">
@@ -118,7 +118,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
 
                 <Link href="/auth/reset_password" className="block underline ms-1 font-medium text-sm my-4">Forgot Password?</Link>
 
-                <button disabled={isSubmitting} className="h-[3.4em] bg-black relative text-[#FFFFFF] capitalize text-center block mt-6 mb-4 rounded-lg p-4 font-medium w-full hover:drop-shadow-lg transition duration-200 ease-linear focus:border focus:border-gray-300">{isSubmitting ? <LoadingEllipse styles="" /> :"Log In"}</button>
+                <button disabled={isSubmitting} className="h-[3.4em] bg-base-color2 relative text-[#FFFFFF] capitalize text-center block mt-6 mb-4 rounded-lg p-4 font-medium w-full hover:drop-shadow-lg transition duration-200 ease-linear focus:border focus:border-gray-300">{isSubmitting ? <LoadingEllipse styles="" /> :"Log In"}</button>
                 <ContinueWithGoogleBtn disabled={isSubmitting} handleClick={handleGoogleSignIn} className="" />
                 <p className="text-sm text-center">Don't have an account? <Link className="underline font-medium mx-2" href={`/auth/create_account${returnTo ? `?returnTo=${returnTo}` : ""}`}>Sign Up</Link></p>
             </form>

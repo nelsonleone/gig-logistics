@@ -17,7 +17,7 @@ export default async function WalletNAddedServices(){
     const walletNAddedServicesSanityData = await getPTservicesData(PT_ServiceName.walletAndAddedServices)
 
     return(
-        <div className="page px-6 relative pt-5 text-[#374151] lg:pt-8 xl:px-10">
+        <div className="page px-6 relative pt-5 text-primary lg:pt-8 xl:px-10">
             <BackBtn />
             <PortfolioSitesPageIntro introHeading="WALLET AND ADDED SERVICES" introText="Beyond Shipments to Crypto Banking and More" />
             <main className="my-20">
