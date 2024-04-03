@@ -18,7 +18,7 @@ export default async function ServicesHighlight(){
                 {
                     servicesHighlightData.map(val => (
                         <Suspense key={val._id} fallback={<CustomSkeleton className="w-full h-[18em] md:w-[48%] lg:w-full" variant="rectangular" />}>
-                            <Link href={val.slug} className="focus:outline focus:outline-black block w-full md:w-[48%] lg:w-full">
+                            <Link href={val.slug} className="focus:outline focus:outline-base-color2 block w-full md:w-[48%] lg:w-full">
                                 <div 
                                    className="relative drop-shadow-sm bg-base-color1  flex gap-4 justify-center items-center text-center flex-col text-[#4b5563] m-auto border-[1.5px] px-6  border-gray-200 transition-all duration-200 ease-linear
                                    hover:scale-105 hover:bg-base-color2 hover:base-color1 group/serviceCard overflow-hidden py-10  h-[18em] lg:text-left lg:justify-start lg:items-start
@@ -37,7 +37,7 @@ export default async function ServicesHighlight(){
 
                                     {
                                         val.isNewService &&
-                                        <p className="font-bold absolute p-2 text-center top-4 rotate-45 -right-10 w-1/2 bg-red-600 base-color1 text-sm">New</p>
+                                        <p className="font-bold absolute p-2 text-center top-4 rotate-45 -right-10 w-1/2 bg-red-600 text-base-color1 text-sm">New</p>
                                     }
                                 </div>
                             </Link>

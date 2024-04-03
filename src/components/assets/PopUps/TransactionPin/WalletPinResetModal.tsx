@@ -122,7 +122,7 @@ export default async function WalletPinResetModal({ authUserPinStatus }: { authU
                             }
                         </div>
 
-                        <button onClick={handleConfirm} className="relative bg-base-color2 h-14 mt-6 flex justify-center items-start base-color1 w-full mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">
+                        <button onClick={handleConfirm} className="relative bg-base-color2 h-14 mt-6 flex justify-center items-start text-base-color1 w-full mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">
                             {
                                 isResetting ?
                                 <LoadingEllipse />

@@ -94,7 +94,7 @@ export default function XpressDropOffFormContainer(){
             <XpressDropOffDeliveryItemsSection deliveryItemError={errors.deliveryItems?.message} setValue={setValue} control={control} />
             <XpressDropOffEstimatedCostSection deliveryItems={deliveryItems} />
 
-            <button disabled={isSubmitting} className={`${inter.className} relative min-h-[3.8em] text-center w-full md:w-96 bg-base-color2 base-color1 font-medium rounded-md my-8 md:my-10 mx-auto block`}>
+            <button disabled={isSubmitting} className={`${inter.className} relative min-h-[3.8em] text-center w-full md:w-96 bg-base-color2 text-base-color1 font-medium rounded-md my-8 md:my-10 mx-auto block`}>
                 {
                     isSubmitting ?
                     <LoadingEllipse />

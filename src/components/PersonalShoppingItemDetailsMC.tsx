@@ -97,7 +97,7 @@ export default function PersonalShoppingItemDetailsMC(){
                 }
             </div>
 
-            <button disabled={isSubmitting} className="relative block my-10 w-full text-center mx-auto font-medium base-color1 bg-base-color2 p-4 text-sm rounded lg:text-base">
+            <button disabled={isSubmitting} className="relative block my-10 w-full text-center mx-auto font-medium text-base-color1 bg-base-color2 p-4 text-sm rounded lg:text-base">
                 {
                     isSubmitting ?
                     <LoadingEllipse />

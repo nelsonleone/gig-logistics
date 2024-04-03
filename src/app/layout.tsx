@@ -12,6 +12,7 @@ import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import { MantineProvider } from "@mantine/core";
 import ImportantPrompts from '@/components/assets/PopUps/ImportantPrompts'
+import SupportChat from '@/components/assets/PopUps/SupportChat'
   
 
 export const metadata: Metadata = {
@@ -41,11 +42,12 @@ export default function RootLayout({
               <Header >
                 <AuthUserHeaderSection />
               </Header>
-
+              {/* {createPin} */}
               {children}
               <ImportantPrompts />
               <RingLoader />
               <CustomSnackbar />
+              <SupportChat />
               <Footer />
             </MantineProvider>
           </body>

@@ -47,7 +47,7 @@
     }
     
     .footer-li{
-        @apply my-2 first:text-lg  first:font-semibold mb-3 lg:my-4 transition duration-[.25s] ease-linear hover:text-accent-color first:hover:text-base-color1;
+        @apply my-2 first:text-lg text-base-color1  first:font-semibold mb-3 lg:my-4 transition duration-[.25s] ease-linear hover:text-accent-color first:hover:text-base-color1;
     }
     
     .footer-li-with-svg{

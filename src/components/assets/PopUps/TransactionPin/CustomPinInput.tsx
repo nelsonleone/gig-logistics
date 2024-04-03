@@ -76,7 +76,7 @@ export default function CustomPinInput(props:IProps){
 
                 <button 
                    onClick={handleAction} 
-                   className="relative bg-base-color2 h-16 flex justify-center items-center base-color1 w-full mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">
+                   className="relative bg-base-color2 h-16 flex justify-center items-center text-base-color1 w-full mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">
                     {
                         creatingPin ?
                         <LoadingEllipse />

@@ -148,7 +148,7 @@ function ChangeWalletPinModal(){
 
                 <button 
                    onClick={handleChangePin} 
-                   className="relative bg-base-color2 h-16 base-color1 w-full block mt-8 mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">
+                   className="relative bg-base-color2 h-16 text-base-color1 w-full block mt-8 mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">
                     {
                         changingPin ?
                         <LoadingEllipse />

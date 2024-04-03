@@ -117,7 +117,7 @@ export default function PasswordChangeForm(){
             /> 
 
                         
-            <button disabled={!isDirty || isSubmitting ? true : false} className="relative my-10 w-full text-center mx-auto font-medium base-color1 bg-base-color2 p-4 text-sm rounded lg:text-base disabled:opacity-80 disabled:cursor-not-allowed md:w-36 md:h-12 flex justify-center items-center hover:scale-105 transition duration-200 ease-in focus:outline focus:outline-accent-color1">
+            <button disabled={!isDirty || isSubmitting ? true : false} className="relative my-10 w-full text-center mx-auto font-medium text-base-color1 bg-base-color2 p-4 text-sm rounded lg:text-base disabled:opacity-80 disabled:cursor-not-allowed md:w-36 md:h-12 flex justify-center items-center hover:scale-105 transition duration-200 ease-in focus:outline focus:outline-accent-color1">
                 {
                     isSubmitting ?
                     <LoadingEllipse />

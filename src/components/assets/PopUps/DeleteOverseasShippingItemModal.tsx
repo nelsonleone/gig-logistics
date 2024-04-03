@@ -29,7 +29,7 @@ export default function DeleteOverseasShippingItemModal({ openDeleteModal, delet
 
                 <div className="flex justify-center gap-10">
                     <button type="button" onClick={() => setOpenDeleteModal(false)} className="border mb-2 font-medium px-10 border-black rounded p-3 hover:shadow-md transition duration-200 ease-in-out">Cancel</button>
-                    <button type="button" onClick={handleDelete} className="border mb-2 font-medium px-10 base-color1 bg-base-color2 rounded p-3 hover:shadow-md transition duration-200 ease-in-out">Delete</button>
+                    <button type="button" onClick={handleDelete} className="border mb-2 font-medium px-10 text-base-color1 bg-base-color2 rounded p-3 hover:shadow-md transition duration-200 ease-in-out">Delete</button>
                 </div>
             </div>
         </Modal>

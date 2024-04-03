@@ -37,7 +37,7 @@ export default function TruckSize(props:IProps){
                         ))
                     }
 
-                    <button onClick={handleNext} className="bg-base-color2 md:w-32 mt-4 md:mx-auto base-color1 rounded p-3 text-center font-medium border border-black hover:bg-transparent hover:base-color2 focus:bg-transparent focbase-color2r2r2r2 transition duration-200 ease-in-out">Next</button>
+                    <button onClick={handleNext} className="bg-base-color2 md:w-32 mt-4 md:mx-auto text-base-color1 rounded p-3 text-center font-medium border border-black hover:bg-transparent hover:base-color2 focus:bg-transparent focbase-color2r2r2r2 transition duration-200 ease-in-out">Next</button>
                 </div>
             </div>
         </Modal>

@@ -166,7 +166,7 @@ function OutBoundShipmentSenderInfoMC() {
                 </div>
             </div>
 
-            <button disabled={isSubmitting} className="block w-full rounded-md base-color1 bg-base-color2 font-medium p-4 text-center mx-auto md:w-[20em] mt-12 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+            <button disabled={isSubmitting} className="block w-full rounded-md text-base-color1 bg-base-color2 font-medium p-4 text-center mx-auto md:w-[20em] mt-12 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
         </form>
     )
 }

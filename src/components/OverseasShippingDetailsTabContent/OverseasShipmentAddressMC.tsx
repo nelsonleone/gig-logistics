@@ -60,7 +60,7 @@ export default function OverseasShipmentAddressMC(){
                 </div>
             </div>
 
-            <button onClick={() => router.push(nextStep)} className="rounded-md block base-color1 bg-base-color2 font-medium p-[.8em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+            <button onClick={() => router.push(nextStep)} className="rounded-md block text-base-color1 bg-base-color2 font-medium p-[.8em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
         
            <OverseasShippingShopsHighlight />
         </div>

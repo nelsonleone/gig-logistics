@@ -21,7 +21,7 @@ export default function OverseasShippingSuccessModal(props:IProps){
             <div className="h-80 bg-base-color1 text-primary flex flex-col justify-center items-center shadow-lg rounded-lg p-4 md:p-8 absolute top-0 bottom-0 left-0 right-0 m-auto w-[95%] md:w-[30em]">
                 <h2 className={`${roboto_slab.className} font-semibold text-3xl my-8` }>Shipment Is Being Processed</h2>
                 <Image src="/icons/success-check.svg" width={120} height={120} alt="success" />
-                <button onClick={handleCloseSuccessModal} className="bg-base-color2 py-4 px-7 my-6 font-medium base-color1 rounded block text-center mx-auto hover:drop-shadow-lg transition ease-linear duration-200">Thank You</button>
+                <button onClick={handleCloseSuccessModal} className="bg-base-color2 py-4 px-7 my-6 font-medium text-base-color1 rounded block text-center mx-auto hover:drop-shadow-lg transition ease-linear duration-200">Thank You</button>
             </div>
         </Modal>
     )

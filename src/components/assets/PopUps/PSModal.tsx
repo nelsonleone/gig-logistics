@@ -12,8 +12,8 @@ interface IMultiUseModalProps{
 export default function PSModal(props:IMultiUseModalProps){
     return(
         <Modal open={props.open} onClose={props.onClose} id="pssm_modal">
-            <div className="max-h-fit overflow-hidden z-10 h-80 base-color1 bg-base-color1 flex flex-col justify-center shadow-lg rounded-lg p-4 md:p-8 absolute top-0 bottom-0 left-0 right-0 m-auto w-[95%] md:w-[30em]">
-                <IconButton aria-controls="pssm_modal" onClick={props.onClose} aria-expanded={props.open ? "true" : "false"} className="absolute top-4 right-4 base-color1">
+            <div className="max-h-fit overflow-hidden z-10 h-80 text-base-color2 bg-base-color1 flex flex-col justify-center shadow-lg rounded-lg p-4 md:p-8 absolute top-0 bottom-0 left-0 right-0 m-auto w-[95%] md:w-[30em]">
+                <IconButton aria-controls="pssm_modal" onClick={props.onClose} aria-expanded={props.open ? "true" : "false"} className="absolute top-4 right-4 base-color2">
                     <IoMdClose />
                 </IconButton>
                 <div className="absolute w-full h-full -z-10 left-0 bottom-0 m-auto top-0 right-0 bg-cover bg-center bg-no-repeat bg-[url('/images/green-bag.webp')] brightness-[.6]"></div>

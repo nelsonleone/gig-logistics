@@ -37,7 +37,7 @@ export default function AddPhoneNumber(){
                 <h2 className="text-center my-4 font-bold text-2xl md:text-3xl">Enter Your Phone Number</h2>
                 <p className="mt-6 mb-4 italic text-sm font-medium">Your phone number helps us serve you and deliver seamless services</p>
                 <CustomPhoneInput className="mt-4" error={errors.phoneNumber?.message} id="add_phoneNumber_popup_input" control={control} name="phoneNumber" placeholder="Phone Number" />
-                <button onClick={handleSubmit(() => setOpenConfirmPinModal(true))} className="relative bg-base-color2 base-color1 w-24 rounded-md h-12 px-3 text-center hover:opacity-80 focus:border focus:border-accent-color2 focus:opacity-100 focus:outline-non transition duration-200 ease-in-out">
+                <button onClick={handleSubmit(() => setOpenConfirmPinModal(true))} className="relative bg-base-color2 text-base-color1 w-24 rounded-md h-12 px-3 text-center hover:opacity-80 focus:border focus:border-accent-color2 focus:opacity-100 focus:outline-non transition duration-200 ease-in-out">
                     {
                         isSubmitting ?
                         <LoadingEllipse />

@@ -13,7 +13,7 @@ export default function SignInLink({ authUserData }: { authUserData:AuthUser | u
         !beenAuthenticated && !authUserData ?
         <Link
             href="/auth/sign_in"
-            className={`${inter.className} flex justify-center items-center w-28 red-button-bright font-inter transition-opacity font-medium hover:shadow-inner hover:opacity-90 focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent h-[3.2em] text-sm base-color1 py-2 px-4 hover:bg-red-700`}
+            className={`${inter.className} flex justify-center items-center w-28 red-button-bright font-inter transition-opacity font-medium hover:shadow-inner hover:opacity-90 focus:border focus:border-red-600 focus:text-red-600 focus:bg-transparent h-[3.2em] text-sm text-base-color1 py-2 px-4 hover:bg-red-700`}
             >
             Sign In
         </Link>
