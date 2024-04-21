@@ -13,12 +13,14 @@ import { setShowAlert } from "@/redux/slices/alertSlice";
 import { AlertSeverity } from "@/enums";
 import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice";
 import { red } from "@mui/material/colors";
+import { useRouter } from "next/navigation";
 
 export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser | undefined }){
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
     const open = Boolean(anchorEl)
     const dispatch = useAppDispatch()
+    const router = useRouter()
     const { picture, firstName } = useAppSelector(store => store.authUser)
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -41,7 +43,7 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
 
                 dispatch(setSignOutAuthUser())
 
-                // router.push("/")
+                router.refresh()
             }
 
             catch(err:any|unknown){

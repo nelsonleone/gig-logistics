@@ -6,17 +6,25 @@ import { AlertSeverity } from "@/enums"
 import { setShowAlert } from "@/redux/slices/alertSlice"
 import { Dispatch, SetStateAction } from "react"
 
-export const handleAddPhoneNumber = async(phoneNumber:string,dispatch:ReduxDispatch,uid:string, setOpen:Dispatch<SetStateAction<boolean>>) => {
+export const handleAddPhoneNumber = async(phoneNumber:string,dispatch:ReduxDispatch,uid:string, setOpen:Dispatch<SetStateAction<boolean>>,pin:string|undefined,setAddingPhoneNumber:Dispatch<SetStateAction<boolean>>) => {
     try{
+
+        if(pin?.toString() !== phoneNumber.slice(-4)){
+            throw new Error("OTP is incorrect")
+            return;
+        }
         const updatedAuthUserData = await setUserPhoneNumber(uid,phoneNumber)
-        setOpen(false)
-
+        
+        setAddingPhoneNumber(false)
+        
         dispatch(setAuthUserData({...updatedAuthUserData}))
-
+        
         dispatch(setShowSnackbar({
             mssg: "Phone Number Added Successfully",
             severity: AlertSeverity.SUCCESS
         }))
+        setOpen(false)
+        
     }
     catch(err:any|unknown){
         dispatch(setShowAlert({

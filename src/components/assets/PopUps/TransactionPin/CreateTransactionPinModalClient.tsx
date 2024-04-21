@@ -4,6 +4,7 @@ import { roboto_slab } from "@/app/fonts"
 import { AuthUserWalletPinStatus } from "@/enums"
 import { useAppSelector } from "@/redux/customHooks"
 import { IconButton, Modal } from "@mui/material"
+import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { IoMdClose } from "react-icons/io"
@@ -42,7 +43,7 @@ export default function CreateTransactionPinModalClient({ authUserPinStatus }: {
                 <IconButton aria-controls="create_pin_modal" onClick={() => setOpen(false)} aria-expanded={open ? "true" : "false"} className="absolute top-4 right-4 text-base-color2">
                     <IoMdClose />
                 </IconButton>
-                <img src="/images/wallet-pin.png" className="w-36 aspect-square block mx-auto rounded-full" alt="" aria-hidden="true" />
+                <Image src="/images/wallet-pin.png" width={100} height={100} loading="eager" priority className="w-36 aspect-square block mx-auto rounded-full" alt="" aria-hidden="true" />
                 <h3 className={`${roboto_slab.className} mb-8 t-4 font-bold text-2xl md:text-3xl text-primary`}>Create A Wallet Pin</h3>
                 <p className="text-primary text-sm">
                     Exciting News! We are thrilled to announce the introduction of a Wallet PIN feature for enhanced security on your GIGGo wallet. Your transactions on the app will now be safeguarded by your personalized PIN. Take control of your security and set up your Wallet PIN today to unlock this advanced feature!

@@ -21,11 +21,11 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
-  createPin
+  createPin,
+  children
 }: {
-  children: React.ReactNode,
-  createPin: React.ReactNode
+  createPin: React.ReactNode,
+  children: React.ReactNode
 }) {
 
 
@@ -42,7 +42,7 @@ export default function RootLayout({
               <Header >
                 <AuthUserHeaderSection />
               </Header>
-              {/* {createPin} */}
+              {createPin}
               {children}
               <ImportantPrompts />
               <RingLoader />

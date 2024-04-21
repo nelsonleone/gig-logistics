@@ -21,6 +21,6 @@ export default async function CreateWalletPin(){
 
 
     return(
-        <CustomPinInput for="createWalletPin" open={true} />
+        <CustomPinInput for="createWalletPin" heading="Wallet Pin Setup" open={true} text="Kindly enter your one-time wallet pin" />
     )
 }

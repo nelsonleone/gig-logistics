@@ -21,7 +21,7 @@ export default async function ServicesHighlight(){
                             <Link href={val.slug} className="focus:outline focus:outline-base-color2 block w-full md:w-[48%] lg:w-full">
                                 <div 
                                    className="relative drop-shadow-sm bg-base-color1  flex gap-4 justify-center items-center text-center flex-col text-[#4b5563] m-auto border-[1.5px] px-6  border-gray-200 transition-all duration-200 ease-linear
-                                   hover:scale-105 hover:bg-base-color2 hover:base-color1 group/serviceCard overflow-hidden py-10  h-[18em] lg:text-left lg:justify-start lg:items-start
+                                   hover:scale-105 hover:bg-base-color2 hover:text-base-color1 group/serviceCard overflow-hidden py-10  h-[18em] lg:text-left lg:justify-start lg:items-start
                                    "
                                    >
                                     <Image 

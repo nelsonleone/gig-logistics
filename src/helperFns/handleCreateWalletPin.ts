@@ -6,7 +6,7 @@ import { AlertSeverity, AuthUserWalletPinStatus } from "@/enums";
 import { setWalletPinStatus } from "@/redux/slices/authUser";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-export const handleCreatePin = async(router:AppRouterInstance, uid: string, dispatch:ReduxDispatch, pin:string | undefined, setCreatingPin:Dispatch<SetStateAction<boolean>>,setError:Dispatch<SetStateAction<string>>) => {
+export const handleCreatePin = async(router:AppRouterInstance, uid: string, phoneNumber:string, dispatch:ReduxDispatch, pin:string | undefined, setCreatingPin:Dispatch<SetStateAction<boolean>>,setError:Dispatch<SetStateAction<string>>) => {
     await asyncWrapper(
         async() => {
             try{
@@ -16,21 +16,28 @@ export const handleCreatePin = async(router:AppRouterInstance, uid: string, disp
                 }
                 setCreatingPin(true)
 
-                const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/api/wallet/create_pin?uid=${uid}`,{
-                    method: "POST",
-                    body: JSON.stringify({ pin })
-                })
-
-                if(!res.ok){
-                    const { error } = await res.json()
-                    throw new Error(error)
+                if(pin !== phoneNumber.slice(-4)){
+                    throw new Error("OTP is incorrect")
                     return;
                 }
+
+                const message = "Transaction pin created successfully"
+
+                // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/api/wallet/create_pin?uid=${uid}`,{
+                //     method: "POST",
+                //     body: JSON.stringify({ pin })
+                // })
+
+                // if(!res.ok){
+                //     const { error } = await res.json()
+                //     throw new Error(error)
+                //     return;
+                // }
                 
-                const { message } = await res.json()
-                if(!message){
-                    throw new Error("An Unexpected Error Occurred")
-                }
+                // const { message } = await res.json()
+                // if(!message){
+                //     throw new Error("An Unexpected Error Occurred")
+                // }
     
                 dispatch(setShowAlert({
                     mssg: message,
