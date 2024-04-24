@@ -147,7 +147,8 @@ type AboutUsPageContentData = {
     aboutUsContent3: AboutUsContent;
     aboutUsServiceHighlightCards: AboutUsServiceHighlightCard[];
     introHeading: string;
-    aboutUsRepImg: ISanityImageObjType;
+    aboutUsRepImg: string;
+    aboutUsRepImgAlt: string;
     mainContent: ITypedObject[]
 }
 
@@ -180,7 +181,8 @@ type DedicatedServices = {
 
 type PT_SanityServiceData = {
     service: {
-        repImage: ISanityImageObjType;
+        repImage: string,
+        repImageAlt: string,
         textContent: ITypedObject[]
     }
 }
@@ -201,6 +203,13 @@ type LocalOverseasShippingIntroData = {
     whatYouNeedToKnow: ITypedObject[],
     introText: ITypedObject[],
     introTextIllustrationImage: string
+}
+
+type ChinaOverseasShippingData = {
+    repImage: string,
+    repImageAlt: string,
+    introTextContent: ITypedObject[],
+    fullGuidelineDetails: ITypedObject[]
 }
 
 

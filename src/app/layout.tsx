@@ -8,9 +8,6 @@ import CustomAlert from '@/components/assets/PopUps/CustomAlert'
 import AuthUserHeaderSection from '@/components/AuthUserHeaderSection'
 import CustomSnackbar from '@/components/assets/PopUps/CustomSnackbar'
 import RingLoader from '../components/assets/Loaders/RingLoader'
-import '@mantine/core/styles.css';
-import '@mantine/dates/styles.css';
-import { MantineProvider } from "@mantine/core";
 import ImportantPrompts from '@/components/assets/PopUps/ImportantPrompts'
 import SupportChat from '@/components/assets/PopUps/SupportChat'
   
@@ -37,19 +34,17 @@ export default function RootLayout({
       </head>
         <CustomAppStoreProvider>
           <body className={`${inter.className} bg-[#f4f5f6] scroll-smooth overflow-x-hidden`}>
-            <MantineProvider theme={{ fontFamily: "Inter, sans-serif" }}>
-              <CustomAlert />
-              <Header >
-                <AuthUserHeaderSection />
-              </Header>
-              {createPin}
-              {children}
-              <ImportantPrompts />
-              <RingLoader />
-              <CustomSnackbar />
-              <SupportChat />
-              <Footer />
-            </MantineProvider>
+            <CustomAlert />
+            <Header >
+              <AuthUserHeaderSection />
+            </Header>
+            {createPin}
+            {children}
+            <ImportantPrompts />
+            <RingLoader />
+            <CustomSnackbar />
+            <SupportChat />
+            <Footer />
           </body>
         </CustomAppStoreProvider>
     </html>

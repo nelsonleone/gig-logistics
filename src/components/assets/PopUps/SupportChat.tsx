@@ -36,7 +36,7 @@ export default function SupportChat(){
             <AnimatePresence>
                 {
                     showChat &&
-                    <motion.div initial={{opacity:0, y: 200}} animate={{ y: 0, opacity: 1 }} exit={{y: 500, transition: { duration: .8, ease: "linear"} }} className={`${minimizeChat ? "invisible pointer-events-none -z-50" : "z-auto visible pointer-events-auto"} bg-base-color1 fixed z-[1000000000] overflow-y-auto shadow-gray-200 rounded-lg h-screen w-full md:w-[30em] top-0 right-0 md:top-4 md:right-4 md:rounded-2xl md:h-[80vh] md:my-auto`}>
+                    <motion.div initial={{opacity:0, y: 200}} animate={{ y: 0, opacity: 1 }} exit={{y: 500, transition: { duration: .8, ease: "linear"} }} className={`${minimizeChat ? "invisible pointer-events-none -z-50" : "z-auto visible pointer-events-auto"} bg-base-color1 fixed z-[999] overflow-y-auto shadow-gray-200 rounded-lg h-screen w-full md:w-[30em] top-0 right-0 md:bottom-0 md:right-4 md:rounded-2xl md:h-[95vh] md:my-auto`}>
                         <div className="bg-red-700 flex justify-between gap-8 relative p-5">
                             <h2 className={`${roboto_slab.className} text-2xl text-base-color1 font-bold uppercase text-center`}>GIG LOGISTICS</h2>
                             <div className="flex gap-2 text-base-color1">

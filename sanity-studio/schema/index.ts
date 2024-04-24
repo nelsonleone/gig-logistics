@@ -7,6 +7,7 @@ import portfolioServices from './portfolio-services'
 import overseasShippingTradeOpt from './overseas-shipping-trade-opt'
 import personalShoppingInfo from './personal-shopping-info'
 import localShippingIntroDataSchema from './localShippingIntroDataSchema'
+import chinaOverseasShippingSchema from './china-overseas-shipping'
 
 export const schema: SchemaPluginOptions | undefined = {
   types: [
@@ -17,6 +18,7 @@ export const schema: SchemaPluginOptions | undefined = {
     portfolioServices,
     overseasShippingTradeOpt,
     localShippingIntroDataSchema,
-    personalShoppingInfo
+    personalShoppingInfo,
+    chinaOverseasShippingSchema
   ]
 }

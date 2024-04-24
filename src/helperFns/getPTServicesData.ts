@@ -6,10 +6,16 @@ import { cache } from "react";
 
 export const getPTservicesData = cache(async (serviceName:PT_ServiceName) => {
     try{
-        const data : PT_SanityServiceData = await sanityClient.fetch(
+        const data: PT_SanityServiceData = await sanityClient.fetch(
             groq`
-             *[_type == 'portfolioServices' && service.serviceName == $serviceName][0]
-            `,{
+                *[_type == 'portfolioServices' && service.serviceName == $serviceName][0]{
+                    "service": {
+                        "repImage": service.repImage.asset->url,
+                        "textContent": service.textContent,
+                        "repImageAlt": service.repImage.alt
+                    }
+                }`,
+            {
                 serviceName
             },
             {
@@ -18,11 +24,13 @@ export const getPTservicesData = cache(async (serviceName:PT_ServiceName) => {
                 }
             }
         )
-    
+        
+        
         return data;
     }
 
-    catch(err){
+    catch(err:any|unknown){
+        console.log(err.message)
         return null;
     }
 })

@@ -7,7 +7,16 @@ export const getAboutUsPageContent = cache( async ()=> {
   try{
     const aboutPageData : AboutUsPageContentData[] = await sanityClient.fetch(
       groq`
-        *[_type == 'aboutUsContent']
+        *[_type == 'aboutUsContent']{
+          introText,
+          aboutUsContent2,
+          aboutUsContent3,
+          aboutUsServiceHighlightCards,
+          introHeading,
+          "aboutUsRepImg": aboutUsRepImg.asset->url,
+          "aboutUsRepImgAlt": aboutUsRepImg.alt,
+          mainContent
+        }
       `,{},{next:{
          revalidate: 3600,
       }}

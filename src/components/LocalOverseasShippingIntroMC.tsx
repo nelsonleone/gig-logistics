@@ -8,6 +8,7 @@ import CustomQuotePageSelect from './assets/inputs/CustomQuotePageSelect';
 import { BiSolidMessageAltError } from 'react-icons/bi';
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const serializer1 = {
     block: {
@@ -69,16 +70,22 @@ const destinationOriginData = {
     ]
 }
 
-function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingIntroData | null }) {
+async function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingIntroData | null }) {
 
     const { control, handleSubmit, formState: { errors } } = useForm<LocalOverseasShippingIntroPageDestinationOrigin>() 
     const origin = useWatch({ control, name: 'origin.label' })
     const destination = useWatch({ control, name: 'destination.label' })
     const router = useRouter()
 
-    const handleStartOverseasShopping : SubmitHandler<LocalOverseasShippingIntroPageDestinationOrigin> = (data) => {
+    const handleStartOverseasShopping : SubmitHandler<LocalOverseasShippingIntroPageDestinationOrigin> = () => {
         router.push("/app-panel/overseas-shipping/shipping-details/shipment-address")
     }
+
+    useEffect(() => {
+        if(origin === "CHINA"){
+            router.push("/app-panel/china-overseas-shipping")
+        }
+    },[origin])
 
     return(
         data &&

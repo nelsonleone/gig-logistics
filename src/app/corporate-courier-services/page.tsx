@@ -10,7 +10,7 @@ import { Suspense } from 'react'
 
 export const metadata : Metadata = {
     title: "Corporate Logistics | GIGL"
-}
+} 
 
 export default async function CorporateLogistics(){
 

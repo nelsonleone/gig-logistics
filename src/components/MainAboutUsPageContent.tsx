@@ -1,7 +1,8 @@
+"use client"
+
 import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import { Suspense } from 'react'
-import { urlForImage } from '../../sanity-studio/lib/image'
 import { AboutUsPageContentData } from '../../types'
 import DuoSkeleton from './assets/Loaders/DuoSkeleton'
 
@@ -20,8 +21,8 @@ export default function MainAboutUsPageContent({ className,aboutPageContentData 
                 <div className={className}>
                     <div className='md:w-[40em] md:mx-auto lg:w-1/2 '>
                         <Image
-                            src={urlForImage(aboutPageContentData?.aboutUsRepImg.asset).url()} 
-                            alt={aboutPageContentData?.aboutUsRepImg.alt} 
+                            src={aboutPageContentData?.aboutUsRepImg} 
+                            alt={aboutPageContentData?.aboutUsRepImgAlt} 
                             quality={100}
                             width={750}
                             height={750}
