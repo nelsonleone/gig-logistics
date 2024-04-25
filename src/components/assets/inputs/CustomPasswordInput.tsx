@@ -66,7 +66,7 @@ export default function CustomPasswordInput(props:IProps){
                             {...field}
                             value={value} 
                             readOnly={readOnly}
-                            className={`absolute top-0 bottom-0 my-auto pe-4 left-0 w-full ${error ? "focus:outline-primary2" : ""} ${inputStyles}`}
+                            className={`${inputStyles} placeholder:text-gray-400 outline-offset-0 focus:outline-offset-0 ${error ? "border-primary2 focus:outline-primary2 md:focus:outline-primary2" : ""}`}
                         />
 
                         <IconButton 

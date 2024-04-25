@@ -2,18 +2,22 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image"
 import Link from "next/link"
 import { ChinaOverseasShippingData } from "../../types";
+import { roboto_slab } from "@/app/fonts";
 
 const serializer1 = {
     block: {
         h1({ children }:any){
-            return <h3 className="text-3xl font-bold my-12">{children}</h3>
+            return <h1 className={`${roboto_slab.className} text-4xl text-base-color2 font-bold my-12`}>{children}</h1>
         },
         h3({ children }:any){
             return <h3 className="text-xl font-bold my-2">{children}</h3>
         },
         normal({ children }:any){
             return <p className="mb-4">{children}</p>
-        },
+        }
+    },
+    listItem: {
+        bullet: ({ children }:any) => <li className="list-disc md:my-2 mx-6">{children}</li>,
     },
     marks: {    
         link: ({ value, children }:any) => {
@@ -25,6 +29,9 @@ const serializer1 = {
             </Link>
           )
         },
+        strong: ({ children }: any) => {
+            return <span className="text-accent-color">{children}</span>
+        }
     },
 }
 
@@ -33,12 +40,9 @@ const serializer2 = {
         normal({ children }:any){
             return <p className="my-6 leading-8">{children}</p>
         },
-    },
-    list: {
-        bullet: ({children}:any) => <ul className="my-8">{children}</ul>,
-    },
-    listItem: {
-        bullet: ({children}:any) => <li className="ms-4 my-1">{children}</li>,
+        h3({ children }:any){
+            return <h3 className="text-xl font-bold mt-9 mb-2">{children}</h3>
+        },
     },
     marks: {    
         link: ({ value, children }:any) => {
@@ -56,14 +60,18 @@ const serializer2 = {
 export default async function({ data }: { data: ChinaOverseasShippingData | null }){
     return(
         data &&
-        <section>
-            <div className="flex flex-col justify-between md:flex-row  px-6 xl:px-10">
+        <section className="text-primary">
+            <div className="pt-8 flex flex-col justify-between md:flex-row">
+                <div>
+                    <Image src={data?.repImage} className="rounded-sm" width={600} height={600} alt={data?.repImageAlt} />
+                </div>
                 <div className="md:w-1/2">
                     <PortableText value={data?.introTextContent} components={serializer1} />
                 </div>
-                <div>
-                    <Image src={data?.repImage} width={600} height={600} alt={data?.repImageAlt} />
-                </div>
+            </div>
+
+            <div className="my-7 lg:px-8">
+                <PortableText value={data?.fullGuidelineDetails} components={serializer2} />
             </div>
         </section>
     )

@@ -12,8 +12,17 @@ export default function AuthUserHeaderSectionNav({ authUserData }: { authUserDat
     const { beenAuthenticated } = useAppSelector(store => store.authUser)
 
     useEffect(() => {
+        // Remove LocalStorage Var, for rendering of Transaction pin prompt modal
+
+        const unload = ()  => {
+            localStorage.removeItem("createTransactionPinModalClientRenderedBefore")
+        }
+
+        window.addEventListener('beforeunload', unload)
+
         return () => {
             localStorage.removeItem("createTransactionPinModalClientRenderedBefore")
+            window.removeEventListener('beforeunload',unload)
         }
     },[])
     

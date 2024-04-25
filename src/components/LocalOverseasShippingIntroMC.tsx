@@ -8,12 +8,12 @@ import CustomQuotePageSelect from './assets/inputs/CustomQuotePageSelect';
 import { BiSolidMessageAltError } from 'react-icons/bi';
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 
 const serializer1 = {
     block: {
         h1({ children }:any){
-            return <h3 className="text-3xl font-bold my-12">{children}</h3>
+            return <h1 className="text-3xl font-bold my-12">{children}</h1>
         },
         h3({ children }:any){
             return <h3 className="text-xl font-bold my-2">{children}</h3>
@@ -70,7 +70,7 @@ const destinationOriginData = {
     ]
 }
 
-async function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingIntroData | null }) {
+function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShippingIntroData | null }) {
 
     const { control, handleSubmit, formState: { errors } } = useForm<LocalOverseasShippingIntroPageDestinationOrigin>() 
     const origin = useWatch({ control, name: 'origin.label' })
@@ -83,7 +83,7 @@ async function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShipp
 
     useEffect(() => {
         if(origin === "CHINA"){
-            router.push("/app-panel/china-overseas-shipping")
+            router.push("/china-overseas-shipping")
         }
     },[origin])
 
@@ -153,4 +153,4 @@ async function LocalOverseasShippingIntroMC({ data }: { data: LocalOverseasShipp
     )
 }
 
-export default LocalOverseasShippingIntroMC;
+export default memo(LocalOverseasShippingIntroMC)

@@ -8,7 +8,7 @@ export const getChinaOverseasShippingData = cache(async () => {
     try{
         const data : ChinaOverseasShippingData = await sanityClient.fetch(
             groq`
-             *[_type == 'localShippingPromptMessage'][0]{
+             *[_type == 'chinaOverseasShipping'][0]{
                 "repImageAlt": repImage.alt,
                 fullGuidelineDetails,
                 introTextContent,

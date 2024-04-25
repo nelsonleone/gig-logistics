@@ -36,9 +36,9 @@ export default function SupportChat(){
             <AnimatePresence>
                 {
                     showChat &&
-                    <motion.div initial={{opacity:0, y: 200}} animate={{ y: 0, opacity: 1 }} exit={{y: 500, transition: { duration: .8, ease: "linear"} }} className={`${minimizeChat ? "invisible pointer-events-none -z-50" : "z-auto visible pointer-events-auto"} bg-base-color1 fixed z-[999] overflow-y-auto shadow-gray-200 rounded-lg h-screen w-full md:w-[30em] top-0 right-0 md:bottom-0 md:right-4 md:rounded-2xl md:h-[95vh] md:my-auto`}>
+                    <motion.div initial={{opacity:0, y: 200}} animate={{ y: 0, opacity: 1 }} exit={{y: 500, transition: { duration: .8, ease: "linear"} }} className={`${minimizeChat ? "invisible pointer-events-none -z-50" : "z-auto visible pointer-events-auto"} bg-base-color1 fixed z-[9999] overflow-y-auto shadow-gray-200 rounded-lg h-screen w-full md:w-96 top-0 md:top-24 right-0 md:bottom-0 md:right-4 md:rounded-2xl md:h-[83vh] lg:my-auto`}>
                         <div className="bg-red-700 flex justify-between gap-8 relative p-5">
-                            <h2 className={`${roboto_slab.className} text-2xl text-base-color1 font-bold uppercase text-center`}>GIG LOGISTICS</h2>
+                            <h2 className={`${roboto_slab.className} text-xl text-base-color1 font-bold uppercase text-center`}>GIG LOGISTICS</h2>
                             <div className="flex gap-2 text-base-color1">
                                 <Tooltip title="Close Chat" style={{fontFamily: 'Inter, sans-serif'}}>
                                     <IconButton aria-label="minimize" className="text-base-color1" onClick={() => setMinimizeChat(true)}>
@@ -67,8 +67,8 @@ export default function SupportChat(){
                         </div>
 
                         <div className="flex gap-4 justify-center my-20 items-center w-full">
-                            <Image src="/icons/bot.svg" alt="" aria-hidden="true" width={80} height={80} loading="eager" />
-                            <p role="alert" className="text-accent-color3 font-medium text-center">Ruby Is Offline At The Moment</p>
+                            <Image src="/icons/bot.svg" alt="" aria-hidden="true" width={60} height={60} loading="eager" />
+                            <p role="alert" className="text-accent-color3 text-sm font-medium text-center">Ruby Is Offline At The Moment</p>
                         </div>
                     </motion.div>
                 }

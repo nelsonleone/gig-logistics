@@ -1,8 +1,9 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 export async function middleware(request: NextRequest, response: NextResponse) {
-  const session = request.cookies.get("authSessionToken")
+  const session = cookies().get("authSessionToken")?.value || "";
   const url = new URL(request.url)
   const pathname = url.pathname;
 
@@ -14,10 +15,10 @@ export async function middleware(request: NextRequest, response: NextResponse) {
     return NextResponse.redirect(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/` || new URL("/", request.url))
   }
 
-  const responseAPI = await fetch(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/api/auth/login`, {
+  const responseAPI = await fetch(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/api/auth/persist`, {
     method: 'GET',
     headers: {
-      Cookie: `authSessionToken=${session?.value}`,
+      Cookie: `authSessionToken=${session}`,
     },
   })
 

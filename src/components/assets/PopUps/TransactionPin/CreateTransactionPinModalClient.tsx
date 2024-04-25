@@ -14,26 +14,25 @@ export default function CreateTransactionPinModalClient({ authUserPinStatus }: {
     const pathName = usePathname()
     const router = useRouter()
     const { beenAuthenticated, walletPinStatus } = useAppSelector(store => store.authUser)
-    const [open,setOpen] = useState(
-        walletPinStatus !== AuthUserWalletPinStatus.HasPin &&
-        authUserPinStatus === AuthUserWalletPinStatus.NoPin && 
-        beenAuthenticated && 
-        pathName !== "/user/wallet_pin" &&
-        pathName !== "/user/wallet_pin/change"
-    )
+    const [open,setOpen] = useState(false)
 
     useEffect(() => {
         const renderedBefore = localStorage.getItem("createTransactionPinModalClientRenderedBefore")
-        if(renderedBefore && renderedBefore === "yes")return;
-        
-        setOpen(
-            walletPinStatus !== AuthUserWalletPinStatus.HasPin &&
-            authUserPinStatus === AuthUserWalletPinStatus.NoPin && 
-            beenAuthenticated && 
-            pathName !== "/user/wallet_pin" &&
-            pathName !== "/user/wallet_pin/change"
-        )
-        localStorage.setItem("createTransactionPinModalClientRenderedBefore",JSON.stringify("yes"))
+        console.log(renderedBefore)
+        if(renderedBefore){
+            console.log("dss")
+            return;
+        }else{
+            console.log("ssd")
+            setOpen(
+                walletPinStatus !== AuthUserWalletPinStatus.HasPin &&
+                authUserPinStatus === AuthUserWalletPinStatus.NoPin && 
+                beenAuthenticated && 
+                pathName !== "/user/wallet_pin" &&
+                pathName !== "/user/wallet_pin/change"
+            )
+            localStorage.setItem("createTransactionPinModalClientRenderedBefore",JSON.stringify("yes"))
+        }        
     },[beenAuthenticated,authUserPinStatus,pathName,walletPinStatus])
 
 

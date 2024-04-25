@@ -2,7 +2,7 @@
 
 import { inter } from "@/app/fonts";
 import { authUserMenuLinkData } from "@/componentsData/authUserMenuLinkData";
-import { Avatar, ListItemIcon, Menu, MenuItem, MenuList } from "@mui/material";
+import { ListItemIcon, Menu, MenuItem, MenuList } from "@mui/material";
 import Link from "next/link";
 import { MouseEvent, useEffect, useState } from "react";
 import { FaSortDown } from "react-icons/fa";
@@ -14,6 +14,7 @@ import { AlertSeverity } from "@/enums";
 import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice";
 import { red } from "@mui/material/colors";
 import { useRouter } from "next/navigation";
+import { Avatar } from "@mantine/core";
 
 export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser | undefined }){
 
@@ -76,7 +77,7 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
                 className="flex gap-2 text-red-600 bg-gray-100 hover:bg-gray-200 transition duration-200 ease-in-out rounded-md p-3"
 
             >
-                <Avatar sx={{ bgcolor: red[500], width: 30, height: 30 }} src={picture || authUserData?.picture } alt={firstName.slice(0) || authUserData?.firstName.slice(0)}>{firstName.slice(0) || authUserData?.firstName.slice(0)}</Avatar>
+                <Avatar className="flex justify-center items-center w-8 rounded-full aspect-square text-base-color1" style={{ backgroundColor: red[500] }} radius="xl" src={picture || authUserData?.picture || null} alt={firstName || authUserData?.firstName}>{firstName.charAt(0) || authUserData?.firstName.charAt(0)}</Avatar>
                 <FaSortDown className="text-xl xl:2xl" />
             </button>
             <Menu

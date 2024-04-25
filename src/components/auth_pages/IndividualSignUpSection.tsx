@@ -131,7 +131,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                     placeholder="First Name"
                     label=""
                     error={errors.firstName?.message}
-                    inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
+                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-base-color2 bg-gray-50 h-[3.4em]"
                     containerStyles="w-full"
                 />
                 <CustomTextInput 
@@ -141,7 +141,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                     placeholder="Last Name"
                     label=""
                     error={errors.lastName?.message}
-                    inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
+                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-base-color2 bg-gray-50 h-[3.4em]"                    
                     containerStyles="w-full"
                 />
             </div>
@@ -154,7 +154,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                 label=""
                 inputType="email"
                 error={errors.email?.message}
-                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-base-color2 bg-gray-50 h-[3.4em]"                
                 containerStyles="w-full"
             />
 
@@ -167,7 +167,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                 id="signup-password" 
                 label=""
                 error={errors.password?.message}
-                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-base-color2 bg-gray-50 h-[3.4em]"               
                 containerStyles="w-full"
             />
 
@@ -178,7 +178,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                 id="signup-cpassword" 
                 error={errors.confirmPassword?.message}
                 control={control}
-                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-md p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-accent-color1"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-base-color2 bg-gray-50 h-[3.4em]"                
                 containerStyles="w-full"
             />
 

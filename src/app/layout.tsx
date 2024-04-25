@@ -10,6 +10,7 @@ import CustomSnackbar from '@/components/assets/PopUps/CustomSnackbar'
 import RingLoader from '../components/assets/Loaders/RingLoader'
 import ImportantPrompts from '@/components/assets/PopUps/ImportantPrompts'
 import SupportChat from '@/components/assets/PopUps/SupportChat'
+import { MantineProvider } from '@mantine/core'
   
 
 export const metadata: Metadata = {
@@ -33,19 +34,21 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossOrigin="" />
       </head>
         <CustomAppStoreProvider>
-          <body className={`${inter.className} bg-[#f4f5f6] scroll-smooth overflow-x-hidden`}>
-            <CustomAlert />
-            <Header >
-              <AuthUserHeaderSection />
-            </Header>
-            {createPin}
-            {children}
-            <ImportantPrompts />
-            <RingLoader />
-            <CustomSnackbar />
-            <SupportChat />
-            <Footer />
-          </body>
+          <MantineProvider>
+            <body className={`${inter.className} bg-[#f4f5f6] scroll-smooth overflow-x-hidden`}>
+              <CustomAlert />
+              <Header >
+                <AuthUserHeaderSection />
+              </Header>
+              {createPin}
+              {children}
+              <ImportantPrompts />
+              <RingLoader />
+              <CustomSnackbar />
+              <SupportChat />
+              <Footer />
+            </body>
+          </MantineProvider>
         </CustomAppStoreProvider>
     </html>
   )

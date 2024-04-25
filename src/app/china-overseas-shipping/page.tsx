@@ -8,7 +8,7 @@ export default async function ChinaOverseasShippingPage(){
     const data = await getChinaOverseasShippingData()
 
     return(
-        <div className="page pt-12 px-0">
+        <div className="page pt-12">
             <Suspense fallback={<DuoSkeleton />}>
                 {
                     data ?

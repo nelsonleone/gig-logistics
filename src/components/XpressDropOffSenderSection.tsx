@@ -35,7 +35,7 @@ function XpressDropOffSenderSection(props:IProps) {
                     placeholder="" 
                     containerStyles="w-full mb-2"
                     labelStyles="mb-4 block self-start ms-1"
-                    inputStyles="focus:outline-0 w-full focus:outline-offset-0 focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.4em]"
+                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-base-color2 bg-gray-50 h-[3.4em]"
                 />
                 <CustomTextInput 
                     readOnly 
@@ -47,7 +47,7 @@ function XpressDropOffSenderSection(props:IProps) {
                     placeholder="" 
                     containerStyles="w-full mb-2"
                     labelStyles="mb-4 block self-start ms-1"
-                    inputStyles="focus:outline-0 w-full focus:outline-offset-0 focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.4em]"
+                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-base-color2 bg-gray-50 h-[3.4em]"
                 />
                 <CustomTextInput 
                     readOnly 
@@ -59,7 +59,7 @@ function XpressDropOffSenderSection(props:IProps) {
                     placeholder="" 
                     containerStyles="w-full mb-2"
                     labelStyles="mb-4 block self-start ms-1"
-                    inputStyles="focus:outline-0 w-full focus:outline-offset-0 focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.6em]"
+                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-base-color2 bg-gray-50 h-[3.4em]"
                 />
                 <CustomPhoneInput 
                     readOnly={true} 

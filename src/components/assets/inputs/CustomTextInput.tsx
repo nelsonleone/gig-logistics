@@ -3,12 +3,12 @@
 import { BiSolidMessageAltError } from "react-icons/bi";
 import { inter } from '@/app/fonts';
 import { Control, Controller } from "react-hook-form";
-import { DeliveryItems, ICODWalletFormValues, IProfileDetailsUpdateFormData, OutBoundShippingItem, OutBoundShippingReceiverInfo, OutBoundShippingSenderInfo, OverseasShippingItemInfo, PersonalShoppingItemDetailsFormInfo, SignInFormData, SignUpFormData } from "../../../../types";
+import { DeliveryItems, ICODWalletFormValues, IProfileDetailsUpdateFormData, InternationalQuoteObj, OutBoundShippingItem, OutBoundShippingReceiverInfo, OutBoundShippingSenderInfo, OverseasShippingItemInfo, PersonalShoppingItemDetailsFormInfo, SignInFormData, SignUpFormData } from "../../../../types";
 
 interface IProps {
     error?: string | undefined,
     label: string,
-    name:  keyof SignUpFormData | keyof SignInFormData | keyof OverseasShippingItemInfo | keyof OutBoundShippingItem | keyof OutBoundShippingReceiverInfo | keyof ICODWalletFormValues | keyof PersonalShoppingItemDetailsFormInfo | keyof IProfileDetailsUpdateFormData | keyof OutBoundShippingSenderInfo | 'sender.fullName' | 'sender.firstName' | 'sender.lastName' | 'sender.email' | 'sender.phoneNumber' |
+    name:  keyof SignUpFormData | keyof SignInFormData | keyof OverseasShippingItemInfo | keyof OutBoundShippingItem | keyof OutBoundShippingReceiverInfo | keyof InternationalQuoteObj | keyof ICODWalletFormValues | keyof PersonalShoppingItemDetailsFormInfo | keyof IProfileDetailsUpdateFormData | keyof OutBoundShippingSenderInfo | 'sender.fullName' | 'sender.firstName' | 'sender.lastName' | 'sender.email' | 'sender.phoneNumber' |
     'receiver.fullName' | `receiver.deliveryOption.homeDelivery.address` | `receiver.deliveryOption.terminalPickup.stateOrCity` | `receiver.deliveryOption.terminalPickup.closestGIGLCenter` | keyof DeliveryItems | 'receiverInfo.fullName' | 'receiverInfo.phoneNumber' | 'receiverInfo.email' | 'deliveryOption.homeDelivery.address',
 
     value?: string | number,

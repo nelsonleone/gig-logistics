@@ -44,7 +44,7 @@ export default function PersonalShoppingItemDetailsMC(){
                 error={errors?.productLink?.message}
                 containerStyles="w-full mt-5"
                 labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.4em]"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-text-base2 bg-gray-50 h-[3.4em]"
                 id="personalShoppingItemDetails-link" 
                 name="productLink"
                 inputType="text"
@@ -56,7 +56,7 @@ export default function PersonalShoppingItemDetailsMC(){
                 error={errors?.itemName?.message}
                 placeholder="A brown nike shoe"
                 containerStyles="w-full mt-5"
-                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.4em]"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-text-base2 bg-gray-50 h-[3.4em]"
                 labelStyles="mb-2 text-[.95rem] md:text-base text-sm block self-start ms-1" 
                 id="personalShoppingItemDetails-name" 
                 name="itemName"
@@ -70,7 +70,7 @@ export default function PersonalShoppingItemDetailsMC(){
                 containerStyles="w-full mt-5"
                 error={errors?.quantity?.message}
                 labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-black bg-gray-50 h-[3.4em]"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-text-base2 bg-gray-50 h-[3.4em]"
                 id="personalShoppingItemDetails-quantity" 
                 name="quantity"
                 inputType="number"

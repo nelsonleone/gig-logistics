@@ -16,6 +16,7 @@ import { setShowAlert } from "@/redux/slices/alertSlice";
 import { getIntlQuoteResultData } from "@/helperFns/getIntlQuoteResultData";
 import QuoteResultModal from "./assets/PopUps/QuoteResultModal";
 import GetQuoteBtn from "./assets/Buttons/GetQuoteBtn";
+import CustomTextInput from "./assets/inputs/CustomTextInput";
 
 function InternationalQuotePageMainCP(){
 
@@ -32,7 +33,7 @@ function InternationalQuotePageMainCP(){
     const packageType = useWatch({ control, name: "quote_packageType.value" })
 
     const data : { label:string, value:string }[] = countriesNamesArray.map(val => {
-        return { label: val.name.toUpperCase(), value: val.name }
+        return { label: val.name?.toUpperCase(), value: val.name }
     })
 
     const packageTypeSelectData = [{ label: "Document",value: "document" },{ label: "Non-Document",value: "non-document"}]
@@ -73,7 +74,7 @@ function InternationalQuotePageMainCP(){
             <form className="md:w-1/2 md:mx-auto py-8" onSubmit={handleSubmit(handleIntlQuoteDataSubmit)}>
                 <div className="mb-6">
                     <label htmlFor="quote_IntlDepartureCountry" className="quote_intl_input_label">Departure Country</label>
-                    <CustomQuotePageSelect hasError={errors.quote_IntlDepartureCountry ? true : false} required="Departure Country is required" control={control} placeholder='Select Departure Country' id="quote_IntlDepartureCountry" data={data} />
+                    <CustomQuotePageSelect name="quote_IntlDepartureCountry" hasError={errors.quote_IntlDepartureCountry ? true : false} required="Departure Country is required" control={control} placeholder='Select Departure Country' id="quote_IntlDepartureCountry" data={data} />
                     {
                         errors.quote_IntlDepartureCountry && 
                         <p role="error" className="text-xs mt-2 text-red-600">{errors.quote_IntlDepartureCountry.message}</p>
@@ -82,7 +83,7 @@ function InternationalQuotePageMainCP(){
 
                 <div className="mb-6">
                     <label htmlFor="quote_IntlDestinationCountry" className="quote_intl_input_label">Destination Country</label>
-                    <CustomQuotePageSelect hasError={errors.quote_IntlDestinationCountry ? true : false} required="Destination Country is required" control={control} placeholder='Select Destination Country' id="quote_IntlDestinationCountry" data={data} />
+                    <CustomQuotePageSelect name="quote_IntlDestinationCountry" hasError={errors.quote_IntlDestinationCountry ? true : false} required="Destination Country is required" control={control} placeholder='Select Destination Country' id="quote_IntlDestinationCountry" data={data} />
                     {
                         errors.quote_IntlDestinationCountry && 
                         <p role="error" className="text-xs mt-2 text-red-600">{errors.quote_IntlDestinationCountry.message}</p>
@@ -90,36 +91,41 @@ function InternationalQuotePageMainCP(){
                 </div>
 
                 <div className="mb-6">
-                    <label htmlFor="quote_IntlAddress" className="quote_intl_input_label">Address</label>
-                    <input 
-                       type="text" 
-                       id="quote_IntlAddress"
-                       className={`border ${errors.quote_IntlAddress ? "border-primary2" : "border-gray-300"} rounded-lg p-3 block w-full placeholder:text-[.9rem] placeholder:capitalize`}
-                       placeholder="Enter Address" {...register("quote_IntlAddress",{ required: "Address Is Required", minLength: { value: 1, message: "Enter a valid Address"} })} 
+                    <CustomTextInput 
+                        name="quote_IntlAddress" 
+                        control={control} 
+                        placeholder="Enter Address"
+                        label="Address"
+                        id="quote_IntlAddress" 
+                        error={errors.quote_IntlAddress?.message}
+                        containerStyles="w-full"
+                        inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black"
                     />
-                    {
-                        errors.quote_IntlAddress && 
-                        <p role="error" className="text-xs mt-2 text-red-600">{errors.quote_IntlAddress.message?.toString()}</p>
-                    }
                 </div>
 
                 <div className="flex gap-3 justify-between mb-6">
                     <div className="w-1/2">
-                        <label htmlFor="quote_city" className="quote_intl_input_label">City</label>
-                        <input 
-                           type="text" 
-                           id="quote_city" 
-                           placeholder="City" {...register("quote_city")} 
-                           className="border border-gray-300 rounded-md p-2 block w-full placeholder:text-[.9rem] placeholder:capitalize"
+                        <CustomTextInput 
+                            name="quote_city" 
+                            control={control} 
+                            placeholder="Enter city"
+                            label="City"
+                            id="quote_city" 
+                            error={errors.quote_city?.message}
+                            containerStyles="w-full"
+                            inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black"
                         />
                     </div>
                     <div className="w-1/2">
-                        <label htmlFor="quote_zipCode" className="quote_intl_input_label">Zip Code</label>
-                        <input 
-                            type="text" 
+                        <CustomTextInput 
+                            name="quote_zipCode" 
+                            control={control} 
+                            placeholder="Enter zip code"
+                            label="Zip Code"
                             id="quote_zipCode" 
-                            className="border border-gray-300 rounded-md p-2 block w-full placeholder:text-[.9rem] placeholder:capitalize"
-                            placeholder="Zip Code" {...register("quote_zipCode")}
+                            error={errors.quote_zipCode?.message}
+                            containerStyles="w-full"
+                            inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black"
                         />
                     </div>
                 </div>
@@ -127,7 +133,7 @@ function InternationalQuotePageMainCP(){
                 <div className="my-6">
                     <h3 className="font-semibold text-gray-400 my-4">Item Details</h3>
                     <label className="quote_intl_input_label" htmlFor="quote_packageType">Package Type</label>
-                    <CustomQuotePageSelect hasError={errors.quote_packageType ? true : false} required="Document Type is required" control={control} placeholder='Select Document Type' id="quote_packageType" data={packageTypeSelectData} />
+                    <CustomQuotePageSelect name="quote_packageType" hasError={errors.quote_packageType ? true : false} required="Document Type is required" control={control} placeholder='Select Document Type' id="quote_packageType" data={packageTypeSelectData} />
                     {
                         errors.quote_packageType && 
                         <p role="error" className="text-xs mt-2 text-red-600">{errors.quote_packageType.message}</p>
