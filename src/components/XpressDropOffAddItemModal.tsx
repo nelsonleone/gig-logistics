@@ -14,6 +14,8 @@ import { setShowSnackbar } from "@/redux/slices/snackbarSlice";
 import { AlertSeverity } from "@/enums";
 import { BiSolidMessageAltError } from "react-icons/bi";
 import XpressDropOffItemImageUpload from "./assets/inputs/Filepond/CustomImageUpload";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from 'yup';
 
 interface IProps {
     open: boolean,
@@ -21,9 +23,33 @@ interface IProps {
     setDeliveryItem: Dispatch<SetStateAction<DeliveryItems | undefined>>
 }
 
+
+const formSchema = Yup.object().shape({
+    category: Yup.object().shape({
+        label: Yup.string().oneOf(["Computer Accessories", "Documents", "Electronics", "Food", "Health Products", "Jewelries/Accessories", "Others", "Phones"]).required('This field is required'),
+        value: Yup.string().oneOf(["computer accessories", "documents", "electronics", "food", "health products", "jewelries/accessories", "others", "phones"]).required('This field is required')
+    }),
+    item: Yup.object().shape({
+        label: Yup.string().required('This field is required'),
+        value: Yup.string().required('This field is required')
+    }),
+    weight: Yup.object().shape({
+        label: Yup.string().required('This field is required'),
+        value: Yup.string().required('This field is required')
+    }),
+    quantity: Yup.number().required('This field is required').min(1, 'Please enter a valid input').required('Quantity is required').typeError('Please enter a valid input'),
+    value: Yup.number().required('This field is required').min(1, 'Please enter a valid input').required('Value is required').typeError('Please enter a valid input'),
+    itemImage: Yup.string().required('Item image is required'),
+    otherItemName: Yup.string(),
+    otherItemDescription: Yup.string(),
+    otherItemWeight: Yup.string(),
+    id: Yup.string()
+})
+
 function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps) {
 
     const { control, formState: { errors }, setError, clearErrors, reset, setValue, handleSubmit } = useForm<DeliveryItems>({
+        resolver: yupResolver(formSchema),
         defaultValues: {}
     })
 
@@ -74,13 +100,13 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                             name="category"  
                             id="xpress-dropoff-deliveryItems-category" 
                             control={control}
+                            required="Please select category"
                             selectStyles={{
                                 height: "3.2em",
                             }}
                             placeholder="Category"
                             hasError={errors?.category?.value?.message ? true : false}
                             data={getXpressDropOffDeliveryItemCategoryData()}
-                            required="Please choose a category for the item"
                             optionStyles={{
                                 color: "#374151"
                             }}
@@ -90,6 +116,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                             <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.category.message}</p>
                         }
                     </div>
+
                     
                     {
                         deliveryItemCategory === "others" ?
@@ -102,9 +129,8 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                 placeholder="Enter item name" 
                                 containerStyles="w-full mb-4"
                                 labelStyles="mb-3 block self-start ms-1"
-                                required="Item name is required"
                                 error={errors?.otherItemName?.message}
-                                inputStyles="focus:outline-0 w-full focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.2em]"
+                                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
                             />
                             <CustomTextInput
                                 control={control} 
@@ -114,9 +140,8 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                 placeholder="Enter item description" 
                                 containerStyles="w-full mb-4"
                                 labelStyles="mb-3 block self-start ms-1"
-                                required="Item Description is required"
                                 error={errors?.otherItemDescription?.message}
-                                inputStyles="focus:outline-0 w-full focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.2em]"
+                                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
                             />
                             <CustomTextInput
                                 control={control} 
@@ -127,10 +152,9 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                 label="Item Weight (KG)" 
                                 placeholder="Enter item weight" 
                                 containerStyles="w-full mb-4"
-                                required="Item Weight is required"
                                 labelStyles="mb-3 block self-start ms-1"
                                 error={errors?.otherItemWeight?.message}
-                                inputStyles="focus:outline-0 w-full focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.2em]"
+                                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
                             />
                         </>
                         :
@@ -145,9 +169,9 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                         height: "3.2em",
                                     }}
                                     placeholder="Item"
+                                    required="Please select item"
                                     hasError={errors?.item?.message ? true : false}
                                     data={getXpressDropOffDeliveryItemCategoryItems(deliveryItemCategory)}
-                                    required="Required to select an item"
                                     optionStyles={{
                                         color: "#374151"
                                     }}
@@ -165,9 +189,9 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                     control={control}
                                     selectStyles={{ height: "3.2em",}}
                                     placeholder="Weight"
+                                    required="Please enter item weight"
                                     hasError={errors?.weight?.message ? true : false}
                                     data={setDropOffItemWeight(deliveryItemCategory,item)}
-                                    required="Please choose a range for the weight"
                                     optionStyles={{
                                         color: "#374151"
                                     }}
@@ -191,9 +215,8 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                             placeholder="Quantity" 
                             containerStyles="w-full mb-4 md:w-1/2"
                             labelStyles="mb-3 block self-start ms-1"
-                            required="Please choose items quantity"
                             error={errors?.item?.message}
-                            inputStyles="focus:outline-0 w-full focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.2em]"
+                            inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
                         />
                         <div className="relative md:w-1/2">
                             <CustomTextInput
@@ -206,9 +229,8 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                 placeholder="Value" 
                                 containerStyles="w-full mb-4"
                                 labelStyles="mb-3 block self-start ms-1"
-                                required="It's important to specify the value"
                                 error={errors?.value?.message}
-                                inputStyles="focus:outline-0 w-full focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.2em]"
+                                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
                             />
                             <XpressDropOffDeliveryItemValueNotice />
                         </div>

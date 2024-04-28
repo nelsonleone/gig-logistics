@@ -10,7 +10,7 @@ function PTServiceContentLinkContainer({ serviceName }:IProps) {
     <div className="flex items-center gap-8 my-6 lg:my-8">
         {
             serviceName === PT_ServiceName.domesticLogistics ?
-            <>
+        <>
                 <Link href="/app-panel/ship-now" className="pt-service-cta bg-red-600 text-[#FFFFFF]">Ship Now</Link>
                 <Link href="/app-panel/get-a-qoute/local" className="pt-service-cta bg-[#E5E7EB] text-red-600">Get A Quote</Link>
             </>

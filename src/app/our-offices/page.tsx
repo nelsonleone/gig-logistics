@@ -18,9 +18,9 @@ export default function OurOffices(){
                 <h2 className="text-xl text-primary font-semibold underline lg:text-center lg:mt-20">Contact Centers</h2>
                 <div className="lg:flex lg:justify-between lg:items-baseline lg:mt-4">
                     {
-                        contactCenterArray.map(val => {
+                        contactCenterArray.map((val,index) => {
                             return(
-                                <OfficeContactDetails val={val} />
+                                <OfficeContactDetails key={index} val={val} />
                             )
                         })
                     }

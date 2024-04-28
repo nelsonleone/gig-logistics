@@ -17,7 +17,7 @@ export default function ShipmentPanel({ id }:{ id:string }){
 
     return(
         <div id={`${id}-panel2`}>
-            <div className="md:flex items-center justify-between mb-8 md:my-8 text-primary">
+            <div className="md:flex justify-between mb-8 md:my-8 text-primary">
                 <h2 className="font-semibold text-xl my-8 md:my-0 text-center">Shipment History</h2>
                 <div>
                     <CustomQuotePageSelect 
@@ -34,5 +34,5 @@ export default function ShipmentPanel({ id }:{ id:string }){
             </div>
             <TabPanelTransactionHistoryTabel />
         </div>
-    )
+    )  
 }

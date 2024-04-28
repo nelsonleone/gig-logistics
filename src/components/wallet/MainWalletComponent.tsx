@@ -3,14 +3,17 @@
 import { roboto_slab } from "@/app/fonts";
 import WalletCard from "./WalletCard";
 import CustomDuoDatePickerInput from "../CustomDuoDatePicker";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import TransactionSectionTablist from "./TransactionSectionTablist";
 import TransactionSectionTabPanels from "./TransactionSectionTabPanels";
+import { Dayjs } from "dayjs";
 
 function MainWalletComponent() {
 
-    const { control } = useForm<{ startDate: Date | null , endDate: Date | null }>()
+    const { setValue, control } = useForm<{ startDate: Dayjs | null | undefined | undefined, endDate: Dayjs | null | undefined | undefined}>()
     const id = "transaction_section_tab"
+    const startDate = useWatch({ name: 'startDate', control})
+    const endDate = useWatch({ name: 'endDate', control})
 
     return(
         <div className="my-10 lg:mb-16 text-primary ">
@@ -18,7 +21,7 @@ function MainWalletComponent() {
             <WalletCard />
 
             <div className="mt-12 md:w-3/4 md:mx-auto">
-              <CustomDuoDatePickerInput  containerClassName="md:w-[22em] md:mx-auto" control={control} name={["startDate","endDate"]} />
+              <CustomDuoDatePickerInput startDate={startDate} endDate={endDate}  containerClassName="md:w-[22em] md:mx-auto" setValue={setValue} name={["startDate","endDate"]} />
               <TransactionSectionTablist id={id} />
               <TransactionSectionTabPanels id={id} />
             </div>

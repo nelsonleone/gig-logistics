@@ -20,10 +20,8 @@ export default function CreateTransactionPinModalClient({ authUserPinStatus }: {
         const renderedBefore = localStorage.getItem("createTransactionPinModalClientRenderedBefore")
         console.log(renderedBefore)
         if(renderedBefore){
-            console.log("dss")
             return;
         }else{
-            console.log("ssd")
             setOpen(
                 walletPinStatus !== AuthUserWalletPinStatus.HasPin &&
                 authUserPinStatus === AuthUserWalletPinStatus.NoPin && 

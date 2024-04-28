@@ -11,10 +11,11 @@ import { roboto_slab } from "@/app/fonts"
 import { filterDropOffsBasedOnDate } from "@/helperFns/filterDropOffBasedOnDate"
 import { useAppDispatch, useAppSelector } from "@/redux/customHooks"
 import { setDropOffs } from "@/redux/slices/authUser"
+import { Dayjs } from "dayjs"
 
 export default function ManageXpressDropOffsMC({ dropOffs }:{ dropOffs:SavedDropOffs[] }){
 
-    const { control } = useForm<{ startDate: Date | null , endDate: Date | null }>()
+    const { control, setValue } = useForm<{ startDate: Dayjs | null | undefined , endDate: Dayjs | null | undefined }>()
     const startDate = useWatch({ control, name: 'startDate'})
     const endDate = useWatch({ control, name: 'endDate'})
     const [filteredDropOffs,setFilteredDropOffs] = useState<SavedDropOffs[]>([])
@@ -38,7 +39,7 @@ export default function ManageXpressDropOffsMC({ dropOffs }:{ dropOffs:SavedDrop
             <div className="mx-auto md:w-[25em]">
                 <h1 className={`${roboto_slab.className} text-center text-2xl md:text-3xl font-bold mb-8`}>Drop-Offs</h1>
                 <MantineProvider>
-                <CustomDuoDatePicker control={control} name={["startDate","endDate"]} />
+                <CustomDuoDatePicker setValue={setValue} startDate={startDate} endDate={endDate} name={["startDate","endDate"]} />
                 </MantineProvider>
             </div>
             <div className="relative pb-12">

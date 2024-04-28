@@ -22,7 +22,7 @@ export default async function EcommerceLogistics(){
             <PortfolioSitesPageIntro introHeading="ECOMMERCE LOGISTICS" introText="Empowering small businesses with innovative logistics support" />
             <main className="my-20">
                 <Suspense fallback={<DuoSkeleton />}>
-                  <PTServiceContent serviceName={PT_ServiceName.domesticLogistics} contentData={ecommerceContentData} />
+                  <PTServiceContent serviceName={PT_ServiceName.ecommerceLogistics} contentData={ecommerceContentData} />
                 </Suspense>
 
                 <PTdedicatedServicesCardsContainer serviceName={PT_ServiceName.ecommerceLogistics} />

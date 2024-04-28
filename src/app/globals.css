@@ -124,20 +124,18 @@
     position: relative;
     z-index: 99 !important;
 }
-
-
-/* Mantine DateInput Style Refactor */
-.mantine-DatePickerInput-root *{
-    font-family: 'Inter', sans-serif !important;
-    font-size: 1rem !important;
-    color: #374151 !important;
+.override-mui-datepicker-styles *{
+    font-family: "Inter", sans-serif !important;
 }
 
-..mantine-DatePickerInput-root{
-    height: 3.5em !important;
+.override-mui-datepicker-styles input{
+    border-radius: 8px;
 }
 
-.mantine-DatePickerInput-root .mantine-InputPlaceholder-placeholder{
-    color: hsl(0, 6%, 61%) !important;
+.override-mui-datepicker-styles input:focus{
+    outline: 2px solid black !important;
+    outline-offset: 0;
+    inset: 0;
+    border: none;
 }
 

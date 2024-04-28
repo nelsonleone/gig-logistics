@@ -2,7 +2,6 @@
 
 import { AboutUsServiceHighlightCard } from "../../types"
 import { motion } from "framer-motion"
-import { Carousel } from 'flowbite-react'
 import AboutUsCarouselCard from "./AboutUsCarouselCard";
 
 interface IProps {
@@ -27,17 +26,15 @@ const carouselAnimationVariants = {
 
 export default async function AboutPageCards(props:IProps){
 
-  const slides = props.aboutUsServiceHighlightCards && props.aboutUsServiceHighlightCards.map((item) => (
-    <div key={item._key}>
-      <AboutUsCarouselCard {...item} />
-    </div>
-  ))
-
   return (
-    <motion.div variants={carouselAnimationVariants} initial="init" whileInView="animate" viewport={{ margin: "50px"}}>
-      <Carousel>
-        {slides ? slides : null}
-      </Carousel>
-    </motion.div>
+    <div className="md:flex flex-wrap justify-center gap-8">
+      {
+        props.aboutUsServiceHighlightCards && props.aboutUsServiceHighlightCards.map((item) => {
+          return <motion.div  className="md:w-[40%] lg:w-[28%]" key={item._key} variants={carouselAnimationVariants} initial="init" whileInView="animate" viewport={{ margin: "50px", once: true}}>
+            <AboutUsCarouselCard {...item} />
+          </motion.div>
+        })
+      }
+    </div>
   )
 }

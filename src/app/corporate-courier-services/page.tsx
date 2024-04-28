@@ -22,7 +22,7 @@ export default async function CorporateLogistics(){
             <PortfolioSitesPageIntro introHeading="CORPORATE LOGISTICS" introText="Corporate logistics solutions in sync with your business goals" />
             <main className="my-20">
                 <Suspense fallback={<DuoSkeleton />}>
-                  <PTServiceContent serviceName={PT_ServiceName.domesticLogistics} contentData={cpPageSanityData} />
+                  <PTServiceContent serviceName={PT_ServiceName.corporateLogistics} contentData={cpPageSanityData} />
                 </Suspense>
 
                 <PTdedicatedServicesCardsContainer serviceName={PT_ServiceName.corporateLogistics} />

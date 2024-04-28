@@ -3,10 +3,11 @@
 import { useForm } from "react-hook-form";
 import CODWalletForm from "./CODWalletForm";
 import { ICODWalletFormValues } from "../../../types";
+import { memo } from "react";
 
-export default function CODWalletFormHandler(){
+function CODWalletFormHandler(){
     
-    const { formState: { errors }, control, handleSubmit } = useForm<ICODWalletFormValues>({
+    const { formState: { errors, isSubmitting }, control, handleSubmit } = useForm<ICODWalletFormValues>({
         defaultValues: {
             firstName: "",
             lastName: "",
@@ -19,6 +20,9 @@ export default function CODWalletFormHandler(){
     })
 
     return(
-        <CODWalletForm errors={errors} handleSubmit={handleSubmit} control={control} />
+        <CODWalletForm errors={errors} isSubmitting={isSubmitting} handleSubmit={handleSubmit} control={control} />
     )
 }
+
+
+export default memo(CODWalletFormHandler)

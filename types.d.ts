@@ -328,13 +328,13 @@ type DeliveryItems = {
     category: ICategory,
     item: { label: string, value: string },
     weight: { label: string, value: string },
-    quantity: string,
-    value: string,
+    quantity: number,
+    value: number,
     itemImage: string,
-    otherItemName: string,
-    otherItemDescription: string,
-    otherItemWeight: string,
-    id: string
+    otherItemName?: string,
+    otherItemDescription?: string,
+    otherItemWeight?: string,
+    id?: string
 }
 
 interface IXpressSenderInfo {
@@ -380,8 +380,8 @@ interface IXpressDeliveryItemTransformed {
     category: ICategoryValue,
     item: string,
     weight: string,
-    quantity: string,
-    value: string,
+    quantity: number,
+    value: number,
     itemImage: string,
     itemDescription?: string,
 }

@@ -52,9 +52,9 @@ export default function FaqAccordion(props:IProps){
                 props.val.faqSection.faqsArray.map(faq => (
                     <AccordionPanel key={faq._key}>
                         <AccordionTitle className="text-lg">{faq.question}</AccordionTitle>
-                        <AccordionContent className="text-sm">
+                        <div className="text-sm">
                             <PortableText value={faq.answer} components={portableTextComponent} />
-                        </AccordionContent>
+                        </div>
                     </AccordionPanel>
                 ))
             }

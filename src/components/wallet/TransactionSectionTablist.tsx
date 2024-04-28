@@ -9,7 +9,7 @@ function TransactionSectionTablist({ id }:{ id:string }) {
 
     const router = useRouter()
     const pathName = usePathname()
-    const { get:searchParamsGet } = useSearchParams()
+    const { get:searchParamsGet } = useSearchParams() 
     const tabName = searchParamsGet('tab')
 
     return (
