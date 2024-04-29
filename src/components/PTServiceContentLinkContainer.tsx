@@ -12,7 +12,7 @@ function PTServiceContentLinkContainer({ serviceName }:IProps) {
             serviceName === PT_ServiceName.domesticLogistics ?
         <>
                 <Link href="/app-panel/ship-now" className="pt-service-cta bg-red-600 text-[#FFFFFF]">Ship Now</Link>
-                <Link href="/app-panel/get-a-qoute/local" className="pt-service-cta bg-[#E5E7EB] text-red-600">Get A Quote</Link>
+                <Link href="/app-panel/get-a-qoute/domestic" className="pt-service-cta bg-[#E5E7EB] text-red-600">Get A Quote</Link>
             </>
             :
             serviceName === PT_ServiceName.corporateLogistics ?

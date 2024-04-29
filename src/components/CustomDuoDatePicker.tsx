@@ -3,7 +3,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs, { Dayjs } from 'dayjs';
-import { ThemeProvider, createTheme } from "@mui/material";
+import { useEffect, useState } from "react";
 
 interface IProps {
     setValue: UseFormSetValue<{ startDate: Dayjs | null | undefined, endDate: Dayjs | null | undefined }>,
@@ -12,71 +12,54 @@ interface IProps {
     endDate: Dayjs | null | undefined,
     containerClassName?: string
 }
-
-
-const THEME = createTheme({
-    typography: {
-     "fontFamily": `"Inter", sans-serif`,
-    }
-})
   
 
 export default function CustomDuoDatePickerInput(props:IProps){
 
     const minDate = dayjs()
+    const [localDateValues,setLocalDateValues] = useState<{startDate: Dayjs | null, endDate: Dayjs | null}>({
+        startDate: null,
+        endDate: null
+    })
+
+    const handleDateChange = (name:string,value:Dayjs|null) => {
+        setLocalDateValues(prev => {
+            return{
+                ...prev,
+                [name]: value
+            }
+        })
+    }
+
+    useEffect(() => {
+        props.setValue('startDate',localDateValues.startDate)
+    },[localDateValues.startDate])
+
+    useEffect(() => {
+        props.setValue('endDate',localDateValues.endDate)
+    },[localDateValues.endDate])
 
     return(
         <div className={`flex w-full ${props.containerClassName} my-8 gap-4`}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <ThemeProvider theme={THEME}>
-
-                    <div className="w-1/'2">
+                <div className="w-1/'2">
                     <DatePicker 
-                            minDate={minDate} 
-                            value={props.startDate} 
-                            className="override-mui-datepicker-styles" 
-                            onChange={(val) => props.setValue('startDate',val)} 
-                            sx={{
-                                MuiPickersToolbar: {
-                                    styleOverrides: {
-                                    root: {
-                                        fontFamily: 'Inter, sans-serif',
-                                    },
-                                    }
-                                },
-                                MuiPickersDay: {
-                                    styleOverrides: {
-                                        root: {
-                                        border: '2px solid black',
-                                        ":focus": {
-                                            border: '2px solid black',
-                                            outline: 'none',
-                                            outlineOffset: 'none'
-                                        }
-                                        },
-                                    }
-                                }
-                            }}
-                        />
-                    </div>
-                    <div className="w-1/'2">
-                        <DatePicker 
-                            minDate={minDate} 
-                            value={props.endDate} 
-                            onChange={(val) => props.setValue('endDate',val)}
-                            className="override-mui-datepicker-styles" 
-                            sx={{
-                                MuiPickersToolbar: {
-                                    styleOverrides: {
-                                        root: {
-                                        fontFamily: `"Inter", sans-serif`,
-                                        },
-                                    }
-                                },
-                            }}
-                        />                
-                    </div>
-                </ThemeProvider>
+                        name="startDate"
+                        minDate={minDate} 
+                        value={localDateValues.startDate} 
+                        className="override-mui-datepicker-styles" 
+                        onChange={((value) => handleDateChange("startDate",value))} 
+                    />
+                </div>
+                <div className="w-1/'2">
+                    <DatePicker 
+                        name="endDate"
+                        minDate={minDate} 
+                        value={localDateValues.endDate} 
+                        onChange={((value) => handleDateChange("endDate",value))} 
+                        className="override-mui-datepicker-styles" 
+                    />                
+                </div>
             </LocalizationProvider>
         </div>
     )

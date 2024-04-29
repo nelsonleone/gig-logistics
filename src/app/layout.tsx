@@ -13,6 +13,10 @@ import SupportChat from '@/components/assets/PopUps/SupportChat'
 import { MantineProvider } from '@mantine/core'
 import { ThemeProvider } from '@mui/material'
 import { MuiTheme } from '@/lib/muiTheme/theme'
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
   
 
 export const metadata: Metadata = {
@@ -35,24 +39,21 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossOrigin="" />
       </head>
         <CustomAppStoreProvider>
-          <MantineProvider theme={{ fontFamily: `"Inter", sans-serif` }}>
-            <ThemeProvider theme={MuiTheme}>
-              <body className={`${inter.className} bg-[#f4f5f6] scroll-smooth overflow-x-hidden`}>
-                <CustomAlert />
-                <Header >
-                  <AuthUserHeaderSection />
-                </Header>
-                {createPin}
-                {children}
-                <ImportantPrompts />
-                <RingLoader />
-                <CustomSnackbar />
-                <SupportChat />
-                <Footer />
-              </body>
-              <time dateTime="2016-10-25" suppressHydrationWarning />
-            </ThemeProvider>
-          </MantineProvider>
+          <ThemeProvider theme={MuiTheme}>
+            <body className={`${inter.className} bg-[#f4f5f6] scroll-smooth overflow-x-hidden`}>
+              <CustomAlert />
+              <Header >
+                <AuthUserHeaderSection />
+              </Header>
+              {createPin}
+              {children}
+              <ImportantPrompts />
+              <RingLoader />
+              <CustomSnackbar />
+              <SupportChat />
+              <Footer />
+            </body>
+          </ThemeProvider>
         </CustomAppStoreProvider>
     </html>
   )

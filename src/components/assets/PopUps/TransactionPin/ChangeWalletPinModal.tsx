@@ -10,7 +10,7 @@ import { BiSolidMessageAltError } from "react-icons/bi"
 import LoadingEllipse from "../../Loaders/LoadingEllipse"
 import { setShowAlert } from "@/redux/slices/alertSlice"
 import { AlertSeverity } from "@/enums"
-import { PinInput } from "@mantine/core"
+import { PinInput, MantineProvider } from "@mantine/core"
 import PinInputStyles from "@/LibCSSModules/PinInput.module.css"
 
 function ChangeWalletPinModal(){
@@ -96,56 +96,57 @@ function ChangeWalletPinModal(){
 
                 <h4 className={`${roboto_slab.className} my-7 text-2xl font-bold text-center`}>Change Wallet Pin</h4>
 
-                <div>
-                    <p className="my-4 text-gray-500 text-sm">Enter your old pin</p>
-                    <PinInput 
-                        type={/^[0-9]*$/} 
-                        inputType="password" 
-                        mask={true}
-                        error={oldPinError ? true : false}
-                        className={inter.className}
-                        placeholder="*"
-                        inputMode="numeric" 
-                        value={oldPin}
-                        onChange={handleOldPinInput}
-                        classNames={{
-                            root: PinInputStyles.root,
-                            pinInput: PinInputStyles.pinInput,
-                            input: PinInputStyles.input
-                        }}
-                    />
-                    {
-                        oldPinError &&
-                        <p role="alert" className="w-full text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{oldPinError}</p>
-                    }
-                </div>
+                <MantineProvider>
+                    <div>
+                        <p className="my-4 text-gray-500 text-sm">Enter your old pin</p>
+                            <PinInput 
+                                type={/^[0-9]*$/} 
+                                inputType="password" 
+                                mask={true}
+                                error={oldPinError ? true : false}
+                                className={inter.className}
+                                placeholder="*"
+                                inputMode="numeric" 
+                                value={oldPin}
+                                onChange={handleOldPinInput}
+                                classNames={{
+                                    root: PinInputStyles.root,
+                                    pinInput: PinInputStyles.pinInput,
+                                    input: PinInputStyles.input
+                                }}
+                            />
+                        {
+                            oldPinError &&
+                            <p role="alert" className="w-full text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{oldPinError}</p>
+                        }
+                    </div>
 
 
-                <div>
-                    <p className="my-4 text-gray-500 text-sm">Enter your new pin</p>
-                    <PinInput 
-                        type={/^[0-9]*$/} 
-                        inputType="password" 
-                        mask={true}
-                        error={newPinError ? true : false}
-                        className={inter.className}
-                        placeholder="*"
-                        inputMode="numeric" 
-                        value={newPin}
-                        
-                        onChange={handleNewPinInput}
-                        classNames={{
-                            root: PinInputStyles.root,
-                            pinInput: PinInputStyles.pinInput,
-                            input: PinInputStyles.input
-                        }}
-                    />
-                    {
-                        newPinError &&
-                        <p role="alert" className="w-full text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{newPinError}</p>
-                    }
-                </div>
+                    <div>
+                        <p className="my-4 text-gray-500 text-sm">Enter your new pin</p>
+                        <PinInput 
+                            type={/^[0-9]*$/} 
+                            inputType="password" 
+                            mask={true}
+                            error={newPinError ? true : false}
+                            className={inter.className}
+                            placeholder="*"
+                            inputMode="numeric" 
+                            value={newPin}
+                            onChange={handleNewPinInput}
+                            classNames={{
+                                root: PinInputStyles.root,
+                                pinInput: PinInputStyles.pinInput,
+                                input: PinInputStyles.input
+                            }}
+                        />
+                        {
+                            newPinError &&
+                            <p role="alert" className="w-full text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{newPinError}</p>
+                        }
+                    </div>
 
+                </MantineProvider>
                 <button 
                    onClick={handleChangePin} 
                    className="relative bg-base-color2 h-16 text-base-color1 w-full block mt-8 mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">

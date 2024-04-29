@@ -4,7 +4,6 @@ import { useForm, useWatch } from "react-hook-form"
 import CustomDuoDatePicker from "./CustomDuoDatePicker"
 import { SavedDropOffs } from "../../types"
 import { Suspense, useEffect, useState } from "react"
-import { MantineProvider } from "@mantine/core"
 import { MiniRingLoader } from "./assets/Loaders/RingLoader"
 import SavedDropOffItem from "./SavedDropOffItem"
 import { roboto_slab } from "@/app/fonts"
@@ -38,9 +37,7 @@ export default function ManageXpressDropOffsMC({ dropOffs }:{ dropOffs:SavedDrop
         <section className="">
             <div className="mx-auto md:w-[25em]">
                 <h1 className={`${roboto_slab.className} text-center text-2xl md:text-3xl font-bold mb-8`}>Drop-Offs</h1>
-                <MantineProvider>
                 <CustomDuoDatePicker setValue={setValue} startDate={startDate} endDate={endDate} name={["startDate","endDate"]} />
-                </MantineProvider>
             </div>
             <div className="relative pb-12">
                 <Suspense fallback={<MiniRingLoader />}>

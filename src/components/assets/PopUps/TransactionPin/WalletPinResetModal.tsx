@@ -2,7 +2,7 @@
 
 import { inter, roboto_slab } from "@/app/fonts";
 import { AlertSeverity, AuthUserWalletPinStatus } from "@/enums";
-import { PinInput } from "@mantine/core";
+import { PinInput, MantineProvider } from "@mantine/core";
 import { IconButton, Modal } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { IoMdClose } from "react-icons/io";
@@ -98,24 +98,25 @@ export default async function WalletPinResetModal({ authUserPinStatus }: { authU
                         <h4 className={` ${roboto_slab.className} my-4 text-2xl font-bold text-center`}>Enter OTP</h4>
                         <p className="text-gray-500">Please enter otp sent to your email and phone number</p>
                         <div className="my-5">
-                            <PinInput
-                                type={/^[0-9]*$/} 
-                                inputType="password" 
-                                mask={true}
-                                length={5}
-                                error={otpError ? true : false}
-                                className={inter.className}
-                                placeholder="*"
-                                inputMode="numeric" 
-                                value={otp}
-                                
-                                onChange={handleOTPInput}
-                                classNames={{
-                                    root: PinInputStyles.root,
-                                    pinInput: PinInputStyles.pinInput2,
-                                    input: PinInputStyles.input
-                                }}
-                            />
+                            <MantineProvider>
+                                <PinInput
+                                    type={/^[0-9]*$/} 
+                                    inputType="password" 
+                                    mask={true}
+                                    length={5}
+                                    error={otpError ? true : false}
+                                    className={inter.className}
+                                    placeholder="*"
+                                    inputMode="numeric" 
+                                    value={otp}
+                                    onChange={handleOTPInput}
+                                    classNames={{
+                                        root: PinInputStyles.root,
+                                        pinInput: PinInputStyles.pinInput2,
+                                        input: PinInputStyles.input
+                                    }}
+                                />
+                            </MantineProvider>
                             {
                                 otpError &&
                                 <p role="alert" className="w-full text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{otpError}</p>

@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/customHooks";
 import LoadingEllipse from "../../Loaders/LoadingEllipse";
 import { BiSolidMessageAltError } from "react-icons/bi";
 import { inter, roboto_slab } from "@/app/fonts";
-import { PinInput } from "@mantine/core";
+import { PinInput, MantineProvider } from "@mantine/core";
 import PinInputStyles from "@/LibCSSModules/PinInput.module.css"
 import { handleCreatePin } from "@/helperFns/handleCreateWalletPin";
 
@@ -18,7 +18,7 @@ interface IProps {
     handleAddPhoneNumber?: () => Promise<void>,
     text: string,
     heading: string,
-    setPin: Dispatch<SetStateAction<string|undefined>>,
+    setPin?: Dispatch<SetStateAction<string|undefined>>,
     setAddingPhoneNumber?: Dispatch<SetStateAction<boolean>>
 }
 
@@ -29,7 +29,7 @@ export default function CustomPinInput(props:IProps){
     const [pin,setPin] = useState<string|undefined>()
     const [processing,setProcessing] = useState(false)
     const dispatch = useAppDispatch()
-    const { phoneNumber } = useAppSelector(store => store.authUser)
+    const [creatingPin,setCreatingPin] = useState(false)
     const { uid } = useAppSelector(store => store.authUser)
 
     const handlePinInput = (val:string) => {
@@ -39,7 +39,7 @@ export default function CustomPinInput(props:IProps){
 
     const handleAction = async() => {
         if(props.for === "createWalletPin"){
-            handleCreatePin(router,uid,phoneNumber,dispatch,pin,setProcessing,setError)
+           await handleCreatePin(router,uid,dispatch,pin,setCreatingPin,setError)
         }
         else if(props.for === "confirmPhone" && props.handleAddPhoneNumber && props.setAddingPhoneNumber){
             props.setAddingPhoneNumber(true)
@@ -50,7 +50,9 @@ export default function CustomPinInput(props:IProps){
     }
 
     useEffect(() => {
-        props.setPin(pin)
+        if(props.setPin){
+            props.setPin(pin)
+        }
     },[pin])
 
     return(
@@ -64,26 +66,31 @@ export default function CustomPinInput(props:IProps){
                 }
                 <h4 className={` ${roboto_slab.className} my-4 text-2xl font-bold text-center`}>{props.heading}</h4>
                 <p className="text-gray-500">{props.text}</p>
-                <p className="text-red-500 font-bold text-center my-4 text-sm">Our OTP service needs funding, use the last four digit of your number to confirm</p>
+                {
+                    props.for !== "createWalletPin" &&
+                    <p className="text-red-500 font-bold text-center my-4 text-sm">Our OTP service needs funding, use the last four digit of your number to confirm</p>
+                }
 
-                <div className="my-8">
-                    <PinInput 
-                        type={/^[0-9]*$/} 
-                        inputType="password" 
-                        mask={true}
-                        error={error ? true : false}
-                        className={inter.className}
-                        placeholder="*"
-                        inputMode="numeric" 
-                        value={pin}
-                        
-                        onChange={handlePinInput}
-                        classNames={{
-                            root: PinInputStyles.root,
-                            pinInput: PinInputStyles.pinInput,
-                            input: PinInputStyles.input
-                        }}
-                    />
+                <div className="my-8 relative w-full">
+                    <MantineProvider>
+                        <PinInput 
+                            type={/^[0-9]*$/} 
+                            inputType="password" 
+                            mask={true}
+                            error={error ? true : false}
+                            className={inter.className}
+                            placeholder="*"
+                            inputMode="numeric" 
+                            value={pin}
+                            
+                            onChange={handlePinInput}
+                            classNames={{
+                                root: PinInputStyles.root,
+                                pinInput: PinInputStyles.pinInput,
+                                input: PinInputStyles.input
+                            }}
+                        />
+                    </MantineProvider>
                     {
                         error &&
                         <p role="alert" className="w-full text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{error}</p>
@@ -94,7 +101,7 @@ export default function CustomPinInput(props:IProps){
                    onClick={handleAction} 
                    className="relative bg-base-color2 h-14 block justify-center items-center text-base-color1 w-full mb-4 rounded p-4 font-medium text-center mx-auto hover:opacity-90 focus:opacity-90 transition-opacity ease-linear duration-300">
                     {
-                        processing ?
+                        processing || creatingPin ?
                         <LoadingEllipse />
                         :
                         "Continue"

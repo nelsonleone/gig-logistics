@@ -18,7 +18,6 @@ export default function CreateTransactionPinModalClient({ authUserPinStatus }: {
 
     useEffect(() => {
         const renderedBefore = localStorage.getItem("createTransactionPinModalClientRenderedBefore")
-        console.log(renderedBefore)
         if(renderedBefore){
             return;
         }else{
@@ -29,9 +28,14 @@ export default function CreateTransactionPinModalClient({ authUserPinStatus }: {
                 pathName !== "/user/wallet_pin" &&
                 pathName !== "/user/wallet_pin/change"
             )
-            localStorage.setItem("createTransactionPinModalClientRenderedBefore",JSON.stringify("yes"))
-        }        
+        }     
     },[beenAuthenticated,authUserPinStatus,pathName,walletPinStatus])
+
+    useEffect(() => {
+        if(open){
+            localStorage.setItem("createTransactionPinModalClientRenderedBefore",JSON.stringify("yes"))
+        }  
+    },[open])
 
 
     return(

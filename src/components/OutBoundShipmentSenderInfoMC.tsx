@@ -4,7 +4,7 @@ import { OutBoundShippingSenderInfo } from "../../types";
 import CustomTextInput from "./assets/inputs/CustomTextInput";
 import { useAppDispatch } from "@/redux/customHooks";
 import CustomPhoneInput from "./assets/inputs/CustomPhoneInput";
-import { Radio, RadioGroup } from "@mantine/core";
+import { Radio, RadioGroup, MantineProvider } from "@mantine/core";
 import { OutBoundShippingSenderInfoPickup } from "@/enums";
 import { Controller, SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { DatePickerInput, DateValue } from "@mantine/dates";
@@ -108,61 +108,63 @@ function OutBoundShipmentSenderInfoMC() {
                 />
 
                 <div>
-                    <div>
-                        <p id={`${id}-pickupTime-input-label`} className="mb-2 text-[.95rem] md:text-base block self-start ms-1">Pickup Time:</p>
-
-                        <Controller 
-                           control={control}
-                           name="pickupTime"
-                           render={({ field }) => (
-                                <RadioGroup
-                                    {...field}
-                                    color="dark"
-                                    >
-                                    <div className="border border-gray-300 rounded-lg ps-5 pe-3 h-[3.2em] my-4 flex justify-between gap-8 items-center">
-                                        <p className="text-sm">Right now</p>
-                                        <Radio color="dark" value={OutBoundShippingSenderInfoPickup.rightnow} label="" />
-                                    </div>
-                                    <div className="border border-gray-300 rounded-lg ps-5 pe-3 h-[3.2em] my-4 flex justify-between gap-8 items-center">
-                                        <p className="text-sm">Schedule for Later</p>
-                                        <Radio color="dark" value={OutBoundShippingSenderInfoPickup.later} label="" />
-                                    </div>                       
-                                </RadioGroup>
-                           )}
-                        />
-                        {
-                            errors.pickupTime?.message &&
-                            <p role="alert" className="text-primary2 text-sm mt-3 mb-6 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.pickupTime?.message}</p>
-                        }
-                    </div>
-
-                    {
-                        pickupTime === OutBoundShippingSenderInfoPickup.later &&
-                        <Controller 
-                           control={control}
-                           name="pickupTimeLater"
-                           render={({ field }) => (
-                            <DatePickerInput
-                                {...field}
-                                onChange={handleDateSelect}
-                                dropdownType="modal"
-                                clearable
-                                minDate={new Date()}
-                                placeholder="Schedule date"
-                                classNames={{
-                                    root: RadioStyles.root,
-                                    input: RadioStyles.input,
-                                    wrapper: RadioStyles.wrapper,
-                                    placeholder: RadioStyles.placeholder
-                                }}
+                    <MantineProvider>
+                        <div>
+                            <p id={`${id}-pickupTime-input-label`} className="mb-2 text-[.95rem] md:text-base block self-start ms-1">Pickup Time:</p>
+                            <Controller 
+                                control={control}
+                                name="pickupTime"
+                                render={({ field }) => (
+                                        <RadioGroup
+                                            {...field}
+                                            color="dark"
+                                            >
+                                            <div className="border border-gray-300 rounded-lg ps-5 pe-3 h-[3.2em] my-4 flex justify-between gap-8 items-center">
+                                                <p className="text-sm">Right now</p>
+                                                <Radio color="dark" value={OutBoundShippingSenderInfoPickup.rightnow} label="" />
+                                            </div>
+                                            <div className="border border-gray-300 rounded-lg ps-5 pe-3 h-[3.2em] my-4 flex justify-between gap-8 items-center">
+                                                <p className="text-sm">Schedule for Later</p>
+                                                <Radio color="dark" value={OutBoundShippingSenderInfoPickup.later} label="" />
+                                            </div>                       
+                                        </RadioGroup>
+                                )}
                             />
-                           )}
-                        />
-                    }   
-                    {
-                        errors.pickupTimeLater?.message &&
-                        <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.pickupTimeLater?.message}</p>
-                    }
+                            {
+                                errors.pickupTime?.message &&
+                                <p role="alert" className="text-primary2 text-sm mt-3 mb-6 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.pickupTime?.message}</p>
+                            }
+                        </div>
+
+                        {
+                            pickupTime === OutBoundShippingSenderInfoPickup.later &&
+                            <Controller 
+                                control={control}
+                                name="pickupTimeLater"
+                                render={({ field }) => (
+                                    <DatePickerInput
+                                        {...field}
+                                        onChange={handleDateSelect}
+                                        dropdownType="modal"
+                                        clearable
+                                        minDate={new Date()}
+                                        placeholder="Schedule date"
+                                        classNames={{
+                                            root: RadioStyles.root,
+                                            input: RadioStyles.input,
+                                            wrapper: RadioStyles.wrapper,
+                                            placeholder: RadioStyles.placeholder
+                                        }}
+                                    />
+                                )}
+                            />
+                        }   
+                        {
+                            errors.pickupTimeLater?.message &&
+                            <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.pickupTimeLater?.message}</p>
+                        }
+
+                    </MantineProvider>
                 </div>
             </div>
 

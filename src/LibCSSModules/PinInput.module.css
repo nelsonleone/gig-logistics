@@ -1,5 +1,5 @@
 .root{
-    @apply h-14;
+  @apply h-14 flex justify-center items-center w-full gap-2 mx-auto;
 }
 
 .pinInput{
@@ -11,5 +11,5 @@
 }
 
 .input{
-    @apply text-2xl font-medium border placeholder:text-3xl placeholder:text-gray-500 border-gray-700 font-inter h-full flex justify-center outline-offset-0 focus:outline-offset-0 focus:border-none items-center focus:outline focus:outline-2 focus:outline-black transition duration-200 ease-in-out;
+  @apply text-2xl text-center font-medium border w-full rounded-lg flex justify-center  placeholder:text-3xl placeholder:text-gray-500 border-gray-700 font-inter h-full outline-offset-0 focus:outline-offset-0 focus:border-none items-center focus:outline focus:outline-2 focus:outline-black transition duration-200 ease-in-out;
 }

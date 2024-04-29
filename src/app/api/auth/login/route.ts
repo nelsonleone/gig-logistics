@@ -47,10 +47,11 @@ export async function POST(request: NextRequest, response: NextResponse) {
   } 
   
   catch (error:any|unknown) {
+    console.log(error.message)
     if(error.code === 'auth/id-token-expired'){
       return NextResponse.json({ error: "Authentication Error: Expired ID Token" }, { status: 500 })
     }
-
+    
     return NextResponse.json({ error: "Authentication failed" }, { status: 500 })
   }
 }

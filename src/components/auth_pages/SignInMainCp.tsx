@@ -54,6 +54,13 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
                         body: JSON.stringify(returnTo)
                     })
 
+            
+                    if(!res.ok){
+                        const { error } = await res.json()
+                        throw new Error(error)
+                        return;
+                    }
+
                     const authUserData : AuthUser = await res.json()
 
                     dispatch(setAuthUserData({ ...authUserData, beenAuthenticated: true }))

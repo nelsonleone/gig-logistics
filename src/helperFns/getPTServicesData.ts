@@ -25,7 +25,6 @@ export const getPTservicesData = cache(async (serviceName:PT_ServiceName) => {
             }
         )
         
-        
         return data;
     }
 

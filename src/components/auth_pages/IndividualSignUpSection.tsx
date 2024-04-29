@@ -89,6 +89,13 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                         })
                     })
 
+                                
+                    if(!res.ok){
+                        const { error } = await res.json()
+                        throw new Error(error)
+                        return;
+                    }
+
                     const authUserData : AuthUser = await res.json()
         
                     dispatch(setShowAlert({

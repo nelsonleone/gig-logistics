@@ -14,7 +14,7 @@ import { AlertSeverity } from "@/enums";
 import { setShowRingLoader } from "@/redux/slices/ringLoaderSlice";
 import { red } from "@mui/material/colors";
 import { useRouter } from "next/navigation";
-import { Avatar } from "@mantine/core";
+import { Avatar, MantineProvider } from "@mantine/core";
 
 export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser | undefined }){
 
@@ -38,10 +38,10 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
 
             try{
                 dispatch(setShowRingLoader(true))
+                
                 await fetch(signOutLink,{
                     method: "POST"
                 })
-
                 dispatch(setSignOutAuthUser())
 
                 router.refresh()
@@ -67,48 +67,50 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
 
     return(
         <div>
-            <button
-                aria-label="open" 
-                onClick={handleClick} 
-                id="authUser-panel-button"
-                aria-controls={open ? 'authUser-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                className="flex gap-2 text-red-600 bg-gray-100 hover:bg-gray-200 transition duration-200 ease-in-out rounded-md p-3"
+            <MantineProvider>
+                <button
+                    aria-label="open" 
+                    onClick={handleClick} 
+                    id="authUser-panel-button"
+                    aria-controls={open ? 'authUser-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    className="flex gap-2 text-red-600 bg-gray-100 hover:bg-gray-200 transition duration-200 ease-in-out rounded-md p-3"
 
-            >
-                <Avatar className="flex justify-center items-center w-8 rounded-full aspect-square text-base-color1" style={{ backgroundColor: red[500] }} radius="xl" src={picture || authUserData?.picture || null} alt={firstName || authUserData?.firstName}>{firstName.charAt(0) || authUserData?.firstName.charAt(0)}</Avatar>
-                <FaSortDown className="text-xl xl:2xl" />
-            </button>
-            <Menu
-                id="authUser-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                'aria-labelledby': 'authUser-menu-button',
-                }}
                 >
-                <div>
-                    <MenuList>
-                        {
-                            authUserMenuLinkData.map(val => {
-                                const Icon = val.icon;
-                                return(
-                                    <MenuItem key={val.text} sx={{ p: 0}} className="p-0">
-                                        <Link href={val.link} onClick={(e) => handleLinkClick(e,val.link)} className={`${inter.className} m-0 py-2 px-3 w-full hover:bg-gray-100 focus:bg-gray-100 transition duration-200 ease-linear rounded-sm flex items-center text-gray-800`}>
-                                            <ListItemIcon>
-                                                <Icon size={20} />
-                                            </ListItemIcon>
-                                            <span  className={`${inter.className} text-sm font-medium`}>{val.text}</span>
-                                        </Link>
-                                    </MenuItem>
-                                )
-                            })
-                        }
-                    </MenuList>
-                </div>
-            </Menu>
+                    <Avatar className="flex justify-center items-center w-8 rounded-full aspect-square text-base-color1 overflow-hidden" style={{ backgroundColor: red[500], borderRadius: "999px" }} src={picture || authUserData?.picture || null} alt={firstName || authUserData?.firstName}>{firstName.charAt(0) || authUserData?.firstName.charAt(0)}</Avatar>
+                    <FaSortDown className="text-xl xl:2xl" />
+                </button>
+                <Menu
+                    id="authUser-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                    'aria-labelledby': 'authUser-menu-button',
+                    }}
+                    >
+                    <div>
+                        <MenuList>
+                            {
+                                authUserMenuLinkData.map(val => {
+                                    const Icon = val.icon;
+                                    return(
+                                        <MenuItem key={val.text} sx={{ p: 0}} className="p-0">
+                                            <Link href={val.link} onClick={(e) => handleLinkClick(e,val.link)} className={`${inter.className} m-0 py-2 px-3 w-full hover:bg-gray-100 focus:bg-gray-100 transition duration-200 ease-linear rounded-sm flex items-center text-gray-800`}>
+                                                <ListItemIcon>
+                                                    <Icon size={20} />
+                                                </ListItemIcon>
+                                                <span  className={`${inter.className} text-sm font-medium`}>{val.text}</span>
+                                            </Link>
+                                        </MenuItem>
+                                    )
+                                })
+                            }
+                        </MenuList>
+                    </div>
+                </Menu>
+            </MantineProvider>
         </div>
         )
 }

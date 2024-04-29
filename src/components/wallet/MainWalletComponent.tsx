@@ -7,6 +7,8 @@ import { useForm, useWatch } from "react-hook-form";
 import TransactionSectionTablist from "./TransactionSectionTablist";
 import TransactionSectionTabPanels from "./TransactionSectionTabPanels";
 import { Dayjs } from "dayjs";
+import { useState } from "react";
+import { TransactionSectionTabName } from "@/enums";
 
 function MainWalletComponent() {
 
@@ -14,6 +16,7 @@ function MainWalletComponent() {
     const id = "transaction_section_tab"
     const startDate = useWatch({ name: 'startDate', control})
     const endDate = useWatch({ name: 'endDate', control})
+    const [currentTab,setCurrentTab] = useState<TransactionSectionTabName>(TransactionSectionTabName.Wallet)
 
     return(
         <div className="my-10 lg:mb-16 text-primary ">
@@ -22,8 +25,8 @@ function MainWalletComponent() {
 
             <div className="mt-12 md:w-3/4 md:mx-auto">
               <CustomDuoDatePickerInput startDate={startDate} endDate={endDate}  containerClassName="md:w-[22em] md:mx-auto" setValue={setValue} name={["startDate","endDate"]} />
-              <TransactionSectionTablist id={id} />
-              <TransactionSectionTabPanels id={id} />
+              <TransactionSectionTablist currentTab={currentTab} setCurrentTab={setCurrentTab} id={id} />
+              <TransactionSectionTabPanels currentTab={currentTab} id={id} />
             </div>
         </div>
     )
