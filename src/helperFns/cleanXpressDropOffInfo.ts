@@ -24,8 +24,8 @@ export function cleanXpressDropOffInfo(info:XpressDropOffInfo){
             return{
                 ...rest,
                 category: category.value,
-                item: item.value,
-                weight: weight.value,
+                item: item.value || "",
+                weight: weight.value || "",
                 itemDescription: ""
             }
         }

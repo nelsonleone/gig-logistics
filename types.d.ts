@@ -326,8 +326,8 @@ type ICategory = {
 
 type DeliveryItems = {
     category: ICategory,
-    item: { label: string, value: string },
-    weight: { label: string, value: string },
+    item: { label?: string, value?: string } ,
+    weight: { label?: string, value?: string },
     quantity: number,
     value: number,
     itemImage: string,

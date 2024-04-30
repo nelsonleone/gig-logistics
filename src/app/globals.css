@@ -113,22 +113,6 @@
     .signup-phoneInput input{
         @apply focus:border-none focus:outline-offset-0 focus:outline-accent-color2;
     }
-
-    .override-mui-datepicker-styles * {
-        @apply font-inter;
-    }
-
-    .override-mui-datepicker-styles {
-        @apply focus-within:outline border-none rounded-md focus-within:outline-black focus-within:outline-2 focus-visible:outline-offset-0 focus-visible:outline focus-visible:outline-black focus-visible:outline-2 focus-within:outline-offset-0;
-    }
-
-    .override-mui-datepicker-styles > div {
-        @apply focus-within:outline border-none rounded-md focus-within:outline-black focus-within:outline-2 focus-visible:outline-offset-0 focus-visible:outline focus-visible:outline-black focus-visible:outline-2 focus-within:outline-offset-0;
-    }
-
-    .override-mui-datepicker-styles input{
-        @apply focus:outline-none focus:outline-offset-0 focus:border-none;
-    }
     
 }
 

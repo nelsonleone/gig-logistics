@@ -71,13 +71,13 @@ export default async function Page({ params }: { params: { id:string }}){
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
 
                 <div className="border-gray-100 rounded-md shadow-lg py-4  px-3 my-6 mt-4 md:flex flex-wrap md:gap-5 justify-between md:w-4/6 md:mx-auto">
                     {
                         dropoff.deliveryItems.map((item,index) => (
-                            <div key={index} className="border-b border-b-gray-300 last:border-none basis-[45%] my-8 md:border-none">
-                                <Image src={item.itemImage} alt={`${item.item} image`} className="rounded-md h-20 w-full md:w-72  md:h-52" width={200} height={100} quality={100} priority />
+                            <div key={index} className="border-b border-b-gray-300 relative last:border-none basis-[45%] my-8 md:border-none after:content-[''] md:odd:after:block md:after:w-2 md:after:absolute md:after:h-40 md:after:top-0 md:after:bottom-16 md:after:right-0 md:after:bg-gray-100">
+                                <Image src={item.itemImage} alt={`${item.item} image`} className="border border-gray-100 object-cover rounded-md h-36 object w-full md:w-72" width={200} height={200} quality={100} priority />
                                 <div>
                                     <p className="mb-6">{item.item.toUpperCase()}</p>
                                     <div className="mb-4">
@@ -94,7 +94,7 @@ export default async function Page({ params }: { params: { id:string }}){
                                     </div> 
                                     <div className="mb-4">
                                         <p id={`${dropoff.dropOffID}-item${index}-value`}  className="font-medium">Value:</p>
-                                        <p aria-labelledby={`${dropoff.dropOffID}-item${index}-value`}>{new Intl.NumberFormat('en-US', {style: 'currency',currency: 'NGN',}).format(parseInt(item.value))}</p>
+                                        <p aria-labelledby={`${dropoff.dropOffID}-item${index}-value`}>{new Intl.NumberFormat('en-US', {style: 'currency',currency: 'NGN',}).format(parseInt(`${item.value}`))}</p>
                                     </div> 
                                 </div> 
                             </div>

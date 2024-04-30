@@ -2,7 +2,7 @@
 
 import CustomTextInput from "./assets/inputs/CustomTextInput";
 import CustomPhoneInput from "./assets/inputs/CustomPhoneInput";
-import { Control, FieldErrors, UseFormClearErrors, UseFormSetError, UseFormSetValue, useWatch } from "react-hook-form";
+import { Control, FieldErrors, UseFormClearErrors, UseFormSetError, UseFormSetValue } from "react-hook-form";
 import { XpressDropOffInfo } from "../../types";
 import CustomQuotePageSelect from "./assets/inputs/CustomQuotePageSelect";
 import { XpressDropOffDeliveryType } from "@/enums";
@@ -62,7 +62,7 @@ function XpressDropOffReceiverSection(props:IProps) {
                     required="Receiver's Full Name is required"
                     labelStyles="mb-4 block self-start ms-1"
                     error={errors?.receiver?.fullName?.message}
-                    inputStyles="focus:outline-0 w-full focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.4em]"
+                    inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-base-color2 bg-gray-50 h-[3.4em]"
                 />
 
                 <CustomPhoneInput 
@@ -118,7 +118,7 @@ function XpressDropOffReceiverSection(props:IProps) {
                             containerStyles="w-full mt-5"
                             error={errors?.receiver?.deliveryOption?.homeDelivery?.address?.message}
                             labelStyles="mb-4 block self-start ms-1"
-                            inputStyles="focus:outline-0 w-full focus:outline-none rounded-lg border-gray-300 bg-gray-50 h-[3.4em]"
+                            inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-base-color2 bg-gray-50 h-[3.4em]"
                         />
                         <p className="text-[#D5343A] text-xs italic">Please note that home delivery request attracts additional charges</p>
                     </>

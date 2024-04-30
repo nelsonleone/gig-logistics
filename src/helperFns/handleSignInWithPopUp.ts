@@ -59,7 +59,6 @@ export async function handleSignInWithPopUp(returnTo: string | string[] | undefi
           throw new Error('User not found in userCredential')
         }
       } catch (error: any | unknown) {
-        console.log(error.message,error.code)
         dispatch(
           setShowAlert({
             mssg: customFirebaseError(error.code) || 'Error Occurred During Login',

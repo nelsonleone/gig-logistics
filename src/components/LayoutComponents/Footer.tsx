@@ -14,7 +14,7 @@ export default function Footer(){
                         <Link href="/services-portfolio">Service Portfolio</Link>
                     </li>
                     <li className="footer-li">
-                        <Link href="about-us">About Us</Link>
+                        <Link href="/about-us">About Us</Link>
                     </li>
                     <li className="footer-li">
                         <Link href="blog">Blog</Link>
@@ -27,19 +27,19 @@ export default function Footer(){
                 <ul>
                     <li  className="footer-li" aria-hidden="true">Other Services</li>
                     <li className="footer-li">
-                        <Link href="get-a-quote">Get a Quote</Link>
+                        <Link href="/app-panel/get-a-quote">Get a Quote</Link>
                     </li>
                     <li className="footer-li">
-                        <Link href="giggo-actions-tab">Schedule a Pickup</Link>
+                        <Link href="/app-panel/dropoff">Schedule a Pickup</Link>
                     </li>
                     <li className="footer-li">
                         <Link href="https://www.shoponalpha.com">GIG Alpha</Link>
                     </li>
                     <li className="footer-li">
-                        <Link href="overseas-shipping">Overseas Shipping</Link>
+                        <Link href="/overseas-shipping">Overseas Shipping</Link>
                     </li>
                     <li className="footer-li">
-                        <Link href="report">Report Issues</Link>
+                        <Link href="/report-issues">Report Issues</Link>
                     </li>
                 </ul>
 

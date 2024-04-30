@@ -1,9 +1,9 @@
 import { DeliveryItems } from "../../types";
 
 export function getEstimatedDropOffCost(value: string,weight: string,quantity: string) : number {
-    const cleanedValue = parseInt(value.replace(/\D/g, ''), 10)
-    const cleanedWeight = parseInt(weight.replace(/\D/g, ''), 10)
-    const cleanedQuantity = parseInt(quantity.replace(/\D/g, ''), 10)
+    const cleanedValue = parseInt(value.replace(/\D/g, '').trim(), 10)
+    const cleanedWeight = parseInt(weight.replace(/\D/g, '').trim(), 10)
+    const cleanedQuantity = parseInt(quantity.replace(/\D/g, '').trim(), 10)
 
     const baseTransportationPrice = 35500;
 
@@ -22,12 +22,14 @@ export function estimateTotalDropOffCost(deliveryItems:DeliveryItems[]) {
     const totalCost = deliveryItems.reduce((acc, item) => {
         let itemCost;
         if (item.category.value === "others") {
-            itemCost = getEstimatedDropOffCost(item.value,item.otherItemWeight,item.quantity)
-          }
-  
-  
+            // Turning them to string so i can use replace method
+            itemCost = getEstimatedDropOffCost(`${item.value}`,item.otherItemWeight!,`${item.quantity}`)
+        }
+        
+        
         else {
-            itemCost = getEstimatedDropOffCost(item.value,item.weight.value,item.quantity)
+            // Turning them to string so i can use replace method
+            itemCost = getEstimatedDropOffCost(`${item.value}`,item.weight.value,`${item.quantity}`)
         }
         return acc + itemCost;
     }, 0)

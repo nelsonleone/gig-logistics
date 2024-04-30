@@ -30,12 +30,12 @@ const formSchema = Yup.object().shape({
         value: Yup.string().oneOf(["computer accessories", "documents", "electronics", "food", "health products", "jewelries/accessories", "others", "phones"]).required('This field is required')
     }),
     item: Yup.object().shape({
-        label: Yup.string().required('This field is required'),
-        value: Yup.string().required('This field is required')
+        label: Yup.string(),
+        value: Yup.string()
     }),
     weight: Yup.object().shape({
-        label: Yup.string().required('This field is required'),
-        value: Yup.string().required('This field is required')
+        label: Yup.string(),
+        value: Yup.string()
     }),
     quantity: Yup.number().required('This field is required').min(1, 'Please enter a valid input').required('Quantity is required').typeError('Please enter a valid input'),
     value: Yup.number().required('This field is required').min(1, 'Please enter a valid input').required('Value is required').typeError('Please enter a valid input'),
@@ -191,7 +191,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                     placeholder="Weight"
                                     required="Please enter item weight"
                                     hasError={errors?.weight?.message ? true : false}
-                                    data={setDropOffItemWeight(deliveryItemCategory,item)}
+                                    data={setDropOffItemWeight(deliveryItemCategory,item || "")}
                                     optionStyles={{
                                         color: "#374151"
                                     }}
@@ -237,6 +237,10 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                     </div>
 
                     <XpressDropOffItemImageUpload setValue={setValue} />
+                    {
+                        errors.itemImage?.message &&
+                        <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.itemImage.message}</p>
+                    }
 
                     <div className="mt-10 flex flex-col-reverse md:flex-row justify-between gap-3 md:gap-8">
                         <button type="button" onClick={handleCloseModal} className="text-center text-base-color1 bg-red-600 rounded-md w-full block h-14 p-3 hover:drop-shadow-md focus:drop-shadow-sm focus:bg-transparent focus:text-base-color2 focus:border focus:outline-none focus:font-medium focus:outline-offset-0 focus:border-red-600">Cancel</button>

@@ -13,7 +13,7 @@ async function getFeaturedEventData(){
     
     try{
         const featuredData : FeaturedEventData = await sanityClient.fetch(
-            groq`*[_type == 'featured']{
+            groq`*[_type == 'featureds']{
                 "bannerIconAltText": bannerIcon.alt,
                 textContent,
                 "eventPageLink": eventPageLink.current,
@@ -33,7 +33,7 @@ async function getFeaturedEventData(){
     }
 
     catch(err:any|unknown){
-        console.log(err.message || "Error Occured Fetching Featured Event Data")
+        return null;
     }
 }
 

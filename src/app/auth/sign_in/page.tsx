@@ -22,7 +22,12 @@ export default async function SignIn({ params, searchParams }:IPageProps){
     const shouldRedirect = async() => {
         const authUserData = await getPersistedAuthUser(authSessionToken)
         if(authUserData){
-            redirect('/')
+            if(returnTo){
+                redirect(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/${returnTo}`)
+            }
+            else{
+                redirect('/')
+            }
         }
     }
     if(authSessionToken){

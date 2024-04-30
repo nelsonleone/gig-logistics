@@ -6,7 +6,7 @@ import CustomDuoDatePickerInput from "../CustomDuoDatePicker";
 import { useForm, useWatch } from "react-hook-form";
 import TransactionSectionTablist from "./TransactionSectionTablist";
 import TransactionSectionTabPanels from "./TransactionSectionTabPanels";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { useState } from "react";
 import { TransactionSectionTabName } from "@/enums";
 
@@ -24,7 +24,7 @@ function MainWalletComponent() {
             <WalletCard />
 
             <div className="mt-12 md:w-3/4 md:mx-auto">
-              <CustomDuoDatePickerInput startDate={startDate} endDate={endDate}  containerClassName="md:w-[22em] md:mx-auto" setValue={setValue} name={["startDate","endDate"]} />
+              <CustomDuoDatePickerInput minDate={dayjs()} startDate={startDate} endDate={endDate}  containerClassName="md:w-[22em] md:mx-auto" setValue={setValue} name={["startDate","endDate"]} />
               <TransactionSectionTablist currentTab={currentTab} setCurrentTab={setCurrentTab} id={id} />
               <TransactionSectionTabPanels currentTab={currentTab} id={id} />
             </div>

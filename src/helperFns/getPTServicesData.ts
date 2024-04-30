@@ -29,7 +29,6 @@ export const getPTservicesData = cache(async (serviceName:PT_ServiceName) => {
     }
 
     catch(err:any|unknown){
-        console.log(err.message)
         return null;
     }
 })

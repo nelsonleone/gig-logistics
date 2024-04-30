@@ -24,7 +24,7 @@ registerPlugin(
 )
 
 
-function CustomImageUpload({ setValue }: { setValue: UseFormSetValue<any>}) {
+function CustomImageUpload({ setValue, label }: { setValue: UseFormSetValue<any>, label?: string }) {
     
     const [itemImage, setItemImage] = useState<string | ArrayBuffer | null>()
 
@@ -49,7 +49,7 @@ function CustomImageUpload({ setValue }: { setValue: UseFormSetValue<any>}) {
 
     return (
         <div>
-            <p className="my-3">Upload Item</p>
+            <p className="my-3">{label || "Upload Item"}</p>
             <FilePond
                 onupdatefiles={handleFileLoad}
                 allowMultiple={false}

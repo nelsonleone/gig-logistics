@@ -11,12 +11,12 @@ interface IProps {
     startDate: Dayjs | null | undefined,
     endDate: Dayjs | null | undefined,
     containerClassName?: string
+    minDate?: Dayjs
 }
   
 
 export default function CustomDuoDatePickerInput(props:IProps){
 
-    const minDate = dayjs()
     const [localDateValues,setLocalDateValues] = useState<{startDate: Dayjs | null, endDate: Dayjs | null}>({
         startDate: null,
         endDate: null
@@ -45,7 +45,7 @@ export default function CustomDuoDatePickerInput(props:IProps){
                 <div className="w-1/'2">
                     <DatePicker 
                         name="startDate"
-                        minDate={minDate} 
+                        minDate={props.minDate} 
                         value={localDateValues.startDate} 
                         className="override-mui-datepicker-styles" 
                         onChange={((value) => handleDateChange("startDate",value))} 
@@ -54,7 +54,7 @@ export default function CustomDuoDatePickerInput(props:IProps){
                 <div className="w-1/'2">
                     <DatePicker 
                         name="endDate"
-                        minDate={minDate} 
+                        minDate={props.minDate} 
                         value={localDateValues.endDate} 
                         onChange={((value) => handleDateChange("endDate",value))} 
                         className="override-mui-datepicker-styles" 
