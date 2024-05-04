@@ -156,7 +156,7 @@ export default function OutBoundShipmentReceiverInfoMC(){
                 name="email"
             />
 
-            <button disabled={isSubmitting} className="block w-full rounded-md text-base-color1 bg-base-color2 font-medium p-4 text-center mx-auto mt-16 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-base-color2">Proceed</button>
+            <button disabled={isSubmitting} className="block w-full rounded-md text-base-color1 bg-base-color2 font-medium p-4 text-center mx-auto mt-16 hover:opacity-90 focus:bg-transparent focus:text-base-color2 focus:outline focus:outline-2 focus:outline-base-color2">Proceed</button>
         </form>
     )
 }

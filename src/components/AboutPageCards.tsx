@@ -24,7 +24,7 @@ const carouselAnimationVariants = {
   }
 }
 
-export default async function AboutPageCards(props:IProps){
+export default function AboutPageCards(props:IProps){
 
   return (
     <div className="md:flex flex-wrap justify-center gap-8">

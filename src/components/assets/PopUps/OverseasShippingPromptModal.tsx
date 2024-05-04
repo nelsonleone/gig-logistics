@@ -27,7 +27,7 @@ export default function OverseasShippingPromptModal(){
                     Shipment processing for the week ends on Thursday at 4 pm (GMT). Items arriving at our hub afterward will be shipped out the following week.
 
                     Delivery timeline is usually between three to five (3-5) Business days after items departure from our UK Experience Centre.
-                    For more information on rates, charges, as well as terms and conditions, please visit <Link className="text-accent-color2 font-medium" href="https://giglogistics.com/faqs">https://giglogistics.com/faqs</Link>
+                    For more information on rates, charges, as well as terms and conditions, please visit <Link className="text-accent-color2 font-medium" href="https://giglogistics.com/faqs">https://giglogistics.com/faqs </Link>
 
                     With GIGL, overseas shipping is one less thing to worry about.
                 </p>

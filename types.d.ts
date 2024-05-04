@@ -548,3 +548,13 @@ type OutboundShippingFormData = {
     receiverInfo: OutBoundShippingReceiverInfo,
     shipmentItems: OutBoundShippingItem[]
 }
+
+
+type ServicesPortfolioData = {
+    repImage: string,
+    servicesPortfolioContents: {
+        serviceName: string,
+        serviceDesc: string,
+        serviceLink: string
+    }[]
+}

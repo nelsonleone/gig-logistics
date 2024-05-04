@@ -207,7 +207,7 @@ export default function DeliveryPageMC(){
 
                     </div>
                 </section>
-                <button disabled={isSubmitting} className="rounded-md block text-base-color1 bg-base-color2 font-medium p-[.9em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+                <button disabled={isSubmitting} className="rounded-md block text-base-color1 bg-base-color2 font-medium p-[.9em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:text-base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
             </form>
 
 

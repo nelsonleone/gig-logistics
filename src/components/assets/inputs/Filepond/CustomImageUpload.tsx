@@ -11,7 +11,6 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import { useEffect, useState } from 'react';
 import { FilePondFile } from 'filepond';
 import { UseFormSetValue } from 'react-hook-form';
-import { DeliveryItems } from '../../../../../types';
 import "./filepond-overide.css";
 
 
@@ -24,9 +23,10 @@ registerPlugin(
 )
 
 
-function CustomImageUpload({ setValue, label }: { setValue: UseFormSetValue<any>, label?: string }) {
+function CustomImageUpload({ setValue, label, name }: { setValue: UseFormSetValue<any>, label?: string, name?: string }) {
     
     const [itemImage, setItemImage] = useState<string | ArrayBuffer | null>()
+    const inputName = name || 'itemImage';
 
     const handleFileLoad = (fileItems:FilePondFile[]) => {
         const uploadedFile = fileItems[0].file;
@@ -43,7 +43,7 @@ function CustomImageUpload({ setValue, label }: { setValue: UseFormSetValue<any>
 
     useEffect(() => {
         if(setValue && itemImage){
-            setValue('itemImage',itemImage as string)
+            setValue(inputName,itemImage as string)
         }
     },[itemImage])
 

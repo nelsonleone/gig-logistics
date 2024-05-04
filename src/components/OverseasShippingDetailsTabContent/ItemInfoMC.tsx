@@ -11,7 +11,8 @@ import { useAppDispatch } from "@/redux/customHooks";
 import { setItem } from "@/redux/slices/overseasShippingItemsSlice";
 import { nanoid } from "@reduxjs/toolkit";
 import { useRouter } from "next/navigation";
-import { Checkbox, MantineProvider } from "@mantine/core";
+import { MantineProvider } from "@mantine/core";
+import { Checkbox } from "flowbite-react";
 
 
 const formSchema = Yup.object().shape({
@@ -113,19 +114,17 @@ export default function ItemInfoMC(){
                 />
 
                 <div className="my-8 mx-2">
-                    <MantineProvider>
-                        <div className="flex gap-2 items-center">
-                            <Checkbox aria-label="Agree to terms and conditions" {...register('agreedToTermsAndConditions')} width={40} />
-                            <p className="text-sm italic">By selecting this checkbox, you agree to our <Link href="#" className="underline text-primary2">Terms and conditions</Link></p>
-                        </div>
-                        {
-                            errors.agreedToTermsAndConditions?.message &&
-                            <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.agreedToTermsAndConditions?.message}</p>
-                        }
-                    </MantineProvider>
+                    <div className="flex gap-2 items-center">
+                        <Checkbox aria-label="Agree to terms and conditions" {...register('agreedToTermsAndConditions')} width={40} />
+                        <p className="text-sm italic">By selecting this checkbox, you agree to our <Link href="#" className="underline text-primary2">Terms and conditions</Link></p>
+                    </div>
+                    {
+                        errors.agreedToTermsAndConditions?.message &&
+                        <p role="alert" className="text-primary2 text-sm mt-3 flex gap-2 items-center"><BiSolidMessageAltError className="text-lg" />{errors.agreedToTermsAndConditions?.message}</p>
+                    }
                 </div>
 
-                <button disabled={isSubmitting} className="rounded-md block text-base-color1 bg-base-color2 font-medium p-[.9em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
+                <button disabled={isSubmitting} className="rounded-md block text-base-color1 bg-base-color2 font-medium p-[.9em] text-center mx-auto w-full md:w-80 my-12 hover:opacity-90 focus:bg-transparent focus:text-base-color2 focus:outline focus:outline-2 focus:outline-black">Proceed</button>
             </form>
         </div>
     )

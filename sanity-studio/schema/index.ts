@@ -8,6 +8,8 @@ import overseasShippingTradeOpt from './overseas-shipping-trade-opt'
 import personalShoppingInfo from './personal-shopping-info'
 import localShippingIntroDataSchema from './localShippingIntroDataSchema'
 import chinaOverseasShippingSchema from './china-overseas-shipping'
+import servicesPortfolioSchema from './services-portfolio-schema'
+import termsAndConditionsSchema from './terms-and-conditions-schema'
 
 export const schema: SchemaPluginOptions | undefined = {
   types: [
@@ -19,6 +21,8 @@ export const schema: SchemaPluginOptions | undefined = {
     overseasShippingTradeOpt,
     localShippingIntroDataSchema,
     personalShoppingInfo,
-    chinaOverseasShippingSchema
+    chinaOverseasShippingSchema,
+    servicesPortfolioSchema,
+    termsAndConditionsSchema
   ]
 }

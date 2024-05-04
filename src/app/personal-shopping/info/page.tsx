@@ -36,7 +36,7 @@ export default async function PersonalShoppingInfo(){
                                 <div key={index} className="my-4 relative p-4 md:w-[45%] lg:w-2/5">
                                     <h4 className="font-medium text-lg mb-4">{val.heading}</h4>
                                     <FaStarHalf aria-hidden="true" className="absolute left-0 bottom-1/2 top-1/2 my-auto" />
-                                    <div className={`bg-slate-300 flex items-center justify-center p-4 relative rounded-xl md:py-8 md:min-h-[13em]`}>
+                                    <div className={` bg-slate-300 flex items-center justify-center p-4 relative rounded-xl md:py-8 md:min-h-[12em]`}>
                                         <p className="text-lg lg:text-xl">
                                             {val.text}
                                         </p>

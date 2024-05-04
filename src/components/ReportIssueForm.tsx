@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { memo } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { BiSolidMessageAltError } from "react-icons/bi"
 import LoadingEllipse from "./assets/Loaders/LoadingEllipse"
@@ -10,18 +10,19 @@ import { setShowSnackbar } from "@/redux/slices/snackbarSlice"
 import { AlertSeverity } from "@/enums"
 import CustomImageUpload from "./assets/inputs/Filepond/CustomImageUpload"
 
-export default async function ReportIssueForm(){
+function ReportIssueForm(){
 
-    const { control, formState: { errors, isSubmitting }, handleSubmit, setValue } = useForm<{ issue: string }>()
+    const { control, formState: { errors, isSubmitting }, handleSubmit, setValue, reset } = useForm<{ issue: string, issueScreenshot: string }>()
     const { email } = useAppSelector(store => store.authUser)
     const dispatch = useAppDispatch()
 
-    const handleSubmitIssue : SubmitHandler<{ issue: string }> = async({ issue }) => {
+    const handleSubmitIssue : SubmitHandler<{ issue: string, issueScreenshot: string }> = async({ issue, issueScreenshot }) => {
         try{
-            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/'api/send_report_mail`,{
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_APP_URL}/api/send_report_mail`,{
                 method: "POST",
                 body: JSON.stringify({
                     userEmail: email,
+                    reportScreenshot: issueScreenshot,
                     userReport: issue
                 })
             })
@@ -36,6 +37,8 @@ export default async function ReportIssueForm(){
                 mssg: "Your report was sent successfully",
                 severity: AlertSeverity.SUCCESS
             }))
+            
+            reset()
         }
 
         catch(err:unknown|any){
@@ -47,7 +50,7 @@ export default async function ReportIssueForm(){
     }
 
     return(
-        <form className={`${inter.className} py-8 px-4 text-primary bg-base-color1 rounded-lg my-8 md:mt-12 md:w-[30em] md:mx-auto`} onSubmit={handleSubmit(handleSubmitIssue)}>
+        <form className={`${inter.className} py-8 px-4 md:px-8 text-primary bg-base-color1 rounded-lg my-8 md:mt-12 md:w-[30em] md:mx-auto`} onSubmit={handleSubmit(handleSubmitIssue)}>
             <div className="mb-5">
                 <label htmlFor="user-report" className="block mb-3">Issue</label>
                 <Controller
@@ -64,7 +67,7 @@ export default async function ReportIssueForm(){
                 }
             </div>
 
-            <CustomImageUpload setValue={setValue} label="Upload Screenshot - Optional" />
+            <CustomImageUpload name="issueScreenshot" setValue={setValue} label="Upload Screenshot - Optional" />
             
             <button disabled={isSubmitting} className="relative min-h-[3.6em] text-center w-full md:w-96 bg-base-color2 text-base-color1 font-medium rounded-md my-8 md:my-10 mx-auto block">
                 {
@@ -77,3 +80,5 @@ export default async function ReportIssueForm(){
         </form>
     )
 }
+
+export default memo(ReportIssueForm)

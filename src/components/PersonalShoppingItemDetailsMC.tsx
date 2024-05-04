@@ -24,7 +24,7 @@ const formSchema = Yup.object().shape({
 
 export default function PersonalShoppingItemDetailsMC(){
 
-    const { control, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<PersonalShoppingItemDetailsFormInfo>({ resolver: yupResolver(formSchema) })
+    const { control, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<PersonalShoppingItemDetailsFormInfo>({ resolver: yupResolver(formSchema) })
     const [openSuccessModal,setOpenSuccessModal] = useState(false)
     const { email } = useAppSelector(store => store.authUser)
 
@@ -32,6 +32,11 @@ export default function PersonalShoppingItemDetailsMC(){
         await new Promise((resolve) => setTimeout(resolve, 3000))
         reset()
         setOpenSuccessModal(true)
+    }
+
+    const handleOnClose = () => {
+        setOpenSuccessModal(false)
+        reset()
     }
 
 
@@ -44,7 +49,7 @@ export default function PersonalShoppingItemDetailsMC(){
                 error={errors?.productLink?.message}
                 containerStyles="w-full mt-5"
                 labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-text-base2 bg-gray-50 h-[3.4em]"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500  bg-gray-50 h-[3.4em] md:focus:outline-base-color2"
                 id="personalShoppingItemDetails-link" 
                 name="productLink"
                 inputType="text"
@@ -56,7 +61,7 @@ export default function PersonalShoppingItemDetailsMC(){
                 error={errors?.itemName?.message}
                 placeholder="A brown nike shoe"
                 containerStyles="w-full mt-5"
-                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-text-base2 bg-gray-50 h-[3.4em]"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500  bg-gray-50 h-[3.4em] md:focus:outline-base-color2"
                 labelStyles="mb-2 text-[.95rem] md:text-base text-sm block self-start ms-1" 
                 id="personalShoppingItemDetails-name" 
                 name="itemName"
@@ -70,7 +75,7 @@ export default function PersonalShoppingItemDetailsMC(){
                 containerStyles="w-full mt-5"
                 error={errors?.quantity?.message}
                 labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
-                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500 md:focus:outline-text-base2 bg-gray-50 h-[3.4em]"
+                inputStyles="w-full placeholder:text-[.95rem] border-gray-300 rounded-lg focus:border-none focus:outline-orange-500  bg-gray-50 h-[3.4em] md:focus:outline-base-color2"
                 id="personalShoppingItemDetails-quantity" 
                 name="quantity"
                 inputType="number"
@@ -97,7 +102,7 @@ export default function PersonalShoppingItemDetailsMC(){
                 }
             </div>
 
-            <button disabled={isSubmitting} className="relative block my-10 w-full text-center mx-auto font-medium text-base-color1 bg-base-color2 p-4 text-sm rounded lg:text-base">
+            <button disabled={isSubmitting} className="relative block my-10 w-full h-14 text-center mx-auto font-medium text-base-color1 bg-base-color2 p-4 text-sm rounded lg:text-base">
                 {
                     isSubmitting ?
                     <LoadingEllipse />
@@ -106,7 +111,7 @@ export default function PersonalShoppingItemDetailsMC(){
                 }
             </button>
 
-            <PSModal open={openSuccessModal} onClose={() => setOpenSuccessModal(false)} heading="Posted" text={`Thanks for choosing us to shop for you, we will review your request and update your throw your email - ${email}`} />
+            <PSModal open={openSuccessModal} onClose={() => handleOnClose()} heading="Posted" text={`Thanks for choosing us to shop for you, we will review your request and update your throw your email - ${email}`} />
         </form>
     )
 }

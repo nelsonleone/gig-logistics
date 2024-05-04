@@ -11,7 +11,7 @@ export default function Footer(){
                 <ul>
                     <li  className="footer-li" aria-hidden="true">Company</li>
                     <li className="footer-li">
-                        <Link href="/services-portfolio">Service Portfolio</Link>
+                        <Link href="/services-portfolio">Services Portfolio</Link>
                     </li>
                     <li className="footer-li">
                         <Link href="/about-us">About Us</Link>

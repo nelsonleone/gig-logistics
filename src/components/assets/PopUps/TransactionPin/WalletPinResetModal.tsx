@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/customHooks";
 import { setShowAlert } from "@/redux/slices/alertSlice";
 import { handleConfirmOTPForPinReset } from "@/helperFns/handleConfirmOTPForPinReset";
 
-export default async function WalletPinResetModal({ authUserPinStatus }: { authUserPinStatus:AuthUserWalletPinStatus}){
+export default function WalletPinResetModal({ authUserPinStatus }: { authUserPinStatus:AuthUserWalletPinStatus}){
     
     const router = useRouter()
     const [otpError,setOtpError] = useState('')
