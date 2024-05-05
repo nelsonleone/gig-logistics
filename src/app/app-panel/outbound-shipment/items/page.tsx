@@ -13,7 +13,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { FaPlusCircle, FaTrash } from "react-icons/fa"
 
-export default async function OutBoundShippingItemsPage(){
+export default function OutBoundShippingItemsPage(){
 
     const items = useAppSelector(store => store.outboundShipping.shipmentItems)
     const dispatch = useAppDispatch()

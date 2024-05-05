@@ -55,10 +55,10 @@ export default function OutBoundShipmentReceiverInfoMC(){
 
     return(
         <form className="pb-12 md:w-3/4 lg:w-1/2 md:mx-auto" onSubmit={handleSubmit(handleFormSubmit)}>
-            <h2 className="font-bold text-2xl text-center mx-auto my-8">Receiver's information</h2>
+            <h2 className="font-bold text-2xl text-center mx-auto my-8">Receiver&apos;s information</h2>
 
             <div className="w-full mb-6">
-                <label htmlFor="xpress-dropoff-deliveryItems-category" className="mb-3 block self-start ms-1">Receiver's Country:</label>
+                <label htmlFor="xpress-dropoff-deliveryItems-category" className="mb-3 block self-start ms-1">Receiver&apos;s Country:</label>
                 <CustomQuotePageSelect
                     name="country"  
                     id={`${id}-category`}

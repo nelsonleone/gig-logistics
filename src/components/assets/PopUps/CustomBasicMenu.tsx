@@ -38,7 +38,7 @@ export default function CustomBasicMenu({ open, handleClose, styles, anchorEl, i
                       <Link href={val.link}>{val.text}</Link>
                     </MenuItem>
                     :
-                    <MenuItem className={`${inter.className} text-sm font-medium`} onClick={handleClose}>{val.text}</MenuItem>
+                    <MenuItem key={index} className={`${inter.className} text-sm font-medium`} onClick={handleClose}>{val.text}</MenuItem>
                 ))
                 :
                 <span className={`${inter.className} px-3 text-sm font-medium`} onClick={handleClose}>{usedIn === "notification"  ? "No Unread Notifications" : "Empty"}</span>
