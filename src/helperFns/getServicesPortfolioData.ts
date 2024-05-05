@@ -9,11 +9,7 @@ async function getServicesPortfolioData(){
         const servicesPortfolioData : ServicesPortfolioData = await sanityClient.fetch(
             groq`*[_type == 'servicesPortfolio'][0]{
                 "repImageAlt": repImage.alt,
-                servicesPortfolioContents: {
-                    "serviceName": servicesPortfolioContents.serviceName,
-                    "serviceDesc": servicesPortfolioContents.serviceDesc,
-                    "serviceLink": servicesPortfolioContents.serviceLink.current,
-                },
+                servicesPortfolioContents,
                 "repImage": repImage.asset->url
 
             }`,
@@ -25,6 +21,8 @@ async function getServicesPortfolioData(){
             }
             
         )
+
+        console.log(servicesPortfolioData)
 
         return servicesPortfolioData;
     }

@@ -38,9 +38,10 @@ interface ISanityImageObjType {
 }
 
 type FeaturedEventData = {
-    bannerIcon: IBannerIcon,
-    eventPageLink: Slug,
-    textContent: string,
+    bannerIcon: string,
+    eventPageLink: string,
+    bannerIconAltText: string,
+    textContent: string
 }
 
 type HighlightedService = {
@@ -552,9 +553,12 @@ type OutboundShippingFormData = {
 
 type ServicesPortfolioData = {
     repImage: string,
+    repImageAlt: string,
     servicesPortfolioContents: {
         serviceName: string,
         serviceDesc: string,
-        serviceLink: string
+        serviceLink: {
+            current: string
+        }
     }[]
 }

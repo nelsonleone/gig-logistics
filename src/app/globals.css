@@ -123,3 +123,7 @@
     z-index: 99 !important;
 }
 
+
+article > .termsAndConditionsContentPTag-first{
+    font-weight: 500;
+}

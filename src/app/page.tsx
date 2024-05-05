@@ -8,7 +8,7 @@ import { Suspense } from "react";
 import { roboto_slab } from "./fonts";
  
 export default function Home() {
-
+ 
   return (
     <main className="page overflow-hidden px-0 pt-[85vh]">
       <Suspense fallback={<CustomSkeleton variant="rectangular"  className="bg-gray-500 w-full h-16 absolute z-20 top-[10rem] lg:top-[6rem]" />}>
@@ -16,7 +16,7 @@ export default function Home() {
       </Suspense>
       <div 
         className="absolute w-screen h-[110vh] md:h-screen overflow-hidden brightness-[25%] top-16 bg-slate-900 after:absolute after:w-full after:h-full after:left-0 after:top-0 after:block after:opacity-10 after:m-auto after:bg-slate-200"
-        >
+        > 
         <video className="w-full absolute h-[110vh] md:h-screen top-0 bottom-0 left-0 right-0 m-auto object-cover" src="/videos/intro-bg-video.mp4" autoPlay loop muted controls={false} />
       </div>
 

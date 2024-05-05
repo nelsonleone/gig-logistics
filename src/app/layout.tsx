@@ -40,7 +40,7 @@ export default function RootLayout({
       </head>
         <CustomAppStoreProvider>
           <ThemeProvider theme={MuiTheme}>
-            <body className={`${inter.className} bg-[#f4f5f6] scroll-smooth overflow-x-hidden`}>
+            <body className={`${inter.className} relative bg-[#f4f5f6] scroll-smooth overflow-x-hidden`}>
               <CustomAlert />
               <Header >
                 <AuthUserHeaderSection />

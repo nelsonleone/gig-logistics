@@ -18,7 +18,7 @@ export async function checkDropOffCreationInfo(info: Pick<ServerReadyXpressDropO
     }
     else if(info.receiver.deliveryOptionType === XpressDropOffDeliveryType.TerminalPickup){
         if(!info.receiver.pickupTerminal || !info.receiver.stateOrCity){
-            return NextResponse.json({ message: "Error Creating DropOff: Choose a state/city and pickup terminal for 'Terminal Pickup'"}, { status: 400 }) 
+            return NextResponse.json({ error: "Error Creating DropOff: Choose a state/city and pickup terminal for 'Terminal Pickup'"}, { status: 400 }) 
         }
     }
 }

@@ -50,6 +50,6 @@ export async function POST(request: NextRequest, response: NextResponse) {
     
     return NextResponse.json({ message: "DropOff created", status: 201 })
   } catch (err:any|unknown) {
-    return NextResponse.json({ message: err.message || "Error Creating DropOff" },{ status: 500 })
+    return NextResponse.json({ error: err.message || "Error Creating DropOff" },{ status: 500 })
   }
 }

@@ -7,14 +7,14 @@ import Link from "next/link";
 const serializer = {
     block: {
         h5({ children }:any){
-            return <h2 className="text-lg font-semibold my-2 mt-8">{children}</h2>
+            return <h2 className="text-lg font-semibold my-2 mt-9">{children}</h2>
         },
         normal({ children }:any){
-            return <p className="mt-4">{children}</p>
+            return <p className="mt-4 termsAndConditionsContentPTag-first">{children}</p>
         }
     },
     listItem: {
-        number: ({ children }:any) => <li className="md:my-2 mx-6">{children}</li>,
+        number: ({ children }:any) => <li className="list-decimal md:my-2 mx-6">{children}</li>,
     },
     marks: {    
         link: ({ value, children }:any) => {
@@ -42,10 +42,10 @@ export default async function TermsAndConditionsPage(){
             {
                 termsAndConditionsData ?
                 <>
-                    <div className="bg-[url('/images/offices_bg.svg')] py-20 w-full">
-                      <h1 className={`${roboto_slab.className} text-4xl font-bold my-12`}>Terms And Conditions</h1>
+                    <div className="bg-[url('/images/offices_bg.svg')] py-16 w-full">
+                      <h1 className={`${roboto_slab.className} text-center text-4xl font-bold my-12`}>Terms And Conditions</h1>
                     </div>
-                    <article className="bg-base-color1">
+                    <article className="my-8 bg-base-color1 rounded-lg px-4 lg:px-6 py-8 md:w-11/12 md:mx-auto">
                         <PortableText value={termsAndConditionsData?.detailedTermsAndConditions} components={serializer} />
                     </article>
                 </>

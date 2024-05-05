@@ -24,7 +24,7 @@ export async function GET(request: NextRequest, response: NextResponse) {
     const userDoc = await userDocRef.get()
 
     if (!userDoc.exists) {
-      return NextResponse.json([])
+      return ([])
     }
 
     const userData = userDoc.data()

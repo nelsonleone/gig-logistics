@@ -6,11 +6,12 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import CustomPasswordInput from '../assets/inputs/CustomPasswordInput';
 import { ProfilePasswordChangeForm } from '../../../types';
 import { useAppDispatch, useAppSelector } from '@/redux/customHooks';
-import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, updatePassword } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase-client-config';
 import { setShowAlert } from '@/redux/slices/alertSlice';
 import { AlertSeverity } from '@/enums';
 import LoadingEllipse from '../assets/Loaders/LoadingEllipse';
+import customFirebaseError from '@/helperFns/CustomFirebaseAuthError';
 
 
 const formSchema = Yup.object().shape({
@@ -28,7 +29,7 @@ const formSchema = Yup.object().shape({
       .required('Confirm Password is required')
       .min(4, 'Password length should be at least 7 characters')
       .max(12, 'Password cannot exceed more than 12 characters')
-      .oneOf([Yup.ref('password')], 'Passwords do not match')
+      .oneOf([Yup.ref('newPassword')], 'Passwords do not match')
     ,
 })
 
@@ -51,18 +52,13 @@ export default function PasswordChangeForm(){
                 throw new Error("Unauthourized account, please login again")
             }
 
-            const credential = EmailAuthProvider.credential(
-                email,
-                data.confirmNewPassword
-            )
+            // this code throws a "Too many attempts error too early"
+            // await reauthenticateWithCredential(auth.currentUser!,credential)
 
-            const userCred = await reauthenticateWithCredential(auth.currentUser!,credential)
-
-            if(!userCred){
-                throw new Error("An Error Occurred Verifying Current Password")
-            }
+            await signInWithEmailAndPassword(auth, email, data.confirmNewPassword)
 
             await updatePassword(auth.currentUser, data.newPassword)
+
 
             dispatch(setShowAlert({
                 mssg: "Password Is Successfully Updated",
@@ -71,10 +67,10 @@ export default function PasswordChangeForm(){
         }
         catch(err:any|unknown){
             dispatch(setShowAlert({
-                mssg: err.message || "Error Occurred Completing Request",
+                mssg: err.code === 'auth/invalid-credential' ? "Wrong Password" : customFirebaseError(err.code) || "Error Occurred Completing Request",
                 severity: AlertSeverity.ERROR
             }))
-        } 
+        }  
     }
 
     return(
@@ -83,7 +79,7 @@ export default function PasswordChangeForm(){
            <CustomPasswordInput
                 name="currentPassword"
                 control={control}
-                labelStyles='mb-3' 
+                labelStyles='mb-3'   
                 placeholder="Enter Current Password"
                 id="profile-update-currentPassword" 
                 label="Current Password"
