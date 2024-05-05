@@ -55,7 +55,7 @@ export default function DeliveryPageMC(){
             <p className="mb-7 text-center">To guarantee hassle-free shipping please input details of item(s) purchased from store in order to complete the overseas shipping process.</p>
             <form onSubmit={handleSubmit(handleFinalizeShipping)}>
                 <section className="shadow-lg bg-base-color1 drop-shadow-md rounded-md mt-12 w-full pb-10 flex overflow-hidden flex-col items-center relative">
-                    <h4 className="w-full text-center text-base-color1 shadow-sm-light bg-[hsl(0,2%,10%)] font-medium p-3 mb-8">Receiver's Details</h4>
+                    <h4 className="w-full text-center text-base-color1 shadow-sm-light bg-[hsl(0,2%,10%)] font-medium p-3 mb-8">Receiver&apos;s Details</h4>
                     <div className="w-full px-2 md:px-10">
                         <CustomTextInput
                             label="Receiver name" 

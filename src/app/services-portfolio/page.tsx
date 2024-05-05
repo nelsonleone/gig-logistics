@@ -27,7 +27,7 @@ export default async function ServicesPortfolioPage(){
                                 <div className="md:flex flex-wrap justify-between lg:w-[48%]">
                                     {
                                         servicePortfolioData.servicesPortfolioContents && servicePortfolioData.servicesPortfolioContents.length ? servicePortfolioData.servicesPortfolioContents.map(data => (
-                                            <div className="md:w-[45%] gap-4 bg-base-color2 relative text-base-color1 rounded-2xl my-8 px-4 min-h-[9em] py-6">
+                                            <div key={data.serviceName} className="md:w-[45%] gap-4 bg-base-color2 relative text-base-color1 rounded-2xl my-8 px-4 min-h-[9em] py-6">
                                                 <FcShipped className="absolute -left-3 -top-3 block text-3xl" aria-hidden="true" />
                                                 <h2 className="text-lg font-semibold uppercase my-4">{data.serviceName}</h2>
                                                 <p className="text-xs">{data.serviceDesc}</p>

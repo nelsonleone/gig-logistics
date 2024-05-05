@@ -5,6 +5,7 @@ import { PortableText, PortableTextComponents } from "@portabletext/react";
 import { urlForImage } from "../../sanity-studio/lib/image";
 import { PortableTextBlock } from "@portabletext/types";
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
+import Image from "next/image";
 
 
 interface IProps {
@@ -22,7 +23,7 @@ interface IProps {
 
 const portableTextComponent : PortableTextComponents = {
     types: {
-      image: ({value}) => <img src={urlForImage(value).url()} />,
+      image: ({value}) => <Image src={urlForImage(value).url()} width={80} height={80} alt="" aria-hidden="true" loading="eager" />,
     },
   
     marks: {

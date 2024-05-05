@@ -127,7 +127,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
 
                 <button disabled={isSubmitting} className="h-[3.4em] bg-base-color2 relative text-[#FFFFFF] capitalize text-center block mt-6 mb-4 rounded-lg p-4 font-medium w-full hover:drop-shadow-lg transition duration-200 ease-linear focus:border focus:border-gray-300">{isSubmitting ? <LoadingEllipse styles="" /> :"Log In"}</button>
                 <ContinueWithGoogleBtn disabled={isSubmitting} handleClick={handleGoogleSignIn} className="" />
-                <p className="text-sm text-center">Don't have an account? <Link className="underline font-medium mx-2" href={`/auth/create_account${returnTo ? `?returnTo=${returnTo}` : ""}`}>Sign Up</Link></p>
+                <p className="text-sm text-center">Don&apos;t have an account? <Link className="underline font-medium mx-2" href={`/auth/create_account${returnTo ? `?returnTo=${returnTo}` : ""}`}>Sign Up</Link></p>
             </form>
         </main>
     )

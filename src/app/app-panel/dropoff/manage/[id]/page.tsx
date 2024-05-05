@@ -41,7 +41,7 @@ export default async function Page({ params }: { params: { id:string }}){
                         </div>
                         <h3 className="flex gap-4">
                             <BsSendArrowUpFill className="text-red-600 text-2xl" />
-                            <span className="font-medium text-lg">Sender's Details:</span>
+                            <span className="font-medium text-lg">Sender&apos;s Details:</span>
                         </h3>
                         <div className="flex flex-col gap-4 mt-4">
                             <p>{dropoff.sender.firstName} {dropoff.sender.lastName}</p>
@@ -58,7 +58,7 @@ export default async function Page({ params }: { params: { id:string }}){
                     <div className="border-gray-100 rounded-md shadow-md py-4 px-3 md:px-6 my-6 md:w-1/2">
                         <h3 className="flex gap-4">
                             <GiReceiveMoney className="text-red-600 text-2xl" />
-                            <span className="font-medium text-lg">Receiver's Details:</span>
+                            <span className="font-medium text-lg">Receiver&apos;s Details:</span>
                         </h3>
 
                         <div className="flex flex-col gap-4 mt-4">

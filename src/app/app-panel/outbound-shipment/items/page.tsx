@@ -48,9 +48,9 @@ export default async function OutBoundShippingItemsPage(){
 
             <div className="flex flex-wrap justify-center gap-4 flex-col md:flex-row">
                 {
-                    items && items.length ? items?.map(val => {
+                    items && items.length ? items?.map((val,index) => {
                         return( 
-                            <div className="border border-gray-100 bg-gray-50 rounded-lg p-4 relative md:w-1/2 lg:w-[30%]">
+                            <div key={index} className="border border-gray-100 bg-gray-50 rounded-lg p-4 relative md:w-1/2 lg:w-[30%]">
                                 <IconButton aria-label="delete item" onClick={() => handleDeleteDeliveryItem(val.id!)} className={`absolute top-2 right-2 cursor-pointer hover:bg-gray-200 text-accent-color`}>
                                     <FaTrash aria-label="delete" className="text-xl" />
                                 </IconButton>

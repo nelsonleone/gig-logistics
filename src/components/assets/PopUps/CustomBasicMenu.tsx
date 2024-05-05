@@ -17,11 +17,6 @@ interface IProps {
     usedIn: "notification"
 }
 
-const theme = createTheme({
-    typography: {
-        fontFamily: "Inter, sans-serif"
-    }
-})
 
 export default function CustomBasicMenu({ open, handleClose, styles, anchorEl, id, usedIn, menuItems, buttonId }:IProps){
     return(
@@ -37,9 +32,9 @@ export default function CustomBasicMenu({ open, handleClose, styles, anchorEl, i
         >
             {
                 menuItems.length ?
-                menuItems.map(val => (
+                menuItems.map((val,index) => (
                     val.link ?
-                    <MenuItem className={`${inter.className} text-sm font-medium`} onClick={handleClose}>
+                    <MenuItem key={index} className={`${inter.className} text-sm font-medium`} onClick={handleClose}>
                       <Link href={val.link}>{val.text}</Link>
                     </MenuItem>
                     :

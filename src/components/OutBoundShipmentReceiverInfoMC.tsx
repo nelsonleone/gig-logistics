@@ -82,9 +82,9 @@ export default function OutBoundShipmentReceiverInfoMC(){
             </div>
 
             <CustomTextInput
-                label="Receiver's Address:" 
+                label="Receiver&apos;s Address:" 
                 control={control}
-                placeholder="Enter receiver's address"
+                placeholder="Enter receiver&apos;s address"
                 error={errors?.address?.message}
                 containerStyles="w-full mt-5"
                 labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
@@ -119,9 +119,9 @@ export default function OutBoundShipmentReceiverInfoMC(){
             </div>
 
             <CustomTextInput
-                label="Receiver's Name:" 
+                label="Receiver&apos;s Name:" 
                 control={control}
-                placeholder="Enter Receiver's name"
+                placeholder="Enter Receiver&apos;s name"
                 error={errors?.name?.message}
                 containerStyles="w-full mt-5"
                 labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"
@@ -144,10 +144,10 @@ export default function OutBoundShipmentReceiverInfoMC(){
             />
 
             <CustomTextInput
-                label="Receiver's Email:" 
+                label="Receiver&apos;s Email:" 
                 control={control}
                 inputType='email'
-                placeholder="Enter Receiver's email"
+                placeholder="Enter Receiver&apos;s email"
                 error={errors?.email?.message}
                 containerStyles="w-full mt-5"
                 labelStyles="mb-2 text-[.95rem] md:text-base block self-start ms-1"

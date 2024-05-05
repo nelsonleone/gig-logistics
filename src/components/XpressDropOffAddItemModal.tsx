@@ -86,7 +86,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
         <Modal open={open} onClose={() => {}} id="xpressDropOff-deliveryItems-modal" aria-expanded={open ? "true" : "false" }>
             <div className="text-primary overflow-y-auto h-[30em] bg-gray-100 rounded-lg py-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-11/12 md:w-[37em]">
                 <div className="p-6">
-                    <h4 className="text-center font-medium text-lg">Items's Info</h4>
+                    <h4 className="text-center font-medium text-lg">Items&apos;s Info</h4>
                     <IconButton className="absolute text-xl left-3 top-3" aria-label="close" onClick={handleCloseModal} aria-controls="xpressDropOff-deliveryItems-modal">
                         <IoClose />
                     </IconButton>

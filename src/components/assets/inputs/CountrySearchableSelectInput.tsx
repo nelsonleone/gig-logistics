@@ -18,6 +18,8 @@ const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
   )
 )
 
+SelectItem.displayName = 'SelectItem';
+
 const unfilteredCountriesData : CountryNames = countriesNamesArray as CountryNames;
 const countriesNames = unfilteredCountriesData.map(val => val.name)
 

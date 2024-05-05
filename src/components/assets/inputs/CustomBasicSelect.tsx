@@ -43,7 +43,7 @@ export default function CustomBasicSelect(props:IProps){
                     {
                         selectOptionsData.map(val => {
                             return(
-                                <option className={`${inter.className}`} value={val.value}>{val.label}</option>
+                                <option key={val.value} className={`${inter.className}`} value={val.value}>{val.label}</option>
                             )
                         })
                     }

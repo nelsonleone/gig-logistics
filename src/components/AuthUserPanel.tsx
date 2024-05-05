@@ -23,6 +23,7 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
     const dispatch = useAppDispatch()
     const router = useRouter()
     const { picture, firstName } = useAppSelector(store => store.authUser)
+    const authUserDataUid = authUserData?.uid;
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget)
@@ -60,10 +61,10 @@ export default function AuthUserPanel({ authUserData }: { authUserData:AuthUser 
     }
 
     useEffect(() => {
-        if(authUserData && authUserData?.uid){
+        if(authUserDataUid){
             dispatch(setAuthUserData({ beenAuthenticated: true, ...authUserData }))
         }
-    },[authUserData?.uid])
+    },[authUserDataUid])
 
     return(
         <div>

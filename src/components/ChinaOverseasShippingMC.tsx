@@ -57,7 +57,7 @@ const serializer2 = {
     },
 }
 
-export default async function({ data }: { data: ChinaOverseasShippingData | null }){
+export default async function ChinaOverseasShippingMC({ data }: { data: ChinaOverseasShippingData | null }){
     return(
         data &&
         <section className="text-primary">

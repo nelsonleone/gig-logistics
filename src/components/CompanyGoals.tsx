@@ -3,6 +3,7 @@
 import { roboto_slab } from "@/app/fonts";
 import { companyGoalsData } from "@/componentsData";
 import { motion } from 'framer-motion';
+import Image from "next/image";
 
 const companyGoalsAnimationVariant = {
     initial: {
@@ -46,11 +47,15 @@ export default function CompanyGoals(){
                               viewport={{ once: true }}
                               whileInView="animate"
                               >
-                                <img 
+                                <Image 
                                   src={`/${val.iconImage}`} 
                                   alt="" 
                                   aria-hidden="true" 
                                   className="w-8 block"
+                                  width={70}
+                                  height={70}
+                                  priority
+                                  loading="eager"
                                 />
                                 <h4 className="font-bold text-[hsl(0,0%,4%)] mt-1 mb-3 text-lg">{val.title}</h4>
                                 <p className="text-[hsl(0,0%,4%)] text-base leading-7">{val.body}</p>

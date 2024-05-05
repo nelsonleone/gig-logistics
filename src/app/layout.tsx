@@ -47,7 +47,9 @@ export default function RootLayout({
               </Header>
               <SupportChat />
               {createPin}
-              {children}
+              <div>
+               {children}
+              </div>
               <ImportantPrompts />
               <RingLoader />
               <CustomSnackbar />
