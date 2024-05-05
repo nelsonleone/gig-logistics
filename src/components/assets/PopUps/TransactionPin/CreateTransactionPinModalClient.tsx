@@ -26,6 +26,7 @@ export default function CreateTransactionPinModalClient({ authUserPinStatus }: {
                 authUserPinStatus === AuthUserWalletPinStatus.NoPin && 
                 beenAuthenticated && 
                 pathName !== "/user/wallet_pin" &&
+                pathName !== "/not-found" &&
                 pathName !== "/user/wallet_pin/change"
             )
         }     

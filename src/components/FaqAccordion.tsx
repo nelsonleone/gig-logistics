@@ -57,7 +57,7 @@ export default function FaqAccordion(props:IProps){
                                 expandIcon={<GoTriangleDown />}
                                 aria-controls={`faq-content-${index}`}
                                 id={`faq-panel-${index}`}
-                                className="text-lg font-medium"
+                                className="text-[1.1rem]"
                                 >
                                 {faq.question}
                             </AccordionSummary>

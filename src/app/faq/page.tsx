@@ -17,7 +17,7 @@ export default async function FaqPage(){
                 <h1 className={`${roboto_slab.className} font-bold text-[2.2rem] text-primary`}>Frequently Asked Questions</h1>
             </div>
 
-            <div className="px-4 lg:px-6 bg-base-color1 rounded-lg my-8 md:w-11/12 md:mx-auto">
+            <div className="px-4 lg:px-6 pb-8 bg-base-color1 rounded-lg my-8 md:w-11/12 md:mx-auto">
                 {
                     faqData?.map(val => {
                         return(

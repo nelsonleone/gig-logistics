@@ -6,7 +6,8 @@ import { FiCheck } from "react-icons/fi"
 
 interface IProgressProps {
     className: string,
-    stepLabel: [string,string,string]
+    stepLabel: [string,string,string],
+    currentStep?: number
 }
 
 export default function ShippingDetailsProgressLoader({ className, stepLabel }: IProgressProps){
