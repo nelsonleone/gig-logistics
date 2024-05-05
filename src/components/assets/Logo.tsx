@@ -7,4 +7,4 @@ export default function Logo(){
             <Image src="/images/logo.png" alt="logo" className="w-20 h-auto" priority loading="eager" width={150} height={150} />
         </Link>
     )
-}
+} 
