@@ -44,7 +44,7 @@ const portableTextComponent : PortableTextComponents = {
 
 
 export default function FaqAccordion(props:IProps){
-
+  
 
     return(
         props.val ?
