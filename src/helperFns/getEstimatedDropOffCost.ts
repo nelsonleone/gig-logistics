@@ -29,7 +29,7 @@ export function estimateTotalDropOffCost(deliveryItems:DeliveryItems[]) {
         
         else {
             // Turning them to string so i can use replace method
-            itemCost = getEstimatedDropOffCost(`${item.value}`,item.weight.value,`${item.quantity}`)
+            itemCost = getEstimatedDropOffCost(`${item.value}`,`${item.weight.value}`,`${item.quantity}`)
         }
         return acc + itemCost;
     }, 0)
