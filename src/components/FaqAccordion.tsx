@@ -1,6 +1,5 @@
 'use client'
 
-import { Accordion, MantineProvider } from "@mantine/core";
 import { PortableText } from '@portabletext/react'
 import Link from "next/link";
 import { PortableTextComponents } from "@portabletext/react";
@@ -8,6 +7,8 @@ import { urlForImage } from "../../sanity-studio/lib/image";
 import { PortableTextBlock } from "@portabletext/types";
 import { inter } from "@/app/fonts";
 import styles from '../LibCSSModules/faq-accordion-styling.module.css'
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
+import { GoTriangleDown } from 'react-icons/go';
 
 
 interface IProps {
@@ -47,19 +48,27 @@ export default function FaqAccordion(props:IProps){
 
     return(
         props.val ?
-        <MantineProvider>
-            <Accordion variant="contained" radius="md" transitionDuration={400}>
-                {
-                    props.val.faqSection.faqsArray.map(faq => (
-                        <Accordion.Item key={faq._key} value={faq.question}>
-                            <Accordion.Panel className={`${inter.className} text-[.9rem]`}>
+        <div>
+            {
+                props.val.faqSection.faqsArray.map((faq,index) => {
+                    return (
+                        <Accordion key={index} className={inter.className}>
+                            <AccordionSummary
+                                expandIcon={<GoTriangleDown />}
+                                aria-controls={`faq-content-${index}`}
+                                id={`faq-panel-${index}`}
+                                className="text-lg font-medium"
+                                >
+                                {faq.question}
+                            </AccordionSummary>
+                            <AccordionDetails>
                                 <PortableText value={faq.answer} components={portableTextComponent} />
-                            </Accordion.Panel>
-                        </Accordion.Item>
-                    ))
-                }
-            </Accordion>
-        </MantineProvider>
+                            </AccordionDetails>
+                        </Accordion>
+                    )
+                })
+            }
+        </div>
         :
         null
     )
