@@ -15,7 +15,7 @@ export default async function ChangeWalletPinPage(){
     const { status } = await res.json()
     const authUserPinStatus : AuthUserWalletPinStatus = status;
 
-    if(authUserPinStatus === AuthUserWalletPinStatus.NoPin){
+    if(typeof authUserPinStatus === "string" && authUserPinStatus && authUserPinStatus === AuthUserWalletPinStatus.NoPin){
         redirect('/user/wallet_pin')
     }
 

@@ -12,7 +12,7 @@ export async function GET(request:NextRequest, response:NextResponse) {
     }
 
     const { uid } = await firebaseAdmin.auth().verifySessionCookie(authSessionToken, true)
-
+   
     if (!uid) {
       return NextResponse.json({ error: 'Invalid UID query' }, { status: 400 })
     }

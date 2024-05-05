@@ -45,12 +45,12 @@ export default function RootLayout({
               <Header >
                 <AuthUserHeaderSection />
               </Header>
+              <SupportChat />
               {createPin}
               {children}
               <ImportantPrompts />
               <RingLoader />
               <CustomSnackbar />
-              <SupportChat />
               <Footer />
             </body>
           </ThemeProvider>

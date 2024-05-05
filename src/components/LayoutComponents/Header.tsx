@@ -31,7 +31,7 @@ export default function Header({ children }:{ children: ReactNode }){
 
     return(
         !pathName.match(`/admin/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}`) ?
-        <header className={`fixed top-0 w-full transition-all duration-300 ease-in-out ${isScrolled ? '-translate-y-full' : 'translate-y-0'} bg-slate-50 w-full py-4 px-6 h-20 fixed top-0 z-[998] flex justify-between items-center xl:px-10 lg:py-12 drop-shadow-md`}>
+        <header className={`fixed top-0 w-full transition-all duration-300 ease-in-out ${isScrolled ? '-translate-y-full' : 'translate-y-0'} bg-slate-50 w-full py-4 px-6 h-20 fixed top-0 z-[59] flex justify-between items-center xl:px-10 lg:py-12 drop-shadow-md`}>
             <MenuIcon />
             <Logo />
             <MainNav />

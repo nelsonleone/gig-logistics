@@ -10,33 +10,36 @@ import { GoHomeFill } from "react-icons/go";
 import { TbWindowMinimize } from "react-icons/tb"
 import { PiMicrophoneFill } from "react-icons/pi";
 import { BsSendFill } from "react-icons/bs"
+import { usePathname } from "next/navigation"
 
 export default function SupportChat(){
 
     const [showChat,setShowChat] = useState(false)
     const [minimizeChat,setMinimizeChat] = useState(false)
     const [message,setMessage] = useState("")
+    const pathName = usePathname()
 
     const handleClick = () => {
         if(minimizeChat){
             setMinimizeChat(false)
-        }
+        } 
         else{
             setShowChat(prev => prev = !prev)
         }
     }
 
     return(
+        !pathName.match("/user/wallet_pin") &&
         <>
-            <div className="fixed bottom-3 md:bottom-5 right-3 md:right-12">
+            <div className="fixed z-[60] bottom-3 md:bottom-5 right-3 md:right-12">
                 <IconButton aria-label={showChat ? "close chat":"openChat"} onClick={handleClick} className="w-32 p-0 hover:scale-105 transition ease-in-out">
-                    <Image src="/icons/chat.png" alt="chat icon" width={120} height={120} className="w-full h-auto" loading="eager" />
+                    <Image src="/icons/chat.png" alt="chat icon" width={120} height={120} className="w-full h-auto drop-shadow-lg" loading="eager" />
                 </IconButton>
             </div>
             <AnimatePresence>
-                {
+                {  
                     showChat &&
-                    <motion.div initial={{opacity:0, y: 200}} animate={{ y: 0, opacity: 1 }} exit={{y: 500, transition: { duration: .8, ease: "linear"} }} className={`${minimizeChat ? "invisible pointer-events-none -z-50" : "z-auto visible pointer-events-auto"} bg-base-color1 sticky z-[9999] overflow-y-auto shadow-gray-200 rounded-lg h-screen w-full md:w-96 top-0 md:top-24 right-0 md:bottom-0 md:right-4 md:rounded-2xl md:h-[83vh] lg:my-auto`}>
+                    <motion.div initial={{opacity:0, y: 200}} animate={{ y: 0, opacity: 1 }} exit={{y: 500, transition: { duration: .8, ease: "linear"} }} className={`${minimizeChat ? "invisible pointer-events-none -z-50" : "z-[60] visible pointer-events-auto"} bg-base-color1 fixed z-[9999] overflow-y-auto shadow-gray-200 rounded-lg h-screen w-full md:w-96 top-0 md:top-24 right-0 md:bottom-0 md:right-4 md:rounded-2xl md:h-[83vh] lg:my-auto ${minimizeChat ? "invisible pointer-events-none -z-50" : "z-[9999] visible pointer-events-auto"}`}>
                         <div className="bg-red-700 flex justify-between gap-8 relative p-5">
                             <h2 className={`${roboto_slab.className} text-xl text-base-color1 font-bold uppercase text-center`}>GIG LOGISTICS</h2>
                             <div className="flex gap-2 text-base-color1">
