@@ -1,6 +1,6 @@
 'use client'
 
-import { Accordion } from "@mantine/core";
+import { Accordion, MantineProvider } from "@mantine/core";
 import { PortableText } from '@portabletext/react'
 import Link from "next/link";
 import { PortableTextComponents } from "@portabletext/react";
@@ -47,18 +47,19 @@ export default function FaqAccordion(props:IProps){
 
     return(
         props.val ?
-        <Accordion variant="contained" radius="md" transitionDuration={400}>
-            {
-                props.val.faqSection.faqsArray.map(faq => (
-                    <Accordion.Item key={faq._key} value={faq.question}>
-                        <Accordion.Control className={`${inter.className} ${styles["Accordion-Control"]} text-[#111827] text-lg`}>{faq.question}</Accordion.Control>
-                        <Accordion.Panel className={`${inter.className}  ${styles["faq-accordion-panel"]} text-[.9rem]`}>
-                            <PortableText value={faq.answer} components={portableTextComponent} />
-                        </Accordion.Panel>
-                    </Accordion.Item>
-                ))
-            }
-        </Accordion>
+        <MantineProvider>
+            <Accordion variant="contained" radius="md" transitionDuration={400}>
+                {
+                    props.val.faqSection.faqsArray.map(faq => (
+                        <Accordion.Item key={faq._key} value={faq.question}>
+                            <Accordion.Panel className={`${inter.className} text-[.9rem]`}>
+                                <PortableText value={faq.answer} components={portableTextComponent} />
+                            </Accordion.Panel>
+                        </Accordion.Item>
+                    ))
+                }
+            </Accordion>
+        </MantineProvider>
         :
         null
     )

@@ -21,7 +21,7 @@ export default async function FaqPage(){
                 {
                     faqData?.map(val => {
                         return(
-                            <div className="px-6 bg-gray-100 bg-blend-darken pt-8 text-[#111827] xl:px-10" key={val._id}>
+                            <div className="px-6 pt-8 text-[#111827] xl:px-10" key={val._id}>
                                 <h2 className="font-semibold my-5 text-2xl capitalize w-10/12 ps-2">{val.faqSection.faqSectionTitle}</h2>
                                 <div className=" lg:w-2/3 mx-auto">
                                   <FaqAccordion val={val} />
