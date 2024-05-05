@@ -1,11 +1,13 @@
 'use client'
 
+import { Accordion } from "@mantine/core";
+import { PortableText } from '@portabletext/react'
 import Link from "next/link";
-import { PortableText, PortableTextComponents } from "@portabletext/react";
+import { PortableTextComponents } from "@portabletext/react";
 import { urlForImage } from "../../sanity-studio/lib/image";
 import { PortableTextBlock } from "@portabletext/types";
-import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
-import Image from "next/image";
+import { inter } from "@/app/fonts";
+import styles from '../LibCSSModules/faq-accordion-styling.module.css'
 
 
 interface IProps {
@@ -23,22 +25,19 @@ interface IProps {
 
 const portableTextComponent : PortableTextComponents = {
     types: {
-      image: ({value}) => <Image src={urlForImage(value).url()} width={80} height={80} alt="" aria-hidden="true" loading="eager" />,
+      image: ({value}) => <img src={urlForImage(value).url()} />,
     },
   
     marks: {
       link: ({children, value}) => {
         const rel = !value.href.startsWith('/') ? 'noreferrer noopener' : undefined
         return (
-          <Link href={value.href} rel={rel} className="text-accent-color3 underline">
+          <Link href={value.href} rel={rel}>
             {children}
           </Link>
         )
       },
     },
-    listItem: {
-        bullet: ({ children }:any) => <li className="list-disc my-2 mx-3">{children}</li>,
-    }
 }
 
 
@@ -48,15 +47,15 @@ export default function FaqAccordion(props:IProps){
 
     return(
         props.val ?
-        <Accordion>
+        <Accordion variant="contained" radius="md" transitionDuration={400}>
             {
                 props.val.faqSection.faqsArray.map(faq => (
-                    <AccordionPanel key={faq._key}>
-                        <AccordionTitle className="text-lg">{faq.question}</AccordionTitle>
-                        <div className="text-sm">
+                    <Accordion.Item key={faq._key} value={faq.question}>
+                        <Accordion.Control className={`${inter.className} ${styles["Accordion-Control"]} text-[#111827] text-lg`}>{faq.question}</Accordion.Control>
+                        <Accordion.Panel className={`${inter.className}  ${styles["faq-accordion-panel"]} text-[.9rem]`}>
                             <PortableText value={faq.answer} components={portableTextComponent} />
-                        </div>
-                    </AccordionPanel>
+                        </Accordion.Panel>
+                    </Accordion.Item>
                 ))
             }
         </Accordion>

@@ -12,12 +12,12 @@ export default async function FaqPage(){
     const faqData = await getFaqData()
 
     return(
-        <div className="page py-5 mt-16 mb-12 lg:overflow-y-auto lg:min-h-0 lg:h-screen scroll-mx-2 lg:me-1">
+        <div className="page px-0 py-5 mt-16 mb-12 lg:overflow-y-auto lg:min-h-0 lg:h-screen scroll-mx-2 lg:me-1">
             <div className="bg-[url('/images/offices_bg.svg')] py-14 px-4 w-full h-[45vh] md:pt-20 md:flex md:justify-center lg:items-center">
                 <h1 className={`${roboto_slab.className} font-bold text-[2.2rem] text-primary`}>Frequently Asked Questions</h1>
             </div>
 
-            <div>
+            <div className="px-4 lg:px-6 bg-base-color1 rounded-lg my-8 md:w-11/12 md:mx-auto">
                 {
                     faqData?.map(val => {
                         return(

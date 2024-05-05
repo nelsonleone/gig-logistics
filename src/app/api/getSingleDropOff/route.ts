@@ -24,14 +24,14 @@ export async function GET(request: NextRequest, response: NextResponse) {
     const userDoc = await userDocRef.get()
 
     if (!userDoc.exists) {
-      return ([])
+      return NextResponse.json([], { status: 404 })
     }
 
     const userData = userDoc.data()
     const dropOffs : SavedDropOffs[] = await userData?.dropOffs;
     const dropOff = dropOffs.find((dropOff) => dropOff.dropOffID.toString() === id.toString())
 
-    return NextResponse.json(dropOff)
+    return NextResponse.json({ dropOff }, { status: 201 })
   } catch (error:any|unknown) {
     return NextResponse.json({ error: error.message || 'Error retrieving dropOffs' }, { status: 500 })
   }
