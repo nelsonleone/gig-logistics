@@ -25,7 +25,7 @@
 
 
     .primary_nav{
-        @apply bg-slate-50 w-[85%] min-h-screen bottom-0 top-20 fixed z-40 left-0 p-[1.6rem] pt-24 pb-7  overflow-y-auto shadow-gray-500 shadow-xl md:w-[40%] lg:static lg:p-0 lg:top-0 lg:bg-transparent lg:shadow-none lg:w-auto lg:h-auto lg:left-[unset] lg:overflow-visible;
+        @apply bg-slate-50 w-[85%] h-screen bottom-0 top-20 fixed z-40 left-0 p-[1.6rem] pt-24 pb-7  overflow-y-auto shadow-gray-500 shadow-xl md:w-[40%] lg:static lg:p-0 lg:top-0 lg:bg-transparent lg:shadow-none lg:bottom-[unset] lg:w-auto lg:h-auto lg:left-[unset] lg:overflow-visible;
     }
     
     .show_nav{
