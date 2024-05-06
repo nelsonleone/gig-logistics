@@ -29,8 +29,8 @@ export async function POST(request: NextRequest, response: NextResponse) {
         value: sessionCookie,
         maxAge: expiresIn,
         httpOnly: true,
-        secure: process.env.NODE_ENV === "development",
-        sameSite: process.env.NODE_ENV === "development" ? "lax" as "lax" : "none" as "none"
+        secure: true,
+        sameSite: "none" as "none"
       }
 
       cookies().set(options)

@@ -139,7 +139,7 @@ export default function MainNav(){
                            <li 
                             onClick={handleTrackButtonClick}
                             >
-                                <button className="red-button-bright lg:hidden w-[10em] p-3 font-medium">Track & Find</button>
+                                <button className="red-button-bright lg:hidden w-[10em] p-3">Track & Find</button>
                             </li>
                             :
                             null
