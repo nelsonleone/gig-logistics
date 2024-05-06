@@ -127,7 +127,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
     useEffect(() => {
         if(isSubmitted){
             if(beenAuthenticated && returnTo){
-                router.push(returnTo as string)
+                router.push(`${process.env.NEXT_PUBLIC_BASE_APP_URL}${returnTo}` as string)
             }
             else{
                 console.log(isSubmitted)
