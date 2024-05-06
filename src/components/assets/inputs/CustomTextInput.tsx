@@ -71,7 +71,7 @@ export default function CustomTextInput(props:IProps){
                     onInput={(e) => {
                         inputType === "number" ? e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '') : undefined
                     }}
-                    className={`${inputStyles} placeholder:text-gray-400 outline-offset-0 focus:outline-offset-0 ${error ? "border-primary2 focus:outline-primary2 md:focus:outline-primary2" : ""}`}
+                    className={`${inputStyles} outline-offset-0 focus:outline-offset-0 ${error ? "border-primary2 focus:outline-primary2 md:focus:outline-primary2" : ""}`}
                 />}
             />
             {

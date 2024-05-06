@@ -130,7 +130,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                 containerStyles="w-full mb-4"
                                 labelStyles="mb-3 block self-start ms-1"
                                 error={errors?.otherItemName?.message}
-                                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
+                                inputStyles="w-full z-20 border z-20 border-gray-500 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
                             />
                             <CustomTextInput
                                 control={control} 
@@ -141,7 +141,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                 containerStyles="w-full mb-4"
                                 labelStyles="mb-3 block self-start ms-1"
                                 error={errors?.otherItemDescription?.message}
-                                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
+                                inputStyles="w-full z-20 border z-20 border-gray-500 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
                             />
                             <CustomTextInput
                                 control={control} 
@@ -154,7 +154,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                 containerStyles="w-full mb-4"
                                 labelStyles="mb-3 block self-start ms-1"
                                 error={errors?.otherItemWeight?.message}
-                                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
+                                inputStyles="w-full z-20 border z-20 border-gray-500 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
                             />
                         </>
                         :
@@ -216,7 +216,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                             containerStyles="w-full mb-4 md:w-1/2"
                             labelStyles="mb-3 block self-start ms-1"
                             error={errors?.item?.message}
-                            inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
+                            inputStyles="w-full z-20 border z-20 border-gray-500 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
                         />
                         <div className="relative md:w-1/2">
                             <CustomTextInput
@@ -230,7 +230,7 @@ function XpressDropOffAddItemModal({ open, handleClose, setDeliveryItem }:IProps
                                 containerStyles="w-full mb-4"
                                 labelStyles="mb-3 block self-start ms-1"
                                 error={errors?.value?.message}
-                                inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
+                                inputStyles="w-full z-20 border z-20 border-gray-500 rounded-lg p-4 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black h-[3.2em]"
                             />
                             <XpressDropOffDeliveryItemValueNotice />
                         </div>

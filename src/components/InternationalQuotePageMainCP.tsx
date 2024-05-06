@@ -99,7 +99,7 @@ function InternationalQuotePageMainCP(){
                         id="quote_IntlAddress" 
                         error={errors.quote_IntlAddress?.message}
                         containerStyles="w-full"
-                        inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black"
+                        inputStyles="w-full z-20 border z-20 border-gray-500 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black"
                     />
                 </div>
 
@@ -113,7 +113,7 @@ function InternationalQuotePageMainCP(){
                             id="quote_city" 
                             error={errors.quote_city?.message}
                             containerStyles="w-full"
-                            inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black"
+                            inputStyles="w-full z-20 border z-20 border-gray-500 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black"
                         />
                     </div>
                     <div className="w-1/2">
@@ -125,7 +125,7 @@ function InternationalQuotePageMainCP(){
                             id="quote_zipCode" 
                             error={errors.quote_zipCode?.message}
                             containerStyles="w-full"
-                            inputStyles="w-full z-20 border z-20 border-gray-400 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black"
+                            inputStyles="w-full z-20 border z-20 border-gray-500 rounded-lg p-3 cursor-pointer focus:border-none focus:outline-offset-0 focus:outline-2 focus:outline-black"
                         />
                     </div>
                 </div>
