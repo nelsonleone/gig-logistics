@@ -4,7 +4,7 @@ export function initializeFirebaseAdmin() {
   if (!admin.apps.length) {
     admin.initializeApp({
       credential: admin.credential.cert({
-        type: process.env.FIREBASE_ADMIN_TYPE,
+        type: "service_account",
         project_id: process.env.FIREBASE_ADMIN_PROJECT_ID,
         private_key_id: process.env.FIREBASE_ADMIN_PRIVATE_KEY_ID,
         private_key: process.env.FIREBASE_ADMIN_PRIVATE_KEY!.replace(/\\n/g, '\n'),
