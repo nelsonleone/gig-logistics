@@ -2,8 +2,8 @@
 ## GIG LOGISTICS CLONE
 
 ### *Screenshot*
-    ![GIGL-Africa-s-Leading-Logistics-Company-Express-Delivery](https://github.com/nelsonleone/gig-logistics/assets/95982650/66e8e5c8-f71b-4132-915c-55fbd3f11b1b)
-![untitled](https://github.com/nelsonleone/gig-logistics/assets/95982650/b189982c-779a-4fed-baba-9cf0144e9d6b)
+![image](https://github.com/nelsonleone/gig-logistics/assets/95982650/a96e0a22-3b15-4587-90cf-f8b1be67b3da)
+![image](https://github.com/nelsonleone/gig-logistics/assets/95982650/b189982c-779a-4fed-baba-9cf0144e9d6b)
 
      
 
