@@ -9,7 +9,7 @@ import { AlertSeverity } from "@/enums"
 import { asyncWrapper } from "@/helperFns/asyncWrapper"
 import {  createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from "@/lib/firebase/firebase-client-config"
-import { useAppDispatch } from "@/redux/customHooks"
+import { useAppDispatch, useAppSelector } from "@/redux/customHooks"
 import { setShowAlert } from "@/redux/slices/alertSlice"
 import customFirebaseError from "@/helperFns/CustomFirebaseAuthError"
 import { handleSignInWithPopUp } from "@/helperFns/handleSignInWithPopUp"
@@ -18,6 +18,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from "next/navigation"
 import { setAuthUserData } from "@/redux/slices/authUser"
+import { useEffect } from "react"
 
 
 const formSchema = Yup.object().shape({
@@ -44,9 +45,10 @@ const formSchema = Yup.object().shape({
 
 export default function IndividualSignupSection({ returnTo }: { returnTo:string | string[] | undefined }){
 
-    const { handleSubmit, formState: { isSubmitting, errors }, control,setError } = useForm<SignUpFormData>({ resolver: yupResolver(formSchema) })
+    const { handleSubmit, formState: { isSubmitting, errors, isSubmitted }, control,setError } = useForm<SignUpFormData>({ resolver: yupResolver(formSchema) })
     const dispatch = useAppDispatch()
     const router = useRouter()
+    const { beenAuthenticated } = useAppSelector(store => store.authUser)
 
     const handleSignUp : SubmitHandler<SignUpFormData> = async(data) => {
         const { email, password, firstName, lastName, phoneNumber, confirmPassword } = data;
@@ -104,13 +106,6 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                     }))
 
                     dispatch(setAuthUserData({ ...authUserData, beenAuthenticated: true }))
-
-                    if(returnTo){
-                        router.push(returnTo as string)
-                    }
-                    else{
-                        router.push("/")
-                    }
                 }
         
                 catch(error:any|unknown){
@@ -127,6 +122,19 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
     const handleGoogleSignIn = async() => {
         await handleSignInWithPopUp(returnTo,dispatch,router)
     }
+
+
+    useEffect(() => {
+        if(isSubmitted){
+            if(beenAuthenticated && returnTo){
+                router.push(returnTo as string)
+            }
+            else{
+                console.log(isSubmitted)
+                router.push("/")
+            }
+        }
+    },[isSubmitted,beenAuthenticated,returnTo])
 
     return(
         <form onSubmit={handleSubmit(handleSignUp)} className="w-[92%] md:w-11/12 mx-auto mt-8">

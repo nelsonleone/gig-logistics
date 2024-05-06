@@ -5,12 +5,13 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import CustomPasswordInput from "@/components/assets/inputs/CustomPasswordInput"
 import Link from "next/link"
 import LoadingEllipse from "@/components/assets/Loaders/LoadingEllipse"
+import { useEffect } from "react"
 import { AuthUser, SignInFormData } from "../../../types"
 import { roboto_slab } from "@/app/fonts"
 import ContinueWithGoogleBtn from "./ContinueWithGoogleBtn"
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
+import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "@/lib/firebase/firebase-client-config"
-import { useAppDispatch } from "@/redux/customHooks"
+import { useAppDispatch, useAppSelector } from "@/redux/customHooks"
 import { setShowAlert } from "@/redux/slices/alertSlice"
 import { AlertSeverity } from "@/enums"
 import { asyncWrapper } from "@/helperFns/asyncWrapper"
@@ -23,12 +24,13 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
 
     const dispatch = useAppDispatch()
     const router = useRouter()
-    const { handleSubmit, formState: { isSubmitting, errors }, control } = useForm<SignInFormData>({
+    const { handleSubmit, formState: { isSubmitting, isSubmitted, errors }, control } = useForm<SignInFormData>({
         defaultValues: {
             email: "",
             password: ""
         }
     })
+    const { beenAuthenticated } = useAppSelector(store => store.authUser)
 
 
 
@@ -94,6 +96,17 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
     }
 
 
+    useEffect(() => {
+        if(isSubmitted){
+            if(beenAuthenticated && returnTo){
+                router.push(returnTo as string)
+            }
+            else{
+                console.log(isSubmitted)
+                router.push("/")
+            }
+        }
+    },[isSubmitted,beenAuthenticated,returnTo])
 
     return(
         <main className="my-10 pt-24 lg:my-28 pb-8 text-primary bg-base-color1 rounded-lg w-full mx-auto md:w-[25em] shadow-lg shadow-slate-500 drop-shadow-sm">
