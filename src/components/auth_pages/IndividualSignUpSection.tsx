@@ -71,7 +71,7 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                     const userCred = await createUserWithEmailAndPassword(auth,email,password)
                     const idToken = await userCred.user.getIdToken()
 
-                    if(!idToken && !userCred){
+                    if(!idToken){
                         throw new Error("Authentication Failed")
                         return;
                     }

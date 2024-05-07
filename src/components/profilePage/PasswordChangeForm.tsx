@@ -55,7 +55,7 @@ export default function PasswordChangeForm(){
             // this code throws a "Too many attempts error too early"
             // await reauthenticateWithCredential(auth.currentUser!,credential)
 
-            await signInWithEmailAndPassword(auth, email, data.confirmNewPassword)
+            await signInWithEmailAndPassword(auth, email, data.currentPassword)
 
             await updatePassword(auth.currentUser, data.newPassword)
 

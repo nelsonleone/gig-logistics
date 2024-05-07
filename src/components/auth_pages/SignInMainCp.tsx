@@ -44,7 +44,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
                     const userCred = await signInWithEmailAndPassword(auth,email,password)
                     const idToken = await userCred.user.getIdToken()
 
-                    if(!idToken && !userCred){
+                    if(!idToken){
                         throw new Error("Authentication Failed")
                         return;
                     }
