@@ -1,4 +1,4 @@
-import { SubmitHandler, useForm, useWatch } from "react-hook-form"
+import { SubmitHandler, useForm } from "react-hook-form"
 import { AuthUser, SignUpFormData } from "../../../types"
 import LoadingEllipse from "../assets/Loaders/LoadingEllipse"
 import CustomTextInput from "../assets/inputs/CustomTextInput"
@@ -18,7 +18,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from "next/navigation"
 import { setAuthUserData } from "@/redux/slices/authUser"
-import { useEffect } from "react"
+import { useEffect useState } from "react"
 
 
 const formSchema = Yup.object().shape({
