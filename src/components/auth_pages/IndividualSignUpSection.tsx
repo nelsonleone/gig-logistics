@@ -18,7 +18,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from "next/navigation"
 import { setAuthUserData } from "@/redux/slices/authUser"
-import { useEffect useState } from "react"
+import { useEffect, useState } from "react"
 
 
 const formSchema = Yup.object().shape({
