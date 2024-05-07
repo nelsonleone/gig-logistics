@@ -45,10 +45,11 @@ const formSchema = Yup.object().shape({
 
 export default function IndividualSignupSection({ returnTo }: { returnTo:string | string[] | undefined }){
 
-    const { handleSubmit, formState: { isSubmitting, errors, isSubmitted }, control,setError } = useForm<SignUpFormData>({ resolver: yupResolver(formSchema) })
+    const { handleSubmit, formState: { isSubmitting, errors }, control,setError } = useForm<SignUpFormData>({ resolver: yupResolver(formSchema) })
     const dispatch = useAppDispatch()
     const router = useRouter()
     const { beenAuthenticated } = useAppSelector(store => store.authUser)
+    const [hasSubmitted,setHasSubmitted] = useState(false)
 
     const handleSignUp : SubmitHandler<SignUpFormData> = async(data) => {
         const { email, password, firstName, lastName, phoneNumber, confirmPassword } = data;
@@ -106,6 +107,8 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
                     }))
 
                     dispatch(setAuthUserData({ ...authUserData, beenAuthenticated: true }))
+
+                    setHasSubmitted(true)
                 }
         
                 catch(error:any|unknown){
@@ -125,16 +128,15 @@ export default function IndividualSignupSection({ returnTo }: { returnTo:string 
 
 
     useEffect(() => {
-        if(isSubmitted){
+        if(hasSubmitted){
             if(beenAuthenticated && returnTo){
                 router.push(`${process.env.NEXT_PUBLIC_BASE_APP_URL}${returnTo}` as string)
             }
             else{
-                console.log(isSubmitted)
                 router.push("/")
             }
         }
-    },[isSubmitted,beenAuthenticated,returnTo])
+    },[hasSubmitted,beenAuthenticated,returnTo])
 
     return(
         <form onSubmit={handleSubmit(handleSignUp)} className="w-[92%] md:w-11/12 mx-auto mt-8">

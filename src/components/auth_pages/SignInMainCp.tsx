@@ -24,13 +24,14 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
 
     const dispatch = useAppDispatch()
     const router = useRouter()
-    const { handleSubmit, formState: { isSubmitting, isSubmitted, errors }, control } = useForm<SignInFormData>({
+    const { handleSubmit, formState: { isSubmitting, errors }, control } = useForm<SignInFormData>({
         defaultValues: {
             email: "",
             password: ""
         }
     })
     const { beenAuthenticated } = useAppSelector(store => store.authUser)
+    const [hasSubmitted,setHasSubmitted] = useState(false)
 
 
 
@@ -97,16 +98,15 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
 
 
     useEffect(() => {
-        if(isSubmitted){
+        if(hasSubmitted){
             if(beenAuthenticated && returnTo){
                 router.push(`${process.env.NEXT_PUBLIC_BASE_APP_URL}${returnTo}` as string)
             }
             else{
-                console.log(isSubmitted)
                 router.push("/")
             }
         }
-    },[isSubmitted,beenAuthenticated,returnTo])
+    },[hasSubmitted,beenAuthenticated,returnTo])
 
     return(
         <main className="my-10 pt-24 lg:my-28 pb-8 text-primary bg-base-color1 rounded-lg w-full mx-auto md:w-[25em] shadow-lg shadow-slate-500 drop-shadow-sm">
