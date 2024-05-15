@@ -38,6 +38,7 @@ export const handleCreatePin = async(router:AppRouterInstance, uid: string, disp
                 }))
 
                 dispatch(setWalletPinStatus(AuthUserWalletPinStatus.HasPin))
+                router.refresh()
                 router.back()
             }
 

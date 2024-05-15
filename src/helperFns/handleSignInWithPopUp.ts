@@ -48,6 +48,7 @@ export async function handleSignInWithPopUp(returnTo: string | string[] | undefi
             })
           )
 
+          router.refresh()
           if(returnTo){
             router.push(returnTo as string)
           }

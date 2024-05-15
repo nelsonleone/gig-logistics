@@ -73,6 +73,7 @@ export default function SignInMainCP({ returnTo }: { returnTo:string | string[] 
                         severity: AlertSeverity.SUCCESS
                     }))
 
+                    router.refresh()
                     if(returnTo){
                         router.push(returnTo as string)
                     }
