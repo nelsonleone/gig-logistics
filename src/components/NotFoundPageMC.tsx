@@ -12,7 +12,6 @@ export default function NotFoundPageMC(){
             <MantineProvider>
             <Container className={classes.root}>
                 <SimpleGrid spacing={{ base: 40, sm: 80 }} cols={{ base: 1, sm: 2 }}>
-                <Image src="/images/not-found-page-img.svg" alt="" aria-hidden="true" width={400} height={400} className={classes.mobileImage} />
                 <div>
                     <h1 className={`${classes.h1} ${roboto_slab.className} text-3xl my-5 font-bold`}>Something is not right...</h1>
                     <p className={inter.className}>
@@ -23,7 +22,7 @@ export default function NotFoundPageMC(){
                     Get back to home page
                     </Link>
                 </div>
-                <Image src="/images/not-found-page-img.svg" alt="" aria-hidden="true" width={400} height={400} className={classes.desktopImage} />
+                <Image src="/images/not-found-page-img.svg" alt="" aria-hidden="true" width={400} height={400} />
                 </SimpleGrid>
             </Container>
             </MantineProvider>
