@@ -10,7 +10,7 @@ export default function NotFoundPageMC(){
     return(
         <div className="flex justify-center items-center h-screen w-full">
             <MantineProvider>
-                <div className="grid grid-col-1 gap-8 md:grid-col-2">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                     <Image src="/images/not-found-page-img.svg" alt="" aria-hidden="true" width={400} height={400} />
                     <div className="md:order-1">
                         <h1 className={`${classes.h1} ${roboto_slab.className} text-3xl my-5 font-bold`}>Something is not right...</h1>
