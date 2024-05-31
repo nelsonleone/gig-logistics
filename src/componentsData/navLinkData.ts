@@ -35,7 +35,7 @@ const navLinkData : NavLinkData = [
         ]
     },
     {
-        link: 'our-offices',
+        link: '/our-offices',
         text: 'Our Offices'
     },
     {
