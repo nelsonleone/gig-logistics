@@ -2,7 +2,7 @@ import SignUpMainCP from "@/components/auth_pages/SignUpMainCP";
 import { getPersistedAuthUser } from "@/helperFns/getPersistedAuthUser";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import SignUpPageBG from "../../../public/images/red-truck-bg.jpg";
+import SignUpPageBG from "../../../../public/images/red-truck-bg.jpg";
 
 interface IPageProps {
     searchParams: { [key: string]: string | string[] | undefined },
