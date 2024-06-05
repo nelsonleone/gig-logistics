@@ -3,7 +3,7 @@ import { getPersistedAuthUser } from "@/helperFns/getPersistedAuthUser";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import SignInPageBG from "/images/black-truck-bg.jpg"
+import SignInPageBG from "../../../public/images/black-truck-bg.jpg"
 
 interface IPageProps {
     searchParams: { [key: string]: string | string[] | undefined },

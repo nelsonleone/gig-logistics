@@ -6,8 +6,7 @@ import CustomSkeleton from "@/components/assets/Loaders";
 import ServicesHighlight from "@/components/ServicesHighlight";
 import { Suspense } from "react"; 
 import { roboto_slab } from "./fonts";
-import TruckVideo from "/videos/intro-bg-video.mp4"
-
+import TruckVideo from "../../public/videos/intro-bg-video.mp4"
  
 export default function Home() {
  

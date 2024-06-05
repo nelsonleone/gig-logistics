@@ -5,7 +5,7 @@
 
 @keyframes slideIn {
     from {
-        left: -20vh;
+        left: -400px;
     }
     to {
         left: 0;
