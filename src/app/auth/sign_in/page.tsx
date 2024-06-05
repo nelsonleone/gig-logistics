@@ -36,7 +36,7 @@ export default async function SignIn({ params, searchParams }:IPageProps){
     }
 
     return(
-        <div style={{ backgroundImage: url(SignInPageBG)}} className={`page mt-14 relative flex justify-center items-center bg-no-repeat bg-center bg-cover`}>
+        <div style={{ backgroundImage: `url(${SignInPageBG})`}} className={`page mt-14 relative flex justify-center items-center bg-no-repeat bg-center bg-cover`}>
             <SignInMainCP returnTo={returnTo} />
         </div>
     )
