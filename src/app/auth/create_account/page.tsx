@@ -30,7 +30,7 @@ export default async function SignUp({ params, searchParams }:IPageProps){
         await shouldRedirect()
     }
     return(
-        <div style={{ backgroundImage: `url(${SignUpPageBG})`}} className={`page relative mt-14 flex justify-center items-center bg-no-repeat bg-center bg-cover`}>
+        <div style={{ backgroundImage: `url('${SignUpPageBG}')`}} className={`page relative mt-14 flex justify-center items-center bg-no-repeat bg-center bg-cover`}>
             <div className="absolute inset-0 bg-gray-800 opacity-50"></div>
             <SignUpMainCP returnTo={returnTo} />
         </div>
