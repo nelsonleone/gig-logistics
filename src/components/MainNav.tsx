@@ -78,7 +78,7 @@ export default function MainNav(){
                     touchEvent="onTouchEnd"
                     onClickAway={handleClickAway}>
                     <motion.ul
-                       exit={{ x: -400, transition: { duration: .3, ease: "linear" } }}
+                       exit={{ x: -400, transition: { duration: .5, ease: "linear" } }}
                        id="primary-nav" 
                        className={showPrimaryNav ? "primary_nav show_nav" : "primary_nav hide_nav"}
                        >
