@@ -3,7 +3,6 @@ import { getPersistedAuthUser } from "@/helperFns/getPersistedAuthUser";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import SignInPageBG from "../../../../public/images/black-truck-bg.jpg"
 
 interface IPageProps {
     searchParams: { [key: string]: string | string[] | undefined },
@@ -36,7 +35,7 @@ export default async function SignIn({ params, searchParams }:IPageProps){
     }
 
     return(
-        <div style={{ backgroundImage: `url('${SignInPageBG}')`}} className={`page mt-14 relative flex justify-center items-center bg-no-repeat bg-center bg-cover`}>
+        <div className={`page mt-14 relative bg-[url('/images/black-truck-bg.jpg')] flex justify-center items-center bg-no-repeat bg-center bg-cover`}>
             <SignInMainCP returnTo={returnTo} />
         </div>
     )
